@@ -171,3 +171,34 @@ D:\Work Bitch!\KL\Framework\Framework.ViewData\bin\Debug\EntityFramework.SqlServ
 D:\Work Bitch!\KL\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 D:\Work Bitch!\KL\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Work Bitch!\KL\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.ViewData.dll.config
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.ViewData.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.ViewData.pdb
+D:\EnglishWeb\Framework.ViewData\bin\Debug\EntityFramework.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\EntityFramework.SqlServer.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.Common.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.Model.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.Helpers.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.Mvc.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.Razor.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.WebPages.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.WebPages.Razor.dll
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.Common.pdb
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Framework.Model.pdb
+D:\EnglishWeb\Framework.ViewData\bin\Debug\EntityFramework.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\EntityFramework.SqlServer.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.Helpers.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.Mvc.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.Razor.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.WebPages.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\EnglishWeb\Framework.ViewData\bin\Debug\System.Web.WebPages.Razor.xml
+D:\EnglishWeb\Framework.ViewData\obj\Debug\Framework.ViewData.csprojResolveAssemblyReference.cache
+D:\EnglishWeb\Framework.ViewData\obj\Debug\Framework.ViewData.dll
+D:\EnglishWeb\Framework.ViewData\obj\Debug\Framework.ViewData.pdb

@@ -8,10 +8,12 @@
     <article class="hentry blog-post single-post single-post-v1">
         <a href="#" onclick='getview("oldwords")' class="post-category bg-primary">Các từ đã tra</a>
         <div class="dictionary-title">
-            <h1 class="post-title">Word</h1>
+            <h1 class="post-title">
+                @Model.m_Voca
+            </h1>
             <div class="voice"><button type="button"></button></div>
             <div class="choose-reaction">
-                <div class="title">Định nghĩa từ <span>Word </span> với</div>
+                <div class="title">Định nghĩa từ <span>@Model.m_Voca </span> với</div>
                 <ul>
                     <li>
                         <a href="#" onclick="scrollto('#noun')">
@@ -42,7 +44,7 @@
             <div class="post-content">
                 <div id="noun">
                     <blockquote>
-                        <p>NOUN</p>
+                        <p>@Model.m_Type</p>
                     </blockquote>
                     <ol>
                         <li>

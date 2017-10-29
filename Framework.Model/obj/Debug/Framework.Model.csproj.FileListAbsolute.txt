@@ -152,3 +152,17 @@ D:\Work Bitch!\KL\Framework\Framework.Model\bin\Debug\Microsoft.AspNet.Identity.
 D:\Work Bitch!\KL\Framework\Framework.Model\obj\Debug\Framework.Model.csprojResolveAssemblyReference.cache
 D:\Work Bitch!\KL\Framework\Framework.Model\obj\Debug\Framework.Model.dll
 D:\Work Bitch!\KL\Framework\Framework.Model\obj\Debug\Framework.Model.pdb
+D:\EnglishWeb\Framework.Model\bin\Debug\Framework.Model.dll.config
+D:\EnglishWeb\Framework.Model\bin\Debug\Framework.Model.dll
+D:\EnglishWeb\Framework.Model\bin\Debug\Framework.Model.pdb
+D:\EnglishWeb\Framework.Model\bin\Debug\EntityFramework.dll
+D:\EnglishWeb\Framework.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\EnglishWeb\Framework.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\EnglishWeb\Framework.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\EnglishWeb\Framework.Model\bin\Debug\EntityFramework.xml
+D:\EnglishWeb\Framework.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\EnglishWeb\Framework.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\EnglishWeb\Framework.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\EnglishWeb\Framework.Model\obj\Debug\Framework.Model.dll
+D:\EnglishWeb\Framework.Model\obj\Debug\Framework.Model.pdb
+D:\EnglishWeb\Framework.Model\obj\Debug\Framework.Model.csprojResolveAssemblyReference.cache

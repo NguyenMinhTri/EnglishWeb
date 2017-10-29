@@ -172,3 +172,19 @@ D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity
 D:\Work Bitch!\KL\Framework\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
 D:\Work Bitch!\KL\Framework\Framework.Common\obj\Debug\Framework.Common.dll
 D:\Work Bitch!\KL\Framework\Framework.Common\obj\Debug\Framework.Common.pdb
+D:\EnglishWeb\Framework.Common\bin\Debug\Framework.Common.dll.config
+D:\EnglishWeb\Framework.Common\bin\Debug\Framework.Common.dll
+D:\EnglishWeb\Framework.Common\bin\Debug\Framework.Common.pdb
+D:\EnglishWeb\Framework.Common\bin\Debug\EntityFramework.dll
+D:\EnglishWeb\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\EnglishWeb\Framework.Common\bin\Debug\Framework.Model.dll
+D:\EnglishWeb\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\EnglishWeb\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\EnglishWeb\Framework.Common\bin\Debug\Framework.Model.pdb
+D:\EnglishWeb\Framework.Common\bin\Debug\EntityFramework.xml
+D:\EnglishWeb\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\EnglishWeb\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\EnglishWeb\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\EnglishWeb\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+D:\EnglishWeb\Framework.Common\obj\Debug\Framework.Common.dll
+D:\EnglishWeb\Framework.Common\obj\Debug\Framework.Common.pdb

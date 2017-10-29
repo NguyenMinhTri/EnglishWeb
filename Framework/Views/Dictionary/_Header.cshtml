@@ -7,13 +7,48 @@
             <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 col-xs-12">
                 <div class="main-header-content">
                     <h1>OLYMPUS DICTIONARY</h1>
-                    <p>
-                        <div class="form-group col-md-6 dictionary-keyword">
-                            <input class="form-control" type="text" placeholder="Nhập từ khóa">
-                        </div>
-                    </p>
+                    <div class="form-group col-md-6 dictionary-keyword">
+                        <form id="normal-form">
+                            <input name="keyword" class="form-control" type="text" placeholder="Nhập từ khóa">
+                            <input type="submit" />
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $('#normal-form').on("submit", function (e) {
+        $(".waiting_loader").css("display", "block");
+        e.preventDefault();
+        var form = $(this);
+        var data = form.serialize();
+        $.get('/Dictionary/Dictionaries', data).done(function (response) {
+            if (response.result == "success") {
+
+            } else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+        }).always(function () {
+            $(".waiting_loader").css("display", "none");
+        });
+    });
+
+    $(".like").click(function () {
+        $.get('/Dictionary/Dictionaries', data).done(function (response) {
+            if (response.result == "success") {
+                $(this).addClass("")
+            } else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+        }).always(function () {
+            $(".waiting_loader").css("display", "none");
+        });
+    })
+</script>

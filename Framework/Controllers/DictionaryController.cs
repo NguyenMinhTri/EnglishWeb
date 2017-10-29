@@ -13,6 +13,8 @@ using System.IO;
 using System.Drawing.Text;
 using Framework.ViewModels;
 using Framework.Service.Client;
+using Framework.Model;
+using Framework.Model.Google;
 
 namespace Framework.Controllers
 {
@@ -81,9 +83,26 @@ namespace Framework.Controllers
         }
 
         [HttpGet]
-        public ActionResult Dictionaries()
+        public async System.Threading.Tasks.Task<ActionResult> Dictionaries(string keyword)
         {
+            keyword = keyword.Trim();
             _viewModel = new DictionariesViewModel();
+            int size = keyword.Split(' ').Length;
+            if (size > 1)
+            {
+                GoogleTransJson googleTransJson = await _clientDictionaryService.startGoogleTrans(keyword);
+                DictionariesViewModel.isGoogleTrans = true;
+                DictionariesViewModel.m_GoogleTrans = googleTransJson;
+            }
+            else
+            {
+                OxfordDict dict = await _clientDictionaryService.startCrawlerOxford(keyword);
+                DictionariesViewModel.m_Explanation = dict.m_Explanation;
+                DictionariesViewModel.m_SoundUrl = dict.m_SoundUrl;
+                DictionariesViewModel.m_Type = dict.m_Type;
+                DictionariesViewModel.m_Voca = dict.m_Voca;
+            }
+            DictionariesViewModel.m_ExaTraCau = await _clientDictionaryService.startCrawlerTraCau(keyword);
             return PartialView("_Dictionaries", DictionariesViewModel);
         }
 
