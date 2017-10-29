@@ -7,5 +7,6 @@ namespace Framework.Models
 {
     public class OxfordDict
     {
+    	public string A{get; set};
     }
 }
