@@ -1,0 +1,27 @@
+﻿@model Framework.ViewData.Control.TinyMceViewData
+
+@{
+    var textRequire = "";
+    if (Model.Require)
+    {
+        textRequire = "required";
+    }
+    var hiddenCss = "";
+    if (Model.NotChangeWhenUpdate)
+    {
+        hiddenCss = "hidden-when-update";
+    }
+}
+
+<div class="form-group form-input-group tiny-mce-input @hiddenCss" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonTextArea">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7 form-input">
+        @{
+            var idText = Model.FieldName + "txt";
+        }
+        <textarea name="@Model.FieldName" id="@idText" placeholder="@Model.Placehoder" class=" wc-input"></textarea>
+    </div>
+</div>
+

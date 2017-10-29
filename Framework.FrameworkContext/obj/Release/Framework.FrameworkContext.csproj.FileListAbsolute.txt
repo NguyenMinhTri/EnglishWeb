@@ -1,0 +1,128 @@
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll.config
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Framework.Model.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Framework.Model.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csproj.GenerateResource.Cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds1.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds2.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds3.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds4.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds5.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds6.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds7.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds8.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds9.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds10.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsdsfd.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsdsfd1.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsdsfd2.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds11.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds12.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds13.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds14.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds15.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds16.resources
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.vsdds.resources
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.vsdds.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.asd.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.asd1.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.dsdsd.resources
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fdds.resources
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fddsh.resources
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fddshsd.resources
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fdds.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fddsh.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fddshsd.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sdf.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fsdgs.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sdfs.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fsdfs.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sdfsdf.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.fdsdf.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sdfsd.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sfdfsdgfs.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sdfsdg.resources
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.FrameworkContext\obj\Release\Framework.FrameworkContext.Migrations.sdfsdf1.resources

@@ -1,0 +1,78 @@
+﻿@model Framework.ViewModels.UpdateSettingViewModel
+
+<script>
+    document.title = "Cài đặt | Olympus"
+</script>
+
+<div class="ui-block">
+    <div class="ui-block-title">
+        <h6 class="title">Cài đặt tài khoản</h6>
+    </div>
+    <div class="ui-block-content">
+        <form>
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating is-select">
+                        <label class="control-label">Ai có thể tìm kiếm bạn?</label>
+                        <select class="selectpicker form-control" size="auto">
+                            <option value="EO">Mọi người</option>
+                            <option value="NO">Không có ai</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating is-select">
+                        <label class="control-label">Ai có thể xem và trả lời câu hỏi của bạn?</label>
+                        <select class="selectpicker form-control" size="auto">
+                            <option value="US">Chỉ bạn bè</option>
+                            <option value="EO">Mọi người</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="description-toggle">
+                        <div class="description-toggle-content">
+                            <div class="h6">Âm báo thông báo mới</div>
+                            <p>Bật/tắt âm thông báo khi có thông báo mới</p>
+                        </div>
+
+                        <div class="togglebutton">
+                            <label>
+                                <input type="checkbox" checked="">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="description-toggle">
+                        <div class="description-toggle-content">
+                            <div class="h6">Thông báo qua Email</div>
+                            <p>Chúng tôi sẽ gửi cho bạn email khi có thông báo mới!</p>
+                        </div>
+
+                        <div class="togglebutton">
+                            <label>
+                                <input type="checkbox" checked="">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="description-toggle">
+                        <div class="description-toggle-content">
+                            <div class="h6">Âm báo tin nhắn mới</div>
+                            <p>Bật/tắt âm thông báo khi có tin nhắn mới</p>
+                        </div>
+
+                        <div class="togglebutton">
+                            <label>
+                                <input type="checkbox" checked="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary btn-lg full-width">Lưu thay đổi</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

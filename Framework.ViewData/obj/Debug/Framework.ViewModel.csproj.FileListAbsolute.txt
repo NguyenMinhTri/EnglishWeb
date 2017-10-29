@@ -1,0 +1,39 @@
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.ViewData.dll.config
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.ViewData.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.ViewData.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\EntityFramework.SqlServer.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.Common.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.Model.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.Common.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Framework.Model.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\EntityFramework.SqlServer.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.pdb
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.ViewData.dll.config
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.ViewData.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.ViewData.pdb
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\Framework\Framework.ViewData\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.dll
+C:\Users\hung\Desktop\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.ViewData\obj\Debug\Framework.ViewData.pdb

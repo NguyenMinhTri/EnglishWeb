@@ -1,0 +1,129 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <title>HIPPA Form (Spanish) | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+
+  <script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ 
+</head>
+<body >
+  <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				HIPPA Form (Spanish)
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+ 
+  <form>
+    <div class="ameridenti-form">
+      <div class="ameridenti-form-content">
+        <h3 class="title-black">Norma de Privacidad de HIPAA Acuerdo de Autorización del Paciente</h3>
+        <br>
+        <h4 class="bold text-center">Autorización para la Revelación de Información Confidencial de Salud para Tratamiento, Pago o Cuidado Médico (§164.508(a))</h4>
+        <br>
+        <br>
+        <div style="font-size: 20px;">
+          Yo, <input type="text" name="PatientName" style="width: 120px;">(el nombre del paciente) entiendo que como parte de mu cuidado de salud, esta oficina, crea y mantiene los documentos médicos que describen mi historial médico, síntomas, examinaciones y los resultados, diagnósticos, tratamiento y cualquier plan para futuro cuidado o tratamiento. Yo entiendo que esta información sirve como:
+          <ul>
+            <li>Una base para planear mi cuidado y tratamiento;</li>
+            <li>Un medio de comunicación entre profesionales del campo médico que pueden contribuir a mi cuidado médico;</li>
+            <li>Una Fuente de información de cómo aplicar mi diagnostico e información quirúrgica a mi cuente;</li>
+            <li>Un medio por el cual un pagador puede verificar que los servicios cobrados hayan sido proporcionados;</li>
+            <li>Un medio para operaciones rutinarias de cuidado médico tales como determinación de calidad y revisión de capacidad de los profesionales en el campo médico.</li>
+          </ul>
+
+          He sido proporcionado(a) con una copia del Aviso de Prácticas de Privacidad que provee una descripción más complete sobre los usos y revelaciones de información.<br><br>
+          Entiendo que como parte de mi cuidado y tratamiento puede ser necesario proveer a otra entidad mi Información Confidencial Medica. Yo tengo el derecho de revisar el aviso de esta oficina antes de firmar esta autorización. Autorizo la revelación de mi Información Confidencial Medica como será especificado posteriormente para los propósitos y a los grupos indicados por mí.
+          <h3 class="title-black">Norma de Privacidad Consentimiento del Paciente</h3>
+        <br>
+          <h4 class="bold text-center">Consentimiento para le Revelación de Información Confidencial de Salud para Tratamiento, Pago o Cuidado Médico (§164.506(a))</h4><br>
+          Yo entiendo que:
+          <ul>
+           <li>Tengo el derecho de revisar el Aviso de Practicas de Información de esta oficina antes de firmar este consentimiento;</li>
+           <li>Que esta oficina, reserve su derecho de cambiar el aviso y las prácticas y que si solicito, enviara una copia del aviso editado a la dirección que he dado antes de ponerlo en práctica;</li>
+           <li>Tengo el derecho de solicitar restricciones en cuanto a cómo mi información confidencial medica puede ser usada o revelada para realizar tratamiento, pago o cuidado médico y que no es requerido por la ley que esta oficina, este de acuerdo con las restricciones solicitadas;</li>
+           <li>Puedo revocar este consentimiento escrito en cualquier momento, excepto hasta el punto que esta oficina, ya haya tomado acción dependiendo del consentimiento escrito.</li>
+         </ul>
+          <div class="input-inline">
+            <div class="block">
+              <div class="input-inline"> <span>Firma del Paciente o Testigo Representante Legal:</span>
+                <input type="text" name="Firma">
+              </div>
+            </div>
+          </div>
+          <div class="input-inline">
+            <div class="block">
+              <div class="input-inline"> <span>Nombre del Paciente o Testigo Representante Legal:</span>
+                <input type="text" name="Nombre">
+              </div>
+            </div>
+          </div>
+         <div class="input-inline">
+          <div class="block">
+            <div class="input-inline"> <span>Fecha:</span>
+              <input type="text" name="Date" class="datepicker">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="submit" style="display: none" id="submit-form">
+</form>
+</div>
+</div>
+</body>
+</html>

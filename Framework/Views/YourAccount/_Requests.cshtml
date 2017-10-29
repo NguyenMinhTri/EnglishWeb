@@ -1,0 +1,54 @@
+﻿@model Framework.ViewModels.RequestsViewModel
+
+<script>
+    document.title = "Lời mời kết bạn | Olympus"
+</script>
+
+<div class="ui-block">
+    <div class="ui-block-title">
+        <h6 class="title">Lời mời kết bạn</h6>
+    </div>
+
+    <ul class="notification-list friend-requests">
+        <li>
+            <div class="author-thumb">
+                <img src="content/images/avatar15-sm.jpg" alt="author">
+            </div>
+            <div class="notification-event">
+                <a href="#" class="h6 notification-friend">Lê Văn Phú</a>
+                <span class="chat-message-item">Bạn chung: Minh Trí</span>
+            </div>
+            <span class="notification-icon">
+                <a href="#" class="accept-request">
+                    <span class="icon-add">
+                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                    </span>
+                    Đồng ý
+                </a>
+
+                <a href="#" class="accept-request request-del">
+                    <span class="icon-minus">
+                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                    </span>
+                </a>
+
+            </span>
+        </li>
+
+        <li class="accepted">
+            <div class="author-thumb">
+                <img src="content/images/avatar17-sm.jpg" alt="author">
+            </div>
+            <div class="notification-event">
+                Bạn và <a href="#" class="h6 notification-friend">Lê Văn Duyệt</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href="#" class="notification-link">Lê Văn Duyệt </a>.
+            </div>
+            <span class="notification-icon">
+                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+            </span>
+
+            <div class="more">
+                <svg class="olymp-little-delete"><use xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="wide wow-animation smoothscroll" lang="en">
+
+<head>
+  <title>Form | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" href="content/css/bootstrap.css">
+<link rel="stylesheet" href="content/css/style.css">
+<link rel="stylesheet" href="content/css/slick.css">
+<link rel="stylesheet" href="content/css/slick-theme.css">
+<link rel="icon" href="content/images/favicon.png">
+
+</head>
+<body>
+  
+<div class="align-bottom-when-mobile">
+
+  <div class="fixed social-link">
+    <div class="icon-group make-an-appointment">
+      <a href="make-appointment.html" class="fixed primary-color-fill-hover icon-social fa fa-calendar">
+        <div class="text-icon">
+          Book an Appointment
+        </div>
+      </a>
+    </div>
+
+
+    <div class="icon-group make-an-appointment">
+      <a href="#" class="fixed primary-color-fill-hover icon-social fa fa-sign-in" data-toggle="modal" data-target="#login">
+        <div class="text-icon">
+          Sign in
+        </div>
+      </a>
+    </div>
+
+
+    <div class="icon-group">
+      <a href="https://web.facebook.com/AmeriDenti/" class="fixed primary-color-fill-hover icon-social fa fa-facebook">
+        <div class="text-icon">
+          Like Us on Facebook
+        </div></a>
+
+      </div>
+
+      <div class="icon-group">
+        <a href="https://twitter.com/AmeridentiInc" class="fixed primary-color-fill-hover icon-social fa fa-twitter">
+          <div class="text-icon">
+            Follow Us on Twitter
+          </div>
+        </a>
+      </div>
+
+      <div class="icon-group">
+        <a href="https://www.yelp.com/biz/ameridenti-services-tustin-2" class="fixed primary-color-fill-hover icon-social fa fa-yelp">
+          <div class="text-icon">
+            Review Us on Yelp
+          </div>
+        </a>
+      </div>
+
+
+      <div class="icon-group">
+        <a href="https://www.linkedin.com/in/ameridenti-inc-64545a133" class="fixed primary-color-fill-hover icon-social fa fa-linkedin">
+          <div class="text-icon">
+            View AmeriDenti's full profile.
+          </div>
+        </a>
+      </div>
+
+      <div class="icon-group">
+        <a href="https://www.instagram.com/ameridenti/" class="fixed primary-color-fill-hover icon-social fa fa-instagram">
+          <div class="text-icon">
+            Watch Us on Instagram
+          </div>
+        </a>
+      </div>
+
+      <div class="icon-group">
+        <a href="https://www.pinterest.com/ameridenti/" class="fixed primary-color-fill-hover icon-social fa fa-pinterest">
+          <div class="text-icon">
+            Discover Us on Pinterest
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Modal-->
+  <div class="modal fade text-left" id="login" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal"><span class="icon icon-md linear-icon-cross"></span></button>
+          <h5 class="modal-title">Welcome to <span>Lee Dental Group</span></h5>
+        </div>
+        <div class="modal-body">
+          <div class="patient-type">
+            <div class="patient-type-item">
+              <div>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="login" checked="checked">I am a new patient
+                </label>
+              </div>
+              <div>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="register">I am a current patient
+                </label>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="register-form contact">
+            <h5>Registration: <span class="text-primary">*</span></h5>
+            <p>Your first name and an email address are required.</p>
+            <!-- Login form-->
+            <form>
+              <div class="rd-mailform-inline-flex">
+                <div class="form-wrap">
+                  <label class="form-label" for="name-2"> </label>
+                  <input class="form-input" id="name-2" type="text" name="name" data-constraints="@Required" placeholder="First Name">
+                </div>
+                <div class="form-wrap">
+                  <label class="form-label" for="email"> </label>
+                  <input class="form-input" id="email" type="email" name="email" data-constraints="@Email @Required" placeholder="E-mail">
+                </div>
+              </div>
+              <div class="form-wrap">
+                <label class="form-label" for="password-2"> </label>
+                <input class="form-input" id="password-2" type="password" name="password" data-constraints="@Required" placeholder="Password">
+              </div>
+              <div class="group">
+                <button class="button button-gray-light-outline" type="submit"><span>Register</span></button>
+                <button class="button button-gray-light-outline" type="button" data-dismiss="modal"><span>close</span></button>
+              </div>
+            </form>
+          </div>
+          <div class="login-form contact" style="display: none">
+            <h5>Login</h5>
+            <!-- Login form-->
+            <form>
+              <div class="form-wrap">
+                <label class="form-label" for="name"> </label>
+                <input class="form-input" id="name" type="text" name="name" data-constraints="@Required" placeholder="Username or e-mail">
+              </div>
+              <div class="form-wrap">
+                <label class="form-label" for="password"> </label>
+                <input class="form-input" id="password" type="password" name="password" data-constraints="@Required" placeholder="Password">
+              </div>
+              <div class="group">
+                <button class="button button-gray-light-outline" type="submit"><span>Login</span></button>
+                <button class="button button-gray-light-outline" type="button" data-dismiss="modal"><span>close</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <div id="page-loader">
+  <div class="cssload-container">
+    <div class="cssload-speeding-wheel"></div>
+  </div>
+</div>
+<!-- Page header-->
+<header class="page-header">
+  <!-- RD Navbar-->
+  <div class="rd-navbar-wrap">
+    <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-stick-up-clone="false" data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true" data-md-stick-up-offset="69px" data-lg-stick-up-offset="35px" data-body-class="rd-navbar-static-smooth">
+      <div class="rd-navbar-inner">
+        <div class="rd-navbar-panel">
+          <!-- RD Navbar Panel-->
+<button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+<!-- RD Navbar Brand-->
+<div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img src="content/images/logo.png" alt="200" width="250" height="33"/></a></div>
+<div class="dropdown">
+	<a data-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li class="dropdown-header">Garden Grove</li>
+		<li><a href="tel:7145375350">Call</a></li>
+		<li><a href="https://goo.gl/maps/38EScqaFPQk">Maps</a></li>
+		<li><a href="mailto:leedentalgroup2014@gmail.com">Email</a></li>
+		<li class="divider"></li>
+		<li class="dropdown-header">Hawthorne</li>
+		<li><a href="tel:3106754929">Call</a></li>
+		<li><a href="https://goo.gl/maps/Mfdf7ttGuUL2">Maps</a></li>
+		<li><a href="mailto:brianlee.dds@gmail.com">Email</a></li>
+	</ul>
+</div>
+<!-- RD Navbar Nav-->
+
+
+        </div>
+        <div class="rd-navbar-nav-wrap">
+          <ul class="rd-navbar-nav">
+  <li class="active"><a href="index.html">Home</a>
+  </li>
+  <li><a href="about.html">About Us</a>
+    <ul class="rd-navbar-dropdown">
+      <li><a href="testimonials.html">Testimonials</a>
+      </li>
+      <li><a href="our-doctor.html">Meet Our Doctor</a>
+      </li>
+      <li><a href="virtual-tour.html">Virtual Tour</a>
+      </li>
+    </ul>
+  </li>
+  <li><a href="services.html">Service</a>
+    <ul class="rd-navbar-dropdown">
+      <li><a href="services-content.html">Cosmetic Dentistry</a>
+      </li>
+      <li><a href="services-content-1.html">Braces, Invisalign, &amp; Retainers</a>
+      </li>
+      <li><a href="services-content-2.html">Dental Crowns &amp; Veneers</a>
+      </li>
+      <li><a href="services-content-3.html">Composite Fillings</a>
+      </li>
+      <li><a href="services-content-4.html">Extractions</a>
+      </li>
+      <li><a href="services-content-5.html">Teeth Whitening</a>
+      </li>
+      <li><a href="services-content-6.html">Dental Implants</a>
+      </li>
+      <li><a href="services-content-7.html">Dentures</a>
+      </li>
+      <li><a href="services-content-8.html">Dental Bridges</a>
+      </li>
+      <li><a href="services-content-9.html">Preventive Dentistry</a>
+      </li>
+      <li><a href="services-content-10.html">Restorative Dentistry</a>
+      </li>
+      <li><a href="services-content-11.html">Periodontal Therapy</a>
+      </li>
+      <li><a href="services-content-12.html">TMJ / TMD Therapy</a>
+      </li>
+      <li><a href="services-content-13.html">Advanced Technology</a>
+      </li>
+      <li><a href="services-content-14.html">Emergency Dentistry</a>
+      </li>
+      <li><a href="services-content-15.html">Invisalign Clear Braces</a>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#">New Patients</a>
+    <ul class="rd-navbar-dropdown">
+      <li><a href="special.html">Specials</a>
+      </li>
+      <li><a href="form.html">Form</a>
+      </li>
+    </ul>
+  </li>
+  <li><a href="payment.html">Payment Option</a>
+  </li>
+  <li><a href="blog.html">Blog</a>
+  </li>
+  <li><a href="contacts.html">Contacts Us</a>
+  </li>
+  <li><a href="#">Language</a>
+    <ul class="rd-navbar-dropdown" style="width: 100%;">
+      <li><a href="#">Chinese</a>
+      </li>
+      <li><a href="#">English</a>
+      </li>
+      <li><a href="#">Korea</a>
+      </li>
+      <li><a href="#">Spanish</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <section class="text-center">
+    <!-- RD Parallax-->
+    <div class="rd-parallax bg-image parallax-header rd-parallax-light" data-on="content/images/false" data-md-on="true" style="background-image: url(content/images/form-banner.jpg);">
+      <div class="rd-parallax-layer" data-speed="0.35" data-type="media" data-url="content/images/form-banner.jpg"></div>
+      <div class="rd-parallax-layer" data-speed="0.1" data-type="html">
+        <div class="parallax-header__inner">
+          <div class="parallax-header__content">
+            <div class="shell">
+              <div class="range range-xs-center">
+                <div class="cell-sm-10 cell-lg-8">
+                  <h1>Form</h1>
+                  <hr class="divider-minimal">
+                  <p>
+                    Please see our New Patient Forms. Please print and fill out prior to first appointment. If you have any further questions, please call the office.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-sm bg-white">
+    <div class="shell">
+      <ul class="menu-wrap menu-wrap__two-columns">
+        <li>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-1.html" class="desktop">New Patient Form</a>
+              <a href="content/doc/New-patient_information_English-Spanish_form.pdf" class="mobile">New Patient Form</a>
+            </div>
+          </div>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-2.html" class="desktop">Health History (English)</a>
+              <a href="content/doc/Health-History-ENGLISH.pdf" class="mobile">Health History (English)</a>
+            </div>
+          </div>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+            <a href="form-3.html" class="desktop">HIPPA Form (English)</a>
+              <a href="content/doc/hie.png" class="mobile">HIPPA Form (English)</a>
+            </div>
+          </div>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-4.html" class="desktop">Oral Health Screening Consent and Recommendations</a>
+              <a href="content/doc/Oral-Health-Screening-Consent-and-Recommendations.pdf" class="mobile">Oral Health Screening Consent and Recommendations</a>
+            </div>
+          </div>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="http://ameridentisoft.com/ameridenti2206/index.html">Additional Forms</a>
+            </div>
+          </div>
+        </li>
+        <!--column2-->
+        <li>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-5.html" class="desktop">Medical Release Form</a>
+              <a href="content/doc/Medical-Release-Form.pdf" class="mobile">Medical Release Form</a>
+            </div>
+          </div>
+          <div class="menu-inner-wrap"> 
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-6.html" class="desktop">Health History (Spanish)</a>
+              <a href="content/doc/Health-History-SPANISH.pdf" class="mobile">Health History (Spanish)</a>
+            </div> 
+          </div>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-7.html" class="desktop">HIPPA Form (Spanish)</a>
+              <a href="content/doc/his.png" class="mobile">HIPPA Form (Spanish)</a>
+            </div>
+          </div>
+          <div class="menu-inner-wrap">
+            <div class="menu-inner menu-inner__heading">
+              <a href="form-8.html" class="desktop">Consent Form for Use or Disclosure of Patient Health Information English</a>
+              <a href="content/doc/Consent-Form-for-Use-or-Disclosure-of-Patient-Health-Information-English.pdf" class="mobile">Consent Form for Use or Disclosure of Patient Health Information English</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- Page Footer-->
+  <footer class="footer-minimal">
+  <div class="shell"><a class="figure-inline" href="index.html">
+    <figure><img src="content/images/logo.png" alt="" width="200" height="33"/>
+    </figure></a>
+
+    <div class="range range-xs-center">
+    <div class="cell-sm-12 cell-lg-10">
+        <div class="range range-xs-center">
+          <div class="cell-xs-12 cell-sm-6 cell-md-6 cell-lg-6">
+            <h2>Garden Grove</h2>
+            <ul>
+              <li>
+                <dl class="list-terms-minimal">
+                  <dd>
+                    <a href="https://goo.gl/maps/38EScqaFPQk">9432 Garden Grove Blvd,<br/> Garden Grove, CA 92844</a>
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl class="list-terms-minimal">
+                  <dd>
+                    <a href="tel:7145375350">(714) 537-5350</a>
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl class="list-terms-minimal">
+                  <dd>
+                    <a href="mailto:leedentalgroup2014@gmail.com">leedentalgroup2014@gmail.com</a>
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+          <hr class="divider-minimal mobile">
+          <div class="cell-xs-12 cell-sm-6 cell-md-6 cell-lg-6">
+            <h2>Hawthorne</h2>
+            <ul>
+              <li>
+                <dl class="list-terms-minimal">
+                  <dd>
+                    <a href="https://goo.gl/maps/Mfdf7ttGuUL2">14221 Inglewood Ave,<br/> Hawthorne, CA 90250</a>
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl class="list-terms-minimal">
+                  <dd>
+                    <a href="tel:3106754929">(310) 675-4929</a>
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl class="list-terms-minimal">
+                  <dd>
+                    <a href="mailto:brianlee.dds@gmail.com">brianlee.dds@gmail.com</a>
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="divider-minimal">
+    <p class="center"><span>Copyright © 2017 Lee Dental Group • Site designed and maintained by <a href="http://ameridenti.com/">AmeriDenti LLC</a></span><span></span>.
+    </p>
+  </div>
+</footer>
+
+<!-- Global Mailform Output-->
+<div class="snackbars" id="form-output-global"></div>
+<!-- PhotoSwipe Gallery-->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__cent"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="content/js/core.min.js"></script>
+<script src="content/js/script.js"></script>
+<script type="text/javascript">
+	$(function(){
+		currentUrl = $(location).attr('href');
+		currentUrl = currentUrl.substring(currentUrl.lastIndexOf("/") + 1, currentUrl.length);
+		$(".rd-navbar-nav > li a").each(function() {
+			$(this).parent().removeClass("active");
+			if($(this).attr("href")==currentUrl){
+				if ($(this).closest("ul").parent().hasClass("rd-navbar-submenu")){
+					activeElement = $($(this).closest(".rd-navbar-submenu"));
+				}
+				else{
+					activeElement = $(this).parent();
+				}
+				activeElement.addClass("active");
+			}
+		});
+	});
+</script>
+
+
+
+</body>
+</html>

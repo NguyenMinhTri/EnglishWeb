@@ -1,0 +1,108 @@
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Repository.dll.config
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Repository.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Repository.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\EntityFramework.SqlServer.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.FrameworkContext.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Model.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.FrameworkContext.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Model.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\EntityFramework.SqlServer.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\obj\Release\Framework.Repository.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\obj\Release\Framework.Repository.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\obj\Release\Framework.Repository.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Common.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Repository\bin\Release\Framework.Common.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Repository.dll.config
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Common.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.ViewModel.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Common.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\obj\Release\Framework.Repository.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\obj\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Repository\obj\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Repository.dll.config
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Common.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.ViewModel.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Common.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\obj\Release\Framework.Repository.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\obj\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Repository\obj\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Repository.dll.config
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Common.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.ViewModel.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\obj\Release\Framework.Repository.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\obj\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Repository\obj\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Repository.dll.config
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Repository.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\EntityFramework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Common.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Model.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.ViewModel.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\EntityFramework.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\obj\Release\Framework.Repository.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\obj\Release\Framework.Repository.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework.Repository\obj\Release\Framework.Repository.pdb

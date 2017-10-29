@@ -1,0 +1,280 @@
+﻿@model Framework.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Đăng ký | Olympus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="content/images/favicon.png" type="image/icon">
+    <link rel="stylesheet" type="text/css" href="content/css/fakeLoader.css">
+    <link rel="stylesheet" type="text/css" href="content/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="content/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="content/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="content/css/theme-styles.css">
+    <link rel="stylesheet" type="text/css" href="content/css/blocks.css">
+    <link rel="stylesheet" type="text/css" href="content/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="content/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="content/css/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="content/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="content/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="content/css/mediaelement-playlist-plugin.min.css">
+    <link rel="stylesheet" type="text/css" href="content/css/mediaelementplayer.css">
+    <link rel="stylesheet" type="text/css" href="content/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="content/css/simplecalendar.css">
+    <link rel="stylesheet" type="text/css" href="content/css/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="content/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="content/css/error.css" />
+    <script src="content/js/theme-plugins.js" charset="utf-8"></script>
+    <script src="content/js/script.js" charset="utf-8"></script>
+</head>
+<body class="landing-page">
+    <div class="waiting_loader" style="display: none"></div>
+
+    <div class="content-bg-wrap">
+        <div class="content-bg"></div>
+    </div>
+    <!-- Landing Header -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div id="site-header-landing" class="header-landing">
+                    <a href="/" class="logo">
+                        <img src="content/images/logo.png" alt="Olympus">
+                        <h5 class="logo-title">olympus</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ... end Landing Header -->
+    <!-- Login-Registration Form  -->
+    <div class="container">
+        <div class="row display-flex">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="landing-content">
+                    <h1>Chào mừng đến với Olympus!</h1>
+                    <p>
+                        Chúng tôi là cộng đồng học Tiếng Anh tốt nhất và lớn nhất hơn 5 triệu người sử dụng khắp cả nước. Share more, Learn more!
+                    </p>
+                    <a href="#" onclick="$('#login-button').click();return false;" class="btn btn-md btn-border c-white">Đăng ký ngay!</a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="registration-login-form">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home" role="tab" id="login-button">
+                                <svg class="olymp-register-icon"><use xlink:href="content/icons/icons.svg#olymp-register-icon"></use></svg>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+                                <svg class="olymp-login-icon"><use xlink:href="content/icons/icons.svg#olymp-login-icon"></use></svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel" data-mh="log-tab">
+                            <div class="title h6">Đăng ký với Olympus</div>
+                            <section id="loginForm">
+                                @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "content", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+                                    
+                                    <div class="row validate">
+                                        <div class="col-lg-6 col-md-6 same-height">
+                                            <div class="form-group label-floating is-empty">
+                                                <label class="control-label">Họ</label>
+                                                <input class="form-control" type="text" name="FirstName">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 same-height">
+                                            <div class="form-group label-floating is-empty">
+                                                <label class="control-label">Tên</label>
+                                                <input class="form-control" type="text" name="LastName">
+                                            </div>
+                                        </div>
+                                    
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Email</label>
+                                            <input class="form-control" type="email" name="Email">
+                                        </div>
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Mật khẩu</label>
+                                            <input class="form-control" type="password" name="Password">
+                                        </div>
+                                        <div class="form-group date-time-picker label-floating">
+                                            <label class="control-label">Ngày sinh</label>
+                                            <input class="datetimepicker" name="Birthday"/>
+                                            <span class="input-group-addon">
+                                                <svg class="olymp-calendar-icon"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
+                                            </span>
+                                        </div>
+                                        <div class="form-group label-floating is-select">
+                                            <label class="control-label">Giới tính</label>
+                                            <select class="selectpicker form-control" name="Sex" size="auto">
+                                                <option value="true">Nam</option>
+                                                <option value="false">Nữ</option>
+                                            </select>
+                                        </div>
+                                        <div class="remember">
+                                            <div class="checkbox">
+                                                <span class="form-validation" style="display: none">Đồng ý đi rồi ta sẽ bắt đầu...</span>
+                                                <label>
+                                                    <input name="optionsCheckboxes" type="checkbox">
+                                                    Tôi đồng ý với <a href="#">Điều kiện và Điều khoản</a> của Olympus
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <input type="submit" id="register-account" value="Hoàn tất!" class="btn btn-purple btn-lg full-width"/>
+                                        <a href="#" data-toggle="modal" data-target="#notify" style="display: none" id="notify-button"></a>
+                                    </div>
+                                </div>
+                                }
+                            </section>
+                        </div>
+                        <div class="tab-pane" id="profile" role="tabpanel" data-mh="log-tab">
+                            <div class="title h6">Đăng nhập</div>
+                            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "content", role = "form", @id = "login-form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+
+                                  <div class="row validate">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Email</label>
+                <input class="form-control" placeholder="" type="email" name="Email">
+            </div>
+            <div class="form-group label-floating is-empty">
+                <label class="control-label">Mật khẩu</label>
+                <input class="form-control" placeholder="" type="password" name="Password">
+            </div>
+            <div class="remember">
+                <div class="checkbox">
+                    <label>
+                        <input name="RememberMe" type="checkbox">
+                        Ghi nhớ tôi
+                    </label>
+                </div>
+                <a href="#" class="forgot">Quên tài khoản?</a>
+            </div>
+            <input type="submit" class="btn btn-lg btn-primary full-width" value="Đăng nhập" />
+            <div class="or"></div>
+            <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-center"><i class="fa fa-facebook" aria-hidden="true"></i>Đăng nhập với Facebook</a>
+            <a href="#" class="btn btn-lg bg-dribbble full-width btn-icon-center">
+                <i class="fa fa-google-plus" aria-hidden="true"></i>
+                Đăng nhập với Google+
+            </a>
+            <p>Bạn chưa có tài khoản ư? <a href="#" onclick="$('#login-button').click();return false;">Đăng ký ngay!</a> Nó cực kì đơn giản nhưng lợi ích thì không hề nhỏ đâu!</p>
+        </div>
+    </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Window-popup Notify -->
+    <div class="modal fade" id="notify">
+        <div class="modal-dialog ui-block window-popup logout create-friend-group">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Đăng Ký thành công rồi</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>Nhớ kiểm tra mail và xác nhận đăng ký nhé bạn tôi...</p>
+                <a href="#" class="btn btn-blue btn-lg full-width" id="sign-out" data-dismiss="modal" aria-label="Close">OK</a>
+            </div>
+
+        </div>
+    </div>
+    <!-- ... end Window-popup Notify -->
+    <script src="~/content/js/main.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                families: ['Roboto:300,400,500,700:latin']
+            }
+        });
+        (function ($) {
+        $(".checkbox").click(function () {
+            if ($(".checkbox input[type=checkbox]:checked").length == 0) {
+                $(".checkbox .form-validation").css("display", "block");
+                $(".checkbox").addClass("error")
+            }
+            else {
+                $(".checkbox .form-validation").css("display", "none");
+                $(".checkbox").removeClass("error");
+            }
+        })
+        $("#register-account").click(function (e) {
+            $(".waiting_loader").css("display", "block");
+            e.preventDefault();
+            var form = $(this).closest('form');
+            var data = form.serialize();
+            data += "&Url=" + window.location.href;
+            var button = $(this);
+            $.post('/Account/Register', data).done(function (response) {
+                if ($(".checkbox input[type=checkbox]:checked").length != 0) {
+                    if (response.result == "success") {
+                        $("#notify-button").click();
+                    } else {
+                        var errorState = response.data;
+                        form.find('input').parent().removeClass('error');
+                        setError(form, errorState);
+                    }
+                }
+                else {
+                    $(".checkbox").addClass("error")
+                }
+            }).fail(function (response) {
+            }).always(function () {
+                $(".waiting_loader").css("display", "none");
+            });
+        });
+        $('#login-form').submit(function (e) {
+            $(".waiting_loader").css("display", "block");
+            e.preventDefault();
+            var form = $(this);
+            if ($(".checkbox input[type=checkbox]:checked").length != 0) {
+                $("input[type=checkbox]").val("true");
+            }
+            var data = form.serialize();
+            $.post('/Account/Login', data).done(function (response) {
+                if (response.result == "success") {
+                    $(".form-group").removeClass("error");
+                    location.reload();
+                } else {
+                    var errorState = response.data;
+                    form.find('input').parent().removeClass('error');
+                    setError(form, errorState);
+                }
+            }).fail(function (response) {
+            }).always(function () {
+                $(".waiting_loader").css("display", "none");
+            });
+        });
+        })(jQuery);
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>

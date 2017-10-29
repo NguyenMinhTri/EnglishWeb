@@ -1,0 +1,183 @@
+﻿@model Framework.ViewModels.UpdateInfoViewModel
+
+<script>
+    document.title = "Cập nhật thông tin | Olympus"
+</script>
+
+<div class="ui-block">
+    <div class="ui-block-title">
+        <h6 class="title">Thông tin cá nhân</h6>
+    </div>
+    <div class="ui-block-content">
+        <form id="normal-form">
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="row validate">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Họ</label>
+                        <input class="form-control" name="FirstName" type="text" value="@Model.FirstName">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Tên</label>
+                        <input class="form-control" name="LastName" type="text" value="@Model.LastName">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" name="Email" type="email" value="@Model.Email" readonly>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Số điện thoại</label>
+                        <input class="form-control" name="Phone" type="text" value="@Model.Phone">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="form-group date-time-picker label-floating">
+                        <label class="control-label">Ngày sinh</label>
+                        <input name="Birthday" class="datetimepicker" value="@Model.Birthday.Value.ToShortDateString()" />
+                        <span class="input-group-addon">
+                            <svg class="olymp-month-calendar-icon icon"><use xlink:href="content/icons/icons.svg#olymp-month-calendar-icon"></use></svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating is-select">
+                        <label class="control-label">Giới tính</label>
+                        <select class="selectpicker form-control" size="auto" name="Sex" data-value="@Model.Sex">
+                            <option value="true">Nam</option>
+                            <option value="false">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating is-select">
+                        <label class="control-label">Trạng thái</label>
+                        <select class="selectpicker form-control" size="auto" name="UserStatus" data-value="@Model.UserStatus">
+                            <option value="true">Còn FA</option>
+                            <option value="false">Đã có chủ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 same-height">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Nghề nghiệp</label>
+                        <input class="form-control" name="Career" type="text" value="@Model.Career">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Cơ quan</label>
+                        <input class="form-control" name="Organization" type="text" value="@Model.Organization">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Địa chỉ</label>
+                        <textarea class="form-control" name="Address">@Model.Address</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Miêu tả về bạn</label>
+                        <textarea class="form-control" name="About">@Model.About</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Sở thích</label>
+                        <textarea class="form-control" name="Hobby">@Model.Hobby</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Show truyền hình yêu thích</label>
+                        <textarea class="form-control" name="FavoriteShow">@Model.FavoriteShow</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Bộ phim yêu thích</label>
+                        <textarea class="form-control" name="FavoriteFilm">@Model.FavoriteFilm</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Trò chơi yêu thích</label>
+                        <textarea class="form-control" name="FavoriteGame">@Model.FavoriteGame</textarea>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Sách báo yêu thích</label>
+                        <textarea class="form-control" name="FavoriteBook">@Model.FavoriteBook</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Ban nhạc / Ca sĩ yêu thích</label>
+                        <textarea class="form-control" name="FavoriteArtist">@Model.FavoriteArtist</textarea>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Tác giả yêu thích</label>
+                        <textarea class="form-control" name="FavoriteAuthor">@Model.FavoriteAuthor</textarea>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group with-icon label-floating">
+                        <label class="control-label">Tài khoản Facebook</label>
+                        <input class="form-control" type="text" name="Facebook" value="@Model.Facebook">
+                        <i class="fa fa-facebook c-facebook" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-group with-icon label-floating">
+                        <label class="control-label">Tài khoản Google+</label>
+                        <input class="form-control" type="text" name="Google" value="@Model.Google">
+                        <i class="fa fa-google-plus c-dribbble" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input type="submit" class="btn btn-primary btn-lg full-width" value="Lưu thay đổi" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $('#normal-form').on("submit", function (e) {
+        $(".waiting_loader").css("display", "block");
+        e.preventDefault();
+        var form = $(this);
+        var data = form.serialize();
+        $.post('/YourAccount/UpdateInfo', data).done(function (response) {
+            if (response.result == "success") {
+                $("#notify .ui-block-content p").html("Thành công rồi nhé bạn tôi!!!");
+                $(".form-group").removeClass("error");
+                $("#notify-button").click();
+            } else {
+                var errorState = response.data;
+                form.find('input').parent().removeClass('error');
+                setError(form, errorState);
+                scrollto("span.form-validation:first-child");
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+        }).always(function () {
+            $(".waiting_loader").css("display", "none");
+            scrollto("#partial");
+        });
+    });
+</script>

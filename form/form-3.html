@@ -1,0 +1,142 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<title>HIPPA Form (English) | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+
+	<script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ 
+</head>
+<body >
+	<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				HIPPA Form (English)
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+ 
+	<form>
+		<div class="ameridenti-form">
+			<div class="ameridenti-form-content">
+				<h3 class="title-black">HIPAA Privacy Rule Receipt of Notice of Privacy Practices Written Acknowledgement Form</h3>
+				<br>
+				<h4 class="bold text-center">Acknowledgement of receipt of Information Practices Notice (§162.520(a))</h4>
+				<br>
+				<br>
+				<div style="font-size: 20px;">
+					I <input type="text" name="PatientName" style="width: 120px;">, (patient's name) understand that as part of my
+					healthcare, this facility originates and maintains health records describing my health history, symptoms, examination and test results, diagnosis, treatment and any plant for future care or treatment. I acknowledge that I have been provided with and understand that this facility <b>Notice of Privacy Practices</b> provides a complete description of the uses and disclosures <i>of</i> my health. information, I understand that:
+					<ul>
+						<li>
+							I have the right to review this facility Notice of Privacy Practices prior to signing this acknowledgement;
+						</li>
+						<li>
+							That this facility reserves the right to change their Notice of Privacy Practices and prior to implementation of this will mail a copy of any revised notice to the address I’ve provided if requested
+						</li>
+					</ul>
+					<div class="input-inline">
+						<div class="block">
+							<div class="input-inline"> <span>Signature of Individual or Legal Representative Witness</span>
+								<input type="text" name="Signature">
+							</div>
+						</div>
+					</div>
+					Printed Name of Individual or Legal Representative
+					<div class="input-inline">
+						<div class="block">
+							<div class="input-inline"> <span>Witness</span>
+								<input type="text" name="Witness">
+							</div>
+						</div>
+					</div>
+					<div class="input-inline">
+						<div class="block">
+							<div class="input-inline"> <span>Date:</span>
+								<input type="text" name="Date" class="datepicker">
+							</div>
+						</div>
+					</div>
+					<h3 class="bold text-center">FOR OFFICE USE ONLY</h3>
+					We attempted to obtain written acknowledgement of receipt of our Notice of Privacy Practices, but it could not be obtained because:
+					<ul>
+						<li>
+							Individual refused to sign
+						</li>
+						<li>
+							Communication barrier prohibited obtaining the acknowledgement
+						</li>
+						<li>
+							An emergency situation prevented us from obtaining acknowledgement 
+						</li>
+						<li>
+							Others (please specify)
+						</li>
+					</ul>
+					<div class="input-inline">
+						<div class="block">
+							<div class="input-inline"> <span>Date:</span>
+								<input type="text" name="Date" class="datepicker">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="submit" style="display: none" id="submit-form">
+	</form>
+</div>
+</div>
+</body>
+</html>

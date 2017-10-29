@@ -1,0 +1,37 @@
+﻿@model Framework.ViewData.Control.DateFieldViewData
+
+@if (Model.Visible == false)
+{
+    @Html.Raw("<div style=\"display:none;\">");
+}
+
+@{
+    var css = "form-group form-input-group";
+    if (Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group hidden-when-update";
+    }
+}
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonDateField">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7">
+        @if (Model.Require)
+        {
+            <input type="text" value="" name="@Model.FieldName" required class="datepicker form-control" placeholder="@Model.Placehoder" />
+        }
+        else
+        {
+            <input type="text" value="" name="@Model.FieldName" required class="datepicker form-control" placeholder="@Model.Placehoder" />
+        }
+
+    </div>
+</div>
+
+
+@if (Model.Visible == false)
+{
+    @Html.Raw("</div>");
+}

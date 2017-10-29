@@ -1,0 +1,32 @@
+﻿<div class="header-spacer"></div>
+
+@Html.Partial("_Header")
+
+<div id="partial">
+</div>
+
+@Html.Partial("_UpdateHeaderPhoto")
+
+@Html.Partial("_OpenPhoto")
+
+<script>
+    function getview(action) {
+        $(".waiting_loader").css("display", "block");
+        var url = "/Profile/" + action;
+        $("#partial").load(url, function (response, status, xhr) {
+            if (status == "success") {
+                $(".waiting_loader").css("display", "none");
+                window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
+                $(".profile-menu a").removeClass("active");
+                $("a[onclick*=" + action + "]").addClass("active");
+                initInput();
+            }
+        });
+        $('#partial').hide().fadeIn(500);
+        scrollto("#partial");
+    }
+
+    var option = getQueryVariable("option");
+    getview(option);
+
+</script>

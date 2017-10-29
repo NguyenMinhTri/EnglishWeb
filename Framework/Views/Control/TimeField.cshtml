@@ -1,0 +1,44 @@
+﻿@model Framework.ViewData.Control.TimeFieldViewData
+
+@{
+    var css = "form-group form-input-group";
+    if(Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group hidden-when-update";
+    }
+}
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonCombobox">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7">
+        <select class="selectpicker" name="@Model.FieldName" data-live-search="true" data-style="btn-primary">
+            <option value="0">Oh am</option>
+            <option value="1">1h am</option>
+            <option value="2">2h am</option>
+            <option value="3">3h am</option>
+            <option value="4">4h am</option>
+            <option value="5">5h am</option>
+            <option value="6">6h am</option>
+            <option value="7">7h am</option>
+            <option value="8">8h am</option>
+            <option value="9">9h am</option>
+            <option value="10">10h am</option>
+            <option value="11">11h am</option>
+            <option value="12">12h am</option>
+            <option value="13">1h pm</option>
+            <option value="14">2h pm</option>
+            <option value="15">3h pm</option>
+            <option value="16">4h pm</option>
+            <option value="17">5h pm</option>
+            <option value="18">6h pm</option>
+            <option value="19">7h pm</option>
+            <option value="20">8h pm</option>
+            <option value="21">9h pm</option>
+            <option value="22">10h pm</option>
+            <option value="23">11h pm</option>
+        </select>
+    </div>
+</div>
+

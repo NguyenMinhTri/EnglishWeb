@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+
+<head> <title>New patient | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+ <script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ </head>
+
+<body> <nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				New patient
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+
+    <form>
+        <div class="ameridenti-form">
+            <div class="ameridenti-form-content">
+                <div style="font-size: 14px;" class="bold">
+                <div>
+                	<h3 class="title-black">PATIENT INFORMATION <span class="italic">Informacion Sobre Paciente</span></h3>
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"> <span>DATE</span>
+                    			<input type="text" name="Date" class="datepicker">
+                    		</div>
+                    		<div class="input-inline span-description"><span >Fecha</span></div>
+                    	</div>
+                    	<div class="block flex-4">
+                    		<div class="input-inline"><span>PATIENT’S NAME </span>
+                    			<input type="text" name="PatientName">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Nombre del Paciente</span> <span> LAST(Apellido) </span><span>FIRST(Nombre)</span> <span>MIDDLE(Inicial)</span> </div>
+                    	</div>
+                    </div>
+
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"><span>ADDRESS</span>
+                    			<input type="text" name="Address"> 
+                    		</div>
+                    		<div class="input-inline span-description"><span>Direccion</span> </div>
+                    	</div>
+                    </div>
+
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"><span>HOME PHONE</span>
+                    			<input type="text" name="Phone">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Telefono</span></div>
+                    	</div>
+                    	<div class="block">
+                    		<div class="input-inline"><span>SOCIAL SECURITY #</span>
+                    			<input type="text" name="SocialSecurity">
+                    		</div>
+                    		<div class="input-inline span-description"><span># de Seguro Social</span></div>
+                    	</div>
+                    	<div class="block">
+                    		<div class="input-inline"><span>DRIVER’S LICENSE #</span>
+                        <input type="text" name="DriverLicense">
+                    		</div>
+                    		<div class="input-inline span-description"><span># de Licencia de Manejar</span></div>
+                    	</div>
+                    </div>
+
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"><span>BIRTHDATE</span>
+                    			<input type="text" name="Birthday" class="datepicker">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Fecha de Nacimiento</span></div>
+                    	</div>
+                    	<div class="block flex-3">
+                    		<div class="input-inline"><span>IF PATIENT IS A MINOR, GIVE PARENTS/GUARDIAN’S NAME</span>
+                    			<input type="text" name="ParentName">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Si el paciente es menor de edad, ponga el nombre del padre o tutores.</span></div>
+                    	</div>
+                    </div>
+
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"><span>EMERGENCY CONTACT</span>
+                    			<input type="text" name="EmergencyContact">
+                    		</div>
+                    		<div class="input-inline span-description"><span>En caso de Emergencia, con quien comunicarse</span></div>
+                    	</div>
+                    	<div class="block">
+                    		<div class="input-inline"><span>TELEPHONE</span>
+                    			 <input type="text" name="EmergencyPhone">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Telefono</span></div>
+                    	</div>
+                    </div>
+                </div>
+
+                <div>
+                	<h3 class="title-black">RESPONSIBLE PARTY INFORMATION<span class="italic"> Informacion de la Persona Responsable</span></h3>
+                	<div class="input-inline">
+                	<div class="block flex-6">
+                			<div class="input-inline"> <span>NAME</span>
+                				<input type="text" name="Name">
+                			</div>
+                			<div class="input-inline span-description"><span>Nombre</span> <span>LAST(Apellido)</span> <span>FIRST(Nombre)</span> <span>MIDDLE(Inicial)</span></div>
+                		</div>
+                		<div class="block flex-3">
+                			<div class="input-inline"><span>MARITAL STATUS </span>
+                				<input type="text" name="MaritalStatus">
+                			</div>
+                			<div class="input-inline span-description"><span>Estado Civil</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>MAILING ADDRESS</span>
+                				<input type="email" name="Mail">
+                			</div>
+                			<div class="input-inline span-description"><span>Direccion</span> <span>STREET(Calle)</span> <span>CITY(Ciudad)</span> <span>STATE(Estado)</span> <span>ZIP(Zona Postal)</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>SOCIAL SECURITY #</span>
+                				<input type="text" name="SocialSecurity">
+                			</div>
+                			<div class="input-inline span-description"><span># de Seguro Social</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>BIRTHDATE</span>
+                				<input type="text" name="Birthday" class="datepicker">
+                			</div>
+                			<div class="input-inline span-description"><span>Fecha de Nacimiento</span></div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>RELATIONSHIP TO PATIENT</span>
+                				<input type="text" name="Relationship"> 
+                			</div>
+                			<div class="input-inline span-description"><span>Relacion del Paciente</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>EMPLOYER</span>
+                				<input type="text" name="Employer">
+                			</div>
+                			<div class="input-inline span-description"><span>Empleador</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>OCCUPATION</span>
+                				<input type="text" name="Occupation">
+                			</div>
+                			<div class="input-inline span-description"><span>Ocupacion</span></div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>NO. OF YEARS EMPLOYED</span>
+                				<input type="text" name="YearNumber"> 
+                			</div>
+                			<div class="input-inline span-description"><span>Cuantos Anos en su empleo</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>EMPLOYER’S ADDRESS</span>
+                				<input type="text" name="EmployerAddress">
+                			</div>
+                			<div class="input-inline span-description"><span>Direccion de su empleador</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>TELEPHONE</span>
+                				<input type="text" name="EmployerPhone">
+                			</div>
+                			<div class="input-inline span-description"><span>Telefono</span></div>
+                		</div>
+                	</div>
+                </div>
+
+                <div>
+                	<h3 class="title-black">INSURANCE INFORMATION<span class="italic"> Informacion de Aseguranza</span></h3>
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>INSURED’S NAME</span>
+                				<input type="text" name="InsuredName">
+                			</div>
+                			<div class="input-inline span-description"><span>Nombre del Asegurado</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>SOCIAL SECURITRY</span>
+                				<input type="text" name="SocialSecurity">
+                			</div>
+                			<div class="input-inline span-description"><span># de Seguro Social del Asegurado</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>INSURANCE COMPANY</span>
+                				<input type="text" name="InsuredCompany">
+                			</div>
+                			<div class="input-inline span-description"><span>Compania de Aseguranza</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>GROUP NO.</span>
+                				<input type="text" name="GroupNo">
+                			</div>
+                			<div class="input-inline span-description"><span>Numero del Grupo</span></div>
+                		</div>
+                	</div>
+
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>INSURANCE CO. ADDRESS</span>
+                				<input type="text" name="InsuranceAddress">
+                			</div>
+                			<div class="input-inline span-description"><span>Direccion de la Compania de Aseguranza</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>TELEPHONE</span>
+                				<input type="text" name="InsurancePhone">
+                			</div>
+                			<div class="input-inline span-description"><span>Telefono</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>INSURED’S EMPLOYER</span>
+                				<input type="text" name="InsuredEmployer">
+                			</div>
+                			<div class="input-inline span-description"><span>Empleador del Asegurado</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>TELEPHONE</span>
+                				<input type="text" name="InsuredEmployerPhone">
+                			</div>
+                			<div class="input-inline span-description"><span>Telefono</span></div>
+                		</div>
+                	</div>
+                </div>
+
+                <div>
+                	<h3 class="title-black">PHYSICIAN INFORMATION<span class="italic"> Information Del Medio</span></h3>
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>PHYSICIAN NAME</span>
+                				<input type="text" name="PhysicianName">
+                			</div>
+                			<div class="input-inline span-description"><span>Nombre del medico</span> </div>
+                		</div>
+                		<div class="block">
+                			<div class="input-inline"> <span>PHYSICIAN PHONE NUMBER</span>
+                				<input type="text" name="PhysicianPhone">
+                			</div>
+                			<div class="input-inline span-description"><span>Numero de telefono del medico</span></div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>PHYSICIAN ADDRESS</span>
+                				<input type="text" name="PhysicianAddress">
+                			</div>
+                			<div class="input-inline span-description"><span>Direccion del medico</span> </div>
+                		</div>
+                	</div>
+                </div>
+                <div>
+                	<h3 class="title-black">DENTAL INFORMATION<span class="italic"> Informacion Dental</span> </h3>
+                	<div class="input-inline">
+                		<div class="block one-line">
+                			<div class="input-inline "> <span>DO YOUR GUMS BLEED WHEN YOU BRUSH?</span>
+                			</div>
+                			<div class="input-inline span-description"><span>Sangran sus encias cuando se sepilla?</span> </div>
+                		</div>
+                		<div class="yesno-inline flex-5"></div>
+                		<div class="block">
+                			<div class="radio-group">
+                				<div class="block">
+                					<div class="input-inline">
+                						<input type="radio" name="GumBleed" value="1"> Yes
+                					</div>
+                					<div class="input-inline span-description"><span> SI </span></div>
+                				</div>
+                			</div>
+                		</div>
+                		<div class="block">
+                			<div class="radio-group">
+                				<div class="block">
+                					<div class="input-inline">
+                						<input type="radio" name="GumBleed" value="2"> No 
+                					</div>
+                					<div class="input-inline span-description"><span>NO</span></div>
+                				</div>
+                			</div>
+                		</div>
+                	</div>
+                	<div class="input-inline">
+                		<div class="block one-line">
+                			<div class="input-inline "> <span>ARE YOUR TEETH SENSITIVE TO HEAT OR COLD?</span>
+                			</div>
+                			<div class="input-inline span-description"><span>Son sensitivos sus dientes a lo caliente o al frio?</span> </div>
+                		</div>
+                		<div class="yesno-inline flex-5"></div>
+                		<div class="block">
+                			<div class="radio-group">
+                				<div class="block">
+                					<div class="input-inline">
+                						<input type="radio" name="TeethSensitive" value="1"> Yes
+                					</div>
+                					<div class="input-inline span-description"><span> SI </span></div>
+                				</div>
+                			</div>
+                		</div>
+                		<div class="block">
+                			<div class="radio-group">
+                				<div class="block">
+                					<div class="input-inline">
+                						<input type="radio" name="TeethSensitive" value="2"> No 
+                					</div>
+                					<div class="input-inline span-description"><span>NO</span></div>
+                				</div>
+                			</div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>DATE OF LAST DENTAL EXAMINATION (Cuando fue su ultimo examen dental?)</span>
+                				<input type="text" name="DateLastDentalExamination" class="datepicker">
+                			</div>
+                		</div>
+                	</div>
+
+                	<div class="input-inline">
+                		<div class="block">
+                			<div class="input-inline"> <span>HOW WOULD YOU DESCRIBE YOUR CURRENT DENTAL PROBLEM?</span>
+                				<input type="text" name="DescribeCurrentDentalProblem">
+                			</div>
+                			<div class="input-inline span-description"><span>En este momento, como podra describir su problema dental?</span> </div>
+                		</div>
+                	</div>
+                </div>
+                    
+                <h3 class="title-black">MEDICAL INFORMATION<span class="italic"> Condicion Medica</span> </h3>
+                <ol>
+                	<li>
+                    <div class="inline-block">
+                        <div class="input-inline">
+                            <div class="block one-line">
+                                <div class="input-inline "> <span>ARE YOU HAVING PAIN OR DISCOMFORT AT THIS TIME?</span>
+                                </div>
+                                <div class="input-inline span-description"><span>Esta sintiendo dolor o molestia en este momento</span> </div>
+                            </div>
+                            <div class="yesno-inline flex-5"></div>
+                            <div class="block">
+                                <div class="radio-group">
+                                    <div class="block">
+                                        <div class="input-inline">
+                                            <input type="radio" name="HavingPain" value="1"> Yes
+                                        </div>
+                                        <div class="input-inline span-description"><span> SI </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <div class="radio-group">
+                                    <div class="block">
+                                        <div class="input-inline">
+                                            <input type="radio" name="HavingPain" value="2"> No 
+                                        </div>
+                                        <div class="input-inline span-description"><span>NO</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                		
+                	</li>
+                	<li>
+                    <div class="inline-block">
+                		<div class="input-inline">
+                			<div class="block one-line">
+                				<div class="input-inline "> <span>HAVE YOU BEEN A PATIENT IN A HOSPITAL DURING THE PAST TWO YEARS?</span>
+                				</div>
+                				<div class="input-inline span-description"><span>Ha sido hospitalizado durante los ultimos dos anos?</span> </div>
+                			</div>
+                			<div class="yesno-inline flex-5"></div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="BeenPatient" value="1"> Yes
+                						</div>
+                						<div class="input-inline span-description"><span> SI </span></div>
+                					</div>
+                				</div>
+                			</div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="BeenPatient" value="2"> No 
+                						</div>
+                						<div class="input-inline span-description"><span>NO</span></div>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                        </div>
+                	</li>
+                	<li>
+                    <div class="inline-block">
+                		<div class="input-inline">
+                			<div class="block flex-10">
+                				<div class="input-inline "> <span>HAVE YOU BEEN UNDER THE CARE OF A MEDICAL DOCTOR DURING THE PAST TWO YEARS?</span>
+                				</div>
+                				<div class="input-inline span-description"><span>Ha estado bajo atencion medica con un doctor durante los ultimos dos anos?</span> </div>
+                			</div>
+                			<div class="yesno-inline flex-5"></div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="BeenCare" value="1"> Yes
+                						</div>
+                						<div class="input-inline span-description"><span> SI </span></div>
+                					</div>
+                				</div>
+                			</div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="BeenCare" value="2"> No 
+                						</div>
+                						<div class="input-inline span-description"><span>NO</span></div>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                        </div>
+                	</li>
+                	<li>
+                    <div class="inline-block">
+                		<div class="input-inline">
+                			<div class="block one-line">
+                				<div class="input-inline "> <span> ARE YOU NOW TAKING ANY MEDICATION OR DRUGS?</span>
+                				</div>
+                				<div class="input-inline span-description"><span>Esta usted presentamente tomando alguna medicina o droga?</span> </div>
+                			</div>
+                			<div class="yesno-inline flex-5"></div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="TakingMedication" value="1"> Yes
+                						</div>
+                						<div class="input-inline span-description"><span> SI </span></div>
+                					</div>
+                				</div>
+                			</div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="TakingMedication" value="2"> No 
+                						</div>
+                						<div class="input-inline span-description"><span>NO</span></div>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                        </div>
+                	</li>
+                	<li>
+                    <div class="inline-block">
+                		<div class="input-inline">
+                			<div class="block one-line">
+                				<div class="input-inline "> <span> ARE YOU SENSITIVE OR ALLERGIC TO ANY MEDICATION OR ANESTHETICS?</span>
+                				</div>
+                				<div class="input-inline span-description"><span>Es usted alergico a algun medicamento o a la anestesia?</span> </div>
+                			</div>
+                			<div class="yesno-inline flex-5"></div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="SensitiveMedication" value="1"> Yes
+                						</div>
+                						<div class="input-inline span-description"><span> SI </span></div>
+                					</div>
+                				</div>
+                			</div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="SensitiveMedication" value="2"> No 
+                						</div>
+                						<div class="input-inline span-description"><span>NO</span></div>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                		<div class="input-inline">
+                			<div class="block">
+                				<div class="input-inline"> <span>IF YES, PLEASE LIST (Si contest Si’, por favor indique):</span>
+                					<input type="text" name="List">
+                				</div>
+                			</div>
+                		</div>
+                        </div>
+                	</li>
+                	<li>
+                    <div class="inline-block">
+                		<div class="input-inline">
+                			<div class="block">
+                				<div class="input-inline"> <span>INDICATE WHICH OF THE FOLLOWING YOU HAVE HAD OR HAVE AT PRESENT (Circle “Yes or No” to each item)</span>
+                				</div>
+                				<div class="input-inline span-description"><span>Indique cual de los sintomas ha tenido o tiene presentamente (Circule “Si or No” tal como corresponde.) </span> </div>
+                			</div>
+                        </div>
+                		</div>
+                        <div class="wrap-height medical-content" style="font-size: 13px">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="input-inline"><span>Heart Disease or Attack</span>
+                                <div class="medical-06">
+                                    <input type="radio" name="HeartDisease" value="1"> Yes
+                                    <input type="radio" name="HeartDisease" value="2"> No 
+                                </div>
+                            </div>
+                            <div class="input-inline span-description"><span>Ataques de Corazon o problemas</span> </div>
+                            <div class="input-inline"><span>Agina Pectoris</span>
+                         <div class="medical-06">
+                                <input type="radio" name="AginaPectoris" value="1"> Yes
+                                <input type="radio" name="AginaPectoris" value="2"> No
+                            </div>
+                                 </div>
+                            <div class="input-inline span-description"><span>Agina de Pecho</span> </div>
+                            <div class="input-inline"><span>Heart Mumur</span>
+                                <div class="medical-06">
+                                <input type="radio" name="HeartMumur" value="1"> Yes
+                                <input type="radio" name="HeartMumur" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Soplo del corzon</span> </div>
+                            <div class="input-inline"><span>High Blood Pressure</span>
+                            <div class="medical-06">
+                                <input type="radio" name="BloodPressure" value="1"> Yes
+                                <input type="radio" name="BloodPressure" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Alta Presion</span> </div>
+                            <div class="input-inline"><span>Rheumatic Fever</span>
+                            <div class="medical-06">
+                                <input type="radio" name="RheumaticFever" value="1"> Yes
+                                <input type="radio" name="RheumaticFever" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Fiebre Reumatica</span> </div>
+                            <div class="input-inline"><span>Arthritis</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Arthritis" value="1"> Yes
+                                <input type="radio" name="Arthritis" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Artritis</span> </div>
+                            <div class="input-inline"><span>Rheumatism</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Rheumatism" value="1"> Yes
+                                <input type="radio" name="Rheumatism" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Reumatismo</span> </div>
+                            <div class="input-inline"><span>Stroke</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Stroke" value="1"> Yes
+                                <input type="radio" name="Stroke" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Embolio</span> </div>
+                            <div class="input-inline"><span>Kidney Trouble</span>
+                            <div class="medical-06">
+                                <input type="radio" name="KidneyTrouble" value="1"> Yes
+                                <input type="radio" name="KidneyTrouble" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Problemas de Rinones</span> </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div class="input-inline"><span>Diabetes</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Diabetes" value="1"> Yes
+                                <input type="radio" name="Diabetes" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Diabetis</span> </div>
+                            <div class="input-inline"><span>Tuberculosis</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Tuberculosis" value="1"> Yes
+                                <input type="radio" name="Tuberculosis" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Tuberculosis</span> </div>
+                            <div class="input-inline"><span>Asthma</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Asthma" value="1"> Yes
+                                <input type="radio" name="Asthma" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Asthma</span> </div>
+                            <div class="input-inline"><span>Allergies or Hives</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Allergies" value="1"> Yes
+                                <input type="radio" name="Allergies" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Alergias o Ronchas</span> </div>
+                            <div class="input-inline"><span>Sinus Trouble</span>
+                            <div class="medical-06">
+                                <input type="radio" name="SinusTrouble" value="1"> Yes
+                                <input type="radio" name="SinusTrouble" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Problemas de Sinusitis</span> </div>
+                            <div class="input-inline"><span>Radiation Therapy</span>
+                            <div class="medical-06">
+                                <input type="radio" name="RadiationTherapy" value="1"> Yes
+                                <input type="radio" name="RadiationTherapy" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Terapia de radiacion</span> </div>
+                            <div class="input-inline"><span>Hepatitis-A (Infection)</span>
+                            <div class="medical-06">
+                                <input type="radio" name="HepatitisA" value="1"> Yes
+                                <input type="radio" name="HepatitisA" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Hepatitis-A (Infeccion)</span> </div>
+                            <div class="input-inline"><span>Hepatitis-B (Serum)</span>
+                            <div class="medical-06">
+                                <input type="radio" name="HepatitisB" value="1"> Yes
+                                <input type="radio" name="HepatitisB" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>He[atitis-B</span> </div>
+                            <div class="input-inline"><span>Venereal Disease</span>
+                            <div class="medical-06">
+                                <input type="radio" name="VenerealDisease" value="1"> Yes
+                                <input type="radio" name="VenerealDisease" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Enfermedades Venereas</span> </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4  col-xs-4">
+                            <div class="input-inline"><span>A.I.D.S</span>
+                            <div class="medical-06">
+                                <input type="radio" name="AIDS" value="1"> Yes
+                                <input type="radio" name="AIDS" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>S.I.D.A</span> </div>
+                            <div class="input-inline"><span>H.I.V. Positive</span>
+                            <div class="medical-06">
+                                <input type="radio" name="HIV" value="1"> Yes
+                                <input type="radio" name="HIV" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>H.I.V. Positivo</span> </div>
+                            <div class="input-inline"><span>Cold Sores / Fever Blisters</span>
+                            <div class="medical-06">
+                                <input type="radio" name="ColdSores" value="1"> Yes
+                                <input type="radio" name="ColdSores" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Ampoyas o Fiebre</span> </div>
+                            <div class="input-inline"><span>Blood Transfusion</span>
+                            <div class="medical-06">
+                                <input type="radio" name="BloodTransfusion" value="1"> Yes
+                                <input type="radio" name="BloodTransfusion" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Transfusion de Sangre</span> </div>
+                            <div class="input-inline"><span>Liver Disease</span>
+                            <div class="medical-06">
+                                <input type="radio" name="LiverDisease" value="1"> Yes
+                                <input type="radio" name="LiverDisease" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Enfermedad del Higado</span> </div>
+                            <div class="input-inline"><span>Yellow Jaundice</span>
+                            <div class="medical-06">
+                                <input type="radio" name="YellowJaundice" value="1"> Yes
+                                <input type="radio" name="YellowJaundice" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Vilis
+                            </span> </div>
+                            <div class="input-inline"><span>Epilepsy or Seizures</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Epilepsy" value="1"> Yes
+                                <input type="radio" name="Epilepsy" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Ataques o Epilepsia</span> </div>
+                            <div class="input-inline"><span>Autism</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Autism" value="1"> Yes
+                                <input type="radio" name="Autism" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Autismo
+                            </span> </div>
+                            <div class="input-inline"><span>Developmentally Disabled</span>
+                            <div class="medical-06">
+                                <input type="radio" name="DevelopmentallyDisabled" value="1"> Yes
+                                <input type="radio" name="DevelopmentallyDisabled" value="2"> No </div></div>
+                            <div class="input-inline span-description"><span>Mentalmente Desabilitado</span> </div>
+                            <div class="input-inline"><span>Allergic to Latex</span>
+                            <div class="medical-06">
+                                <input type="radio" name="Allergic" value="1"> Yes
+                                <input type="radio" name="Allergic" value="2"> No </div></div>
+                        </div>
+                    </div>
+                    <hr/>
+                	</li>
+                    <li>
+                    <div class="inline-block">
+                        <div class="input-inline">
+                        <div class="block">
+                            <div class="input-inline"> <span>DO YOU HAVE OR HAVE YOU HAD ANY DISEASE, CONDITION OR PROBLEM NOT LISTED?</span>
+                            </div>
+                            <div class="input-inline span-description"><span >Ha tenido o tiene enfermedad, condicion o problema que no fue indicada?</span></div>
+                        </div>
+                    </div>
+                    <div class="input-inline">
+                        <div class="block">
+                            <div class="input-inline"><span>IF YES, PLEASE LIST: </span>
+                                <input type="text" name="Disease">
+                            </div>
+                            <div class="input-inline span-description"><span>Si contest Si’, por favor indique</span> </div>
+                        </div>
+                    </div>
+                    </div>
+                    </li>
+                </ol>
+                    
+                    
+                   
+                    <div class="box">
+                        <h3 class="title-black">FOR WOMEN ONLY <span class="italic"> Para La Mujer Solamente</span> </h3>
+                        <div class="input-inline ">
+                        <div class="block">
+                            <div class="input-inline">
+                            <div class="block one-line">
+                                <div class="input-inline "> <span>ARE YOU PREGNANT?</span>
+                                </div>
+                                <div class="input-inline span-description"><span>Esta embarazada?</span> </div>
+                            </div>
+                            <div class="yesno-inline flex-5"></div>
+                            <div class="block">
+                                <div class="radio-group">
+                                    <div class="block">
+                                        <div class="input-inline">
+                                            <input type="radio" name="Pregnant" value="1"> Yes
+                                        </div>
+                                        <div class="input-inline span-description"><span> SI </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <div class="radio-group">
+                                    <div class="block">
+                                        <div class="input-inline">
+                                            <input type="radio" name="Pregnant" value="2"> No 
+                                        </div>
+                                        <div class="input-inline span-description"><span>NO</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                          
+                        <div class="block" style="margin-left: 20px">
+                            <div class="input-inline " style="margin-bottom: -8px"> <span>WHAT MONTH?</span>
+                            <input type="text" name="Month"> 
+                        </div>
+                        <div class="input-inline span-description"><span>Que Mes?</span> 
+                        </div>
+                        </div>
+                    </div>
+
+                        <div class="input-inline">
+                            <div class="block one-line">
+                                <div class="input-inline "> <span>ARE YOU NURSING?</span>
+                                </div>
+                                <div class="input-inline span-description"><span>Esta Amamantando?</span> </div>
+                            </div>
+                            <div class="yesno-inline flex-5"></div>
+                            <div class="block">
+                                <div class="radio-group">
+                                    <div class="block">
+                                        <div class="input-inline">
+                                            <input type="radio" name="Nursing" value="1"> Yes
+                                        </div>
+                                        <div class="input-inline span-description"><span> SI </span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block">
+                                <div class="radio-group">
+                                    <div class="block">
+                                        <div class="input-inline">
+                                            <input type="radio" name="Nursing" value="2"> No 
+                                        </div>
+                                        <div class="input-inline span-description"><span>NO</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-inline">
+                			<div class="block one-line">
+                				<div class="input-inline "> <span>ARE YOU TAKING BIRTH CONTROL PILLS?</span>
+                				</div>
+                				<div class="input-inline span-description"><span>Esta tomando pastillas anti-conceptivas?</span> </div>
+                			</div>
+                			<div class="yesno-inline flex-5"></div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="BirthControlPills" value="1"> Yes
+                						</div>
+                						<div class="input-inline span-description"><span> SI </span></div>
+                					</div>
+                				</div>
+                			</div>
+                			<div class="block">
+                				<div class="radio-group">
+                					<div class="block">
+                						<div class="input-inline">
+                							<input type="radio" name="BirthControlPills" value="2"> No 
+                						</div>
+                						<div class="input-inline span-description"><span>NO</span></div>
+                					</div>
+                				</div>
+                			</div>
+                		</div>
+                    </div> 
+                    <br/>I UNDERSTAND THE ABOVE INFORMATION IS NECESSARY TO PROVIDE ME WITH DENTAL CARE IN A SAFE AND EFFICIENT MANNER. I HAVE ANSWERED ALL QUESTIONS TRUTHFULLY AND TO THE BEST OF MY KNOWLEDGE.
+                    <div class="input-inline span-description"><span>Yo entiendo que la informacion anterior es para darme tratamiento dental en una forma eficiente y segura He contestado todas las preguntas de acuerdo a mi conocimiento.</span> </div>
+                    <br/>
+                    <br/>
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"> <span>PATIENT SIGNATURE</span>
+                    			<input type="text" name="PatientSignature">
+                    		</div>
+                    		<div class="input-inline span-description"><span >Firma del Paciente</span></div>
+                    	</div>
+                    	<div class="block">
+                    		<div class="input-inline"><span>DATE </span>
+                    			<input type="text" name="Date" class="datepicker">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Fecha</span> </div>
+                    	</div>
+                    </div>
+                    <h3 class="title-black">CONSENT <span class="italic">Consentimiento</span> </h3> 1. THE UNDERSIGNED HEREBY AUTHORIZES DOCTOR TO TAKE X-RAYS, STUDY MODELS, PHOTOGRAPHS, OR ANY OTHER DIAGNOSTIC AIDES DEEMED APPROPRIATE BY DOCTOR TO MAKE A THOROUGH DIAGNOSIS OF THE PATIENT’S DENTAL NEEDS.
+                    <br/>
+                    <br/> 2. I ALSO AUTHORIZE DOCTOR TO PERFORM ALL RECOMMENDED TREATMENT MUTUALLY AGREED UPON BY ME AND TO USE THE APPROPRIATE MEDICATION AND THERAPY INDICATED FOR SUCH TREATMENT IN CONNECTION WITH:
+                    <br/> I UNDERSTAND THAT USING ANESTHETIC AGENTS EMBODIES A CERTAIN RISK. FURTHERMORE, I AUTHORIZE AND CONSENT THAT THE DOCTOR CHOOSES AND EMPLOYS SUCH ASSISTANCE AS DEEMED FIT TO PROVIDE RECOMMENDED TREATMENT.
+                    <br/>
+                    <br/> 3. I UNDERSTAND THAT ALL RESPONSIBILITY FOR PAYMENT FOR DENTAL SERVICES PROVIDED IN THIS OFFICE FOR MYSELF OR MY DEPENDENT IS MINE, DUE AND PAYABLE AT THE TIME SERVICES ARE RENDERED UNLESS OTHER ARRANGEMENTS HAVE BEEN MADE.
+                    <br/> IN THE EVENT PAYMENTS ARE NOT RECEIVED BY THE AGREED DATES, I UNDERSTAND THAT A 1-1/2% FINANCE CHARGE (18% APR) MAY BE ADDED TO MY ACCOUNT, IN ADDITION TO ANY COLLECTION CHARGES.
+                    <br/>
+                    <br/> 4. I UNDERSTAND THAT WHERE APPROPRIATE, CREDIT BUREAU REPORTS MAY BE OBTAINED.
+                    <br/>
+                    <br/> 5. I UNDERSTAND THAT IT IS MY RESPONSIBILITY TO ADVISE YOUR OFFICE OF ANY CHANGES IN THE INFORMATION CONTAINED ON THIS FORM.
+                    <br/>
+                    <br/>
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"> <span>PATIENT SIGNATURE</span>
+                    			<input type="text" name="PatientSignature">
+                    		</div>
+                    		<div class="input-inline span-description"><span >Firma del Paciente</span></div>
+                    	</div>
+                    	<div class="block">
+                    		<div class="input-inline"><span>DATE </span>
+                    			<input type="text" name="Date" class="datepicker">
+                    		</div>
+                    		<div class="input-inline span-description"><span>Fecha</span> </div>
+                    	</div>
+                    </div>
+                    <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"> <span>WITNESS</span>
+                    			<input type="text" name="Witness">
+                    		</div>
+                    		<div class="input-inline span-description"><span >Testigo</span></div>
+                    	</div>
+                    </div>
+
+                     <div class="input-inline">
+                    	<div class="block">
+                    		<div class="input-inline"> <span>PARENT OR RESPONSIBLE PARTY</span>
+                    			<input type="text" name="ParentParty">
+                    		</div>
+                    		<div class="input-inline span-description"><span >Padre o Persona Responsable</span></div>
+                    	</div>
+                    	<div class="block">
+                    		<div class="input-inline"> <span>RELATIONSHIP TO PATIENT</span>
+                    			<input type="text" name="Relationship">
+                    		</div>
+                    		<div class="input-inline span-description"><span >Relacion al Paciente</span></div>
+                    	</div>
+                    </div>
+                    
+                    <div class="box">
+                        <h3 class="title-black">FOR OFFICE USE ONLY</h3>
+                        <br/>
+                        <div class="input-inline"><span>REVIEWED BY DR.</span>
+                            <input type="text" name="Dr"> <span>DATE</span>
+                            <input type="text" name="Date" class="datepicker"> </div>
+                        <br/> </div>
+                </div>
+                <hr>
+                <div class="copyright">© 2017 AmeriDenti_Dental Practice Support</div>
+            </div>
+        </div>
+        <input type="submit" style="display: none" id="submit-form"> </form>
+    </div>
+    </div>
+</body>
+
+</html>

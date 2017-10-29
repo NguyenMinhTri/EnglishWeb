@@ -1,0 +1,825 @@
+
+/* Small Devices, Tablets */
+
+@media (max-width: 767px) {
+    .stick { border-bottom: none;}
+	.header-top-area {
+        display: none;
+    }
+    .mobile-menu-area {
+        display: block;
+    }
+    .slider-content .tp-caption {
+        display: none;
+    }
+	.about-fitness-left {
+		width:100%;
+        text-align: center;
+	}
+    .about-fitness-right {
+        width: 100%;
+    }
+    .about-fitness-left .about-left-img img {
+        position: relative;
+        z-index: 99;
+    }
+    .about-fitness-left .about-left-img .overly {
+        left: 0;
+        right: 0;
+        top: inherit;
+        bottom: 0;
+        text-align: center;
+    }
+    .about-fitness-right { padding: 60px 30px;}
+    .about-fitness-left .about-left-img { padding: 50px;}
+    .about-single-service {text-align: center;}
+    .about-single-service .service-item { padding-bottom: 20px;}
+    .about-single-service .service-image { float: inherit !important; padding-right: 0;}
+    .about-fitness-left .about-left-img::after { 
+        left: 0;
+        right: 0;
+        top: inherit;
+        bottom: -18px;
+        margin: 0 auto;
+        -webkit-transform:rotate(224deg);
+        -moz-transform:rotate(224deg);
+        -o-transform:rotate(224deg);
+        transform: rotate(224deg);
+    }
+
+    .feature-classes-area,
+    .being-body-builder,
+    .what-client-area,
+    .expert-trainer-area,
+    .online-store-area,
+    .fitness-summer-area,
+    .latest-news-area,
+    .logo-showcase-area,
+    .footer-area,
+    .single-page-area {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .related-classes-area,
+    .news-page-area {
+        padding-top: 60px;
+        padding-bottom: 50px;
+    }
+    .class-schedule,
+    .news-detail-area {
+        padding-top: 60px;
+    }
+    .single-news-detail { padding-bottom: 50px;}
+    .classes-tab-area ul, 
+    .class-schedule-wrap ul.nav-tabs { margin-bottom: 25px;}
+    .single-product-classes .product-content .left-content,
+    .single-product-classes .product-content .more-icon { float: inherit; text-align: center;}
+    .single-product-classes .single-product .overly { left: 0; right: 0; text-align: center;}
+    .being-body-builder .being-right-content .being-content { position: inherit; padding-top: 20px;}
+    .being-body-builder .being-right-content { left: 0; text-align: center;}
+    .class-schedule-wrap { padding: 30px 15px;}
+    .class-schedule-wrap .nav-tabs li,
+    .schedule-page .class-schedule-wrap .nav-tabs li { width: 48%;}
+    .class-schedule-wrap .nav-tabs li a { margin-right: 3px; margin-bottom: 3px;}
+    .class-schedule-tab ul li { width: 100%; text-align: center;}
+    .class-schedule-tab ul li:nth-child(1) { padding-left: 0;}
+    .class-schedule-tab ul li:nth-child(4) { text-align: center; margin-top: 20px; margin-bottom: 10px;}
+    .single-client-say { margin-right: 0;}
+    .single-client-say .client-picture { float: inherit !important; text-align: center; margin-bottom: 15px;}
+    .single-client-say .client-content { padding-left: 0; text-align: center;}
+    .single-client-say .client-content h3::after { margin: 15px auto;}
+    .what-client-say .owl-pagination { top: inherit; left: 0;}
+    .single-trainer-item .trainer-item { left: 0; right: 0; margin: auto;}
+    .single-product-store .product-content { text-align: center;}
+    .fitness-summer .fitness-content { text-align: center;}
+    .single-latest-news .news-content { text-align: center;}
+    .about-company, .twitter-area, .flickr-photos { margin-bottom: 40px;}
+    .choose-us-area { padding-top: 60px; padding-bottom: 60px; margin-top: 60px;}
+
+    .our-classes-area {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+    .classes-detail-area {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .schedule-page { padding-bottom: 60px;}
+    .single-sidebar .join-us img { width: 100%;}
+    .single-sidebar .join-us .join-content { text-align: center; padding: 60px 30px;}
+    .right-sidebar .single-sidebar h3 { font-size: 20px;}
+    .news-page-area .pagination-area { margin-bottom: 50px;}
+    .footer-area { text-align: center;}
+    .feature-classes-area .section-title { margin-left: 0;}
+    .feature-classes-area .owl-arrow .owl-controls { right: 0;}
+    .single-product-classes .product-content { text-align: center;}
+    .isotop-classes-tab a { width: 48%; padding: 10px 18px; margin-right: 3px;}
+
+
+    .feature-classes-area .section-title h2::after,
+    .expert-trainer-area .section-title h2::after,
+    .online-store-area .section-title h2::after,
+    .latest-news-area .section-title h2::after,
+    .related-classes-area .section-title h2::after {
+        display: none;
+    }
+
+
+}
+
+@media(min-width: 481px) and (max-width: 767px) {
+	
+    .slider-content .button {
+        bottom: 30%;
+    }
+    .slider-area .nivo-controlNav {
+        bottom: 15px;
+    }
+    .about-fitness-left .about-left-img .overly h3 {
+        font-size: 50px;
+        line-height: 50px;
+        position: relative;
+        z-index: 9;
+    }
+    .feature-classes-area .section-title h2,
+    .class-schedule .section-title h2,
+    .what-client-area .section-title h2,
+    .expert-trainer-area .section-title h2,
+    .online-store-area .section-title h2,
+    .latest-news-area .section-title h2,
+    .related-classes-area .section-title h2 { margin-bottom: 50px; font-size: 24px;}
+
+    .owl-arrow .owl-controls { top: -80px;}
+    .being-body-builder .being-right-content .being-content h2 { font-size: 70px; line-height: 80px;}
+    .being-body-builder .being-right-content .being-content p { letter-spacing: 30px; font-size: 40px;}
+    .single-client-say .client-content { padding-left: 15px; padding-right: 15px;}
+    .logo-showcase-area .owl-arrow .owl-controls { top: -50px;}
+    .inner-banner-area .innter-title h2 { padding-bottom: 20px; font-size: 40px;}
+    .about-content-area .title-section h2 { font-size: 32px;}
+    ul.counter-list { text-align: center;}
+    .single-classes-area .classes-title { width: 200px;}
+    .footer-area h3 { margin-bottom: 20px;}
+    .visa-card ul, .copy-right-area .copy-right { text-align: center; margin-bottom: 8px;}
+    .our-trainer-item { height:100%; width: 100%;}
+    .our-trainer-item .trainer-image { padding: 28px;}
+    .fitness-summer .fitness-content h3, .fitness-summer .fitness-content p { font-size: 30px; line-height: 36px;}
+    .single-product-classes .product-content .more-icon { padding-top: 5px;}
+    .single-product-classes .product-content { padding: 20px;}
+    .about-gymedge-area { padding-top: 60px;}
+    .about-img { margin-top: 30px;}
+    .classes-tab-area ul li { width: 48%;}
+    .classes-tab-area ul li a { margin-right: 3px; margin-bottom: 3px;}
+    .single-news-page .news-content { text-align: center;}
+    .pagination-area .pagination { margin-top: 0;}
+    .single-news-detail .class-heading ul li { margin-right: 5px;}
+    .our-trainer-item .trainer-image .trainer-overly { width: 200px; padding: 10px 0;}
+    .our-trainer-item .trainer-image .social-overly { top: 45%;}
+    .our-trainer-area, .trainer-details-area { padding-top: 60px; padding-bottom: 30px;}
+    .trainer-detail-content .detail-heading { margin-top: 40px;}
+    .trainer-detail-content .detail-heading h2 { font-size: 24px;}
+    .online-header { padding: 20px 0;}
+    .pager-left-area { margin-bottom: 10px;}
+    .pager-right-area .shor-list select { width: 100%;}
+    .category-product-grid .product-content { text-align: center;}
+    .online-store-grid, 
+    .single-product-area,
+    .error-page-area { padding-top: 60px; padding-bottom: 60px;}
+    .product-pagination { margin-top: 30px; margin-bottom: 60px;}
+    .single-product-list .product-list-content .product-content { margin-left: 0; margin-top: 20px; text-align: center;}
+    .product-detail-area { margin-left: 0; margin-top: 30px;}
+    .single-product-tab ul.tab-image li a img { width: 50%;}
+    .error-page .error-content h1 { font-size: 150px;}
+    .error-page .error-content p { font-size: 24px; line-height: 30px;}
+    .error-page .error-content { padding-bottom: 50px;}
+    .error-page .error-info p { margin-top: 30px; font-size: 16px;}
+    .contact-us-area { padding-top: 60px;}
+    .contact-form .send-button { margin-bottom: 40px;}
+    .contact-form legend { font-size: 24px; margin-bottom: 30px;}
+    .contact-us-area { padding-top: 60px;}
+    .category-product-grid .item { padding-right: 0; width: 50%; float: left;}
+    .single-trainer-item .trainer-overly { width: 180px; padding: 10px 0;}
+    .about-single-service .service-item .service-image span {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 10px;
+        line-height: 40px;
+    }
+
+    
+}
+
+/* Extra Small Devices, Phones */ 
+
+@media(min-width: 320px) and (max-width: 480px){
+	
+    .slider-content .button .custom-button,
+    .slider-content .button .custom-button::after {
+        font-size: 12px;
+        padding: 12px 28px;
+    }
+    .slider-content .button {
+        bottom: 65%;
+    }
+    .slider-area .nivo-controlNav {
+        bottom: 20px;
+    }
+    .owl-arrow .owl-controls {
+        top: -83px;
+    }
+    .about-fitness-left .about-left-img .overly h3 {
+        font-size: 32px;
+        line-height: 32px;
+        position: relative;
+        z-index: 999;
+    }
+    .feature-classes-area .section-title h2,
+    .class-schedule .section-title h2,
+    .what-client-area .section-title h2,
+    .expert-trainer-area .section-title h2,
+    .online-store-area .section-title h2,
+    .latest-news-area .section-title h2,
+    .related-classes-area .section-title h2 { margin-bottom: 50px; font-size: 24px;}
+
+    .fitness-summer .fitness-content h3, .fitness-summer .fitness-content p { font-size: 24px; line-height: 30px;}
+    .logo-showcase-area .owl-arrow .owl-controls { top: -78px;}
+    .being-body-builder .being-right-content .being-content h2 { font-size: 40px; line-height: 50px;}
+    .being-body-builder .being-right-content .being-content p { letter-spacing: 10px; font-size: 20px;}
+    .single-trainer-item .trainer-item { width: 100%; height: 100%;}
+    .inner-banner-area .innter-title h2 { font-size: 30px; padding-top: 60px; padding-bottom: 20px;}
+    .about-content-area .title-section h2,
+    .choose-us-area .title-section h2 { font-size: 28px;}
+    ul.counter-list { text-align: center;}
+    ul.counter-list li { margin-right: 0; margin-top: 15px;}
+    .classes-tab-area .tab-content .tab-pane > div { width: 100%;}
+    .single-classes-area .classes-title { width: 250px;}
+    .comment-section .comment-image { float: inherit !important; text-align: center; margin-bottom: 15px; width: 100%;}
+    .comment-section .comment-image img { width: 100%;}
+    .comment-section .comment-content { padding-left: 0;}
+    .content-list span { font-size: 16px; margin: 15px 0;}
+    .single-product-classes .product-content .more-icon { padding-top: 5px;}
+    .single-product-classes .product-content { padding-top: 15px; padding-bottom: 15px;}
+    .single-product-classes .product-content h3 { margin-bottom: 5px;}
+    .about-gymedge-area { padding-top: 60px;}
+    .about-img { margin-top: 20px;}
+    .classes-tab-area ul { padding-left: 15px; padding-right: 15px;}
+    .classes-tab-area ul li { width: 48%;}
+    .classes-tab-area ul li a { margin-right: 3px; margin-bottom: 3px; padding: 12px 15px;}
+    .single-class-detail .class-heading h3, .single-class-detail .choose-body h3 { font-size: 18px;}
+    .single-news-page .news-content { text-align: center;}
+    .pagination-area .pagination { margin-top: 0;}
+    .single-news-detail .class-heading h3, .news-tag h3, .leave-comment h3, .comment-section h3 { font-size: 18px;}
+    .our-trainer-area .container .row > div { width: 100%;}
+    .our-trainer-item { width: 100%; height: 100%;}
+    .our-trainer-item .trainer-image .social-overly { top: 40%;}
+    .trainer-detail-content { margin-top: 30px;}
+    .trainer-detail-content .detail-heading h2 { font-size: 20px;}
+    .trainer-details-area { padding-top: 60px; padding-bottom: 30px;}
+    .online-header { padding: 20px 0;}
+    .pager-left-area { margin-bottom: 10px;}
+    .pager-right-area .shor-list select { width: 100%;}
+    .category-product-grid .product-content { text-align: center;}
+    .online-store-grid, 
+    .single-product-area,
+    .error-page-area { padding-top: 60px; padding-bottom: 60px;}
+    .product-pagination { margin-top: 30px; margin-bottom: 60px;}
+    .single-product-list .product-list-content .product-content { margin-left: 0; margin-top: 20px; text-align: center;}
+    .product-detail-area { margin-left: 0; margin-top: 20px; text-align: center;}
+    .overview-content ul.product-view-tab li { width: 100%; text-align: center;}
+    .overview-content .tab-content { text-align: center; padding: 15px;}
+    .error-page .error-content h1 { font-size: 100px;}
+    .error-page .error-content p { font-size: 20px; line-height: 24px;}
+    .error-page .error-content { padding-bottom: 50px;}
+    .error-page .error-info p { margin-top: 30px;}
+    .contact-us-area { padding-top: 60px;}
+    .contact-form .send-button { margin-bottom: 40px;}
+    .contact-form legend { font-size: 24px; margin-bottom: 30px;}
+    .contact-us-area { padding-top: 60px;}
+    .footer-area h3 { margin-bottom: 15px;}
+    .copy-right-area .copy-right,
+    .visa-card ul { text-align: center; margin-bottom: 8px; font-size: 14px;} 
+    .class-schedule .section-title h2, .what-client-area .section-title h2 { text-align: center;}
+    .class-schedule-wrap .nav-tabs li a { padding: 10px 15px;}
+    .class-schedule-tab ul { padding-left: 0;}
+    .portfolioContainer .col-md-4 { width: 100%;}
+    .about-single-service .service-item .service-image span {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 10px;
+        line-height: 40px;
+    }
+    .single-latest-news { margin-right: 0; margin-left: 0;}
+    .single-trainer-item .trainer-overly { width: 220px; padding: 10px 0;}
+
+}
+
+@media(max-width: 320px) {
+    .feature-classes-area .section-title h2,
+    .class-schedule .section-title h2,
+    .what-client-area .section-title h2,
+    .expert-trainer-area .section-title h2,
+    .online-store-area .section-title h2,
+    .latest-news-area .section-title h2,
+    .related-classes-area .section-title h2 { margin-bottom: 48px; font-size: 22px;}
+
+    .feature-classes-area .section-title h2::after,
+    .expert-trainer-area .section-title h2::after,
+    .online-store-area .section-title h2::after,
+    .latest-news-area .section-title h2::after,
+    .related-classes-area .section-title h2::after {
+        position: inherit;
+    }
+    .owl-arrow .owl-controls { top: -82px;}
+    .logo-showcase-area .owl-arrow .owl-controls { top: -53px;}
+
+
+}
+/* Medium Devices, Desktops */
+
+@media(min-width: 768px) and (max-width: 991px) { 
+    .stick .header-top-area .header-top-right {display: none;}
+}
+@media(min-width: 768px) and (max-width: 1024px) {
+    .header-top-area .header-top-right { text-align: center; padding: 20px 0;}
+    .header-top-area .cart-area span { bottom: 30px;}
+    .stick .header-top-area .cart-area span { bottom: 20px;}
+    .stick .header-top-area .header-top-right { padding: 12px 0;}
+    .header-top-search .search-text { top: 45px;}
+    .header-top-area .logo-area {text-align: center;}
+    .header-top-right ul li ul { top: 65px;}
+    .stick .header-top-right ul li ul { top: 50px;}
+    .cart-single-product .media .cart-content h4,
+    .cart-single-product .media .cart-content p { text-align: left; margin: 0;}
+    .cart-single-product .media .cart-content .cart-product-price { bottom: 5px;}
+    .cart-single-product .media .cart-content a.trash { top: 5px;}
+    .main-menu ul { text-align: center;}
+
+    .slider-content .big-title { font-size: 48px; position: relative; bottom: 40px;}
+    .slider-content .small-content { width: 75%; position: relative; bottom: 20px; padding-top: 0;}
+    .slider-content .button { bottom: 28%;}
+    .preview-2 .nivo-controlNav { bottom: 30px;}
+
+    .about-fitness-right { padding: 30px 15px 30px 25px;}
+    .about-single-service .service-item { padding-bottom: 4px;}
+    .about-fitness-left .about-left-img .overly h3 { font-size: 54px;}
+
+    .feature-classes-area,
+    .what-client-area,
+    .expert-trainer-area,
+    .online-store-area,
+    .fitness-summer-area,
+    .latest-news-area,
+    .logo-showcase-area,
+    .footer-area,
+    .related-classes-area,
+    .single-page-area {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .schedule-page,
+    .news-page-area,
+    .trainer-details-area,
+    .online-store-grid,
+    .single-product-area,
+    .error-page-area {
+        padding-top: 80px;
+        padding-bottom: 70px;
+    }
+    .being-body-builder,
+    .news-detail-area,
+    .class-schedule { padding-top: 70px;}
+    .single-news-detail { padding-bottom: 50px;}
+    .related-product-area { padding-bottom: 0;}
+
+    .feature-classes-area .section-title h2,
+    .class-schedule .section-title h2,
+    .what-client-area .section-title h2,
+    .expert-trainer-area .section-title h2,
+    .online-store-area .section-title h2,
+    .latest-news-area .section-title h2,
+    .related-classes-area .section-title h2 { margin-bottom: 50px; font-size: 28px;}
+
+    .feature-classes-area .section-title h2::after,
+    .expert-trainer-area .section-title h2::after,
+    .online-store-area .section-title h2::after,
+    .latest-news-area .section-title h2::after {
+        right: 12%;
+        top: 15px;
+        width: 45%;
+    }
+    .related-classes-area .section-title h2::after { right: 16%; width: 34%;}
+    .related-product-area .section-title h2::after { right: 16%; width: 28%;}
+
+    .owl-arrow .owl-controls { top: -90px;}
+    .being-body-builder .being-right-content { left: -55px;}
+    .being-body-builder .being-right-content .being-content { padding-top: 67px;}
+    .being-body-builder .being-right-content .being-content h2 { font-size: 65px; line-height: 70px;}
+    .being-body-builder .being-right-content .being-content p { font-size: 34px; letter-spacing: 32px;}
+    .class-schedule-tab ul li { font-size: 15px;}
+    .class-schedule-wrap ul.nav-tabs { margin-bottom: 40px;}
+
+    .single-client-say { margin-right: 15px; padding-left: 15px;}
+    .single-client-say .client-picture { float: inherit !important; text-align: center; margin-bottom: 15px;}
+    .single-client-say .client-content { padding-left: 0; text-align: center;}
+    .single-client-say .client-content h3::after { margin: 15px auto;}
+    .what-client-say .owl-pagination { top: inherit; left: 0;}
+    .flickr-photos .flickr-list ul li img { width: 74px;}
+    .logo-showcase-area .owl-arrow .owl-controls { top: -71px;}
+
+    .inner-banner-area .innter-title h2 { padding-bottom: 25px; padding-top:75px; font-size: 36px;}
+    .about-content-area .title-section h2 { font-size: 40px;}
+    .choose-us-area { padding-top: 70px; padding-bottom: 70px; margin-top: 50px;}
+    ul.counter-list { text-align: center;}
+    ul.counter-list li { height: 160px; width: 160px;}
+    .classes-tab-area ul, .class-schedule-wrap ul.nav-tabs { margin-bottom: 25px;}
+    .classes-tab-area ul li a { margin-right: 5px; padding: 10px 24px;}
+
+    .our-classes-area { padding-top: 70px; padding-bottom: 50px;}
+    .right-sidebar .single-sidebar h3 { font-size: 20px;}
+    .single-sidebar .join-us .join-content { padding: 14px; text-align: center;}
+    .join-us .join-content .percent { font-size: 30px;}
+    .join-us .join-content .custom-button, .join-us .join-content .custom-button::after { padding: 10px 5px;}
+    .happy-clients .owl-controls .owl-pagination { left: 0; bottom: -10px;}
+    .class-schedule-wrap { padding-left: 40px; padding-right: 40px;}
+    .class-schedule-wrap .nav-tabs li a { padding: 10px 12px; margin-right: 2px;}
+    .our-trainer-item { width: 100%; height: 100%;}
+    .our-trainer-item .trainer-image img { height: 160px;}
+    .our-trainer-area { padding-top: 70px; padding-bottom: 35px;}
+    .our-trainer-item .trainer-image .trainer-overly { padding: 10px 0; width: 200px;}
+    .product-pagination { margin-top: 20px;}
+    .pager-left-area { padding-right: 0;}
+    .single-product-list .product-list-image img { width: 80%;}
+    .social-icons ul li { margin-bottom: 3px;}
+
+    .stick .logo-area { padding-top: 10px;}
+    .stick .logo-area img { width: 120px;}
+    .stick .main-menu ul li a { padding: 12px;}
+    .classes-detail-area, .contact-us-area { padding-top: 70px;}
+    .our-trainer-item .trainer-image .social-overly { top: 42%;}
+    .single-product-tab ul li { min-height: 80px;}
+    .contact-form legend { font-size: 30px; margin-bottom: 35px;}
+    .feature-classes-area .section-title h2::after { right: 15%;}
+    .about-fitness-right .media-heading { margin-bottom: 8px;}
+    .isotop-classes-tab { margin-bottom: 30px;}
+    .isotop-classes-tab a { padding: 8px 20px; margin-right: 3px;}
+    .header-top-right ul li { padding-right: 5px;}
+    .header-top-area .cart-area { padding-left: 5px;}
+    .our-trainer-item .trainer-image { padding: 28px;}
+
+}
+
+@media(min-width: 800px) and (max-width: 1024px) {
+    .logo-showcase-area .owl-arrow .owl-controls { top: -55px;}
+}
+@media(min-width: 992px) and (max-width: 1024px) {
+    .about-fitness-right { padding: 70px 15px 70px 25px;}
+    .about-fitness-left .about-left-img { padding: 60px 0;}
+    
+   
+    .feature-classes-area .section-title h2::after, 
+    .expert-trainer-area .section-title h2::after, 
+    .online-store-area .section-title h2::after, 
+    .latest-news-area .section-title h2::after { width: 55%;}
+    .our-trainer-item .trainer-image img { height: 220px;}
+    .social-icons ul li { margin-right: 0;}
+    .join-us .join-content .custom-button, 
+    .join-us .join-content .custom-button::after { padding: 10px 15px;}
+    ul.counter-list { margin-top: 35px;}
+}
+/* Large Devices, Wide Screens */
+
+@media(min-width: 1025px) and (max-width: 1200px) {
+   
+
+    .slider-content .big-title { font-size: 60px; position: relative; bottom: 30px;}
+    .slider-content .small-content { padding-top: 0;}
+    .slider-content .button { bottom: 23%;}
+    .preview-2 .nivo-controlNav { bottom: 30px;}
+
+    .about-fitness-right { padding: 60px 15px 60px 40px;}
+    .about-single-service .service-item { padding-bottom: 15px;}
+    .about-fitness-left .about-left-img .overly h3 { font-size: 64px;}
+    .about-fitness-left .about-left-img { padding-top: 70px; padding-bottom: 70px;}
+
+    .feature-classes-area,
+    .what-client-area,
+    .expert-trainer-area,
+    .online-store-area,
+    .fitness-summer-area,
+    .latest-news-area,
+    .logo-showcase-area,
+    .footer-area,
+    .trainer-details-area,
+    .online-store-grid,
+    .related-classes-area,
+    .single-page-area {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .schedule-page,
+    .news-page-area,
+    .error-page-area {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .being-body-builder, .class-schedule { padding-top: 80px;}
+    .news-detail-area, .classes-detail-area { padding-top: 80px;}
+    .single-news-detail { padding-bottom: 50px;}
+    .our-trainer-area { padding-top: 80px; padding-bottom: 34px;}
+    .related-product-area { padding-bottom: 0;}
+
+    .feature-classes-area .section-title h2::after,
+    .expert-trainer-area .section-title h2::after,
+    .online-store-area .section-title h2::after,
+    .latest-news-area .section-title h2::after {
+        right: 10%;
+        width: 55%;
+    }
+    .related-product-area .section-title h2::after { right: 12%; width: 42%;}
+
+    .related-classes-area .section-title h2::after { right: 14%; width: 44%;}
+    
+    .being-body-builder .being-right-content { left: -70px;}
+    .being-body-builder .being-right-content .being-content { padding-top: 110px;}
+    .being-body-builder .being-right-content .being-content h2 { font-size: 70px; line-height: 70px;}
+    .being-body-builder .being-right-content .being-content p { font-size: 34px; letter-spacing: 36px;}
+    .social-icons ul li { margin-right: 1px;}
+
+    .inner-banner-area .innter-title h2 { padding-bottom: 30px;}
+    .choose-us-area { padding-top: 70px; padding-bottom: 70px; margin-top: 50px;}
+    ul.counter-list { text-align: center; margin-top: 35px;}
+    ul.counter-list li { height: 160px; width: 160px;}
+
+    .our-classes-area { padding-top: 80px; padding-bottom: 40px;}
+    .join-us .join-content .custom-button, .join-us .join-content .custom-button::after { padding: 12px 17px;}
+    .single-related-classes .classes-title { width: 200px; padding: 10px 0;}
+    .class-schedule-wrap ul.nav-tabs { margin-bottom: 30px;}
+    .our-trainer-item { width: 300px; height: 300px;}
+    .our-trainer-item .trainer-image img { height: 210px;}
+    .error-page .error-content { padding-bottom: 80px;}
+    .header-top-right ul li { padding-right: 5px;}
+    .header-top-area .cart-area { padding-left: 5px;}
+    .class-schedule-wrap .nav-tabs li a { padding: 12px 25px; margin-right: 5px;}
+
+}
+
+
+/* Extra Large Devices, Wide Screens */
+@media(min-width: 1201px) and (max-width: 1920px) {
+    .about-fitness-right .about-single-service { max-width: 478px;}
+
+}
+@media(min-width: 991px) and (max-width: 1199px) {
+    .slider-area .slider-content .small-content {
+        width: 60%;
+    }
+    .inner-banner-area .innter-title h2 {
+        padding-top: 100px;
+    }
+    .being-body-builder3-wrapper .being-right-img img {
+        position: absolute;
+        bottom: 0;
+    }
+    
+    .slider2-caption .nivo-caption {
+        top: 30px;
+    }
+    .slider4-caption .nivo-caption {
+        top: 30px;
+    }
+    .slider3-caption .button  {
+        bottom: 15%;
+    }
+    .slider4-caption .slider-progress {
+        display: none;
+    }
+    .single-product-classes3 .single-product {
+        display: block;
+    }
+    .single-product-classes3 .single-product img {
+        width: 100%;
+    }
+    .being-body-builder2-wrapper .being-content h2 {
+        font-size: 60px;
+    }
+    .being-body-builder2-wrapper .being-content > span {
+        font-size: 42px
+    }
+    .why-choose-content h2 {
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .isotop-btn a {
+        padding: 8px 18px!important;
+    }
+    .being-body-builder3-wrapper {
+        display: block;
+    }
+    .being-body-builder3-wrapper .being-content {
+        margin-bottom: 30px;
+    }
+    .why-choose-content h2 {
+        font-size: 42px;
+    }
+    .slider2-caption .small-content {
+        width: 95%!important;
+    }
+    .slider3-caption .small-content {
+        display: none;
+    }
+    .slider3-caption .nivo-caption {
+        top: -30px;
+    }
+    .slider2-caption .big-title {
+        bottom: 30px;
+    }
+    .slider3-caption .big-title {
+        display: block;
+        font-size: 52px;
+    }
+    .slider2-caption .nivo-caption {
+        top: 30px;
+    }
+    .slider2-caption .slider-progress {
+        display: none;
+    }
+    .slider3-caption .slider-progress {
+        display: none;
+    }
+    .slider3-caption .button  {
+        bottom: 30%;
+    }
+    .slider4-caption .button  {
+        bottom: 40%;
+    }
+    .slider4-caption .small-content {
+        display: none;
+    }
+    .slider4-caption .nivo-caption {
+        top: 70px;
+    }
+    .slider4-caption .slider-progress {
+        display: none;
+    }
+    .slider4-caption .big-title {
+        font-size: 42px;
+    }
+    .why-choose2-wrapper {
+        display: block;
+    }
+    .why-choose2-wrapper .why-choose-img img {
+        position: inherit;
+    }
+    .why-choose2-wrapper .why-choose-content {
+        margin-bottom: 30px;
+    }
+    .why-choose2-area .side-text {
+        right: -60px;
+        top: 75%;
+    }
+    .single-product-classes3 .single-product {
+        display: block;
+    }
+    .single-product-classes3 .single-product img {
+        width: 100%;
+    }
+    .being-body-builder2-wrapper .being-content h2 {
+        font-size: 42px;
+    }
+    .being-body-builder2-wrapper .being-content > span {
+        font-size: 36px
+    }
+    .being-body-builder3-wrapper .being-content ul {
+        padding-right: 0;
+    }
+    .being-body-builder3-wrapper .being-content ul li a .service-content {
+        padding: 0 0 0 25px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .counter-area {
+      padding: 80px 0 55px;
+    }
+    .isotop-btn a {
+        padding: 8px 25px!important;
+        width: auto!important;
+    }
+    .header-top-bar2 {
+        display: none;
+    }
+    .header-top-bar3 {
+        display: none;
+    }
+    .header-top-bar4 {
+        display: none;
+    }
+    .why-choose-area .why-choose-img-holder {
+        left: 0;
+        right: 0;
+    }
+    .why-choose-content h2 {
+        font-size: 32px;
+    }
+    .slider2-caption .nivo-caption {
+        top: 65px;
+    }
+    .slider2-caption .s-tb-c {
+        vertical-align: top;
+    }
+    .slider2-caption .big-title {
+        display: block;
+        font-size: 40px;
+    }
+    .slider2-caption .small-content {
+        display: block;
+    }
+    .slider3-caption .big-title {
+        display: block;
+        font-size: 34px;
+    }
+    .slider3-caption .button  {
+        bottom: 22%;
+    }
+    .slider4-caption .big-title {
+        font-size: 34px;
+        display: block;
+    }
+    .slider4-caption .s-tb-c {
+        vertical-align: top;
+    }
+    .slider4-caption .button  {
+        bottom: 60%;
+    }
+    .being-body-builder2-wrapper .being-content h2 {
+        font-size: 36px;
+    }
+    .being-body-builder2-wrapper .being-content > span {
+        font-size: 32px
+    }
+    
+}
+@media only screen and (max-width: 479px) {
+    .counter-area .col-xs-6 {
+        width: 100%;
+    }
+    .counter-area {
+      padding: 70px 0 45px;
+    }
+    .isotop-btn a {
+        padding: 6px 20px!important;
+        width: auto!important;
+    }
+    .counter-area h2 {
+        font-size: 48px;
+    }
+    .slider1-caption .nivo-caption {
+        top: -10px;
+    }
+    .slider2-caption .big-title {
+        font-size: 22px;
+    }
+    .slider2-caption .small-content {
+        display: none;
+    }
+    .slider3-caption .big-title {       
+        font-size: 22px;
+    }
+    .slider4-caption .big-title {       
+        font-size: 22px;
+    }
+    .slider3-caption .button  {
+        bottom: 15%;
+    }
+    .slider4-caption .nivo-caption {
+        top: 50px;
+    }
+    .slider4-caption .button  {
+        bottom: 50%;
+    }
+    .expert-trainer-area2 .col-xs-6 {
+        width: 100%;
+    }
+    .trainer-box2 {
+        margin-bottom: 30px;
+    }
+    .why-choose-content h2 {
+        font-size: 28px;
+    }
+    .being-body-builder2-wrapper .being-content h2 {
+        font-size: 32px;
+    }
+    .being-body-builder2-wrapper .being-content > span {
+        font-size: 28px
+    }
+}
+@media only screen and (max-width: 320px) {
+    .why-choose-content h2 {
+        font-size: 26px;
+    }
+    .being-body-builder2-wrapper .being-content h2 {
+        font-size: 30px;
+    }
+    .being-body-builder2-wrapper .being-content > span {
+        font-size: 24px
+    }
+}

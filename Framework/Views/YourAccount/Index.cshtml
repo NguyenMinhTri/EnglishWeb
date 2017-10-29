@@ -1,0 +1,59 @@
+﻿@Html.Partial("_ProfileSettings")
+
+<!-- Your Account Personal Information -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-9 push-xl-3 col-lg-9 push-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <div id="partial">
+            </div>
+        </div>
+        @Html.Partial("_ProfileSettingsResponsive")
+    </div>
+</div>
+
+<script>
+    function getview(action) {
+        $(".waiting_loader").css("display", "block");
+        var url = "/YourAccount/" + action;
+        $("#partial").load(url, function (response, status, xhr) {
+            if (status == "success") {
+                $(".waiting_loader").css("display", "none");
+                window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
+                initInput();
+            }
+        });
+        $('#partial').hide().fadeIn(500);
+        scrollto("#partial");
+    }
+
+    var option = getQueryVariable("option");
+    getview(option);
+</script>
+
+@*<button id="sendmessage"></button>*@
+
+@section scripts{
+    @*<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <script>
+            $(function () {
+                // Declare a proxy to reference the hub.
+                var chat = $.connection.chatHub;
+                // Create a function that the hub can call to broadcast messages.
+                chat.client.addChatMessage = function (who, message) {
+                    console.log(who+':'+message);
+                };
+
+                // Start the connection.
+                $.connection.hub.start().done(function () {
+                    $('#sendmessage').click(function () {
+                        // Call the Send method on the hub.
+                        chat.server.sendChatMessage('thinhphan9@yandex.com', 'abc');
+                        // Clear text box and reset focus for next comment.
+                        $('#message').val('').focus();
+                    });
+                });
+            });
+        </script>*@
+}

@@ -1,0 +1,174 @@
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Common.dll.config
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Common.dll.config
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Common.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Common.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Model.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Framework.Model.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\obj\Debug\Framework.Common.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Framework.Common.dll.config
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\Framework\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\Framework\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\Framework\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Framework.Common.dll.config
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.Common\obj\Debug\Framework.Common.pdb
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.dll.config
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.pdb
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Model.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Model.pdb
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.dll.config
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.dll.config
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.Common\obj\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Framework.Common.dll.config
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\obj\Debug\Framework.Common.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.Common\obj\Debug\Framework.Common.pdb
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Framework.Common.dll.config
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Framework.Common.dll
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Framework.Common.pdb
+E:\2207\Billing\backend\Framework.Common\bin\Debug\EntityFramework.dll
+E:\2207\Billing\backend\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Framework.Model.dll
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Framework.Model.pdb
+E:\2207\Billing\backend\Framework.Common\bin\Debug\EntityFramework.xml
+E:\2207\Billing\backend\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\2207\Billing\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\2207\Billing\backend\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+E:\2207\Billing\backend\Framework.Common\obj\Debug\Framework.Common.dll
+E:\2207\Billing\backend\Framework.Common\obj\Debug\Framework.Common.pdb
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Framework.Common.dll.config
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Framework.Common.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Framework.Common.pdb
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\EntityFramework.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Framework.Model.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Framework.Model.pdb
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\EntityFramework.xml
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Work Bitch!\backend_init\backend\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Work Bitch!\backend_init\backend\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+D:\Work Bitch!\backend_init\backend\Framework.Common\obj\Debug\Framework.Common.dll
+D:\Work Bitch!\backend_init\backend\Framework.Common\obj\Debug\Framework.Common.pdb
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Framework.Common.dll.config
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Framework.Common.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Framework.Common.pdb
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\EntityFramework.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Framework.Model.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Framework.Model.pdb
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\EntityFramework.xml
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Work Bitch!\KL\Framework\Framework.Common\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Work Bitch!\KL\Framework\Framework.Common\obj\Debug\Framework.Common.csprojResolveAssemblyReference.cache
+D:\Work Bitch!\KL\Framework\Framework.Common\obj\Debug\Framework.Common.dll
+D:\Work Bitch!\KL\Framework\Framework.Common\obj\Debug\Framework.Common.pdb

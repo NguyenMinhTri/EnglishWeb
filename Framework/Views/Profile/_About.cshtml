@@ -1,0 +1,148 @@
+﻿@model Framework.ViewModels.AboutViewModel
+
+<script>
+    document.title = "Về bạn | Olympus";
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 push-xl-4 col-lg-8 push-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Thói quen và Sở thích</h6>
+                </div>
+                <div class="ui-block-content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <ul class="widget w-personal-info item-block">
+                                <li>
+                                    <span class="title">Sở thích</span>
+                                    <p class="text">
+                                        @Model.HobbyToString
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <ul class="widget w-personal-info item-block">
+                                <li>
+                                    <span class="title">Show truyền hình yêu thích</span>
+                                    <p class="text">@Model.FavoriteShowToString</p>
+                                </li>
+                                <li>
+                                    <span class="title">Bộ phim yêu thích</span>
+                                    <p class="text">@Model.FavoriteFilmToString </p>
+                                </li>
+                                <li>
+                                    <span class="title">Trò chơi yêu thích</span>
+                                    <p class="text">@Model.FavoriteGameToString</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <ul class="widget w-personal-info item-block">
+                                <li>
+                                    <span class="title">Ban nhạc / Ca sĩ yêu thích</span>
+                                    <p class="text">@Model.FavoriteArtistToString</p>
+                                </li>
+                                <li>
+                                    <span class="title">Sách báo yêu thích</span>
+                                    <p class="text">@Model.FavoriteBookToString</p>
+                                </li>
+                                <li>
+                                    <span class="title">Tác giả yêu thích</span>
+                                    <p class="text">@Model.FavoriteAuthorToString</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 pull-xl-8 col-lg-4 pull-lg-8 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Thông tin cá nhân</h6>
+                </div>
+                <div class="ui-block-content">
+                    <ul class="widget w-personal-info">
+                        <li>
+                            <span class="title">Họ và tên</span>
+                            <p class="text">
+                                @Model.Name
+                            </p>
+                        </li>
+                        <li>
+                            <span class="title">Về tôi</span>
+                            <p class="text">
+                                @Model.AboutToString
+                            </p>
+                        </li>
+                        <li>
+                            <span class="title">Cấp độ</span>
+                            <p class="text">
+                                Tiểu học
+                            </p>
+                        </li>
+                        <li>
+                            <span class="title">Ngày sinh</span>
+                            <p class="text">@Model.Birthday.Value.ToShortDateString()</p>
+                        </li>
+                        <li>
+                            <span class="title">Sống tại</span>
+                            <p class="text">@Model.AddressToString</p>
+                        </li>
+                        <li>
+                            <span class="title">Nghề nghiệp</span>
+                            <p class="text">@Model.CareerToString</p>
+                        </li>
+                        <li>
+                            <span class="title">Cơ quan</span>
+                            <p class="text">@Model.OrganizationToString</p>
+                        </li>
+                        <li>
+                            <span class="title">Tham gia</span>
+                            <p class="text">@Model.CreatedDate.Value.ToShortDateString()</p>
+                        </li>
+                        <li>
+                            <span class="title">Giới tính</span>
+                            <p class="text">@Model.SexToString</p>
+                        </li>
+                        <li>
+                            <span class="title">Tình trạng</span>
+                            <p class="text">@Model.UserStatusToString</p>
+                        </li>
+                        <li>
+                            <span class="title">Email</span>
+                            <a href="mailto:@Model.Email" class="text">@Model.Email</a>
+                        </li>
+                        <li>
+                            <span class="title">Số điện thoại</span>
+                            <a href="tel:@Model.Phone" class="text">@Model.PhoneToString</a>
+                        </li>
+                    </ul>
+                    @if (Model.Facebook != null || Model.Google != null)
+                    {
+                        <div class="widget w-socials">
+                            <h6 class="title">Mạng xã hội khác</h6>
+                            @if (Model.Facebook != null)
+                            {
+                                <a href="@Model.Facebook" class="social-item bg-facebook">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    Facebook
+                                </a>
+                            }
+                            @if (Model.Google != null)
+                            {
+                                <a href="@Model.Google" class="social-item bg-dribbble">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                    Google+
+                                </a>
+                            }
+                        </div>
+                    }
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

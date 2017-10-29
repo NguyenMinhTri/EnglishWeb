@@ -1,0 +1,435 @@
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.dll.config
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Antlr3.Runtime.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Autofac.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Autofac.Integration.Mvc.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Autofac.Integration.WebApi.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\EntityFramework.SqlServer.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Facebook.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Common.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.FrameworkContext.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Model.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Repository.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Service.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.ViewModel.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.SignalR.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Facebook.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Google.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Twitter.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Web.Infrastructure.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Newtonsoft.Json.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Ninject.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Owin.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Net.Http.Formatting.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Helpers.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Http.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Http.WebHost.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Mvc.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Optimization.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Razor.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.WebPages.Deployment.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.WebPages.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.WebPages.Razor.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\WebGrease.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Common.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.FrameworkContext.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Model.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Repository.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.Service.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Framework.ViewModel.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Autofac.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Autofac.Integration.Mvc.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Autofac.Integration.WebApi.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\EntityFramework.SqlServer.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Facebook.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.SignalR.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Newtonsoft.Json.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Ninject.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Net.Http.Formatting.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Helpers.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Http.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Http.WebHost.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Mvc.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Razor.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.WebPages.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.WebPages.Deployment.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.WebPages.Razor.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\System.Web.Optimization.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Antlr3.Runtime.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Facebook.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Google.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.Twitter.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\obj\Release\Framework.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\obj\Release\Framework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework\obj\Release\Framework.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.dll.config
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Antlr3.Runtime.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Autofac.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Autofac.Integration.Mvc.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Autofac.Integration.WebApi.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Facebook.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Common.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Model.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Repository.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Service.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.ViewModel.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Newtonsoft.Json.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Ninject.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Owin.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Net.Http.Formatting.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Helpers.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Http.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Http.WebHost.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Mvc.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Optimization.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Razor.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.WebPages.Deployment.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.WebPages.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.WebPages.Razor.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\WebGrease.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Common.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Model.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Repository.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.Service.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Autofac.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Autofac.Integration.Mvc.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Autofac.Integration.WebApi.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Facebook.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Newtonsoft.Json.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Ninject.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Net.Http.Formatting.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Helpers.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Http.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Http.WebHost.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Mvc.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Razor.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.WebPages.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.WebPages.Deployment.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.WebPages.Razor.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\System.Web.Optimization.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Antlr3.Runtime.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\obj\Release\Framework.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\obj\Release\Framework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework\obj\Release\Framework.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.dll.config
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Antlr3.Runtime.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Autofac.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Autofac.Integration.Mvc.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Autofac.Integration.WebApi.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Facebook.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Common.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Model.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Repository.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Service.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.ViewModel.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Newtonsoft.Json.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Ninject.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Owin.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Net.Http.Formatting.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Helpers.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Http.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Http.WebHost.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Mvc.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Optimization.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Razor.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.WebPages.Deployment.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.WebPages.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.WebPages.Razor.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\WebGrease.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Common.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Model.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Repository.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.Service.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Autofac.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Autofac.Integration.Mvc.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Autofac.Integration.WebApi.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Facebook.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Newtonsoft.Json.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Ninject.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Net.Http.Formatting.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Helpers.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Http.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Http.WebHost.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Mvc.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Razor.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.WebPages.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.WebPages.Deployment.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.WebPages.Razor.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\System.Web.Optimization.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Antlr3.Runtime.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\obj\Release\Framework.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\obj\Release\Framework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework\obj\Release\Framework.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.dll.config
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Antlr3.Runtime.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Autofac.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Autofac.Integration.Mvc.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Autofac.Integration.WebApi.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Facebook.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Common.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Model.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Repository.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Service.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.ViewModel.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Newtonsoft.Json.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Ninject.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Owin.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Net.Http.Formatting.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Helpers.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Http.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Http.WebHost.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Mvc.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Optimization.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Razor.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.WebPages.Deployment.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.WebPages.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.WebPages.Razor.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\WebGrease.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Repository.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.Service.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Autofac.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Autofac.Integration.Mvc.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Autofac.Integration.WebApi.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Facebook.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Newtonsoft.Json.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Ninject.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Net.Http.Formatting.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Helpers.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Http.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Http.WebHost.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Mvc.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Razor.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.WebPages.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.WebPages.Deployment.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.WebPages.Razor.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\System.Web.Optimization.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Antlr3.Runtime.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\obj\Release\Framework.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\obj\Release\Framework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework\obj\Release\Framework.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.dll.config
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Antlr3.Runtime.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Autofac.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Autofac.Integration.Mvc.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Autofac.Integration.WebApi.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\EntityFramework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Facebook.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Common.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Model.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Repository.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Service.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.ViewModel.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Newtonsoft.Json.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Ninject.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Owin.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Net.Http.Formatting.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Helpers.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Http.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Http.WebHost.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Mvc.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Optimization.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Razor.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.WebPages.Deployment.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.WebPages.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.WebPages.Razor.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\WebGrease.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Common.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Repository.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.Service.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Framework.ViewModel.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Autofac.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Autofac.Integration.Mvc.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Autofac.Integration.WebApi.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\EntityFramework.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Facebook.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Newtonsoft.Json.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Ninject.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Net.Http.Formatting.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Helpers.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Http.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Http.WebHost.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Mvc.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Razor.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.WebPages.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.WebPages.Deployment.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.WebPages.Razor.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\System.Web.Optimization.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Antlr3.Runtime.pdb
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\obj\Release\Framework.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\obj\Release\Framework.dll
+C:\Users\hung\Desktop\2207\ArcadiaChildrenDentist\ArcadiaChildrenDentist_backend\Framework\obj\Release\Framework.pdb

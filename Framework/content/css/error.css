@@ -1,0 +1,51 @@
+﻿.validate span.form-validation {
+    display: none;
+    visibility: hidden;
+    color: #ff5e3a;
+    height: 25px;
+    transition: all 1s;
+    opacity:0;
+}
+
+.validate .error span.form-validation {
+    visibility: visible;
+    opacity: 1;
+    display: block !important;
+}
+
+.validate .error span.form-validation ~ input.form-control {
+    border-color: #ff5e3a;
+}
+.validate .same-height {
+    display: flex;
+    align-items: flex-end;
+}
+
+.validate .form-group.label-floating span.form-validation ~ label.control-label {
+    top: 18px;
+}
+
+.validate .form-group.label-static label.control-label, 
+.validate .form-group.label-floating.is-focused label.control-label, 
+.validate .form-group.label-floating:not(.is-empty) label.control-label {
+    top: 10px !important;
+}
+
+.validate .error.form-group.label-floating span.form-validation ~ label.control-label {
+    top: 41px;
+}
+
+.validate .error.form-group.label-static label.control-label, 
+.validate .error.form-group.label-floating.is-focused label.control-label, 
+.validate .error.form-group.label-floating:not(.is-empty) label.control-label {
+    top: 35px !important;
+}
+
+.validate .error span.form-validation ~ span.input-group-addon {
+    margin-top: 25px;
+    height: calc(100% - 25px);
+}
+
+  .validate .same-height .form-group {
+    width: 100%;
+}

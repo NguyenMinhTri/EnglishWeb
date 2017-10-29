@@ -1,0 +1,41 @@
+﻿@model Framework.ViewData.Control.TextFieldViewData
+
+@if (Model.Visible == false)
+{
+    @Html.Raw("<div style=\"display:none;\">");
+}
+@{
+    var css = "form-group form-input-group";
+    if (Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group hidden-when-update";
+    }
+}
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonTextField">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7">
+        @if (@Model.Require)
+        {
+            <input class="form-control"
+                   placeholder="@Model.Placehoder"
+                   type="text" required
+                   autocomplete="off" aria-required="true">
+        }
+        else
+        {
+            <input class="form-control"
+                   placeholder="@Model.Label"
+                   autocomplete="off" aria-required="true">
+        }
+
+    </div>
+</div>
+
+
+@if (Model.Visible == false)
+{
+    @Html.Raw("</div>");
+}

@@ -1,0 +1,533 @@
+﻿@model Framework.ViewModels.NewsFeedViewModel
+
+<script>
+    document.title = "Trang cá nhân | Olympus";
+</script>
+
+<div class="container">
+    <div class="row">
+
+        <!-- Main Content -->
+
+        <div class="col-xl-6 push-xl-3 col-lg-12 push-lg-0 col-md-12 col-sm-12 col-xs-12">
+            <div id="newsfeed-items-grid">
+
+                <div class="ui-block">
+                    <div class="news-feed-form">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                                <form>
+                                    <div class="author-thumb sinhvien">
+                                        <img src="content/images/author-page.jpg" alt="author">
+                                    </div>
+                                    <div class="form-group with-icon label-floating is-empty">
+                                        <label class="control-label">Bạn đang thắc mắc về...</label>
+                                        <textarea class="form-control" placeholder=""></textarea>
+                                    </div>
+                                    <div class="add-options-message row">
+                                        <div class="col-md-8 col-sm-8 tag-friends">
+                                            <label class="control-label">Bạn có thể đặt 2 câu hỏi cho</label>
+                                            <fieldset class="form-group">
+                                                <select class="selectpicker form-control" size="auto">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="2">Oklahoma</option>
+                                                    <option value="WY">Wyoming</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <button class="btn btn-primary btn-md-2">Đăng tải</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
+                                <form>
+                                    <div class="author-thumb sinhvien">
+                                        <img src="content/images/author-page.jpg" alt="author">
+                                    </div>
+                                    <div class="form-group with-icon label-floating is-empty">
+                                        <label class="control-label">Bạn muốn chia sẻ về...</label>
+                                        <textarea class="form-control" placeholder=""></textarea>
+                                    </div>
+                                    <div class="add-options-message">
+                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="THÊM ẢNH">
+                                            <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="content/icons/icons.svg#olymp-camera-icon"></use></svg>
+                                        </a>
+
+                                        <button class="btn btn-primary btn-md-2">Đăng tải</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
+                                <form>
+                                    <div class="author-thumb sinhvien">
+                                        <img src="content/images/author-page.jpg" alt="author">
+                                    </div>
+                                    <div class="form-group with-icon label-floating is-empty">
+                                        <label class="control-label">Bạn đang đang suy nghĩ về...</label>
+                                        <textarea class="form-control" placeholder=""></textarea>
+                                    </div>
+                                    <div class="add-options-message">
+                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="THÊM ẢNH">
+                                            <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="content/icons/icons.svg#olymp-camera-icon"></use></svg>
+                                        </a>
+                                        <button class="btn btn-primary btn-md-2">Đăng tải</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-block">
+                    <article class="hentry post">
+
+                        <div class="post__author author vcard inline-items">
+                            <img src="content/images/author-page.jpg" alt="author" class="sinhvien">
+
+                            <div class="author-date">
+                                <a class="h6 post__author-name fn" href="Profile">Thịnh Phan</a>
+                                <div class="post__date">
+                                    <time class="published" datetime="2017-03-24T18:18">
+                                        19 giờ trước
+                                    </time>
+                                </div>
+                            </div>
+
+                            <div class="more">
+                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                <ul class="more-dropdown">
+                                    <li>
+                                        <a href="#">Sửa bài</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Xóa bài</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            Học tiếng anh sao cho hiệu quả mọi người nhỉ?
+                        </p>
+
+                        <div class="post-additional-info inline-items">
+
+                            <a href="#" class="post-add-icon inline-items upvote active">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>81</span>
+                            </a>
+                            <a href="#" class="post-add-icon inline-items downvote">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>8</span>
+                            </a>
+
+                            <ul class="friends-harmonic">
+                                <li>
+                                    <a href="#" class="sinhvien">
+                                        <img src="content/images/friend-harmonic7.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="maugiao">
+                                        <img src="content/images/friend-harmonic8.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="trunghoc">
+                                        <img src="content/images/friend-harmonic9.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="giaosu">
+                                        <img src="content/images/friend-harmonic10.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tieuhoc">
+                                        <img src="content/images/friend-harmonic11.jpg" alt="friend">
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="names-people-likes">
+                                <a href="#">Minh Trí</a>, <a href="#">Lê Văn Phú</a> và
+                                <br>6 người khác đã bình luận.
+                            </div>
+
+
+                            <div class="comments-shared">
+                                <a href="#" class="post-add-icon inline-items">
+                                    <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
+                                    <span>17</span>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                        <div class="control-block-button post-control-button">
+                            <a href="#" class="btn btn-control upvote">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                            </a>
+
+                            <a href="#" class="btn btn-control downvote">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                            </a>
+                        </div>
+
+                    </article>
+                </div>
+
+                <div class="ui-block">
+                    <article class="hentry post">
+
+                        <div class="post__author author vcard inline-items">
+                            <img src="content/images/author-page.jpg" alt="author">
+
+                            <div class="author-date">
+                                <a class="h6 post__author-name fn" href="Profile">Thịnh Phan</a>
+                                <div class="post__date">
+                                    <time class="published" datetime="2017-03-24T18:18">
+                                        2 giờ trước
+                                    </time>
+                                </div>
+                            </div>
+
+                            <div class="more">
+                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                <ul class="more-dropdown">
+                                    <li>
+                                        <a href="#">Sửa bài</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Xóa bài</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            Be Going To + gì mọi người nhỉ?
+                        </p>
+
+                        <div class="post-additional-info inline-items">
+
+                            <a href="#" class="post-add-icon inline-items upvote ">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>6</span>
+                            </a>
+                            <a href="#" class="post-add-icon inline-items downvote active">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>36</span>
+                            </a>
+
+                            <ul class="friends-harmonic">
+                                <li>
+                                    <a href="#">
+                                        <img src="content/images/friend-harmonic7.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="content/images/friend-harmonic8.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="content/images/friend-harmonic9.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="content/images/friend-harmonic10.jpg" alt="friend">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="content/images/friend-harmonic11.jpg" alt="friend">
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="names-people-likes">
+                                <a href="#">Bạn</a>, <a href="#">Minh Trí</a> và
+                                <br>34 người khác đã bình luận.
+                            </div>
+
+
+                            <div class="comments-shared">
+                                <a href="#" class="post-add-icon inline-items">
+                                    <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
+                                    <span>17</span>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                        <div class="control-block-button post-control-button">
+                            <a href="#" class="btn btn-control upvote">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                            </a>
+
+                            <a href="#" class="btn btn-control downvote">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <ul class="comments-list">
+                        <li>
+                            <div class="post__author author vcard inline-items">
+                                <img src="content/images/avatar10-sm.jpg" alt="author">
+
+                                <div class="author-date">
+                                    <a class="h6 post__author-name fn" href="#">Minh Trí</a>
+                                    <div class="post__date">
+                                        <time class="published" datetime="2017-03-24T18:18">
+                                            5 phút trước
+                                        </time>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <p>V-ing nhé!</p>
+
+                            <a href="#" class="post-add-icon inline-items upvote ">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>6</span>
+                            </a>
+                            <a href="#" class="post-add-icon inline-items downvote active">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>36</span>
+                            </a>
+                            <a href="#" class="reply">Trả lời</a>
+                        </li>
+                        <li class="has-children">
+                            <div class="post__author author vcard inline-items">
+                                <img src="content/images/avatar5-sm.jpg" alt="author">
+
+                                <div class="author-date">
+                                    <a class="h6 post__author-name fn" href="#">Lê Văn Phú</a>
+                                    <div class="post__date">
+                                        <time class="published" datetime="2017-03-24T18:18">
+                                            1 giờ trước
+                                        </time>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <p>
+                                V-1 nha :))
+                            </p>
+
+                            <a href="#" class="post-add-icon inline-items upvote active">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>66</span>
+                            </a>
+                            <a href="#" class="post-add-icon inline-items downvote ">
+                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                <span>3</span>
+                            </a>
+                            <a href="#" class="reply">Trả lời</a>
+
+                            <ul class="children">
+                                <li>
+                                    <div class="post__author author vcard inline-items">
+                                        <img src="content/images/avatar8-sm.jpg" alt="author">
+
+                                        <div class="author-date">
+                                            <a class="h6 post__author-name fn" href="#">Nguyễn Thanh Thiện</a>
+                                            <div class="post__date">
+                                                <time class="published" datetime="2017-03-24T18:18">
+                                                    39 phút trước
+                                                </time>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <p>Đúng rồi nè!</p>
+
+                                    <a href="#" class="post-add-icon inline-items upvote active">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>66</span>
+                                    </a>
+                                    <a href="#" class="post-add-icon inline-items downvote ">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>3</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                    </ul>
+
+                    <a href="#" class="more-comments">Xem thêm bình luận <span>+</span></a>
+                    <form class="comment-form inline-items">
+
+                        <div class="post__author author vcard inline-items">
+                            <img src="content/images/author-page.jpg" alt="author">
+                        </div>
+
+                        <div class="form-group with-icon-right ">
+                            <textarea class="form-control" placeholder=""></textarea>
+                            <div class="add-options-message">
+                                <a href="#" class="options-message" data-toggle="modal">
+                                    <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
+                                </a>
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+            <a id="load-more-button" href="#" class="btn btn-control btn-more" data-load-link="items-to-load.html" data-container="newsfeed-items-grid"><svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
+        </div>
+
+        <!-- ... end Main Content -->
+        <!-- Left Sidebar -->
+
+        <div class="col-xl-3 pull-xl-6 col-lg-6 pull-lg-0 col-md-6 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Tự bạch</h6>
+                </div>
+                <div class="ui-block-content">
+                    <ul class="widget w-personal-info item-block">
+                        <li>
+                            <span class="title">Về tôi</span>
+                            <span class="text">Chào, tôi là Thịnh, hiện là sinh viên của trường đại học CNTT.</span>
+                        </li>
+                        <li>
+                            <span class="title">Trình độ</span>
+                            <span class="text">Đại học</span>
+                        </li>
+                        <li>
+                            <span class="title">Mục tiêu</span>
+                            <span class="text">Giao tiếp một cách ngon lành!</span>
+                        </li>
+                    </ul>
+
+                    <div class="widget w-socials">
+                        <h6 class="title">Mạng xã hội khác</h6>
+                        <a href="#" class="social-item bg-facebook">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            Facebook
+                        </a>
+                        <a href="#" class="social-item bg-dribbble">
+                            <i class="fa fa-google-plus" aria-hidden="true"></i>
+                            Google+
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ... end Left Sidebar -->
+        <!-- Right Sidebar -->
+
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Bạn bè (86)</h6>
+                </div>
+                <div class="ui-block-content">
+                    <ul class="widget w-faved-page js-zoom-gallery">
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar38-sm.jpg" alt="author">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar24-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar36-sm.jpg" alt="author">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar35-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar34-sm.jpg" alt="author">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar33-sm.jpg" alt="author">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar32-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar31-sm.jpg" alt="author">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar30-sm.jpg" alt="author">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar29-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar28-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar27-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar26-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="content/images/avatar25-sm.jpg" alt="user">
+                            </a>
+                        </li>
+                        <li class="all-users">
+                            <a href="#">+74</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ... end Right Sidebar -->
+    </div>
+</div>

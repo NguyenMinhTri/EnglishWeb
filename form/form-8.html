@@ -1,0 +1,117 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<title>Consent Form for Use or Disclosure of Patient Health Information | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+
+	<script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ 
+</head>
+<body >
+	<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				Consent Form for Use or Disclosure of Patient Health Information
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+ 
+	<form>
+		<div class="ameridenti-form">
+			<div class="ameridenti-form-content">
+				<h3 class="bold text-center">Consent Form for Use or Disclosure of Patient Health Information</h3>
+				<br>
+				<br>
+				<br>
+				<div style="font-size: 20px;">
+					<span class="bold italic">Instructions: </span><span class="italic">Please complete and provide to the above dental practice. You
+					may request a copy of this completed form. For questions, ask to speak with
+					the dental practice’s privacy officer.</span>
+					<br><br>
+					<div class="input-inline"><span>I authorize </span><input type="text" name="PracticeName"><span class="orange">[Practice Name]</span> </div>
+					<div class="input-inline"><span>to use or to disclose to </span> <input type="text" name="RecipientName"><span class="orange">[Recipient’s Name]</span> </div>
+					<div class="input-inline"><span>the health information of </span> <input type="text" name="PatientName"><span class="orange">[Patient’s Name]</span> </div>
+					<div class="input-inline"><span>for the purpose of </span> <input type="text" name="Purpose"></div>
+					<br><span class="gray">[Description of the Purpose of the Release]</span>. I understand the receiving party may
+					not further disclose this health information without first obtaining a new written
+					authorization from me. I understand this authorization may be canceled or
+					modified at any time upon provision of a written notice to this dental practice. I
+					understand that I may refuse to sign this authorization and that my refusal to sign
+					in no way affects my treatment, payment, enrollment in a health plan or eligibility
+					for benefits. I understand I may have a copy of this authorization.
+					<br><br>The health information to be used or disclosed is limited to the following:
+					<span class="italic">(you may note dates, procedures or use other description)</span>
+					<textarea name="Purpose"></textarea>
+					<br><br><div class="input-inline"><span>This authorization is valid until </span> <span class="orange"> [Date]:</span> <input type="text" name="DateValid" class="datepicker"></div>
+					<br>
+					<div class="input-inline"><span>Signature:</span> <input type="text" name="Signature"></div>
+					<div class="input-inline"><span>Print name: </span><input type="text" name="PrintName"></div>
+					<div class="input-inline"><span>Date Signed: </span><input type="text" name="DateSigned"></div>
+					Signed by:
+					<div class="input-block">
+						<input type="radio" name="SignedBy" value="male"> Patient<br>
+						<input type="radio" name="SignedBy" value="female"> Parent/legal guardian<br>
+						<input type="radio" name="SignedBy" value="other"> Personal representative of the patient
+					</div>
+				</div>
+				<hr>
+				<div class="copyright">© 2017 AmeriDenti _Dental Practice Support</div>
+			</div>
+		</div>
+		<input type="submit" style="display: none" id="submit-form">
+	</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model Framework.ViewData.Control.DateOfWeekViewData
+
+@{
+    var css = "form-group form-input-group";
+    if(Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group hidden-when-update";
+    }
+}
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonCombobox">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7">
+        <select class="selectpicker" name="@Model.FieldName" data-live-search="true" data-style="btn-primary">
+            <option value="1">Sunday</option>
+            <option value="2">Monday</option>
+            <option value="3">Tuesday</option>
+            <option value="4">Wednesday</option>
+            <option value="5">Thursday</option>
+            <option value="6">Friday</option>
+            <option value="7">Saturday</option>
+        </select>
+    </div>
+</div>
+

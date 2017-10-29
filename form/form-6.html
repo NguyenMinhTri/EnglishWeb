@@ -1,0 +1,107 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<title>Historial Del Paciente Y Renovacion De Informacion | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+
+	<script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ 
+</head>
+<body >
+	<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				Historial Del Paciente Y Renovacion De Informacion
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+ 
+	<form>
+		<div class="ameridenti-form">
+			<div class="ameridenti-form-content">
+				<h3 class="bold text-center">HISTORIAL DEL PACIENTE Y RENOVACION DE INFORMACION </h3>
+				<br>
+				<br>
+				<br>
+				<div style="font-size: 20px; line-height: 2;">
+					<div class="input-inline"><span>Fecha:</span> <input type="text" name="Date" class="datepicker"><span>Fecha De Nacimiento:</span><input type="text" name="Birthday" class="datepicker"></div> 
+					<div class="input-inline"><span>Nombre del paciente::</span><input type="text" name="PatientName"></div>
+					<div class="input-inline"><span>Direccion:</span><input type="text" name="Address"></div>
+					<div class="input-inline"><span>Correo Electronico:</span><input type="text" name="Email"></div>
+					<div class="input-inline"><span>Telefono:</span><input type="text" name="PhoneNumber"><span> Celular </span><input type="text" name="HomeNumber"></div>
+					<div class="input-inline"><span>Telefono de Emergencia:</span> <input type="text" name="EmergencyNumber"></div>
+					<div class="input-inline"><span>Ha habido cambios en su salud: </span>
+						<input type="radio" name="Changes" value="1"> Yes
+						<input type="radio" name="Changes" value="2"> No
+					</div>
+					<div class="input-inline"><span>Si su respuesta es si por favor de esplicar:</span><input type="text" name="ChangesDetail"></div>
+					<div class="input-inline"><span>Nombre de su Doctor Medico:</span><input type="text" name="PhysicianName"></div>
+					<div class="input-inline"><span>Numero de su Doctor Medico:</span><input type="text" name="PhysicianPhoneNumber"></div>
+					<div class="input-inline"><span>Es usted alergico al latex? : </span> <input type="radio" name="Allergic" value="1"> Yes
+						<input type="radio" name="Allergic" value="2"> No
+					</div>
+					<div class="input-inline"><span>Ha habido cambio con su aseguranza? </span> <input type="radio" name="Insurance" value="1"> Yes
+						<input type="radio" name="Insurance" value="2"> No
+					</div>
+					<div class="input-inline"><span>Si su respuesta es si porfavor de esplicar:</span><input type="text" name="InsuranceDetail"></div>
+					<div class="input-inline"><span>Firma del Paciente/Padres:</span><input type="text" name="PatientSignature"></div>
+					<div class="input-inline"><span>Firma del Doctor:</span><input type="text" name="DentistSignature"></div>
+				</div>
+			</div>
+			<input type="submit" style="display: none" id="submit-form">
+		</form>
+	</div>
+</div>
+</body>
+</html>

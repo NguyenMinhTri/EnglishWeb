@@ -1,0 +1,144 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<title>Medical Clearance for Dental Treatment | Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+
+	<script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ 
+</head>
+<body >
+	<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				Medical Clearance for Dental Treatment
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+ 
+<form>
+	<div class="ameridenti-form">
+		<div class="ameridenti-form-content">
+			<h3 class="bold text-center">Medical Clearance for Dental Treatment 
+			</h3>
+			<br>
+			<br>
+			<br>
+			<div style="font-size: 20px; line-height: 2;">
+				<div class="input-inline"><span>Treatment Date:</span> <input type="text" name="TreatmentDate" class="datepicker"></div>
+				<div class="input-inline"><span>Attn:</span> <input type="text" name="Attn"></div>
+				<div class="input-inline"><span>Patient: </span><input type="text" name="Patient"> <span>Birthday:</span> <input type="text" name="Birthday" class="datepicker"></div>
+				<div class="input-inline"><span>Dear Dr.</span><input type="text" name="DrName"></div>
+				<div class="input-inline"><span>Our mutual patient, </span> <input type="text" name="PatientName"> <span>is scheduled for dental treatment.</span></div>					
+				<br/>
+				Treatment may include:
+				<div class="input-block">
+					<input type="checkbox" name="Treatment" value="1"> Cleaning (simple or deep)
+					<br/><input type="checkbox" name="Treatment" value="2"> Radiographs
+					<br/><input type="checkbox" name="Treatment" value="3"> Fillings, Crowns, Bridges
+					<br/><input type="checkbox" name="Treatment" value="4"> Extraction (simple or surgical)
+					<br/><input type="checkbox" name="Treatment" value="5"> Surgery (Implant, Bone Grafting, Tissue Grafting)
+					<br/><input type="checkbox" name="Treatment" value="6"> Root Canal Therapy
+					<br/><input type="checkbox" name="Treatment" value="7"> Nitrous oxide
+					<br/><input type="checkbox" name="Treatment" value="8"> Local anesthetic (with epinephrine)
+					<br/><input type="checkbox" name="Treatment" value="9"> IV Sedation
+					<div class="input-inline"><input type="checkbox" name="Treatment" value="10"><span> Other</span> <input type="text" name="Treatment">
+					</div>
+					<br/>
+					The patient has indicated the following medical conditions: Please evaluate this patient’s medical history and advise us of any special considerations that should be made.
+					<div class="input-inline">
+						<div class="input-inline"><span>Antibiotic prophylaxis: </span>
+							<input type="radio" name="Antibiotic" value="1"> Yes
+							<input type="radio" name="Antibiotic" value="2"> No
+						</div>
+						<div class="input-inline">
+							<span>Interruption of anticoagulants: </span>
+							<input type="radio" name="Anticoagulants" value="1"> Yes
+							<input type="radio" name="Anticoagulants" value="2"> No
+						</div>
+					</div>
+					<div class="input-inline"><span>How long before and after treatment:</span>  <input type="text" name="Durring"></div> 
+					<div class="input-inline">
+						<div class="input-inline">
+							<span>Anesthetic restrictions: </span>
+							<input type="radio" name="Anesthetic" value="1"> Yes
+							<input type="radio" name="Anesthetic" value="2"> No
+						</div>
+						<div class="input-inline">
+							<span>Is Epinephrine OK? </span>
+							<input type="radio" name="Epinephrine" value="1"> Yes
+							<input type="radio" name="Epinephrine" value="2"> No
+						</div>
+					</div>
+					<div class="input-inline"><span>Type of antibiotic allowed/recommended: </span><input type="text" name="TypeAntibiotic"></div>
+					<div class="input-inline"><span>Type of pain medication allowed/recommended: </span><input type="text" name="TypePain"></div>
+					<br/>
+					Any additional comments:
+					<div class="input-inline"><span>Physician Name (please print)</span><input type="text" name="PhysicianName"></div>
+					<div class="input-inline"><span>Physician Signature </span><input type="text" name="PhysicianSignature"></div>
+					<div class="input-inline"><span>Date: </span><input type="text" name="DrName" class="datepicker"></div>
+					<br/>
+					We appreciate your assistance in providing optimum care for this patient. Please have physician	sign and fax to:
+					<div class="input-inline"><span>Practice Name: </span><input type="text" name="PracticeName"></div>
+					<div class="input-inline"><span>Tell: </span><input type="text" name="Tell"></div>
+					<div class="input-inline"><span>Fax: </span><input type="text" name="Fax"></div>
+					<div class="input-inline"><span>Email: </span><input type="email" name="Email"></div>
+				</div>
+			</div>
+			<input type="submit" style="display: none" id="submit-form">
+		</form>
+	</div>
+</div>
+</body>
+</html>

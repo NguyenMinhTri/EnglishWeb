@@ -1,0 +1,334 @@
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.AddComment.resources
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.ds.resources
+C:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations._new.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds1.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds2.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds3.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds4.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds5.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds6.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds7.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds8.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds9.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds10.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsfd.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsfd1.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsfd2.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds11.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds12.resources
+F:\Users\Hung\Documents\Visual Studio 2013\Projects\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds13.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds1.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds2.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds3.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds4.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds5.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds6.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds7.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds8.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds9.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds10.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsfd.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsfd1.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsfd2.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds11.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds12.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds13.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds14.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds15.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds16.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds17.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdssd.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdssd1.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdssd2.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdssd3.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdssd4.resources
+C:\Users\hung\Desktop\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdssd5.resources
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\LeeDentalGroup\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.vsdds.resources
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.vsdds.resources
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.vsdds.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd1.resources
+C:\Users\hung\Desktop\backup\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsd.resources
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd1.resources
+D:\Downloads\Compressed\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsd.resources
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.vsdds.resources
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd.resources
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd1.resources
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsd.resources
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\LeeDentalGroup\LeeDentalGroup\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.gdffd.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsds.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.vsdds.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd1.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.dsdsd.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.gdffd.resources
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fdds.resources
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fddsh.resources
+C:\Users\hung\Desktop\2207\DrKim\DrKim\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fddshsd.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\2207\Billing\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fdds.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fddsh.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fddshsd.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdf.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fsdgs.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfs.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fsdfs.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdf.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.fdsdf.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsd.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sfdfsdgfs.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdg.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdf1.resources
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+E:\2207\Billing\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdf.resources
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdf1.resources
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdf2.resources
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.sdfsdf3.resources
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd.resources
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd1.resources
+D:\Work Bitch!\backend_init\backend\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.asd2.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.init.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.user.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.db.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.IndexingExtensions.dll
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.ind.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aa.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaa.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaaa.resources
+D:\Work Bitch!\KL\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaa1.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.IndexingExtensions.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.init.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.user.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.db.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.ind.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aa.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaa.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaaa.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaa1.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aeeeee.resources
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+D:\GraduationThesis\Framework3\Framework\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb

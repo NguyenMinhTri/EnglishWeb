@@ -1,0 +1,113 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<title>Oral Health Screening Consent and Recommendations
+	| Brian Lee DDS Implantologist</title>
+
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="content/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="content/css/document.css">
+<link rel="stylesheet" type="text/css" href="content/css/print-preview.css">
+<link rel="stylesheet" type="text/css" href="content/css/bootstrap-datepicker.min.css">
+<link rel="icon" href="content/images/favicon.png">
+
+	<script src="content/js/jquery.min.js"></script>
+<script src="content/js/bootstrap.min.js"></script>
+<script src="content/js/moment.min.js"></script>
+<script src="content/js/bootstrap-datepicker.min.js"></script> 
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$('.datepicker').datepicker();
+	});
+</script>
+
+<script src="content/js/jquery.tools.min.js"></script>
+<script src="content/js/jquery.print-preview.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('button.print-preview').printPreview();
+
+		$(document).bind('keydown', function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 80 && !$('#print-modal').length) {
+				$.printPreview.loadPrintPreview();
+				return false;
+			}            
+		});
+	});
+</script>
+ 
+</head>
+<body >
+	<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<img alt="Lee Dental Group" src="content\images\logo_nocap.png" style="width: auto; height: 20px">
+				Oral Health Screening Consent and Recommendations
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse " aria-expanded="true" id="navbar-collapse"> 
+			<div class="btn-group navbar-right col-md-3 col-sm-5 col-xs-12" role="group">
+				<button type="button" class="btn btn-default navbar-btn print-preview col-md-6 col-sm-6 col-xs-6">Print Preview</button>
+				<button type="button" onclick="$('#submit-form').click()" class="btn btn-default navbar-btn col-md-6 col-sm-6 col-xs-6">Submit</button>
+			</div> 
+		</div>
+	</div>
+</nav>
+ 
+<form>
+	<div class="ameridenti-form">
+		<div class="ameridenti-form-content">
+			<h3 class="bold text-center">Oral Health Screening Consent and Recommendations
+			</h3>
+			<br>
+			<br>
+			<br>
+			<div style="font-size: 20px;">
+				<span class="bold">This section to be completed by parent, guardian or child’s representative:</span>
+				<div class="input-inline"><span>Child’s Name:</span> <input type="text" name="ChildName"> <span>Date of Birth:</span> <input type="text" name="Birth" class="datepicker"></div>
+				<div class="input-inline"><span>Parent’s/Guardian’s/Representative’s Name: </span><input type="text" name="ParentName"></div>
+				<div class="input-inline"><span>Relationship to Child: </span><input type="text" name="Relationship"></div>
+				I understand that by signing this form I am consenting for the child named above to receive a basic oral health assessment, or dental screening. I understand this screening is only a very basic evaluation and does not take the place of a thorough dental examination. I would need to secure the services of a dentist in order for my child to receive a complete dental examination necessary to establish and maintain oral
+				health.
+				I also understand that receiving this dental screening does not establish any new, ongoing or continuing doctor-patient’s relationship. I am free to establish such a doctor-patient relationship for my child in the future with the dentist performing this screening or another dentist of my choice. Further, I will not hold the dentist or those performing this assessment responsible for the oral health consequences or results	should I choose NOT to follow the recommendations listed below.
+				<br/><br/>
+				<div class="input-inline"><input type="text" name="" style="flex: 2"><span> Date: </span><input type="text" name="Date" class="datepicker"></div>
+				<span class="bold">Signature of Parent/Guardian/Representative</span>
+				<br/><br/>
+				<span class="bold">This section to be completed by the dental professional providing the assessment:</span>
+				Dear Parent or Guardian,
+				Beginning January 1, 2007, California law requires that all children entering public school for the first time, at either kindergarten or first grade, receive an oral health assessment by a dental professional before May 31st of their first school year. Today, I completed a dental screening for your child and below are the results of that evaluation.
+				Dental screenings only find obvious dental problems and are meant to identify children who need dental care. No X-rays were taken and this screening does not replace a thorough dental examination by a dentist.
+				Below are the results of the screening and my recommendation:
+				<div class="input-block">
+					<input type="checkbox" name="Recommendation" value="1"> Your child has no obvious dental problems but should receive routine examinations by a dentist.
+					<br/><input type="checkbox" name="Recommendation" value="2"> Your child appears to have some dental problems which should be evaluated by a dentist. Please make an appointment at your earliest convenience so that your child can receive a complete examination. Your dentist will determine, what, if any, treatment is needed.
+					<br/><input type="checkbox" name="Recommendation" value="3"> Your child has some dental problems which appear to need immediate care. Contact a dentist as	soon as possible for a complete examination.
+					Additionally, I have explained the risks of NOT proceeding with the recommendation provided and have fully responded to the questions posed to me by the parent/guardian/representative.
+				</div>
+				<br/><br/>
+				<div class="input-inline"><input type="text" name="" style="flex: 2"><span> Date: </span><input type="text" name="Date" class="datepicker"></div>				
+				<span class="bold">Dental Professional’s Signature</span>
+			</div>
+		</div>
+	</div>
+	<input type="submit" style="display: none" id="submit-form">
+</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@model Framework.ViewData.Control.TelFieldViewData
+
+@{
+    var textRequire = "";
+    if (Model.Require)
+    {
+        textRequire = "required";
+    }
+    var css = "form-group form-input-group";
+    if (Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group hidden-when-update";
+    }
+}
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonTextField">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7">
+        <input class="form-control"
+               placeholder="@Model.Label"
+               type="tel" @textRequire
+               autocomplete="off" aria-required="true">
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model Framework.ViewData.Control.ImageFileViewData
+
+@{
+    var css = "form-group form-input-group image-form-group";
+    if (Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group image-form-group hidden-when-update";
+    }
+}
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonImageFile">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    @*<div class="col-sm-7">
+        <input class="form-control"
+               placeholder="@Model.Label"
+               type="text" required="true"
+               autocomplete="off" aria-required="true">
+    </div>*@
+
+
+    <div class="form-input">
+        <div class="image-group">
+            @{
+                var idFile = "image" + Model.FieldName;
+            }
+            @*<div class="image-name-group">
+                <div class="file-show add-image">Thêm hình ảnh</div>
+            </div>*@
+            
+            <input type='file' class="image-input-group" id="@idFile" onchange="readURL(this);" accept="image/x-png,image/gif,image/jpeg" />
+            <img class="image-show" src="#" style="width:200px;" alt="your image" />
+            <input style="display:none" class="value-image" />
+            @*<img class="img-show-demo" style="display:none;" src="" />*@
+        </div>
+    </div>
+
+
+
+</div>
+

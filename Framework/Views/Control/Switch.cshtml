@@ -1,0 +1,42 @@
+﻿@model Framework.ViewData.Control.SwitchViewData
+
+@{
+    var css = "form-group form-input-group";
+    if (Model.NotChangeWhenUpdate)
+    {
+        css = "form-group form-input-group hidden-when-update";
+    }
+}
+
+
+<div class="@css" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonSwitch">
+    <label class="col-sm-4 control-label">
+        @Model.Label
+    </label>
+    <div class="col-sm-7">
+
+
+
+        <div class="onoffswitch">
+            <input type="checkbox" class="onoffswitch-checkbox" id="myonoffswitch_@Model.FieldName" checked>
+            <label class="onoffswitch-label" for="myonoffswitch_@Model.FieldName">
+                <span class="onoffswitch-inner switch-data switch-on"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+    </div>
+</div>
+<script>
+    $('#@Model.FieldName .onoffswitch-label').click(function (e) {
+        // e.preventDefault();
+
+        var switchData = $(this);
+
+        if (switchData.hasClass('switch-on')) {
+            switchData.removeClass('switch-on');
+        }
+        else {
+            switchData.addClass('switch-on');
+        }
+    });
+</script>

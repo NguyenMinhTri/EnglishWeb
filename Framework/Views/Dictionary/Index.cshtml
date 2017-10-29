@@ -1,0 +1,29 @@
+﻿
+@Html.Partial("_Header")
+
+<div class="container negative-margin-top150">
+    <div class="col-xl-8 offset-xl-2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id="partial">
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function getview(action) {
+        $(".waiting_loader").css("display", "block");
+        var url = "/Dictionary/" + action;
+        $("#partial").load(url, function (response, status, xhr) {
+            if (status == "success") {
+                $(".waiting_loader").css("display", "none");
+                window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
+                initInput();
+            }
+        });
+        $('#partial').hide().fadeIn(500);
+        scrollto("#partial");
+    }
+
+    var option = getQueryVariable("option");
+    getview(option);
+</script>

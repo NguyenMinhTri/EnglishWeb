@@ -1,0 +1,18 @@
+﻿@model Framework.ViewData.Control.RadioButtonViewData
+@{
+}
+<div class="form-input-group" id="@Model.FieldName" name="@Model.FieldName" jsonvalue="jsonRadioButton">
+    @if (Model.Require)
+    {
+        <div class="form-label require">@Model.Label </div>
+    }
+    else
+    {
+        <div class="form-label">@Model.Label </div>
+    }
+    <div class="form-input">
+        <div class="radio-group" url="@Model.Url" group="@Model.FieldName" display-member="@Model.DisplayMember" value-member="@Model.ValueMember" checked-member="@Model.CheckedMember">
+
+        </div>
+    </div>
+</div>
