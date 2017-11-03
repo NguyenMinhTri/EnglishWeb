@@ -6243,24 +6243,7 @@ ol.old-words li {
 
 ol.old-words li a{vertical-align: sub;color: black;}
 
-.voice button {
-   background: transparent url(../icons/sound.svg) no-repeat;
-   background-position: center;
-   cursor: pointer;
-   display: block;
-   font-size: 0;
-   line-height: 0;
-   text-decoration: none;
-   margin: 0 15px;
-   padding: 0;
-   height: 27px;
-   width: 27px;
-   border: 0;
-   outline: none;
-}
-
-.voice {
-    display: flex;
-    align-items: center;
-    margin-bottom: 35px;
+.voice object {
+    width: 25px;
+    padding: 1px;
 }

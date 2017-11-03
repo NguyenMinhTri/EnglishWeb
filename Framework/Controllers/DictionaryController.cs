@@ -15,6 +15,7 @@ using Framework.ViewModels;
 using Framework.Service.Client;
 using Framework.Model;
 using Framework.Model.Google;
+using System.Threading.Tasks;
 
 namespace Framework.Controllers
 {
@@ -83,7 +84,7 @@ namespace Framework.Controllers
         }
 
         [HttpGet]
-        public async System.Threading.Tasks.Task<ActionResult> Dictionaries(string keyword)
+        public async Task<PartialViewResult> Dictionaries(string keyword)
         {
             keyword = keyword.Trim();
             _viewModel = new DictionariesViewModel();
