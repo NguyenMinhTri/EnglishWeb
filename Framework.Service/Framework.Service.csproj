@@ -50,9 +50,9 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\TriNguyen\.nuget\packages\Newtonsoft.Json\6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -112,6 +112,7 @@
     <Compile Include="Admin\PostService.cs" />
     <Compile Include="Admin\PostVoteDetailService.cs" />
     <Compile Include="Admin\RoutingService.cs" />
+    <Compile Include="Client\ClientLearningService.cs" />
     <Compile Include="Client\ClientEntertainmentService.cs" />
     <Compile Include="Client\ClientDictionaryService.cs" />
     <Compile Include="Client\ClientProfileService.cs" />
