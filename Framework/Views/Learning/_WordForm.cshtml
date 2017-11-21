@@ -1,0 +1,217 @@
+﻿@model Framework.ViewModels.WordFormViewModel
+
+<script>
+    document.title = "Từ vựng | Olympus";
+</script>
+
+<div class="container game-learning">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="check-answer">
+                <div id="button-wrapper">
+                    <button>
+                        <p>Kiểm tra kết quả</p>
+                        <div class="fill"></div>
+                        <div class="fa fa-check"></div>
+                    </button>
+                </div>
+            </div>
+            <div class="ui-block" style="padding: 55px;">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 word-image">
+                    <div class="draggable js-drag drag-item">
+                        <img src="content/images/jeans.png" key="Jean(s)">
+                    </div>
+                    <div class="draggable js-drag drag-item">
+                        <img src="content/images/coat.png" key="Coat(s)">
+                    </div>
+                    <div class="draggable js-drag drag-item">
+                        <img src="content/images/jacket.png" key="Jacket(s)">
+                    </div>
+                    <div class="draggable js-drag drag-item">
+                        <img src="content/images/shorts.png" key="Short(s)">
+                    </div>
+                    <div class="draggable js-drag drag-item">
+                        <img src="content/images/pullover.png" key="Pullover(s)">
+                    </div>
+                    <div class="draggable js-drag drag-item">
+                        <img src="content/images/tshirt.png" key="T-shirt(s)">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 word-key">
+                    <div class="dropzone-wrapper">
+                        <div id="drop1" class="dropzone js-drop" key="Coat(s)" answer="">Coat(s)</div>
+                        <div id="drop2" class="dropzone js-drop" key="Jacket(s)" answer="">Jacket(s)</div>
+                        <div id="drop3" class="dropzone js-drop" key="Short(s)" answer="">Short(s)</div>
+                        <div id="drop4" class="dropzone js-drop" key="Jean(s)" answer="">Jean(s)</div>
+                        <div id="drop5" class="dropzone js-drop" key="Pullover(s)" answer="">Pullover(s)</div>
+                        <div id="drop6" class="dropzone js-drop" key="T-shirt(s)" answer="">T-shirt(s)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" data-toggle="modal" data-target="#score" style="display: none" id="score-modal"></a>
+<!-- Window-popup Score -->
+<div class="modal fade" id="score">
+    <div class="modal-dialog ui-block window-popup create-friend-group">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Tổng điểm của bạn</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>Bạn đã đạt đươc <strong style="font-size: 20px;"><span style="color: #ff5e3a;" id="wrong"></span>/6</strong> câu hỏi chính xác!</p>
+            <p id="hey"></p>
+            <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Biết rồi</a>
+            <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" onclick="location.reload();">Bài tiếp theo</a>
+        </div>
+
+    </div>
+</div>
+
+<script src="content/js/interact.min.js"></script>
+<script>
+
+    function CheckAnswer() {
+        var wrong = 0;
+        $(".word-key .dropzone.js-drop").each(function () {
+            if ($(this).attr("key") != $(this).attr("answer")) {
+                wrong++;
+                $(this).addClass("error");
+            }
+            else {
+                $(this).removeClass("error");
+            }
+        });
+        $("#wrong").text(6 - wrong);
+        if (wrong != 0) {
+            $("#hey").text("Để ý kĩ và làm lại nha!")
+        }
+        else {
+            $("#hey").text("Đó là một kết quả rất tốt đó! Cùng cố gắng nào!")
+        }
+        $("#score-modal").click();
+        return wrong;
+    }
+
+    (function () {
+        var button, parent;
+        button = document.querySelector("button");
+        parent = button.parentElement;
+        button.addEventListener("click", function () {
+            parent.classList.add("clicked");
+            return setTimeout((function () {
+                CheckAnswer();
+                if (CheckAnswer() != 0) {
+                    $("#button-wrapper").removeClass("clicked success");
+                }
+                else {
+                    return parent.classList.add("success");
+                }
+            }), 2600);
+        });
+
+    }).call(this);
+
+    (function (interact) {
+        'use strict';
+        var transformProp;
+        interact.maxInteractions(Infinity);
+        interact('.js-drag')
+        .draggable({ max: Infinity })
+        .on('dragstart', function (event) {
+            event.interaction.x = parseInt(event.target.getAttribute('data-x'), 10) || 0;
+            event.interaction.y = parseInt(event.target.getAttribute('data-y'), 10) || 0;
+        })
+        .on('dragmove', function (event) {
+            event.interaction.x += event.dx;
+            event.interaction.y += event.dy;
+
+            if (transformProp) {
+                event.target.style[transformProp] =
+                'translate(' + event.interaction.x + 'px, ' + event.interaction.y + 'px)';
+            } else {
+                event.target.style.left = event.interaction.x + 'px';
+                event.target.style.top = event.interaction.y + 'px';
+            }
+        })
+        .on('dragend', function (event) {
+            event.target.setAttribute('data-x', event.interaction.x);
+            event.target.setAttribute('data-y', event.interaction.y);
+        });
+
+        // setup drop areas.
+        setupDropzone('.js-drop', '.drag-item');
+
+        function setupDropzone(el, accept) {
+            interact(el)
+            .dropzone({
+                accept: accept,
+                overlap: 1,
+                ondropactivate: function (event) {
+                    addClass(event.relatedTarget, '-drop-possible');
+                },
+                ondropdeactivate: function (event) {
+                    removeClass(event.relatedTarget, '-drop-possible');
+                }
+            })
+            .on('dropactivate', function (event) {
+                var active = event.target.getAttribute('active') | 0;
+                if (active === 0) {
+                    addClass(event.target, '-drop-possible');
+                    event.target.textContent = 'Đâu là trả lời...';
+                }
+
+                event.target.setAttribute('active', active + 1);
+            })
+            .on('dropdeactivate', function (event) {
+                var active = event.target.getAttribute('active') | 0;
+                if (active === 1) {
+                    removeClass(event.target, '-drop-possible');
+                    event.target.textContent = event.target.getAttribute('key');
+                }
+
+                event.target.setAttribute('active', active - 1);
+            })
+            .on('dragenter', function (event) {
+                addClass(event.target, '-drop-over');
+                // event.relatedTarget.textContent = 'OK';
+            })
+            .on('dragleave', function (event) {
+                removeClass(event.target, '-drop-over');
+                // event.relatedTarget.textContent = 'Kéo tôi…';
+            })
+            .on('drop', function (event) {
+                removeClass(event.target, '-drop-over');
+                event.target.setAttribute("answer", event.relatedTarget.querySelector("img").getAttribute('key'));
+                addClass(event.target, '-droped');
+                // event.relatedTarget.textContent = 'Thả tôi..';
+            });
+        }
+
+        function addClass(element, className) {
+            if (element.classList) { return element.classList.add(className); }
+            else { element.className += ' ' + className; }
+        }
+
+        function removeClass(element, className) {
+            if (element.classList) { return element.classList.remove(className); }
+            else { element.className = element.className.replace(new RegExp(className + ' *', 'g'), ''); }
+        }
+
+        interact(document).on('ready', function () {
+            transformProp = 'transform' in document.body.style ?
+            'transform' : 'webkitTransform' in document.body.style ?
+            'webkitTransform' : 'mozTransform' in document.body.style ?
+            'mozTransform' : 'oTransform' in document.body.style ?
+            'oTransform' : 'msTransform' in document.body.style ?
+            'msTransform' : null;
+        });
+
+    }(window.interact));
+
+</script>

@@ -1,0 +1,195 @@
+﻿@model Framework.ViewModels.ReadingViewModel
+
+<script>
+    document.title = "Tập đọc | Olympus";
+</script>
+
+<div class="container game-learning">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="check-answer">
+                <div id="button-wrapper">
+                    <button>
+                        <p>Kiểm tra kết quả</p>
+                        <div class="fill"></div>
+                        <div class="fa fa-check"></div>
+                    </button>
+                </div>
+            </div>
+            <div class="ui-block" style="padding: 55px;">
+                <div class="listen-group post-content">
+                    <h5 style=" color: gray; font-weight: 500; ">Chọn hình ảnh ứng với điều mà bạn hiểu được!</h5>
+                    <br />
+                    <ol class="reading">
+                        <li>
+                            <h4 class="listen-question" answer="3" id="cau1">People who saw a car drive into another car should call this number.</h4>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="cb11" name="cau1" value="1" />
+                                    <label for="cb11"><img src="content/images/ket_reading1_2.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb12" name="cau1" value="2" />
+                                    <label for="cb12"><img src="content/images/ket_reading1_3.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb13" name="cau1" value="3" />
+                                    <label for="cb13"><img src="content/images/ket_reading1_7.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb14" name="cau1" value="4" />
+                                    <label for="cb14"><img src="content/images/ket_reading1_1.png" /></label>
+                                </li>
+                            </ul>
+                            <input type="hidden" name="cau1">
+                        </li>
+                        <li>
+                            <h4 class="listen-question" answer="4" id="cau2">You cannot let your dog run free here</h4>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="cb21" name="cau2" value="1" />
+                                    <label for="cb21"><img src="content/images/ket_reading1_2.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb22" name="cau2" value="2" />
+                                    <label for="cb22"><img src="content/images/ket_reading1_3.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb23" name="cau2" value="3" />
+                                    <label for="cb23"><img src="content/images/ket_reading1_7.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb24" name="cau2" value="4" />
+                                    <label for="cb24"><img src="content/images/ket_reading1_1.png" /></label>
+                                </li>
+                            </ul>
+                            <input type="hidden" name="cau2">
+                        </li>
+                        <li>
+                            <h4 class="listen-question" answer="2" id="cau3">Check you have all your bags before you go.</h4>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="cb31" name="cau3" value="1" />
+                                    <label for="cb31"><img src="content/images/ket_reading1_2.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb32" name="cau3" value="2" />
+                                    <label for="cb32"><img src="content/images/ket_reading1_3.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb33" name="cau3" value="3" />
+                                    <label for="cb33"><img src="content/images/ket_reading1_7.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb34" name="cau3" value="4" />
+                                    <label for="cb34"><img src="content/images/ket_reading1_1.png" /></label>
+                                </li>
+                            </ul>
+                            <input type="hidden" name="cau3">
+                        </li>
+                        <li>
+                            <h4 class="listen-question" answer="1" id="cau4">There are no dogs allowed, except guide dogs</h4>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="cb41" name="cau4" value="1" />
+                                    <label for="cb41"><img src="content/images/ket_reading1_2.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb42" name="cau4" value="2" />
+                                    <label for="cb42"><img src="content/images/ket_reading1_3.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb43" name="cau4" value="3" />
+                                    <label for="cb43"><img src="content/images/ket_reading1_7.png" /></label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cb44" name="cau4" value="4" />
+                                    <label for="cb44"><img src="content/images/ket_reading1_1.png" /></label>
+                                </li>
+                            </ul>
+                            <input type="hidden" name="cau4">
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" data-toggle="modal" data-target="#score" style="display: none" id="score-modal"></a>
+<!-- Window-popup Score -->
+<div class="modal fade" id="score">
+    <div class="modal-dialog ui-block window-popup create-friend-group">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Tổng điểm của bạn</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>Bạn đã đạt đươc <strong style="font-size: 20px;"><span style="color: #ff5e3a;" id="wrong"></span>/4</strong> câu hỏi chính xác!</p>
+            <p id="hey"></p>
+            <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Biết rồi</a>
+            <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" onclick="location.reload();">Bài tiếp theo</a>
+        </div>
+
+    </div>
+</div>
+<!-- ... end Window-popup Score -->
+
+
+<script>
+
+    function CheckAnswer() {
+        var wrong = 0;
+        $(".listen-question").each(function () {
+            if ($("input[type='hidden'][name='" + $(this).attr("id") + "']").val() != $(this).attr("answer")) {
+                wrong++;
+                $(this).parent().addClass("error");
+            }
+            else {
+                $(this).parent().removeClass("error");
+            }
+        });
+        $("#wrong").text(4 - wrong);
+        if (wrong != 0) {
+            $("#hey").text("Để ý kĩ và làm lại nha!")
+        }
+        else {
+            $("#hey").text("Đó là một kết quả rất tốt đó! Cùng cố gắng nào!")
+        }
+        $("#score-modal").click();
+        return wrong;
+    }
+
+    (function () {
+        var button, parent;
+        button = document.querySelector("button");
+        parent = button.parentElement;
+        button.addEventListener("click", function () {
+            parent.classList.add("clicked");
+            return setTimeout((function () {
+                CheckAnswer();
+                if (CheckAnswer() != 0) {
+                    $("#button-wrapper").removeClass("clicked success");
+                }
+                else {
+                    return parent.classList.add("success");
+                }
+            }), 2600);
+        });
+    }).call(this);
+
+    $("input:checkbox").on('click', function () {
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+            $("input[type='hidden'][name='" + $box.attr("name") + "']").val($box.val());
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+</script>

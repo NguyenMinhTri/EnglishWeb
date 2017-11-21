@@ -1,0 +1,67 @@
+﻿@if (ViewBag.page == "Index")
+{
+    <div class="container learning-section">
+    <div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 learning-section-item">
+                <a href="Learning?option=wordform">
+                    <div class="learning-section-icon">
+                        <svg class="olymp-like-post-icon"><use xlink:href="content/icons/icons.svg#olymp-like-post-icon"></use></svg>
+                    </div>
+                    <h3> Từ vựng</h3>
+                </a>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 learning-section-item">
+                <a href="Learning?option=listening">
+                    <div class="learning-section-icon">
+                        <svg class="olymp-headphones-icon"><use xlink:href="content/icons/icons.svg#olymp-headphones-icon"></use></svg>
+                    </div>
+                    <h3> Nghe</h3>
+                </a>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 learning-section-item">
+                <a href="Learning?option=grammar">
+                    <div class="learning-section-icon">
+                        <svg class="olymp-manage-widgets-icon"><use xlink:href="content/icons/icons.svg#olymp-manage-widgets-icon"></use></svg>
+                    </div>
+                    <h3> Ngữ pháp</h3>
+                </a>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 learning-section-item">
+                <a href="Learning?option=reading">
+                    <div class="learning-section-icon">
+                        <svg class="olymp-week-calendar-icon"><use xlink:href="content/icons/icons.svg#olymp-week-calendar-icon"></use></svg>
+                    </div>
+                    <h3> Đọc hiểu</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<img class="img-bottom" src="content/images/group-bottom.png" alt="friends">
+<img class="img-rocket" src="content/images/rocket.png" alt="rocket" style="right: 25%;">
+}
+
+else { 
+    <div id="partial">
+    </div>
+}
+
+<script>
+    function getview(action) {
+        $(".waiting_loader").css("display", "block");
+        var url = "/Learning/" + action;
+        $("#partial").load(url, function (response, status, xhr) {
+            if (status == "success") {
+                $(".waiting_loader").css("display", "none");
+                window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
+            }
+        });
+        $('#partial').hide().fadeIn(500);
+        scrollto("#partial");
+    }
+
+    var option = getQueryVariable("option");
+    getview(option);
+</script>
