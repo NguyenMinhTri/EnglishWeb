@@ -30,7 +30,6 @@ namespace Framework.Controllers
             return View();
         }
 
-
         public void CreateLayoutView(string title)
         {
             _viewModel.Title = title;
@@ -51,8 +50,6 @@ namespace Framework.Controllers
             _viewModel.User = user;
             if (user != null)
                 _viewModel.Roles = _service.GetRolesOfUser(user.Id);
-
         }
-
     }
 }

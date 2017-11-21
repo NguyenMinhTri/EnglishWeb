@@ -1,17 +1,24 @@
 .mejs-offscreen{
-/* Accessibility: hide screen reader texts (and prefer "top" for RTL languages). */position: absolute !important;top: -10000px;left: -10000px;overflow: hidden;width: 1px;height: 1px;}
+/* Accessibility: hide screen reader texts (and prefer "top" for RTL languages). */
+	position: absolute !important;
+	top: -10000px;
+	left: -10000px;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+}
 
 .mejs-container {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	background: #fff;
-	padding: 25px 20px;
+	padding: 20px;
 	text-align: left;
 	vertical-align: top;
 	text-indent: 0;
 	width: 100% !important;
-	height: 77px !important;
+	height: 70px !important;
 }
 
 .mejs-container:focus { 
@@ -198,7 +205,7 @@
 	display: block;
 	height: 17px;
 	width: auto;
-	padding: 10px 3px 0 3px ;
+	padding: 10px 0px 0 3px;
 	overflow: hidden;
 	text-align: center;
 	-moz-box-sizing: content-box;
