@@ -238,12 +238,14 @@
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
     <Compile Include="Infrastructure\CustomUserIdProvider.cs" />
     <Compile Include="Models\DictionaryViewModel.cs" />
+    <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\YourAccountViewModel.cs" />
@@ -3880,6 +3882,7 @@
     <Content Include="content\images\choose-photo7.jpg" />
     <Content Include="content\images\choose-photo8.jpg" />
     <Content Include="content\images\choose-photo9.jpg" />
+    <Content Include="content\images\coat.png" />
     <Content Include="content\images\comment-photo.jpg" />
     <Content Include="content\images\comment-photo1.jpg" />
     <Content Include="content\images\event-bottom.png" />
@@ -3980,6 +3983,16 @@
     <Content Include="content\images\icon-chat7.png" />
     <Content Include="content\images\icon-chat8.png" />
     <Content Include="content\images\icon-chat9.png" />
+    <Content Include="content\images\jacket.png" />
+    <Content Include="content\images\jeans.png" />
+    <Content Include="content\images\ket1_3a.png" />
+    <Content Include="content\images\ket1_3b.png" />
+    <Content Include="content\images\ket1_3c.jpg" />
+    <Content Include="content\images\ket1_3c.png" />
+    <Content Include="content\images\ket_reading1_1.png" />
+    <Content Include="content\images\ket_reading1_2.png" />
+    <Content Include="content\images\ket_reading1_3.png" />
+    <Content Include="content\images\ket_reading1_7.png" />
     <Content Include="content\images\landing-bg.jpg" />
     <Content Include="content\images\landing-users.png" />
     <Content Include="content\images\last-phot11-large.jpg" />
@@ -4097,7 +4110,9 @@
     <Content Include="content\images\post__thumb6.jpg" />
     <Content Include="content\images\post__thumb7.jpg" />
     <Content Include="content\images\post__thumb8.jpg" />
+    <Content Include="content\images\pullover.png" />
     <Content Include="content\images\rocket.png" />
+    <Content Include="content\images\shorts.png" />
     <Content Include="content\images\slide1.jpg" />
     <Content Include="content\images\statistics-bottom.png" />
     <Content Include="content\images\top-header1.jpg" />
@@ -4107,6 +4122,7 @@
     <Content Include="content\images\top-header5.png" />
     <Content Include="content\images\top-header6.png" />
     <Content Include="content\images\top-header7.png" />
+    <Content Include="content\images\tshirt.png" />
     <Content Include="content\images\twitter-avatar.png" />
     <Content Include="content\images\twitter-avatar1.png" />
     <Content Include="content\images\video-thumb.png" />
@@ -4134,6 +4150,7 @@
     <Content Include="content\images\world-map.png" />
     <Content Include="content\js\ajax-pagination.js" />
     <Content Include="content\js\fullcalendar.min.js" />
+    <Content Include="content\js\interact.min.js" />
     <Content Include="content\js\isotope.pkgd.min.js" />
     <Content Include="content\js\jquery.gifplayer.js" />
     <Content Include="content\js\main.js" />
@@ -4141,8 +4158,10 @@
     <Content Include="content\js\script.js" />
     <Content Include="content\js\smooth-scroll.min.js" />
     <Content Include="content\js\theme-plugins.js" />
+    <Content Include="content\mp3\Ket_1_3.mp3" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="learning-grammar.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="admin\vendors\animate.css\.bower.json" />
@@ -5043,6 +5062,12 @@
     <Content Include="Views\Dictionary\_Dictionaries.cshtml" />
     <Content Include="Views\Dictionary\_OldWords.cshtml" />
     <Content Include="Views\Dictionary\_Header.cshtml" />
+    <Content Include="Views\Layout\_LearningLayout.cshtml" />
+    <Content Include="Views\Learning\_Grammar.cshtml" />
+    <Content Include="Views\Learning\_Reading.cshtml" />
+    <Content Include="Views\Learning\_Listening.cshtml" />
+    <Content Include="Views\Learning\_WordForm.cshtml" />
+    <Content Include="Views\Learning\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
