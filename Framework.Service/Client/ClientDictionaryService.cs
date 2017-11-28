@@ -92,6 +92,12 @@ namespace Framework.Service.Client
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
             ExampleTraCau exTracau = JsonConvert.DeserializeObject<ExampleTraCau>(html);
+            for(int idTracau = 0;idTracau< exTracau.sentences.Count;idTracau++)
+            {
+                exTracau.sentences[idTracau].fields.en = exTracau.sentences[idTracau].fields.en.Replace("<em>", "");
+                exTracau.sentences[idTracau].fields.en = exTracau.sentences[idTracau].fields.en.Replace("</em>", "");
+            }
+
             return exTracau;
         }
         //Google translator

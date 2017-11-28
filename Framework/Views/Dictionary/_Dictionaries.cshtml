@@ -99,11 +99,17 @@
                             <p>TRA CÂU</p>
                         </blockquote>
                         <ol>
-                            <li>
-                                <h5>
-                                    A single distinct meaningful element of speech or writing, used with others (or sometimes alone) to form a sentence and typically shown with a space on either side when written or printed.
-                                </h5>
-                            </li>
+                            @foreach (var tracau in @Model.m_ExaTraCau.sentences)
+                            {
+                                <li>
+                                    <h5>
+                                        @tracau.fields.en
+                                    </h5>
+                                    <h5>
+                                        @tracau.fields.vi
+                                    </h5>
+                                </li>
+                            }
                         </ol>
                     </div>
                 }
@@ -116,7 +122,7 @@
                         <div class="form-group label-floating">
                             <label class="control-label">Bài dịch</label>
                             <textarea class="form-control">
-                                @Model.m_GoogleTrans
+                                @Model.m_GoogleTrans.sentences[0].trans
                             </textarea>
                         </div>
                     </div>
