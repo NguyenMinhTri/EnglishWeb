@@ -1463,3 +1463,7 @@ body {
     border-radius: 0;
     -webkit-box-shadow: inset 0 0 6px rgba(251, 93, 58, 0.7);
 }
+
+.playlist-thumb img {
+    width: 100%
+}

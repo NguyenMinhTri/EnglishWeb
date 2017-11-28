@@ -3709,6 +3709,7 @@
     <Content Include="admin\vendors\validator\multifield.js" />
     <Content Include="admin\vendors\validator\validator.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="cac-thi-co-ban-trong-tieng-anh.html" />
     <Content Include="content\css\blocks.css" />
     <Content Include="content\css\bootstrap-grid.css" />
     <Content Include="content\css\bootstrap-reboot.css" />
@@ -4154,14 +4155,21 @@
     <Content Include="content\js\isotope.pkgd.min.js" />
     <Content Include="content\js\jquery.gifplayer.js" />
     <Content Include="content\js\main.js" />
+    <Content Include="content\js\readremaining.jquery.js" />
     <Content Include="content\js\run-chart.js" />
     <Content Include="content\js\script.js" />
     <Content Include="content\js\smooth-scroll.min.js" />
     <Content Include="content\js\theme-plugins.js" />
     <Content Include="content\mp3\Ket_1_3.mp3" />
+    <Content Include="dai-tu.html" />
+    <Content Include="danh-tu-dem-duoc-va-danh-tu-khong-dem-duoc.html" />
+    <Content Include="danh-tu-so-it-so-nhieu.html" />
+    <Content Include="dong-tu-thuong.html" />
+    <Content Include="dong-tu-to-be.html" />
     <Content Include="favicon.ico" />
+    <Content Include="gioi-tu-on-at.html" />
     <Content Include="Global.asax" />
-    <Content Include="learning-grammar.html" />
+    <Content Include="hinh-thuc-so-sanh-tinh-tu-va-trang-tu.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="admin\vendors\animate.css\.bower.json" />
@@ -4991,6 +4999,10 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="so-huu-cach.html" />
+    <Content Include="the-bi-dong.html" />
+    <Content Include="tinh-tu.html" />
+    <Content Include="trang-tu.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

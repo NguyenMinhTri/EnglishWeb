@@ -1,4 +1,5 @@
-﻿using Framework.Model;
+﻿using Framework.Common;
+using Framework.Model;
 using Framework.Model.Google;
 using Framework.Repository.RepositorySpace;
 using HtmlAgilityPack;
@@ -68,7 +69,7 @@ namespace Framework.Service.Client
                 var temp = Node.Descendants("li").Where(node => node.GetAttributeValue("class", "").Equals("sn-g")).ToList().FirstOrDefault();
                 var exampleList = temp.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("def")).FirstOrDefault();
                 //Set value for usecase
-                explanation.m_UseCase = exampleList.InnerText;
+                explanation.m_UseCase = StringHelper.FirstLetterUpper(exampleList.InnerText);
                 //Get a example for usecase
                 List<HtmlNode> exampleList2 = temp.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("x-g")).ToList();
                 foreach (var exam in exampleList2)

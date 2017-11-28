@@ -8,6 +8,16 @@ namespace Framework.Common
 {
     public class StringHelper
     {
+        public static string FirstLetterUpper(string input)
+        {
+            switch (input)
+            {
+                case null: throw new ArgumentNullException(input);
+                case "": throw new ArgumentException(input);
+                default: return input.First().ToString().ToUpper() + input.Substring(1);
+            }
+        }
+
         public static string FirstLetterLower(string name)
         {
             return String.Format("{0}{1}", name.First().ToString().ToLowerInvariant(), name.Substring(1));

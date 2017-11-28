@@ -359,3 +359,30 @@ D:\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Mi
 D:\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
 D:\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
 D:\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll.config
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Framework.FrameworkContext.pdb
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\EntityFramework.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\EntityFramework.IndexingExtensions.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Framework.Model.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Framework.Model.pdb
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\EntityFramework.xml
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csprojResolveAssemblyReference.cache
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.init.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.user.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.db.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.ind.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aa.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaa.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaaa.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aaa1.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.Migrations.aeeeee.resources
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.csproj.GenerateResource.Cache
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.dll
+D:\Work Bitch!\KhoaLuan\EnglishWeb\Framework.FrameworkContext\obj\Debug\Framework.FrameworkContext.pdb

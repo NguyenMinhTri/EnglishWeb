@@ -24,31 +24,13 @@
         $(".waiting_loader").css("display", "block");
         e.preventDefault();
         var form = $(this);
-        var data = form.serialize();
-        $.get('/Dictionary/Dictionaries', data).done(function (response) {
-            if (response.result == "success") {
-
-            } else {
-                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-            }
+        var keyword = form.serialize();
+        $.post('/Dictionary/Dictionaries', keyword).done(function (data) {
+            $("#partial").html(data);
         }).fail(function (response) {
             $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
         }).always(function () {
             $(".waiting_loader").css("display", "none");
         });
     });
-
-    $(".like").click(function () {
-        $.get('/Dictionary/Dictionaries', data).done(function (response) {
-            if (response.result == "success") {
-                $(this).addClass("")
-            } else {
-                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-            }
-        }).fail(function (response) {
-            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-        }).always(function () {
-            $(".waiting_loader").css("display", "none");
-        });
-    })
 </script>

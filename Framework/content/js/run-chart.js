@@ -284,15 +284,14 @@ var pieColorChart = document.getElementById("pie-color-chart");
 if (pieColorChart !== null) {
     var ctx_pc = pieColorChart.getContext("2d");
     var data_pc = {
-        labels: ["Status Updates", "Multimedia", "Shared Posts"],
+        labels: ["Tự học", "Hỏi đáp"],
         datasets: [
             {
-                data: [8.247, 5.630, 2.634],
+                data: [8.247, 7.128],
                 borderWidth: 0,
                 backgroundColor: [
                     "#7c5ac2",
                     "#08ddc1",
-                    "#ff5e3a",
                 ]
             }]
     };
@@ -414,7 +413,7 @@ if (lineChart !== null) {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [
             {
-                label: " - Comments",
+                label: " - Nghe, nói",
                 borderColor: "#ffdc1b",
                 borderWidth: 4,
                 pointBorderColor: "#ffdc1b",
@@ -427,7 +426,7 @@ if (lineChart !== null) {
                 data: [96,63,136,78,111,83,101,83,102,61,45,135]
             },
             {
-                label: " - Likes",
+                label: " - Đọc, viết",
                 borderColor: "#08ddc1",
                 borderWidth: 4,
                 pointBorderColor: "#08ddc1",
@@ -481,7 +480,7 @@ var pieSmallChart = document.getElementById("pie-small-chart");
 if (pieSmallChart !== null) {
     var ctx_sc = pieSmallChart.getContext("2d");
     var data_sc = {
-        labels: ["Yearly Likes", "Yearly Comments"],
+        labels: ["Nghe, nói", "Đọc, viết"],
         datasets: [
             {
                 data: [65.048, 42.973],

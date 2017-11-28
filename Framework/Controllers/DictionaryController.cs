@@ -83,7 +83,8 @@ namespace Framework.Controllers
             return View(_viewModel);
         }
 
-        [HttpGet]
+        [HttpPost]
+        //public async Task<PartialViewResult> Dictionaries(string keyword)
         public async Task<PartialViewResult> Dictionaries(string keyword)
         {
             keyword = keyword.Trim();
