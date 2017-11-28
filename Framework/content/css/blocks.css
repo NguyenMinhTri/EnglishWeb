@@ -3580,7 +3580,9 @@ figure {
     font-weight: 300;
     line-height: 1; }
   .w-wethear > * {
-    margin-bottom: 25px; }
+    margin-bottom: 25px;
+    line-height: 2;
+    }
     .w-wethear > *:last-child {
       margin-bottom: 0; }
   .w-wethear .max-min-temperature {

@@ -75,8 +75,18 @@
 
             <div class="date-and-place">
                 <h5 class="date">Thứ bảy, ngày 30 tháng 9</h5>
-                <div class="place">HCMC</div>
+                <div class="place">Thành phố Hồ Chí Minh</div>
             </div>
+            <script>
+                var days = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
+                var dayName = days[new Date(today).getDay()] + ", ngày " + dd + " tháng " + mm;
+                $(".date-and-place .date").text(dayName);
+            </script>
 
         </div>
     </div>
