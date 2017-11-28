@@ -708,7 +708,7 @@
 
     <div class="window-popup playlist-popup">
 
-        <a href="#" class="icon-close js-close-popup">
+        <a href="#" class="icon-close js-close-popup" onclick='$(" #mediaplayer").attr("src", "" );'>
             <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
         </a>
 
@@ -966,8 +966,8 @@
         $("#mediaplayer").attr("src", "content/mp3/" + name);
         mediaplayer();
     });
-    $("ol.widget.w-playlist a.play-icon").click(function () {
-        var mp3 = $(this).parent(".playlist-thumb").next(".composition");
+    $("ol.widget.w-playlist .playlist-thumb").click(function () {
+        var mp3 = $(this).next(".composition");
         var name = $(mp3).find(".composition-name").text() + " - " + $(mp3).find(".composition-author").text() + ".mp3"
         $("#mediaplayer").attr("src", "content/mp3/" + name);
         mediaplayer();
