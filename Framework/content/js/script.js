@@ -188,6 +188,7 @@ $(document).on("click", ".post-add-icon.upvote", function () {
     }
     scrollto("#" + $(this).parent().closest(".ui-block").attr("id"));
 })
+
 $(document).on("click", ".post-add-icon.downvote", function () {
     var downvote = $(this).find("span");
     var number_downvote = parseInt(downvote.text());
@@ -233,7 +234,7 @@ $(document).on("click", ".hentry.post .post-control-button .btn-control.downvote
 })
 
 $(document).on("click", ".comments-shared .post-add-icon.inline-items", function () {
-    $(".comment-section").toggle("slow");
+    $(this).parent().parent().parent().parent().find(".comment-section").toggle('fast');
 });
 
 $(document).on("click", ".comment-section .more-comments", function () {
@@ -247,3 +248,23 @@ $(document).on("click", ".comment-section .more-comments", function () {
     }
 });
 
+$(document).on("click", "#submit.options-message", function () {
+    var comment_section = $(this).parent().parent().parent().parent().find(".comments-list");
+    var textarea = $(this).parent().parent().find("textarea#comment");
+    var comment_data = { comment: textarea.val() };
+    var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
+    $.post("/Home/Comment", comment_data).done(function (data) {
+        $(comment_section).append(data);
+        textarea.val("");
+        total.text($(comment_section).find("li").length);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+    }).always(function () {
+        $(".waiting_loader").css("display", "none");
+    });
+});
+$(document).on('keydown', 'textarea#comment', function (e) {
+    if (e.which == 13 || e.keyCode == 13) {
+        $(this).parent().find(".options-message#submit").click();
+    }
+})

@@ -83,29 +83,6 @@
                     </div>
                 </div>
 
-                <script>
-                    $(document).on("click", "#submit.options-message", function () {
-                        var comment_section = $(this).parent().parent().parent().parent().find(".comments-list");
-                        var textarea = $(this).parent().parent().find("textarea#comment");
-                        var comment_data = { comment: textarea.val() };
-                        var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
-                        $.post("/Home/Comment", comment_data).done(function (data) {
-                            $(comment_section).append(data);
-                            textarea.val("");
-                            total.text($(comment_section).find("li").length);
-                        }).fail(function (response) {
-                            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-                        }).always(function () {
-                            $(".waiting_loader").css("display", "none");
-                        });
-                    });
-                    $(document).on('keydown', 'textarea#comment', function (e) {
-                        if (e.which == 13 || e.keyCode == 13) {
-                            $(this).parent().find(".options-message#submit").click();
-                        } 
-                    })
-                </script>
-
                 <div class="ui-block" id="post_1">
                     <article class="hentry post">
                         <div class="post__author author vcard inline-items">
