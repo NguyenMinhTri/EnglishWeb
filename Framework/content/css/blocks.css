@@ -3519,7 +3519,8 @@ figure {
   max-width: 85%; }
 
 .w-activity-feed li > * {
-  vertical-align: top; }
+  vertical-align: top;
+  }
 
 /*------------- #W-WEATHER --------------*/
 .w-wethear {
@@ -4093,7 +4094,9 @@ ol ol li {
       margin-right: 0; }
   .post-additional-info .comments-shared {
     float: right;
-    margin-top: 8px; }
+    margin-top: 8px;
+    cursor: pointer;
+    }
 
 .comments-shared > * {
   margin-right: 15px; }
@@ -4119,8 +4122,9 @@ ol ol li {
     width: 26px;
     height: 21px; }
   .post-add-icon:hover, .upvote.active, .downvote.active {
-    fill: #ff5e3a;
-    color: #ff5e3a; }
+    fill: #ff5e3a !important;
+    color: #ff5e3a !important;
+    }
     .post-add-icon:hover span {
       color: #ff5e3a; }
   .post-add-icon:active, .post-add-icon:focus {
@@ -4264,7 +4268,9 @@ ol ol li {
   color: #515365;
   display: block;
   font-weight: 700;
-  margin: 0 auto; }
+  margin: 0 auto;
+  cursor: pointer;
+  }
   .more-comments span {
     transition: all .3s ease; }
   .more-comments:hover {
@@ -4294,7 +4300,8 @@ ol ol li {
       height: 28px; }
   .comment-form .form-group {
     margin-bottom: 0;
-    width: 85%; }
+    width: calc(100% - 40px);
+    }
   .comment-form textarea {
     min-height: 60px;
     height: 60px;
@@ -6801,4 +6808,26 @@ ol.old-words li a{vertical-align: sub;color: black;}
 .reading li.error .listen-question,
 .listen-question.error {
     color: #fd5d3a;
+}
+
+.btn-control.clicked {
+    background-color: #fc5e3a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.not-showed {
+    display: none;
+}
+span.name {
+    color: #fc5e3b;
+}
+
+ul.widget.w-activity-feed.notification-list li a {
+    color: #888da8;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
 }

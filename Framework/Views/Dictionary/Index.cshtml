@@ -1,4 +1,5 @@
-﻿
+﻿<div class="waiting_loader" style="display: none"></div>
+
 @Html.Partial("_Header")
 
 <div class="container negative-margin-top150">
@@ -11,11 +12,9 @@
 
 <script>
     function getview(action) {
-        $(".waiting_loader").css("display", "block");
         var url = "/Dictionary/" + action;
         $("#partial").load(url, function (response, status, xhr) {
             if (status == "success") {
-                $(".waiting_loader").css("display", "none");
                 window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
                 initInput();
             }
