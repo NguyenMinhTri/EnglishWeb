@@ -50,8 +50,18 @@
                     </h1>
 
                     <div class="choose-reaction">
-                        <div class="title">Định nghĩa từ <span>@Model.m_Voca </span> với</div>
+                            @if (@Model.m_Voca == null)
+                            {
+                                <div class="title">Định nghĩa <span>@Model.m_GoogleTrans.sentences[0].orig</span> với</div>
+                                
+                            }
+                            else
+                            {
+                                <div class="title">Định nghĩa từ <span>@Model.m_Voca </span> với</div>
+                            }
+                        
                         <ul>
+
                             @if (Model.m_Explanation.Count() != 0)
                             {
                                 <li>
@@ -157,3 +167,7 @@
         }
     </article>
 </div>
+
+<script>
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+</script>
