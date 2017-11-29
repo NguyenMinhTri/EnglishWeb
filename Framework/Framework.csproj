@@ -5080,6 +5080,7 @@
     <Content Include="Views\Learning\_Listening.cshtml" />
     <Content Include="Views\Learning\_WordForm.cshtml" />
     <Content Include="Views\Learning\Index.cshtml" />
+    <Content Include="Views\Home\_Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

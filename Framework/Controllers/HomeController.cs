@@ -36,6 +36,15 @@ namespace Framework.Controllers
                 return (HomeViewModel)_viewModel;
             }
         }
+
+        CommentViewModel CommentViewModel
+        {
+            get
+            {
+                return (CommentViewModel)_viewModel;
+            }
+        }
+
         public ActionResult Index()
         {
             
@@ -44,6 +53,14 @@ namespace Framework.Controllers
             var codes = _clientHomeService.GetCodes();
             LayoutViewModel lay = ViewModel;
             return View(ViewModel);
+        }
+
+        [HttpPost]
+        public PartialViewResult Comment(string comment)
+        {
+            _viewModel = new CommentViewModel();
+            CommentViewModel.Comment = comment;
+            return PartialView("_Comment", CommentViewModel);
         }
     }
 }

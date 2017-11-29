@@ -83,6 +83,29 @@
                     </div>
                 </div>
 
+                <script>
+                    $(document).on("click", "#submit.options-message", function () {
+                        var comment_section = $(this).parent().parent().parent().parent().find(".comments-list");
+                        var textarea = $(this).parent().parent().find("textarea#comment");
+                        var comment_data = { comment: textarea.val() };
+                        var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
+                        $.post("/Home/Comment", comment_data).done(function (data) {
+                            $(comment_section).append(data);
+                            textarea.val("");
+                            total.text($(comment_section).find("li").length);
+                        }).fail(function (response) {
+                            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+                        }).always(function () {
+                            $(".waiting_loader").css("display", "none");
+                        });
+                    });
+                    $(document).on('keydown', 'textarea#comment', function (e) {
+                        if (e.which == 13 || e.keyCode == 13) {
+                            $(this).parent().find(".options-message#submit").click();
+                        } 
+                    })
+                </script>
+
                 <div class="ui-block" id="post_1">
                     <article class="hentry post">
                         <div class="post__author author vcard inline-items">
@@ -102,13 +125,13 @@
                             Học tiếng anh sao cho hiệu quả mọi người nhỉ?
                         </p>
                         <div class="post-additional-info inline-items">
-                            <a href="#" class="post-add-icon inline-items upvote active">
+                            <a href="#" class="post-add-icon inline-items upvote">
                                 <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                <span>81</span>
+                                <span>0</span>
                             </a>
                             <a href="#" class="post-add-icon inline-items downvote">
                                 <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                <span>8</span>
+                                <span>0</span>
                             </a>
 
                             <div class="comments-shared">
@@ -130,66 +153,10 @@
                         </div>
 
                     </article>
+             
                     <div class="comment-section">
                         <ul class="comments-list">
-                            <li class="has-children not-showed">
-                                <div class="post__author author vcard inline-items">
-                                    <img src="content/images/avatar5-sm.jpg" alt="author">
 
-                                    <div class="author-date">
-                                        <a class="h6 post__author-name fn" href="#">Lê Văn Phú</a>
-                                        <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                1 phút trước
-                                            </time>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <p id="comment">
-                                   
-                                </p>
-
-                                <a href="#" class="post-add-icon inline-items upvote active">
-                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                    <span>66</span>
-                                </a>
-                                <a href="#" class="post-add-icon inline-items downvote ">
-                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                    <span>3</span>
-                                </a>
-                                <a href="#" class="reply">Trả lời</a>
-
-                                <ul class="children">
-                                    <li class="showed">
-                                        <div class="post__author author vcard inline-items">
-                                            <img src="content/images/avatar8-sm.jpg" alt="author">
-
-                                            <div class="author-date">
-                                                <a class="h6 post__author-name fn" href="#">Nguyễn Thanh Thiện</a>
-                                                <div class="post__date">
-                                                    <time class="published" datetime="2017-03-24T18:18">
-                                                        1 phút trước
-                                                    </time>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <p id="comment"></p>
-
-                                        <a href="#" class="post-add-icon inline-items upvote active">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>20</span>
-                                        </a>
-                                        <a href="#" class="post-add-icon inline-items downvote ">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>3</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
 
                         <form class="comment-form inline-items">
@@ -198,9 +165,9 @@
                             </div>
 
                             <div class="form-group with-icon-right ">
-                                <textarea class="form-control" placeholder="Trả lời nào..."></textarea>
+                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment"></textarea>
                                 <div class="add-options-message">
-                                    <a href="#" class="options-message" data-toggle="modal">
+                                    <a  class="options-message" id="submit">
                                         <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
                                     </a>
                                 </div>
@@ -505,9 +472,9 @@
                             </div>
 
                             <div class="form-group with-icon-right ">
-                                <textarea class="form-control" placeholder="Trả lời nào..."></textarea>
+                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment"></textarea>
                                 <div class="add-options-message">
-                                    <a href="#" class="options-message" data-toggle="modal">
+                                    <a class="options-message" id="submit">
                                         <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
                                     </a>
                                 </div>

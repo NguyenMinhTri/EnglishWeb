@@ -11,4 +11,8 @@ namespace Framework.ViewModels
         public string A { get; set; }
     }
 
+    public class CommentViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public string Comment{ get; set; }
+    }
 }
