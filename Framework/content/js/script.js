@@ -251,20 +251,53 @@ $(document).on("click", ".comment-section .more-comments", function () {
 $(document).on("click", "#submit.options-message", function () {
     var comment_section = $(this).parent().parent().parent().parent().find(".comments-list");
     var textarea = $(this).parent().parent().find("textarea#comment");
-    var comment_data = { comment: textarea.val() };
     var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
-    $.post("/Home/Comment", comment_data).done(function (data) {
-        $(comment_section).append(data);
-        textarea.val("");
-        total.text($(comment_section).find("li").length);
-    }).fail(function (response) {
-        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-    }).always(function () {
-        $(".waiting_loader").css("display", "none");
-    });
+    var comment = textarea.val();
+    var button = $(this);
+    if (comment.length != 0) {
+        var comment_data = { comment: comment };
+        $.post("/Home/Comment", comment_data).done(function (data) {
+            $(comment_section).append(data);
+            textarea.val("");
+            button.removeClass("active");
+            total.text($(comment_section).find("li").length);
+            $(comment_section).find("li.new-comment").show('slow').addClass("showed");
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+        })
+    }
 });
 $(document).on('keydown', 'textarea#comment', function (e) {
     if (e.which == 13 || e.keyCode == 13) {
         $(this).parent().find(".options-message#submit").click();
     }
 })
+
+$(document).on('keyup', 'textarea#comment', function (e) {
+    if ($(this).val().length != 0) {
+        $(this).parent().find(".options-message#submit").addClass("active");
+    }
+    else {
+        $(this).parent().find(".options-message#submit").removeClass("active");
+    }
+    if (e.which == 13 || e.keyCode == 13) {
+        $(this).parent().find(".options-message#submit").click();
+    }
+})
+
+$(document).on("click", ".comments-list a.reply", function () {
+    var comment_section = $(this).parent().addClass("has-children");
+    var textarea = $(this).parent().parent().parent().find("textarea#comment");
+    var comment_data = { comment: textarea.val() };
+    var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
+    $.post("/Home/ChildComment", comment_data).done(function (data) {
+        $(comment_section).append(data);
+        textarea.val("");
+        total.text($(comment_section).find("li").length);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+});
+

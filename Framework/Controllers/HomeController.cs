@@ -62,5 +62,13 @@ namespace Framework.Controllers
             CommentViewModel.Comment = comment;
             return PartialView("_Comment", CommentViewModel);
         }
+
+        [HttpPost]
+        public PartialViewResult ChildComment(string comment)
+        {
+            _viewModel = new CommentViewModel();
+            CommentViewModel.Comment = comment;
+            return PartialView("_ChildComment", CommentViewModel);
+        }
     }
 }

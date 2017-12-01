@@ -6831,3 +6831,20 @@ ul.widget.w-activity-feed.notification-list li a {
     display: flex;
     width: 100%;
 }
+
+a.reply {
+    cursor: pointer;
+}
+
+a.reply:hover {
+    color: #fc5e3a !important;
+}
+
+.add-options-message .options-message.active svg {
+     fill: #fd5d3a; 
+     cursor: pointer;
+}
+
+.add-options-message .options-message#submit {
+    cursor: no-drop;
+}
