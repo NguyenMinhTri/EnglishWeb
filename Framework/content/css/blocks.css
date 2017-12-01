@@ -4422,9 +4422,8 @@ ol ol li {
   .news-feed-form textarea {
     min-height: 160px;
     border-radius: 0;
-    border-top: none;
-    border-left: none;
-    border-right: none; }
+    border: none;
+    }
   .news-feed-form .form-group.label-floating.is-focused .control-label {
     top: 16px; }
   .news-feed-form .options-message {
@@ -4440,8 +4439,10 @@ ol ol li {
     position: absolute;
     top: 25px;
     left: 25px; }
-  .news-feed-form .form-group {
-    margin-bottom: 0; }
+  .news-feed-form .form-group:first-child {
+    margin-bottom: 0;
+    border-bottom: 1px solid #e6ecf5;
+    }
 
 /*------------- #NEWS-FEED-Masonry --------------*/
 .cat-list-bg-style {
@@ -6847,4 +6848,44 @@ a.reply:hover {
 
 .add-options-message .options-message#submit {
     cursor: no-drop;
+}
+
+.comments-list ul.children {
+    display: none;
+}
+
+.comments-list li.has-children ul.children {
+    display: block;
+}
+
+.news-feed-form .form-group .selection {text-align: right;display: flex;align-items: baseline;justify-content: flex-end;}
+
+.news-feed-form .form-group .selection .togglebutton {
+    margin: 0px 20px;
+}
+
+.add-options-message.ask-teacher {
+    display: block;
+    border-top: 1px solid #e6ecf5;
+    padding-bottom: 0;
+    transition: unset;
+}
+
+.status-footer {
+    padding: 20px;
+    overflow: hidden;
+    border-top: 1px solid #e6ecf5;
+}
+
+.status-footer .btn {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.add-options-message.ask-teacher .control-label span {
+    color: #ff5e3a;
+    font-size: 15px;
+    font-weight: bold;
 }

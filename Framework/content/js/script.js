@@ -248,56 +248,129 @@ $(document).on("click", ".comment-section .more-comments", function () {
     }
 });
 
-$(document).on("click", "#submit.options-message", function () {
-    var comment_section = $(this).parent().parent().parent().parent().find(".comments-list");
-    var textarea = $(this).parent().parent().find("textarea#comment");
-    var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
-    var comment = textarea.val();
-    var button = $(this);
-    if (comment.length != 0) {
-        var comment_data = { comment: comment };
-        $.post("/Home/Comment", comment_data).done(function (data) {
-            $(comment_section).append(data);
-            textarea.val("");
-            button.removeClass("active");
-            total.text($(comment_section).find("li").length);
-            $(comment_section).find("li.new-comment").show('slow').addClass("showed");
-        }).fail(function (response) {
-            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
-            $("#notify-button").click();
-        })
-    }
-});
-$(document).on('keydown', 'textarea#comment', function (e) {
-    if (e.which == 13 || e.keyCode == 13) {
-        $(this).parent().find(".options-message#submit").click();
-    }
-})
-
 $(document).on('keyup', 'textarea#comment', function (e) {
-    if ($(this).val().length != 0) {
+    if ($(this).val().replace(/\r?\n/g, "").length != 0) {
         $(this).parent().find(".options-message#submit").addClass("active");
     }
     else {
         $(this).parent().find(".options-message#submit").removeClass("active");
     }
     if (e.which == 13 || e.keyCode == 13) {
-        $(this).parent().find(".options-message#submit").click();
+        $(this).parent().find(".options-message#submit.active").click();
     }
-})
-
-$(document).on("click", ".comments-list a.reply", function () {
-    var comment_section = $(this).parent().addClass("has-children");
-    var textarea = $(this).parent().parent().parent().find("textarea#comment");
-    var comment_data = { comment: textarea.val() };
-    var total = $(this).parent().parent().parent().parent().parent().find(".comments-shared span:last-child");
-    $.post("/Home/ChildComment", comment_data).done(function (data) {
-        $(comment_section).append(data);
-        textarea.val("");
-        total.text($(comment_section).find("li").length);
-    }).fail(function (response) {
-        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
-        $("#notify-button").click();
-    });
 });
 
+$(document).on("click", "#submit.options-message.active", function () {
+    var parent = $(this).parent().parent().parent();
+    var comment_section = parent.parent().find(".comments-list");
+    var textarea = $(this).parent().parent().find("textarea#comment");
+    var total = parent.parent().parent().find(".comments-shared span:last-child");
+    var comment = textarea.val();
+    var button = $(this);
+    var new_comment;
+    if (comment.length != 0) {
+        var comment_data = { comment: comment };
+        if (!$(this).hasClass("child-comment")) {
+            $.post("/Home/Comment", comment_data).done(function (data) {
+                $(comment_section).append(data);
+                textarea.val("");
+                button.removeClass("active");
+                total.text($(comment_section).find("li").length);
+                new_comment = $(comment_section).find("li.new-comment");
+                new_comment.find(".author-date time").attr("data-time", Date.now);
+                $(comment_section).find("li.new-comment").show('slow').addClass("showed");
+            }).fail(function (response) {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            })
+        }
+        else {
+            var index = $(this).attr("class").match(/(?:\s|^)child-comment-(\d+)/)[1];
+            var parentcomment_section = $(comment_section).find("li.parent")[index];
+            var childcomment_section = $(parentcomment_section).find("ul.children");
+            $.post("/Home/ChildComment", comment_data).done(function (data) {
+                $(childcomment_section).append(data);
+                textarea.val("");
+                new_comment = $(comment_section).find("li.new-comment");
+                new_comment.find(".author-date time").attr("data-time", Date.now);
+                button.removeClass("active").removeClass(function (index, className) {
+                    return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
+                }).removeClass("child-comment");
+                total.text($(comment_section).find("li").length);
+                $(childcomment_section).find("li.new-comment").show('slow').addClass("showed");
+                scrollto(parentcomment_section);
+            }).fail(function (response) {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            })
+        }
+    }
+});
+
+$(document).on("click", ".comments-list a.reply", function () {
+    var parent = $(this).parent().parent().parent();
+    var textarea = parent.find("textarea#comment");
+    var arr = Array.prototype.slice.call(parent.find("li.parent"));
+    var index = arr.indexOf($(this).parent()[0]);
+    var button = parent.find(".options-message#submit").removeClass (function (index, className) {
+        return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
+    }).addClass("child-comment child-comment-" + index);
+    scrollto(textarea);
+    $(this).parent().addClass("has-children");
+    textarea.focus();
+});
+
+function ms2Time(ms) {
+    var secs = ms / 1000;
+    ms = Math.floor(ms % 1000);
+    var minutes = secs / 60;
+    secs = Math.floor(secs % 60);
+    var hours = minutes / 60;
+    minutes = Math.floor(minutes % 60);
+    hours = Math.floor(hours % 24);
+    var string = "";
+    if (hours == 0 && minutes == 0) {
+        string += secs + " giây "
+    }
+    else {
+        if (hours == 0 && minutes != 0) {
+            if (minutes != 0) {
+                string += minutes + " phút "
+            }
+            if (secs != 0) {
+                string += secs + " giây "
+            }
+        }
+        else {
+            if (hours != 0) {
+                string += hours + " giờ "
+            }
+            if (minutes != 0) {
+                string += minutes + " phút "
+            }
+        }
+    }
+    return string + " trước";
+}
+
+$(document).ready(function () {
+    window.setInterval(function () {
+        var end = Date.now();
+        var start;
+        $(".author-date time").each(function () {
+            var time = parseInt($(this).attr("data-time"));
+            start = new Date(time);
+            $(this).text(ms2Time(end - start));
+        });
+    }, 60000);
+});
+
+$(document).on("click", ".news-feed-form .form-group .selection .togglebutton label input[type=checkbox]", function () {
+    $(".add-options-message.ask-teacher").slideToggle('slow');
+    if ($(this).is(':checked')) {
+        $(".news-feed-form .form-group .selection p").text("Hỏi thầy cô cho chắc").css("color", "#fe5e3a");
+    }
+    else {
+        $(".news-feed-form .form-group .selection p").text("Hỏi tất cả mọi người").css("color", "#888da8");
+    }
+});

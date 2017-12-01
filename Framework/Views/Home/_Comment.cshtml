@@ -1,14 +1,14 @@
 ﻿@model Framework.ViewModels.CommentViewModel
 
-<li class="new-comment" style="display: none">
+<li class="new-comment parent" style="display: none">
     <div class="post__author author vcard inline-items">
         <img src="content/images/author-page.jpg" alt="author">
 
         <div class="author-date">
             <a class="h6 post__author-name fn" href="#">Thịnh Phan</a>
             <div class="post__date">
-                <time class="published">
-                    1 phút trước
+                <time class="published" data-time="">
+                    
                 </time>
             </div>
         </div>
@@ -27,4 +27,6 @@
         <span>0</span>
     </a>
     <a class="reply">Trả lời</a>
+
+    <ul class="children"></ul>
 </li>

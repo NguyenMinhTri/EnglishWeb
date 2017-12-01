@@ -22,10 +22,17 @@
                                     <div class="form-group with-icon label-floating is-empty">
                                         <label class="control-label">Bạn đang thắc mắc về...</label>
                                         <textarea class="form-control" placeholder=""></textarea>
+                                        <div class="selection">
+                                            <p>Hỏi tất cả mọi người</p>
+                                            <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi Thầy cô nha!">
+                                                <label>
+                                                    <input type="checkbox">
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="add-options-message row">
-                                        <div class="col-md-8 col-sm-8 tag-friends">
-                                            <label class="control-label">Bạn có thể đặt 2 câu hỏi cho</label>
+                                    <div class="add-options-message row ask-teacher" style="display: none">
+                                            <label class="control-label">Bạn có thể đặt <span>2</span> câu hỏi cho</label>
                                             <fieldset class="form-group">
                                                 <select class="selectpicker form-control" size="auto">
                                                     <option value="AL">Thầy Thanh Tùng</option>
@@ -33,47 +40,8 @@
                                                     <option value="WY">Thầy Giảng Dương</option>
                                                 </select>
                                             </fieldset>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <button class="btn btn-primary btn-md-2">Đăng tải</button>
-                                        </div>
                                     </div>
-
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-                                <form>
-                                    <div class="author-thumb sinhvien">
-                                        <img src="content/images/author-page.jpg" alt="author">
-                                    </div>
-                                    <div class="form-group with-icon label-floating is-empty">
-                                        <label class="control-label">Bạn muốn chia sẻ về...</label>
-                                        <textarea class="form-control" placeholder=""></textarea>
-                                    </div>
-                                    <div class="add-options-message">
-                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="THÊM ẢNH">
-                                            <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="content/icons/icons.svg#olymp-camera-icon"></use></svg>
-                                        </a>
-                                        <button class="btn btn-primary btn-md-2">Đăng tải</button>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-                                <form>
-                                    <div class="author-thumb sinhvien">
-                                        <img src="content/images/author-page.jpg" alt="author">
-                                    </div>
-                                    <div class="form-group with-icon label-floating is-empty">
-                                        <label class="control-label">Bạn đang đang suy nghĩ về...</label>
-                                        <textarea class="form-control" placeholder=""></textarea>
-                                    </div>
-                                    <div class="add-options-message">
-                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="THÊM ẢNH">
-                                            <svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="content/icons/icons.svg#olymp-camera-icon"></use></svg>
-                                        </a>
+                                    <div class="status-footer">
                                         <button class="btn btn-primary btn-md-2">Đăng tải</button>
                                     </div>
 
@@ -91,7 +59,7 @@
                             <div class="author-date">
                                 <a class="h6 post__author-name fn" href="Profile">Thịnh Phan</a>
                                 <div class="post__date">
-                                    <time class="published" datetime="2017-03-24T18:18">
+                                    <time class="published" data-time="1512151976579">
                                         19 giờ trước
                                     </time>
                                 </div>
@@ -166,8 +134,8 @@
                             <div class="author-date">
                                 <a class="h6 post__author-name fn" href="Profile">Thịnh Phan</a>
                                 <div class="post__date">
-                                    <time class="published" datetime="2017-03-24T18:18">
-                                        2 giờ trước
+                                    <time class="published" data-time="1512151976580">
+                                        
                                     </time>
                                 </div>
                             </div>
@@ -245,15 +213,15 @@
                     </article>
                     <div class="comment-section">
                         <ul class="comments-list">
-                            <li class="has-children showed">
+                            <li class="has-children showed parent">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar5-sm.jpg" alt="author">
 
                                     <div class="author-date">
                                         <a class="h6 post__author-name fn" href="#">Lê Văn Phú</a>
                                         <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                1 giờ trước
+                                            <time class="published" data-time="1512151681770">
+                                                
                                             </time>
                                         </div>
                                     </div>
@@ -282,8 +250,8 @@
                                             <div class="author-date">
                                                 <a class="h6 post__author-name fn" href="#">Nguyễn Thanh Thiện</a>
                                                 <div class="post__date">
-                                                    <time class="published" datetime="2017-03-24T18:18">
-                                                        39 phút trước
+                                                    <time class="published" data-time="1512151976575">
+                                                        
                                                     </time>
                                                 </div>
                                             </div>
@@ -304,15 +272,15 @@
                                 </ul>
                             </li>
 
-                            <li class="showed">
+                            <li class="showed parent">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar10-sm.jpg" alt="author">
 
                                     <div class="author-date">
                                         <a class="h6 post__author-name fn" href="#">Minh Trí</a>
                                         <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                20 phút trước
+                                            <time class="published" data-time="1512151976580">
+                                               
                                             </time>
                                         </div>
                                     </div>
@@ -330,16 +298,17 @@
                                     <span>36</span>
                                 </a>
                                 <a class="reply">Trả lời</a>
+                                <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed">
+                            <li class="lazy-show not-showed parent">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar6-sm.jpg" alt="author">
 
                                     <div class="author-date">
                                         <a class="h6 post__author-name fn" href="#">Bảo Bảo</a>
                                         <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                15 phút trước
+                                            <time class="published" data-time="1512151976585">
+                                               
                                             </time>
                                         </div>
                                     </div>
@@ -357,16 +326,17 @@
                                     <span>0</span>
                                 </a>
                                 <a class="reply">Trả lời</a>
+                                <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed">
+                            <li class="lazy-show not-showed parent">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar10-sm.jpg" alt="author">
 
                                     <div class="author-date">
                                         <a class="h6 post__author-name fn" href="#">Quốc Cầm</a>
                                         <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                14 phút trước
+                                            <time class="published" data-time="1512151976590">
+                                                
                                             </time>
                                         </div>
                                     </div>
@@ -384,16 +354,17 @@
                                     <span>0</span>
                                 </a>
                                 <a class="reply">Trả lời</a>
+                                <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed">
+                            <li class="lazy-show not-showed parent">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar3-sm.jpg" alt="author">
 
                                     <div class="author-date">
                                         <a class="h6 post__author-name fn" href="#">Văn Duyệt</a>
                                         <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                5 phút trước
+                                            <time class="published" data-time="1512151976591">
+                                                
                                             </time>
                                         </div>
                                     </div>
@@ -411,16 +382,17 @@
                                     <span>0</span>
                                 </a>
                                 <a class="reply">Trả lời</a>
+                                <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed">
+                            <li class="lazy-show not-showed parent">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar10-sm.jpg" alt="author">
 
                                     <div class="author-date">
                                         <a class="h6 post__author-name fn" href="#">Quốc Cầm</a>
                                         <div class="post__date">
-                                            <time class="published" datetime="2017-03-24T18:18">
-                                                1 phút trước
+                                            <time class="published" data-time="1512151976592">
+                                                
                                             </time>
                                         </div>
                                     </div>
@@ -438,6 +410,7 @@
                                     <span>38</span>
                                 </a>
                                 <a class="reply">Trả lời</a>
+                                <ul class="children"></ul>
                             </li>
                         </ul>
 
