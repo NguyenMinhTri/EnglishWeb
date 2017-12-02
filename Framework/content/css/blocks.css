@@ -6889,3 +6889,23 @@ a.reply:hover {
     font-size: 15px;
     font-weight: bold;
 }
+
+a.olympus-chat.inline-items {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-around;
+}
+
+.fixed-sidebar-right.sidebar--large.mobile .olympus-chat {
+    top: 0;
+}
+
+.fixed-sidebar-right.sidebar--large.mobile .search-friend {
+    bottom: 0;
+}
+
+
+.fixed-sidebar-right.sidebar--large.mobile .ui-block-title.ui-block-title-small {
+    margin-top: 0;
+}

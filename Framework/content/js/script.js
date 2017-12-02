@@ -353,15 +353,20 @@ function ms2Time(ms) {
     return string + " trước";
 }
 
+function TimeStamp() {
+    var end = Date.now();
+    var start;
+    $(".author-date time").each(function () {
+        var time = parseInt($(this).attr("data-time"));
+        start = new Date(time);
+        $(this).text(ms2Time(end - start));
+    });
+}
+
 $(document).ready(function () {
+    TimeStamp();
     window.setInterval(function () {
-        var end = Date.now();
-        var start;
-        $(".author-date time").each(function () {
-            var time = parseInt($(this).attr("data-time"));
-            start = new Date(time);
-            $(this).text(ms2Time(end - start));
-        });
+        TimeStamp();
     }, 60000);
 });
 
