@@ -9,7 +9,7 @@
                     <h1>OLYMPUS DICTIONARY</h1>
                     <div class="form-group col-md-6 dictionary-keyword">
                         <form id="normal-form">
-                            <input name="keyword" class="form-control" type="text" placeholder="Nhập từ khóa">
+                            <input name="keyword" class="form-control" type="text" placeholder="Nhập từ khóa" id="keyword">
                             <input type="submit" style="display:none" id="submit"/>
                         </form>
                     </div>
@@ -23,14 +23,67 @@
     $('#normal-form').on("submit", function (e) {
         $(".waiting_loader").css("display", "block");
         e.preventDefault();
-        var form = $(this);
-        var keyword = form.serialize();
-        $.post('/Dictionary/Dictionaries', keyword).done(function (data) {
+        var keyword = $("#keyword").val();
+        var keywords = { keyword: keyword };
+        $.post('/Dictionary/Dictionaries', keywords).done(function (data) {
             $("#partial").html(data);
+            if (!$(".dictionary-title h1").hasClass("not-found")) {
+                onYouglishAPIReady(keyword);
+            }
         }).fail(function (response) {
             $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            $("#notify-button").click();
         }).always(function () {
             $(".waiting_loader").css("display", "none");
         });
     });
+
+    // 2. This code loads the widget API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "content/js/word-youtube.js";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates a widget after the API code downloads.
+    var widget;
+    function onYouglishAPIReady(keyword) {
+        if (keyword != "") {
+            widget = new YG.Widget("widget-1", {
+                width: 640,
+                components: 9, //search box & caption 
+                events: {
+                    'onSearchDone': onSearchDone,
+                    'onVideoChange': onVideoChange,
+                    'onCaptionConsumed': onCaptionConsumed
+                }
+            });
+            // 4. process the query
+            widget.search(keyword, "US");
+        }
+    }
+
+    var views = 0, curTrack = 0, totalTracks = 0;
+
+    // 5. The API will call this method when the search is done
+    function onSearchDone(event) {
+        if (event.totalResult === 0) alert("Không tìm thấy rồi");
+        else totalTracks = event.totalResult;
+    }
+
+    // 6. The API will call this method when switching to a new video. 
+    function onVideoChange(event) {
+        curTrack = event.trackNumber;
+        views = 0;
+    }
+
+    // 7. The API will call this method when a caption is consumed. 
+    function onCaptionConsumed(event) {
+        if (++views < 3)
+            widget.replay();
+        else
+            if (curTrack < totalTracks)
+                widget.next();
+    }
+
 </script>

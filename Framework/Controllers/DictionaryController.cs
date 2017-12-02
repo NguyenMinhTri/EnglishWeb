@@ -93,6 +93,7 @@ namespace Framework.Controllers
             GoogleTransJson googleTransJson = new GoogleTransJson();
             keyword = keyword.Trim();
             _viewModel = new DictionariesViewModel();
+            bool downloadSucceeded = false;
             if (keyword != "")
             {
                 int size = keyword.Split(' ').Length;
@@ -104,17 +105,23 @@ namespace Framework.Controllers
                 }
                 else
                 {
-
                     try
                     {
                         dict = await _clientDictionaryService.startCrawlerOxford(keyword);
+                        downloadSucceeded = true;
                     }
-                    catch
+                    catch(Exception e)
+                    {
+                        downloadSucceeded = false;
+
+                    }
+                    if (!downloadSucceeded)
                     {
                         googleTransJson = await _clientDictionaryService.startGoogleTrans(keyword);
                         DictionariesViewModel.isGoogleTrans = true;
                         DictionariesViewModel.m_GoogleTrans = googleTransJson;
                     }
+                        
                     DictionariesViewModel.m_Explanation = dict.m_Explanation;
                     DictionariesViewModel.m_SoundUrl = dict.m_SoundUrl;
                     DictionariesViewModel.m_Type = dict.m_Type;

@@ -6905,7 +6905,11 @@ a.olympus-chat.inline-items {
     bottom: 0;
 }
 
-
 .fixed-sidebar-right.sidebar--large.mobile .ui-block-title.ui-block-title-small {
     margin-top: 0;
+}
+
+div#cau em {
+    font-style: normal;
+    font-weight: 500;
 }

@@ -4160,6 +4160,7 @@
     <Content Include="content\js\script.js" />
     <Content Include="content\js\smooth-scroll.min.js" />
     <Content Include="content\js\theme-plugins.js" />
+    <Content Include="content\js\word-youtube.js" />
     <Content Include="content\mp3\Ket_1_3.mp3" />
     <Content Include="dai-tu.html" />
     <Content Include="danh-tu-dem-duoc-va-danh-tu-khong-dem-duoc.html" />
