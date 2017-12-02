@@ -60,6 +60,7 @@
     <Compile Include="ApplicationUserRole.cs" />
     <Compile Include="ApplicationUserStore.cs" />
     <Compile Include="Auditable.cs" />
+    <Compile Include="BotModel.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="CommentVoteDetail.cs" />
     <Compile Include="GoogleJson.cs" />
