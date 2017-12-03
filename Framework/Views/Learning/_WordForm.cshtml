@@ -66,8 +66,8 @@
         <div class="ui-block-content">
             <p>Bạn đã đạt đươc <strong style="font-size: 20px;"><span style="color: #ff5e3a;" id="wrong"></span>/6</strong> câu hỏi chính xác!</p>
             <p id="hey"></p>
-            <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Biết rồi</a>
-            <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" onclick="location.reload();">Bài tiếp theo</a>
+            <a href="#" class="cancel btn btn-primary btn-lg full-width btn-icon-center" data-dismiss="modal" aria-label="Close">Biết rồi</a>
+            <a href="#" class="ok btn btn-primary btn-lg full-width btn-icon-center" onclick="location.reload();">Bài tiếp theo</a>
         </div>
 
     </div>
@@ -89,10 +89,14 @@
         });
         $("#wrong").text(6 - wrong);
         if (wrong != 0) {
-            $("#hey").text("Để ý kĩ và làm lại nha!")
+            $("#hey").text("Để ý kĩ và làm lại nha!");
+            $("#score a.btn.cancel").css("display", "block");
+            $("#score a.btn.ok").css("display", "none");
         }
         else {
-            $("#hey").text("Đó là một kết quả rất tốt đó! Cùng cố gắng nào!")
+            $("#hey").text("Đó là một kết quả rất tốt đó! Cùng cố gắng nào!");
+            $("#score a.btn.cancel").css("display", "none");
+            $("#score a.btn.ok").css("display", "block");
         }
         $("#score-modal").click();
         return wrong;

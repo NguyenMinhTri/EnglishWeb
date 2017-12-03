@@ -21,7 +21,7 @@
                     <h5 style=" color: gray; font-weight: 500; ">Chọn hình ảnh ứng với điều mà bạn nghe được!</h5>
                     <h2 class="listen-question" answer="Shirt">What does the man want to buy?</h2>
                     <div class="listen">
-                        <audio id="mediaplayer">
+                        <audio id="listen-lesson">
                             <source src="content/mp3/Ket_1_3.mp3" title="Track 1" data-poster="track1.png" type="audio/mpeg">
                         </audio>
                     </div>
@@ -81,8 +81,8 @@
         <div class="ui-block-content">
             <p id="wrong"></p>
             <p id="hey"></p>
-            <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close" onclick="$('.script').fadeIn()">Biết rồi</a>
-            <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" onclick="location.reload();">Bài tiếp theo</a>
+            <a href="#" class="cancel btn btn-primary btn-lg full-width btn-icon-center" data-dismiss="modal" aria-label="Close" onclick="$('.script').fadeIn()">Biết rồi</a>
+            <a href="#" class="ok btn btn-primary btn-lg full-width btn-icon-center" onclick="location.reload();">Bài tiếp theo</a>
         </div>
 
     </div>
@@ -102,11 +102,15 @@
             }
         });
         if (wrong != 0) {
-            $("#wrong").text("Sai rồi, nghe kĩ lại nha!")
+            $("#wrong").text("Sai rồi, nghe kĩ lại nha!");
+            $("#score a.btn.cancel").css("display", "block");
+            $("#score a.btn.ok").css("display", "none");
         }
         else {
             $("#hey").text("Đó là một kết quả rất tốt đó! Cùng cố gắng nào!")
-            $("#wrong").text("Bạn đã trả lời chính xác!")
+            $("#wrong").text("Bạn đã trả lời chính xác!");
+            $("#score a.btn.cancel").css("display", "none");
+            $("#score a.btn.ok").css("display", "block");
         }
         $("#score-modal").click();
         return wrong;
@@ -141,4 +145,5 @@
             $box.prop("checked", false);
         }
     });
+    $('audio#listen-lesson').mediaelementplayer();
 </script>
