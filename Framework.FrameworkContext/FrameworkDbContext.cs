@@ -30,6 +30,8 @@ namespace Framework.FrameworkContext
         public DbSet<PostVoteDetail> PostVoteDetails { set; get; }
         public DbSet<CommentVoteDetail> CommentVoteDetails { set; get; }
         public DbSet<Routing> Routings { set; get; }
+        public DbSet<OurWord> OurWords { set; get; }
+        public DbSet<DetailOurWord> DetailOurWords { set; get; }
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -89,7 +91,7 @@ namespace Framework.FrameworkContext
                        e => e.Property(x => x.Status),
                        e => e.Property(x => x.CreatedDate));
 
-            
+
             builder.Entity<PostCommentDetail>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertPostCommentDetail", "dbo"))
             .Update(u => u.HasName("UpdatePostCommentDetail", "dbo"))
             .Delete(u => u.HasName("DeletePostCommentDetail", "dbo")));
@@ -99,7 +101,12 @@ namespace Framework.FrameworkContext
             builder.Entity<CommentVoteDetail>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertCommentVoteDetail", "dbo"))
             .Update(u => u.HasName("UpdateCommentVoteDetail", "dbo"))
             .Delete(u => u.HasName("DeleteCommentVoteDetail", "dbo")));
-
+            builder.Entity<OurWord>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertOurWord", "dbo"))
+            .Update(u => u.HasName("UpdateOurWord", "dbo"))
+            .Delete(u => u.HasName("DeleteOurWord", "dbo")));
+            builder.Entity<DetailOurWord>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertDetailOurWord", "dbo"))
+            .Update(u => u.HasName("UpdateDetailOurWord", "dbo"))
+            .Delete(u => u.HasName("DeleteDetailOurWord", "dbo")));
 
             //st3. -- END
 

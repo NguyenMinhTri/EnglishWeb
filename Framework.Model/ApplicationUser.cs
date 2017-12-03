@@ -55,6 +55,7 @@ namespace Framework.Model
         public String FavoriteAuthor { get; set; }
         public String Avatar { get; set; }
         public float Score { get; set; }
+        public String Id_Messenger { get; set; }
 
         /// <summary>
         ///     Constructor which creates a new Guid for the Id

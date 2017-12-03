@@ -25,12 +25,16 @@ namespace Framework.Controllers
     public class DictionaryController : LayoutController
     {
         IClientDictionaryService _clientDictionaryService;
+        IOurWordService _ourWordService;
+
         public DictionaryController(ILayoutService layoutService,
-            IClientDictionaryService clientDictionaryService
+            IClientDictionaryService clientDictionaryService,
+            IOurWordService ourWordService
             )
             : base(layoutService)
         {
             _clientDictionaryService = clientDictionaryService;
+            _ourWordService = ourWordService;
         }
 
 
@@ -86,7 +90,6 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        //public async Task<PartialViewResult> Dictionaries(string keyword)
         public async Task<PartialViewResult> Dictionaries(string keyword)
         {
             OxfordDict dict = new OxfordDict();
@@ -126,10 +129,52 @@ namespace Framework.Controllers
                     DictionariesViewModel.m_SoundUrl = dict.m_SoundUrl;
                     DictionariesViewModel.m_Type = dict.m_Type;
                     DictionariesViewModel.m_Voca = dict.m_Voca;
+                    DictionariesViewModel.m_Pron = dict.m_Pron.Replace("BrE","");
                 }
                 DictionariesViewModel.m_ExaTraCau = await _clientDictionaryService.startCrawlerTraCau(keyword);
             }
             return PartialView("_Dictionaries", DictionariesViewModel);
+        }
+
+        [HttpPost]
+        public JsonResult Tick(OurWordViewModel ourword)
+        {
+            if (ourword != null)
+            {
+                OurWord newOurWord = new OurWord();
+
+                //Add
+                //_ourWordService.Add(newOurWord);
+
+                //Update
+                //newOurWord = _ourWordService.GetById(1);
+                //FieldHelper.CopyNotNullValue(newOurWord, ourword);
+                //_ourWordService.Update(newOurWord);
+                
+                //Delete
+                //newOurWord = _ourWordService.GetById(1);
+                //_ourWordService.Delete(newOurWord);
+
+                try
+                {
+                    _ourWordService.Save();
+                    return Json(new
+                    {
+                        result = "success"
+                    });
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "failed",
+                    });
+                }
+            }
+            return Json(new
+            {
+                result = "failed"
+            });
         }
 
         [HttpGet]
@@ -165,28 +210,8 @@ namespace Framework.Controllers
             message.attachment.payload.url = dict.m_SoundUrl;
             message.attachment.type = "audio";
 
-
-
             hello.messages.Add(check);
             hello.messages.Add(message);
-            //hello.messages.Add(message);
-            ////RootObject demo = new RootObject();
-            ////Messages mess = new Messages();
-            ////Element ele = new Element();
-            ////Button btn = new Button();
-            ////mess.attachment.type = "template";
-            ////mess.attachment.payload.template_type = "list";
-            ////mess.attachment.payload.top_element_style = "large";
-            ////ele.image_url = "http://rockets.chatfuel.com/img/shirt.png";
-            ////ele.title = "Chatfuel Rockets T-Shirt";
-            ////ele.subtitle = "Soft white cotton t-shirt with CF Rockets logo";
-            ////btn.title = "Click";
-            ////btn.type = "web_url";
-            ////btn.url = "http://data.chiasenhac.com/data/cover/80/79056.jpg";
-            //////add button
-            ////ele.buttons.Add(btn);
-            ////mess.attachment.payload.elements.Add(ele);
-            ////demo.messages.Add(mess);
             return JsonConvert.SerializeObject(hello);
         }
     }

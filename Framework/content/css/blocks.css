@@ -6915,3 +6915,7 @@ div#cau em {
 }
 
 .listen .mejs-button.mejs-playpause-button.mejs-play{padding: 0 20px;}
+
+.dictionary-title .post-title span{
+    font-size:22px;
+}

@@ -231,9 +231,11 @@
     <Compile Include="Controllers\Admin\AdminBaseController.cs" />
     <Compile Include="Controllers\Admin\AdminCodeController.cs" />
     <Compile Include="Controllers\Admin\AdminCommentVoteDetailController.cs" />
+    <Compile Include="Controllers\Admin\AdminDetailOurWordController.cs" />
     <Compile Include="Controllers\Admin\AdminFriendController.cs" />
     <Compile Include="Controllers\Admin\AdminMessageController.cs" />
     <Compile Include="Controllers\Admin\AdminNotificationController.cs" />
+    <Compile Include="Controllers\Admin\AdminOurWordController.cs" />
     <Compile Include="Controllers\Admin\AdminPostCommentDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
@@ -244,6 +246,7 @@
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
     <Compile Include="Infrastructure\CustomUserIdProvider.cs" />
+    <Compile Include="Models\OurWordViewModel.cs" />
     <Compile Include="Models\DictionaryViewModel.cs" />
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />

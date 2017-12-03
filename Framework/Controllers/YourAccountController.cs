@@ -213,7 +213,6 @@ namespace Framework.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
                     IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
                     {

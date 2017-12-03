@@ -95,9 +95,11 @@
     <Compile Include="Admin\Input\BaseInputViewData.cs" />
     <Compile Include="Admin\Input\CodeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\CommentVoteDetailInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\DetailOurWordInputAdminViewData.cs" />
     <Compile Include="Admin\Input\FriendInputAdminViewData.cs" />
     <Compile Include="Admin\Input\MessageInputAdminViewData.cs" />
     <Compile Include="Admin\Input\NotificationInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\OurWordInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostCommentDetailInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostVoteDetailInputAdminViewData.cs" />

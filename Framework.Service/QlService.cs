@@ -35,7 +35,6 @@ namespace Framework.Service
 
         public virtual T Add(T entity)
         {
-            
             entity.Status = true;
             entity.CreatedDate = DateTime.Now;
             return _repository.Add(entity);

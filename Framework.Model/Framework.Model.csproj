@@ -63,10 +63,12 @@
     <Compile Include="BotModel.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="CommentVoteDetail.cs" />
+    <Compile Include="DetailOurWord.cs" />
     <Compile Include="GoogleJson.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Dictionary.cs" />
+    <Compile Include="OurWord.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostCommentDetail.cs" />
     <Compile Include="PostVoteDetail.cs" />

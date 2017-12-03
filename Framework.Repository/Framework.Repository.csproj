@@ -66,9 +66,11 @@
     <Compile Include="RepositorySpace\ApplicationUserRoleRepository.cs" />
     <Compile Include="RepositorySpace\CodeRepository.cs" />
     <Compile Include="RepositorySpace\CommentVoteDetailRepository.cs" />
+    <Compile Include="RepositorySpace\DetailOurWordRepository.cs" />
     <Compile Include="RepositorySpace\FriendRepository.cs" />
     <Compile Include="RepositorySpace\MessageRepository.cs" />
     <Compile Include="RepositorySpace\NotificationRepository.cs" />
+    <Compile Include="RepositorySpace\OurWordRepository.cs" />
     <Compile Include="RepositorySpace\PostCommentDetailRepository.cs" />
     <Compile Include="RepositorySpace\PostRepository.cs" />
     <Compile Include="RepositorySpace\PostVoteDetailRepository.cs" />

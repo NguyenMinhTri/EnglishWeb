@@ -105,9 +105,11 @@
     <Compile Include="Admin\CodeService.cs" />
     <Compile Include="Admin\ComboboxService.cs" />
     <Compile Include="Admin\CommentVoteDetailService.cs" />
+    <Compile Include="Admin\DetailOurWordService.cs" />
     <Compile Include="Admin\FriendService.cs" />
     <Compile Include="Admin\MessageService.cs" />
     <Compile Include="Admin\NotificationService.cs" />
+    <Compile Include="Admin\OurWordService.cs" />
     <Compile Include="Admin\PostCommentDetailService.cs" />
     <Compile Include="Admin\PostService.cs" />
     <Compile Include="Admin\PostVoteDetailService.cs" />
