@@ -269,10 +269,13 @@ $(document).on("click", "#submit.options-message.active", function () {
     var button = $(this);
     var new_comment;
     if (comment.length != 0) {
-        var comment_data = { comment: comment };
+        var data = {
+            Comment: comment,
+
+        };
         if (!$(this).hasClass("child-comment")) {
-            $.post("/Home/Comment", comment_data).done(function (data) {
-                $(comment_section).append(data);
+            $.post("/Home/Comment", data).done(function (html) {
+                $(comment_section).append(html);
                 textarea.val("");
                 button.removeClass("active");
                 total.text($(comment_section).find("li").length);
@@ -288,8 +291,8 @@ $(document).on("click", "#submit.options-message.active", function () {
             var index = $(this).attr("class").match(/(?:\s|^)child-comment-(\d+)/)[1];
             var parentcomment_section = $(comment_section).find("li.parent")[index];
             var childcomment_section = $(parentcomment_section).find("ul.children");
-            $.post("/Home/ChildComment", comment_data).done(function (data) {
-                $(childcomment_section).append(data);
+            $.post("/Home/ChildComment", data).done(function (html) {
+                $(childcomment_section).append(html);
                 textarea.val("");
                 new_comment = $(comment_section).find("li.new-comment");
                 new_comment.find(".author-date time").attr("data-time", Date.now);
@@ -367,17 +370,18 @@ $(document).ready(function () {
     TimeStamp();
     window.setInterval(function () {
         TimeStamp();
-    }, 60000);
+    }, 1000);
 });
 
 $(document).on("click", ".news-feed-form .form-group .selection .togglebutton label input[type=checkbox]", function () {
-    $(".add-options-message.ask-teacher").slideToggle('slow');
     if ($(this).is(':checked')) {
         $(".news-feed-form .form-group .selection p").text("Hỏi thầy cô cho chắc").css("color", "#fe5e3a");
         $(this).parent().parent().attr("title", "Tắt để hỏi mọi người nha!").attr("data-original-title", "Tắt để hỏi mọi người nha!");
+        $("input[name='Type']").val("1");
     }
     else {
         $(".news-feed-form .form-group .selection p").text("Hỏi tất cả mọi người").css("color", "#888da8");
         $(this).parent().parent().attr("title", "Bật để hỏi Thầy cô nha!").attr("data-original-title", "Bật để hỏi Thầy cô nha!");
+        $("input[name='Type']").val("0");
     }
 });

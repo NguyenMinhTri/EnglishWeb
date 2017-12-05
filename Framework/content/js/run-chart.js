@@ -26,19 +26,19 @@ var twoBarChart = document.getElementById("two-bars-chart");
 if (twoBarChart !== null) {
     var ctx_tb = twoBarChart.getContext("2d");
     var data_tb = {
-        labels: range(2011, 2016, 1),
+        labels: range(8, 12, 1),
         datasets: [
             {
-            label: "Statistic 02",
+            label: "Hữu ích",
             backgroundColor: "#ffdc1b",
             borderSkipped: "bottom",
-            data: [43,47,38,30,47,39]
+            data: [36,30,45,50,39,41]
         }, {
-            label: "Statistic 01",
+            label: "Không tốt",
             backgroundColor: "#ff5e3a",
             borderSkipped: 'bottom',
             borderWidth: 0,
-            data: [36,30,45,50,39,41]
+            data: [2, 1, 0, 1, 3, 5]
         }]
     };
 
@@ -215,7 +215,7 @@ var lineGraphicChart = document.getElementById("line-graphic-chart");
 if (lineGraphicChart !== null) {
     var ctx_lg = lineGraphicChart.getContext("2d");
     var data_lg = {
-        labels: ["Aug 8", "Aug 15", "Aug 21", "Aug 28", "Sep 4", "Sep 11", "Sep 19", "Sep 26", "Oct 3", "Oct 10", "Oct 16", "Oct 23", "Oct 30"],
+        labels: ["Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"],
         datasets: [
             {
                 label: " - Favorites",
@@ -227,7 +227,7 @@ if (lineGraphicChart !== null) {
                 pointBorderWidth: 4,
                 pointRadius: 0,
                 pointHoverRadius: 8,
-                data: [98,42,38,57,82,41,36,30,45,62,64,80,68]
+                data: [98,42,38,57]
             },
             {
                 label: " - Visitors",
@@ -239,7 +239,7 @@ if (lineGraphicChart !== null) {
                 pointBorderWidth: 4,
                 pointRadius: 0,
                 pointHoverRadius: 8,
-                data: [78,101,80,87,120,105,110,76,101,96,100,115,135]
+                data: [78,101,80,87]
             }]
     };
 
@@ -339,6 +339,35 @@ if (pieColorChart !== null) {
                 current_cart.circleProgress({
                     thickness: 16,
                     size: 200,
+                    startAngle: -Math.PI / 4 * 2,
+                    emptyFill: '#ebecf1',
+                    lineCap: 'round',
+                    fill: {
+                        gradient: [endColor, startColor],
+                        gradientAngle: Math.PI / 4
+                    }
+                }).on('circle-animation-progress', function (event, progress) {
+                    current_cart.find('.content').html(parseInt(counter * progress, 10) + '<span>%</span>'
+                    )
+
+                });
+                current_cart.data('inited', true);
+            }
+        });
+
+
+        var $pie_chart = $('.pie-chart-expert');
+        $pie_chart.appear({ force_process: true });
+        $pie_chart.on('appear', function () {
+            var current_cart = $(this);
+            if (!current_cart.data('inited')) {
+                var startColor = current_cart.data('startcolor');
+                var endColor = current_cart.data('endcolor');
+                var counter = current_cart.data('value') * 100;
+
+                current_cart.circleProgress({
+                    thickness: 16,
+                    size: 310,
                     startAngle: -Math.PI / 4 * 2,
                     emptyFill: '#ebecf1',
                     lineCap: 'round',
