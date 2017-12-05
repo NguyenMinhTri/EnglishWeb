@@ -48,7 +48,7 @@ namespace Framework.ViewModels
         public String LastName { get; set; }
         public String Avatar { get; set; }
         public String UserName { get; set; }
-        public int Id { get; set; }
+       // public int Id { get; set; }
         public String Content { get; set; }
         public String Tag { get; set; }
         public int UpVote { get; set; }

@@ -24,7 +24,7 @@ namespace Framework.ViewModels
         public string m_SoundUrl { set; get; }
         public List<Explanation> m_Explanation;
         public ExampleTraCau m_ExaTraCau;
-        public GoogleTransJson m_GoogleTrans;
+        public GoogleTrans m_GoogleTrans;
     }
 
     public class OldWordsViewModel : LayoutViewModel, IRef<DictionaryController>

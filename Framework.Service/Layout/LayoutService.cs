@@ -15,6 +15,7 @@ namespace Framework.Service
     {
         ApplicationUser GetUserById(string userId);
         List<String> GetRolesOfUser(string userId);
+        List<ApplicationUser> listUserID();
     }
     public class LayoutService : ILayoutService
     {
@@ -44,6 +45,9 @@ namespace Framework.Service
         {
             return _userRoleRepository.GetRolesOfUser(userId);
         }
-
+        public List<ApplicationUser> listUserID()
+        {
+            return _userRepository.GetAll().ToList();
+        }
     }
 }

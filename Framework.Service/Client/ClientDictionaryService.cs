@@ -19,7 +19,8 @@ namespace Framework.Service.Client
     {
         Task<OxfordDict> startCrawlerOxford(string voca);
         Task<ExampleTraCau> startCrawlerTraCau(string voca);
-        Task<GoogleTransJson> startGoogleTrans(string voca);
+        Task<GoogleTrans> startGoogleTrans(string voca);
+        Task<GoogleTrans> startGoogleDetailTrans(string voca);
         //void GoogleTranslator(string voca);
     }
     class ClientDictionaryService : IClientDictionaryService
@@ -33,6 +34,8 @@ namespace Framework.Service.Client
         }
         public async Task<OxfordDict> startCrawlerOxford(string voca="welcome")
         {
+
+            //
             m_oxfordDict.m_Voca = voca;
             var url = "https://www.oxfordlearnersdictionaries.com/definition/english/"+voca;
             var httpClient = new HttpClient();
@@ -101,7 +104,7 @@ namespace Framework.Service.Client
             return exTracau;
         }
         //Google translator
-        public async Task<GoogleTransJson> startGoogleTrans(string voca)
+        public async Task<GoogleTrans> startGoogleTrans(string voca)
         {
             string result = "";
             var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&hl=en-US&dt=t&dt=bd&dj=1&source=bubble&tk=908123.908123&q="+ voca;
@@ -112,7 +115,23 @@ namespace Framework.Service.Client
             {
                  result = reader.ReadToEnd();
             }
-            GoogleTransJson googleTransJson = JsonConvert.DeserializeObject<GoogleTransJson>(result);
+            GoogleTrans googleTransJson = JsonConvert.DeserializeObject<GoogleTrans>(result);
+            return googleTransJson;
+        }
+        //Google detail translator 
+        //Google translator
+        public async Task<GoogleTrans> startGoogleDetailTrans(string voca)
+        {
+            string result = "";
+            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&hl=vi&dt=t&dt=bd&dj=1&source=icon&tk=827698.827698&q=" + voca;
+            var webRequest = WebRequest.Create(url);
+            using (var response = webRequest.GetResponse())
+            using (var content = response.GetResponseStream())
+            using (var reader = new StreamReader(content))
+            {
+                result = reader.ReadToEnd();
+            }
+            GoogleTrans googleTransJson = JsonConvert.DeserializeObject<GoogleTrans>(result);
             return googleTransJson;
         }
     }

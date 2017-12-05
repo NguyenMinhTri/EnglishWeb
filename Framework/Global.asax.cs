@@ -13,6 +13,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Framework.Models;
+using Framework.Schedule;
 
 namespace Framework
 {
@@ -30,6 +31,7 @@ namespace Framework
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<FrameworkDbContext>(null);
             Database.SetInitializer<ApplicationDbContext>(null);
+            JobScheduler.Start();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

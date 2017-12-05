@@ -101,6 +101,10 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Quartz, Version=2.6.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.6.1\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -232,6 +236,7 @@
     <Compile Include="Controllers\Admin\AdminCodeController.cs" />
     <Compile Include="Controllers\Admin\AdminCommentVoteDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminDetailOurWordController.cs" />
+    <Compile Include="Controllers\Admin\AdminDetailUserTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminFriendController.cs" />
     <Compile Include="Controllers\Admin\AdminMessageController.cs" />
     <Compile Include="Controllers\Admin\AdminNotificationController.cs" />
@@ -243,6 +248,7 @@
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
@@ -251,12 +257,16 @@
     <Compile Include="Models\DictionaryViewModel.cs" />
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\RequestViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\YourAccountViewModel.cs" />
     <Compile Include="Models\EntertainmentViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IRef.cs" />
     <Compile Include="Models\LayoutViewModel.cs" />
+    <Compile Include="Schedule\JobScheduler.cs" />
+    <Compile Include="Schedule\PostScheduler.cs" />
+    <Compile Include="Schedule\StudyDictJob.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
     <Compile Include="SignalR\CommentSignalHub.cs" />
     <Compile Include="SignalR\FrameworkSignalHub.cs" />

@@ -106,6 +106,7 @@
     <Compile Include="Admin\ComboboxService.cs" />
     <Compile Include="Admin\CommentVoteDetailService.cs" />
     <Compile Include="Admin\DetailOurWordService.cs" />
+    <Compile Include="Admin\DetailUserTypeService.cs" />
     <Compile Include="Admin\FriendService.cs" />
     <Compile Include="Admin\MessageService.cs" />
     <Compile Include="Admin\NotificationService.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Client\ClientProfileService.cs" />
     <Compile Include="Client\ClientStatisticsService.cs" />
     <Compile Include="Client\ClientHomeService.cs" />
+    <Compile Include="Client\FriendService.cs" />
     <Compile Include="Layout\LayoutAdminService.cs" />
     <Compile Include="QlService.cs" />
     <Compile Include="Layout\LayoutService.cs" />

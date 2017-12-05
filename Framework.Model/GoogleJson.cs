@@ -58,4 +58,41 @@ namespace Framework.Model.Google
         public List<Sentence> sentences { get; set; }
         public string src { get; set; }
     }
+    //Google giai thich tu 
+
+    public class Entry
+    {
+        public Entry()
+        {
+            reverse_translation = new List<string>();
+        }
+        public string word { get; set; }
+        public List<string> reverse_translation { get; set; }
+    }
+
+    public class Dict
+    {
+        public Dict()
+        {
+            entry = new List<Entry>();
+            terms = new List<string>();
+        }
+        public string pos { get; set; }
+        public List<string> terms { get; set; }
+        public List<Entry> entry { get; set; }
+        public string base_form { get; set; }
+        public int pos_enum { get; set; }
+    }
+
+    public class GoogleTrans
+    {
+        public GoogleTrans()
+        {
+            sentences = new List<Sentence>();
+            dict = new List<Dict>();
+        }
+        public List<Sentence> sentences { get; set; }
+        public List<Dict> dict { get; set; }
+        public string src { get; set; }
+    }
 }

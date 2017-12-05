@@ -88,6 +88,7 @@
     <Compile Include="Admin\DeleteViewData.cs" />
     <Compile Include="Admin\DeleteWithStringIdViewData.cs" />
     <Compile Include="Admin\GetData\ApplicationRoleComboboxViewData.cs" />
+    <Compile Include="Admin\GetData\ListUserNofity.cs" />
     <Compile Include="Admin\GetData\UserComboboxViewData.cs" />
     <Compile Include="Admin\Input\ApplicationRoleInputAdminViewData.cs" />
     <Compile Include="Admin\Input\ApplicationUserInputAdminViewData.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Admin\Input\CodeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\CommentVoteDetailInputAdminViewData.cs" />
     <Compile Include="Admin\Input\DetailOurWordInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\DetailUserTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\FriendInputAdminViewData.cs" />
     <Compile Include="Admin\Input\MessageInputAdminViewData.cs" />
     <Compile Include="Admin\Input\NotificationInputAdminViewData.cs" />

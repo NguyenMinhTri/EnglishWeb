@@ -60,63 +60,41 @@
     <Compile Include="FrameworkConfiguration.cs" />
     <Compile Include="FrameworkDbContext.cs" />
     <Compile Include="FrameworkHistoryContext.cs" />
-    <Compile Include="Migrations\201710100851001_init.cs" />
-    <Compile Include="Migrations\201710100851001_init.Designer.cs">
-      <DependentUpon>201710100851001_init.cs</DependentUpon>
+    <Compile Include="Migrations\201712041409136_adsadas.cs" />
+    <Compile Include="Migrations\201712041409136_adsadas.Designer.cs">
+      <DependentUpon>201712041409136_adsadas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710100936137_user.cs" />
-    <Compile Include="Migrations\201710100936137_user.Designer.cs">
-      <DependentUpon>201710100936137_user.cs</DependentUpon>
+    <Compile Include="Migrations\201712041421050_adsadasasd.cs" />
+    <Compile Include="Migrations\201712041421050_adsadasasd.Designer.cs">
+      <DependentUpon>201712041421050_adsadasasd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710111005146_db.cs" />
-    <Compile Include="Migrations\201710111005146_db.Designer.cs">
-      <DependentUpon>201710111005146_db.cs</DependentUpon>
+    <Compile Include="Migrations\201712051558006_qwdasdqwe.cs" />
+    <Compile Include="Migrations\201712051558006_qwdasdqwe.Designer.cs">
+      <DependentUpon>201712051558006_qwdasdqwe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710111118335_ind.cs" />
-    <Compile Include="Migrations\201710111118335_ind.Designer.cs">
-      <DependentUpon>201710111118335_ind.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710120903109_aa.cs" />
-    <Compile Include="Migrations\201710120903109_aa.Designer.cs">
-      <DependentUpon>201710120903109_aa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710171753084_aaa.cs" />
-    <Compile Include="Migrations\201710171753084_aaa.Designer.cs">
-      <DependentUpon>201710171753084_aaa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710171756405_aaaa.cs" />
-    <Compile Include="Migrations\201710171756405_aaaa.Designer.cs">
-      <DependentUpon>201710171756405_aaaa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710230847244_aaa1.cs" />
-    <Compile Include="Migrations\201710230847244_aaa1.Designer.cs">
-      <DependentUpon>201710230847244_aaa1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710290525220_aeeeee.cs" />
-    <Compile Include="Migrations\201710290525220_aeeeee.Designer.cs">
-      <DependentUpon>201710290525220_aeeeee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712030540065_word.cs" />
-    <Compile Include="Migrations\201712030540065_word.Designer.cs">
-      <DependentUpon>201712030540065_word.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712030542407_as.cs" />
-    <Compile Include="Migrations\201712030542407_as.Designer.cs">
-      <DependentUpon>201712030542407_as.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712051429335_ah.cs" />
-    <Compile Include="Migrations\201712051429335_ah.Designer.cs">
-      <DependentUpon>201712051429335_ah.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712051441127_ajh.cs" />
-    <Compile Include="Migrations\201712051441127_ajh.Designer.cs">
-      <DependentUpon>201712051441127_ajh.cs</DependentUpon>
+    <Compile Include="Migrations\201712051604044_qwdasdqwewqe.cs" />
+    <Compile Include="Migrations\201712051604044_qwdasdqwewqe.Designer.cs">
+      <DependentUpon>201712051604044_qwdasdqwewqe.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Framework.FrameworkContext.dll.orig" />
+    <None Include="bin\Debug\Framework.FrameworkContext.pdb.orig" />
+    <None Include="bin\Debug\Framework.Model.dll.orig" />
+    <None Include="bin\Debug\Framework.Model.pdb.orig" />
+    <None Include="bin\Release\Framework.FrameworkContext.dll.config" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\Framework.FrameworkContext.csproj.GenerateResource.Cache" />
+    <None Include="obj\Release\Framework.FrameworkContext.csprojResolveAssemblyReference.cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,45 +104,59 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710100851001_init.resx">
-      <DependentUpon>201710100851001_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712041409136_adsadas.resx">
+      <DependentUpon>201712041409136_adsadas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710100936137_user.resx">
-      <DependentUpon>201710100936137_user.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712041421050_adsadasasd.resx">
+      <DependentUpon>201712041421050_adsadasasd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710111005146_db.resx">
-      <DependentUpon>201710111005146_db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712051558006_qwdasdqwe.resx">
+      <DependentUpon>201712051558006_qwdasdqwe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710111118335_ind.resx">
-      <DependentUpon>201710111118335_ind.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712051604044_qwdasdqwewqe.resx">
+      <DependentUpon>201712051604044_qwdasdqwewqe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710120903109_aa.resx">
-      <DependentUpon>201710120903109_aa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710171753084_aaa.resx">
-      <DependentUpon>201710171753084_aaa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710171756405_aaaa.resx">
-      <DependentUpon>201710171756405_aaaa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710230847244_aaa1.resx">
-      <DependentUpon>201710230847244_aaa1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710290525220_aeeeee.resx">
-      <DependentUpon>201710290525220_aeeeee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712030540065_word.resx">
-      <DependentUpon>201712030540065_word.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712030542407_as.resx">
-      <DependentUpon>201712030542407_as.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712051429335_ah.resx">
-      <DependentUpon>201712051429335_ah.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712051441127_ajh.resx">
-      <DependentUpon>201712051441127_ajh.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.asd.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.asd1.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.dsds.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.dsdsd.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.dsdsfd.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.dsdsfd1.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.dsdsfd2.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.fdds.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.fddsh.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.fddshsd.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.fdsdf.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.fsdfs.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.fsdgs.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sdf.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sdfs.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sdfsd.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sdfsdf.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sdfsdf1.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sdfsdg.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.sfdfsdgfs.resources" />
+    <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.vsdds.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\Framework.FrameworkContext.dll" />
+    <Content Include="bin\Release\Framework.FrameworkContext.pdb" />
+    <Content Include="bin\Release\Framework.Model.dll" />
+    <Content Include="bin\Release\Framework.Model.pdb" />
+    <Content Include="bin\Release\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Release\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="obj\Release\Framework.FrameworkContext.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Framework.FrameworkContext.dll" />
+    <Content Include="obj\Release\Framework.FrameworkContext.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
