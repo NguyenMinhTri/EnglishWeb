@@ -24,14 +24,14 @@ namespace Framework.ViewModels
         public String LastName { get; set; }
         public String Avatar { get; set; }
         public String UserName { get; set; }
-        public int Id { get; set; }
+        public String Id_User { get; set; }
         public int Id_Post { get; set; }
         public int Id_Comment { get; set; }
-        public string Content { get; set; }
+        public String Content { get; set; }
         public int UpVote { get; set; }
         public int DownVote { get; set; }
         public int Vote { get; set; }
-        public int DateTime { get; set; }
+        public String DateComment { get; set; }
 
     }
 
@@ -48,13 +48,13 @@ namespace Framework.ViewModels
         public String LastName { get; set; }
         public String Avatar { get; set; }
         public String UserName { get; set; }
-       // public int Id { get; set; }
+        public String Id_User { get; set; }
         public String Content { get; set; }
         public String Tag { get; set; }
         public int UpVote { get; set; }
         public int DownVote { get; set; }
         public int Vote { get; set; }
-        public String DateTime { get; set; }
-        public int Type { get; set; }
+        public String DatePost { get; set; }
+        public int Id_Type { get; set; }
     }
 }

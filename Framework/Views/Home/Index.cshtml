@@ -34,17 +34,18 @@
                                     <div class="add-options-message row ask-teacher">
                                         <label class="control-label">Vui lòng chọn loại câu hỏi</label>
                                         <fieldset class="form-group">
-                                            <select class="selectpicker form-control" size="auto" name="Tag">
-                                                <option value="NPCB">Ngữ pháp căn bản</option>
-                                                <option value="MC">Mẫu câu, tình huống giao tiếp</option>
-                                                <option value="NL">Các ngoại lệ trong Tiếng Anh</option>
-                                                <option value="TE">Câu hỏi thuộc bài thi Toeic</option>
-                                                <option value="IE">Câu hỏi thuộc bài thi IELTS</option>
+                                            <select class="selectpicker form-control" size="auto" name="Id_Type">
+                                                <option value="1">Ngữ pháp căn bản</option>
+                                                <option value="2">Mẫu câu, tình huống giao tiếp</option>
+                                                <option value="3">Các ngoại lệ trong Tiếng Anh</option>
+                                                <option value="4">Câu hỏi thuộc bài thi Toeic</option>
+                                                <option value="5">Câu hỏi thuộc bài thi IELTS</option>
                                             </select>
                                         </fieldset>
                                     </div>
-                                    <input type="hidden" name="DateTime"/>
-                                    <input type="hidden" name="Type" value="0" />
+                                    <input type="hidden" name="DatePost"/>
+                                    <input type="hidden" name="Id_User" value="@Model.User.Id" />
+                                    <input type="hidden" name="Option" value="0" />
 
                                     <div class="status-footer">
                                         <input type="submit" class="btn btn-primary btn-md-2" value="Đăng tải" />
@@ -55,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="ui-block" id="post_1">
+                <div class="ui-block" id="p1">
                     <article class="hentry post">
                         <div class="post__author author vcard inline-items sinhvien">
                             <img src="content/images/author-page.jpg" alt="author" class="sinhvien">
@@ -122,13 +123,17 @@
                             </div>
 
                             <div class="form-group with-icon-right ">
-                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment"></textarea>
+                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment" name="Content"></textarea>
                                 <div class="add-options-message">
                                     <a class="options-message" id="submit">
                                         <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
                                     </a>
                                 </div>
                                 <span class="material-input"></span>
+                                <input type="hidden" name="Id_User" value="@Model.User.Id" />
+                                <input type="hidden" name="Id_Post" value="1"/>
+                                <input type="hidden" name="Id_Comment" value="0" />
+                                <input type="hidden" name="DateComment" value="" />
                             </div>
 
                         </form>
@@ -137,7 +142,7 @@
 
                 </div>
 
-                <div class="ui-block" id="post_2">
+                <div class="ui-block" id="p2">
                     <article class="hentry post">
 
                         <div class="post__author author vcard inline-items sinhvien">
@@ -234,7 +239,7 @@
                     </article>
                     <div class="comment-section">
                         <ul class="comments-list">
-                            <li class="has-children showed parent">
+                            <li class="has-children showed parent" id="p2c-1">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar5-sm.jpg" alt="author">
 
@@ -310,7 +315,7 @@
                                 </ul>
                             </li>
 
-                            <li class="showed parent">
+                            <li class="showed parent" id="p2c-2">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar10-sm.jpg" alt="author">
 
@@ -345,7 +350,7 @@
                                 <a class="reply">Trả lời</a>
                                 <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed parent">
+                            <li class="lazy-show not-showed parent " id="p2c-3">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar6-sm.jpg" alt="author">
 
@@ -361,8 +366,8 @@
                                     <div class="more">
                                         <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                         <div class="more-dropdown">
-                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
-                    </div>
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -380,7 +385,7 @@
                                 <a class="reply">Trả lời</a>
                                 <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed parent">
+                            <li class="lazy-show not-showed parent" id="p2c-4">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar10-sm.jpg" alt="author">
 
@@ -396,7 +401,7 @@
                                     <div class="more">
                                         <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                         <div class="more-dropdown">
-                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -415,7 +420,7 @@
                                 <a class="reply">Trả lời</a>
                                 <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed parent">
+                            <li class="lazy-show not-showed parent" id="p2c-5">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar3-sm.jpg" alt="author">
 
@@ -431,7 +436,7 @@
                                     <div class="more">
                                         <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                         <div class="more-dropdown">
-                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -450,7 +455,7 @@
                                 <a class="reply">Trả lời</a>
                                 <ul class="children"></ul>
                             </li>
-                            <li class="lazy-show not-showed parent">
+                            <li class="lazy-show not-showed parent" id="p2c-6">
                                 <div class="post__author author vcard inline-items">
                                     <img src="content/images/avatar10-sm.jpg" alt="author">
 
@@ -466,7 +471,7 @@
                                     <div class="more">
                                         <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                         <div class="more-dropdown">
-                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -495,13 +500,17 @@
                             </div>
 
                             <div class="form-group with-icon-right ">
-                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment"></textarea>
+                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment" name="Content"></textarea>
                                 <div class="add-options-message">
                                     <a class="options-message" id="submit">
                                         <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
                                     </a>
                                 </div>
                                 <span class="material-input"></span>
+                                <input type="hidden" name="Id_User" value="@Model.User.Id" />
+                                <input type="hidden" name="Id_Post" value="2" />
+                                <input type="hidden" name="Id_Comment" value="0" />
+                                <input type="hidden" name="DateComment" value="" />
                             </div>
 
                         </form>
@@ -557,23 +566,3 @@
 
     </div>
 </div>
-
-<script>
-    $('#question-form').on("submit", function (e) {
-        $(".waiting_loader").css("display", "block");
-        e.preventDefault();
-
-        $(this).find("input[name='DateTime']").val(Date.now);
-        var form = $(this);
-        var data = form.serialize();
-
-        $.post('/Home/Post', data).done(function (html) {
-            $("#partial").html(html);
-        }).fail(function (response) {
-            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-            $("#notify-button").click();
-        }).always(function () {
-            $(".waiting_loader").css("display", "none");
-        });
-    });
-</script>

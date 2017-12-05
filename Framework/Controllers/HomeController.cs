@@ -68,19 +68,18 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Comment(CommentViewModel comment)
+        public PartialViewResult Comment(CommentViewModel data)
         {
             _viewModel = new CommentViewModel();
             //CommentViewModel.Comment = comment;
-            return PartialView("_Comment", CommentViewModel);
-        }
-
-        [HttpPost]
-        public PartialViewResult ChildComment(CommentViewModel comment)
-        {
-            _viewModel = new CommentViewModel();
-            //CommentViewModel.Comment = comment;
-            return PartialView("_ChildComment", CommentViewModel);
+            if (data.Id_Comment == 0)
+            {
+                return PartialView("_Comment", CommentViewModel);
+            }
+            else
+            {
+                return PartialView("_ChildComment", CommentViewModel);
+            }
         }
 
         [HttpPost]

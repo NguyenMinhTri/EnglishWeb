@@ -248,7 +248,6 @@
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
@@ -257,7 +256,6 @@
     <Compile Include="Models\DictionaryViewModel.cs" />
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
-    <Compile Include="Models\RequestViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\YourAccountViewModel.cs" />
     <Compile Include="Models\EntertainmentViewModel.cs" />

@@ -16,5 +16,6 @@ namespace Framework.Model
         public int Id_Comment { get; set; }
 		public String Id_Friend { get; set; }
         public String Content { get; set; }
+        public String DateComment { get; set; }
 	}
 }

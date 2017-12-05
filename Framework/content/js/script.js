@@ -260,55 +260,6 @@ $(document).on('keyup', 'textarea#comment', function (e) {
     }
 });
 
-$(document).on("click", "#submit.options-message.active", function () {
-    var parent = $(this).parent().parent().parent();
-    var comment_section = parent.parent().find(".comments-list");
-    var textarea = $(this).parent().parent().find("textarea#comment");
-    var total = parent.parent().parent().find(".comments-shared span:last-child");
-    var comment = textarea.val();
-    var button = $(this);
-    var new_comment;
-    if (comment.length != 0) {
-        var data = {
-            Comment: comment,
-
-        };
-        if (!$(this).hasClass("child-comment")) {
-            $.post("/Home/Comment", data).done(function (html) {
-                $(comment_section).append(html);
-                textarea.val("");
-                button.removeClass("active");
-                total.text($(comment_section).find("li").length);
-                new_comment = $(comment_section).find("li.new-comment");
-                new_comment.find(".author-date time").attr("data-time", Date.now);
-                $(comment_section).find("li.new-comment").show('slow').addClass("showed");
-            }).fail(function (response) {
-                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
-                $("#notify-button").click();
-            })
-        }
-        else {
-            var index = $(this).attr("class").match(/(?:\s|^)child-comment-(\d+)/)[1];
-            var parentcomment_section = $(comment_section).find("li.parent")[index];
-            var childcomment_section = $(parentcomment_section).find("ul.children");
-            $.post("/Home/ChildComment", data).done(function (html) {
-                $(childcomment_section).append(html);
-                textarea.val("");
-                new_comment = $(comment_section).find("li.new-comment");
-                new_comment.find(".author-date time").attr("data-time", Date.now);
-                button.removeClass("active").removeClass(function (index, className) {
-                    return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
-                }).removeClass("child-comment");
-                total.text($(comment_section).find("li").length);
-                $(childcomment_section).find("li.new-comment").show('slow').addClass("showed");
-                scrollto(parentcomment_section);
-            }).fail(function (response) {
-                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
-                $("#notify-button").click();
-            })
-        }
-    }
-});
 
 $(document).on("click", ".comments-list a.reply", function () {
     var parent = $(this).parent().parent().parent();
@@ -383,5 +334,77 @@ $(document).on("click", ".news-feed-form .form-group .selection .togglebutton la
         $(".news-feed-form .form-group .selection p").text("Hỏi tất cả mọi người").css("color", "#888da8");
         $(this).parent().parent().attr("title", "Bật để hỏi Thầy cô nha!").attr("data-original-title", "Bật để hỏi Thầy cô nha!");
         $("input[name='Type']").val("0");
+    }
+});
+
+$('#question-form').on("submit", function (e) {
+    $(".waiting_loader").css("display", "block");
+    e.preventDefault();
+
+    $(this).find("input[name='DatePost']").val(Date.now);
+    var form = $(this);
+    var data = form.serialize();
+
+    $.post('/Home/Post', data).done(function (html) {
+        alert("OK")
+        //$("#partial").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+        $("#notify-button").click();
+    }).always(function () {
+        $(".waiting_loader").css("display", "none");
+    });
+});
+
+$(document).on("click", "#submit.options-message.active", function () {
+    var parent = $(this).parent().parent().parent();
+    var comment_section = parent.parent().find(".comments-list");
+    var textarea = $(this).parent().parent().find("textarea#comment");
+    var total = parent.parent().parent().find(".comments-shared span:last-child");
+    var comment = textarea.val();
+    var button = $(this);
+    var form = $(this).closest("form");
+    $(form).find("input[name='DateComment']").val(Date.now);
+    var new_comment;
+    if (comment.length != 0) {
+        if (!$(this).hasClass("child-comment")) {
+            var data = form.serialize();
+            $.post("/Home/Comment", data).done(function (html) {
+                $(comment_section).append(html);
+                textarea.val("");
+                button.removeClass("active");
+                total.text($(comment_section).find("li").length);
+                new_comment = $(comment_section).find("li.new-comment");
+                new_comment.find(".author-date time").attr("data-time", Date.now);
+                $(comment_section).find("li.new-comment").show('slow').addClass("showed");
+            }).fail(function (response) {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            })
+        }
+        else {
+            var index = $(this).attr("class").match(/(?:\s|^)child-comment-(\d+)/)[1];
+            var parentcomment_section = $(comment_section).find("li.parent")[index];
+            var childcomment_section = $(parentcomment_section).find("ul.children");
+            var parentcomment_section_id = $(parentcomment_section).attr("id");
+            $(form).find("input[name='Id_Comment']").val(parentcomment_section_id.substr(parentcomment_section_id.lastIndexOf("-") + 1));
+            var data = form.serialize();
+            $.post("/Home/Comment", data).done(function (html) {
+                $(childcomment_section).append(html);
+                textarea.val("");
+                new_comment = $(comment_section).find("li.new-comment");
+                new_comment.find(".author-date time").attr("data-time", Date.now);
+                button.removeClass("active").removeClass(function (index, className) {
+                    return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
+                }).removeClass("child-comment");
+                total.text($(comment_section).find("li").length);
+                $(childcomment_section).find("li.new-comment").show('slow').addClass("showed");
+                $(form).find("input[name='Id_Comment']").val("");
+                scrollto(parentcomment_section);
+            }).fail(function (response) {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            })
+        }
     }
 });
