@@ -8,7 +8,6 @@ namespace Framework.ViewModels
 {
     public class StatisticsViewModel : LayoutViewModel, IRef<StatisticsController>
     {
-        public string A { get; set; }
     }
 
 }

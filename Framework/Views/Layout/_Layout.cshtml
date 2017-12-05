@@ -149,12 +149,12 @@
                 <div class="control-block">
                     <div class="author-page author vcard inline-items">
                         <div class="author-thumb sinhvien">
-                            <img alt="author" src="content/images/author-page.jpg" class="avatar">
+                            <img alt="author" src="content/images/@Model.User.Avatar" class="avatar">
                             <span class="icon-status online"></span>
                         </div>
                         <a href="Profile?option=newsfeed" class="author-name fn">
                             <div class="author-title">
-                                Thịnh Phan <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                @Model.User.Name <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                             </div>
                             <span class="author-subtitle">Sinh Viên</span>
                         </a>
@@ -504,7 +504,7 @@
 
                 <div class="author-page author vcard inline-items more">
                     <div class="author-thumb sinhvien">
-                        <img alt="author" src="content/images/author-page.jpg" class="avatar">
+                        <img alt="author" src="content/images/@Model.User.Avatar" class="avatar">
                         <span class="icon-status online"></span>
                         <div class="more-dropdown more-with-triangle">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -530,25 +530,13 @@
                                         </a>
                                     </li>
                                 </ul>
-
-                                <div class="ui-block-title ui-block-title-small">
-                                    <h6 class="title">Đăng câu hỏi</h6>
-                                </div>
-
-                                <form class="form-group with-button custom-status">
-                                    <input class="form-control" placeholder="" type="text" value="...">
-
-                                    <button class="bg-purple">
-                                        <svg class="olymp-check-icon"><use xlink:href="content/icons/icons.svg#olymp-check-icon"></use></svg>
-                                    </button>
-                                </form>
                             </div>
 
                         </div>
                     </div>
                     <a class="author-name fn">
                         <div class="author-title">
-                            Thịnh Phan <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                            @Model.User.Name <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
                         <span class="author-subtitle">Sinh Viên</span>
                     </a>

@@ -1,0 +1,145 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="birthday-item inline-items badges">
+                    <div class="author-thumb sinhvien">
+                        <img src="content/images/@Model.User.Avatar" alt="author">
+                    </div>
+                    <div class="birthday-author-name">
+                        <a href="#" class="h6 author-name">Wellcome</a>
+                        <div class="birthday-date">Chào mừng chuyên gia @Model.User.Name</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="ui-block">
+                <div class="ui-block-content">
+                    <div class="monthly-indicator">
+                        <a  class="btn btn-control bg-breez">
+                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                        </a>
+
+                        <div class="monthly-count">
+                            150 câu hỏi đã được bạn giải đáp
+                            <span class="indicator positive"> + 40 câu</span>
+                            <span class="period">Tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="ui-block">
+                <div class="ui-block-content">
+                    <div class="monthly-indicator">
+                        <a class="btn btn-control bg-primary negative">
+                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                        </a>
+
+                        <div class="monthly-count">
+                            5 lượt đánh giá xấu
+                            <span class="indicator negative"> - 0%</span>
+                            <span class="period">Tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <div class="h6 title">Đánh giá chuyên môn</div>
+                </div>
+                <div class="ui-block-content">
+                    <div class="circle-progress circle-pie-chart">
+                        <div class="pie-chart-expert" data-value="0.96" data-startcolor="#38a9ff" data-endcolor="#317cb6">
+                            <div class="content"><span>%</span></div>
+                        </div>
+                    </div>
+
+                    <div class="chart-text">
+                        <h6>96% câu trả lời của bạn được đánh giá hữu ích</h6>
+                        <p>Hãy cố gắng để nâng cao thêm thành tích nào!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <div class="h6 title">Đánh giá của học viên</div>
+                </div>
+
+                <div class="ui-block-content">
+
+                    <div class="points">
+
+                        <span>
+                            <span class="statistics-point bg-primary"></span>
+                            Không tốt
+                        </span>
+
+                        <span>
+                            <span class="statistics-point bg-yellow"></span>
+                            Hữu ích
+                        </span>
+
+                    </div>
+
+                    <div class="chart-js chart-js-two-bars">
+                        <canvas id="two-bars-chart" width="400" height="300"></canvas>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-block responsive-flex" data-mh="pie-chart">
+                <div class="ui-block-title">
+                    <div class="h6 title">Tốc độ đáp ứng</div>
+
+                    <div class="points align-right">
+
+                        <span>
+                            <span class="statistics-point bg-yellow"></span>
+                            THÁNG NÀY
+                        </span>
+
+                        <span>
+                            <span class="statistics-point bg-primary"></span>
+                            THÁNG TRƯỚC
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="ui-block-content">
+                    <div class="chart-js chart-js-line-graphic">
+                        <canvas id="line-graphic-chart" width="730" height="300"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .circle-pie-chart canvas {
+        max-width: unset;
+        max-height: unset;
+    }
+</style>

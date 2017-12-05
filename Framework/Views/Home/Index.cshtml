@@ -15,13 +15,13 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                <form>
+                                <form id="question-form">
                                     <div class="author-thumb sinhvien">
                                         <img src="content/images/author-page.jpg" alt="author">
                                     </div>
                                     <div class="form-group with-icon label-floating is-empty">
                                         <label class="control-label">Bạn đang thắc mắc về...</label>
-                                        <textarea class="form-control" placeholder=""></textarea>
+                                        <textarea class="form-control" placeholder="" name="Question"></textarea>
                                         <div class="selection">
                                             <p>Hỏi tất cả mọi người</p>
                                             <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi Thầy cô nha!">
@@ -31,20 +31,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="add-options-message row ask-teacher" style="display: none">
-                                            <label class="control-label">Bạn có thể đặt <span>2</span> câu hỏi cho</label>
-                                            <fieldset class="form-group">
-                                                <select class="selectpicker form-control" size="auto">
-                                                    <option value="AL">Thầy Thanh Tùng</option>
-                                                    <option value="2">Cô Hà Thanh</option>
-                                                    <option value="WY">Thầy Giảng Dương</option>
-                                                </select>
-                                            </fieldset>
+                                    <div class="add-options-message row ask-teacher">
+                                        <label class="control-label">Vui lòng chọn loại câu hỏi</label>
+                                        <fieldset class="form-group">
+                                            <select class="selectpicker form-control" size="auto" name="Tag">
+                                                <option value="NPCB">Ngữ pháp căn bản</option>
+                                                <option value="MC">Mẫu câu, tình huống giao tiếp</option>
+                                                <option value="NL">Các ngoại lệ trong Tiếng Anh</option>
+                                                <option value="TE">Câu hỏi thuộc bài thi Toeic</option>
+                                                <option value="IE">Câu hỏi thuộc bài thi IELTS</option>
+                                            </select>
+                                        </fieldset>
                                     </div>
-                                    <div class="status-footer">
-                                        <button class="btn btn-primary btn-md-2">Đăng tải</button>
-                                    </div>
+                                    <input type="hidden" name="DateTime"/>
+                                    <input type="hidden" name="Type" value="0" />
 
+                                    <div class="status-footer">
+                                        <input type="submit" class="btn btn-primary btn-md-2" value="Đăng tải" />
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -64,11 +68,21 @@
                                     </time>
                                 </div>
                             </div>
+                            <div class="more">
+                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                <div class="more-dropdown">
+                                        <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                </div>
+                            </div>
                         </div>
 
+                        <h6 class="tag">
+                            Thể loại: <span>Ngữ pháp căn bản</span>
+                        </h6>
                         <p>
                             Học tiếng anh sao cho hiệu quả mọi người nhỉ?
                         </p>
+                       
                         <div class="post-additional-info inline-items">
                             <a href="#" class="post-add-icon inline-items upvote">
                                 <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
@@ -98,11 +112,9 @@
                         </div>
 
                     </article>
-             
-                    <div class="comment-section">
-                        <ul class="comments-list">
 
-                        </ul>
+                    <div class="comment-section">
+                        <ul class="comments-list"></ul>
 
                         <form class="comment-form inline-items">
                             <div class="post__author author vcard inline-items sinhvien">
@@ -112,7 +124,7 @@
                             <div class="form-group with-icon-right ">
                                 <textarea class="form-control" placeholder="Trả lời nào..." id="comment"></textarea>
                                 <div class="add-options-message">
-                                    <a  class="options-message" id="submit">
+                                    <a class="options-message" id="submit">
                                         <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
                                     </a>
                                 </div>
@@ -135,12 +147,21 @@
                                 <a class="h6 post__author-name fn" href="Profile">Thịnh Phan</a>
                                 <div class="post__date">
                                     <time class="published" data-time="1512151976580">
-                                        
+
                                     </time>
+                                </div>
+                            </div>
+                            <div class="more">
+                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                <div class="more-dropdown">
+                                        <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                 </div>
                             </div>
                         </div>
 
+                        <h6 class="tag">
+                            Thể loại: <span>Ngữ pháp căn bản</span>
+                        </h6>
                         <p>
                             Be Going To + gì mọi người nhỉ?
                         </p>
@@ -221,10 +242,20 @@
                                         <a class="h6 post__author-name fn" href="#">Lê Văn Phú</a>
                                         <div class="post__date">
                                             <time class="published" data-time="1512151681770">
-                                                
+
                                             </time>
                                         </div>
                                     </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                        </div>
+                                    </div>
+
+
+
 
                                 </div>
 
@@ -251,8 +282,15 @@
                                                 <a class="h6 post__author-name fn" href="#">Nguyễn Thanh Thiện</a>
                                                 <div class="post__date">
                                                     <time class="published" data-time="1512151976575">
-                                                        
+
                                                     </time>
+                                                </div>
+                                            </div>
+
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                <div class="more-dropdown">
+                                                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                                 </div>
                                             </div>
 
@@ -280,8 +318,15 @@
                                         <a class="h6 post__author-name fn" href="#">Minh Trí</a>
                                         <div class="post__date">
                                             <time class="published" data-time="1512151976580">
-                                               
+
                                             </time>
+                                        </div>
+                                    </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -308,9 +353,16 @@
                                         <a class="h6 post__author-name fn" href="#">Bảo Bảo</a>
                                         <div class="post__date">
                                             <time class="published" data-time="1512151976585">
-                                               
+
                                             </time>
                                         </div>
+                                    </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                    </div>
                                     </div>
 
                                 </div>
@@ -336,8 +388,15 @@
                                         <a class="h6 post__author-name fn" href="#">Quốc Cầm</a>
                                         <div class="post__date">
                                             <time class="published" data-time="1512151976590">
-                                                
+
                                             </time>
+                                        </div>
+                                    </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -364,8 +423,15 @@
                                         <a class="h6 post__author-name fn" href="#">Văn Duyệt</a>
                                         <div class="post__date">
                                             <time class="published" data-time="1512151976591">
-                                                
+
                                             </time>
+                                        </div>
+                                    </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -392,8 +458,15 @@
                                         <a class="h6 post__author-name fn" href="#">Quốc Cầm</a>
                                         <div class="post__date">
                                             <time class="published" data-time="1512151976592">
-                                                
+
                                             </time>
+                                        </div>
+                                    </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
 
@@ -414,7 +487,7 @@
                             </li>
                         </ul>
 
-                        <div  class="more-comments">Xem thêm bình luận <span>+</span></div>
+                        <div class="more-comments">Xem thêm bình luận <span>+</span></div>
                         <form class="comment-form inline-items">
 
                             <div class="post__author author vcard inline-items sinhvien">
@@ -442,10 +515,65 @@
         </main>
 
         <!-- ... end Main Content -->
-
         @Html.Partial("_Notices")
 
         @Html.Partial("_Activities")
 
+        <!-- Window-popup Report -->
+
+        <div class="modal fade" id="report">
+            <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+                </a>
+
+                <div class="ui-block-title">
+                    <h6 class="title">Bài đăng này có nội dung xấu hay không phù hợp?</h6>
+                </div>
+
+                <div class="ui-block-content">
+                    <fieldset class="form-group label-floating is-select">
+                        <label class="control-label">Bài đăng này đã vi phạm vì</label>
+                        <select class="selectpicker form-control" size="auto">
+                            <option value="1">Nội dung xấu, kích động</option>
+                            <option value="2">Chứa từ ngữ xấu, không phù hợp</option>
+                        </select>
+                    </fieldset>
+
+                    <p>
+                        Olympus cảm ơn bạn rất nhiều!
+                    </p>
+                    <p>
+                        <b>Make Olympus great againt!</b>
+                    </p>
+                        <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Thôi, tha</a>
+                        <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center">Xóa dùm</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ... end Window-popup Report -->
+
     </div>
 </div>
+
+<script>
+    $('#question-form').on("submit", function (e) {
+        $(".waiting_loader").css("display", "block");
+        e.preventDefault();
+
+        $(this).find("input[name='DateTime']").val(Date.now);
+        var form = $(this);
+        var data = form.serialize();
+
+        $.post('/Home/Post', data).done(function (html) {
+            $("#partial").html(html);
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            $("#notify-button").click();
+        }).always(function () {
+            $(".waiting_loader").css("display", "none");
+        });
+    });
+</script>

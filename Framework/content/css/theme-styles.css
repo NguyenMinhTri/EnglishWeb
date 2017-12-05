@@ -122,7 +122,10 @@
   align-items: center; }
   .control-block .author-thumb {
     margin-right: 8px;
-    position: unset; }
+    position: unset;
+    width: 40px;
+    height: 40px;
+    }
   .control-block .author-title {
     font-weight: 700;
     font-size: 12px;

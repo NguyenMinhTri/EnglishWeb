@@ -3746,6 +3746,7 @@
     <Content Include="content\icons\shuffle.svg" />
     <Content Include="content\icons\sound.svg" />
     <Content Include="content\images\account-bottom.png" />
+    <Content Include="content\images\admin.png" />
     <Content Include="content\images\author-main1.jpg" />
     <Content Include="content\images\author-main2.jpg" />
     <Content Include="content\images\author-page.jpg" />
@@ -3892,6 +3893,7 @@
     <Content Include="content\images\event-bottom.png" />
     <Content Include="content\images\event-private.jpg" />
     <Content Include="content\images\event-public.jpg" />
+    <Content Include="content\images\expert.png" />
     <Content Include="content\images\fav1.jpg" />
     <Content Include="content\images\fav2.jpg" />
     <Content Include="content\images\fav3.jpg" />
@@ -4119,6 +4121,7 @@
     <Content Include="content\images\shorts.png" />
     <Content Include="content\images\slide1.jpg" />
     <Content Include="content\images\statistics-bottom.png" />
+    <Content Include="content\images\student.png" />
     <Content Include="content\images\top-header1.jpg" />
     <Content Include="content\images\top-header2.jpg" />
     <Content Include="content\images\top-header3.png" />
@@ -5086,6 +5089,11 @@
     <Content Include="Views\Learning\Index.cshtml" />
     <Content Include="Views\Home\_Comment.cshtml" />
     <Content Include="Views\Home\_ChildComment.cshtml" />
+    <Content Include="Views\AdminDetailOurWord\Index.cshtml" />
+    <Content Include="Views\AdminOurWord\Index.cshtml" />
+    <Content Include="Views\Home\_Post.cshtml" />
+    <Content Include="Views\Statistics\_Student.cshtml" />
+    <Content Include="Views\Statistics\_Expert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -45,6 +45,14 @@ namespace Framework.Controllers
             }
         }
 
+        PostViewModel PostViewModel
+        {
+            get
+            {
+                return (PostViewModel)_viewModel;
+            }
+        }
+
         public ActionResult Index()
         {
             
@@ -56,19 +64,27 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Comment(string comment)
+        public PartialViewResult Comment(CommentViewModel comment)
         {
             _viewModel = new CommentViewModel();
-            CommentViewModel.Comment = comment;
+            //CommentViewModel.Comment = comment;
             return PartialView("_Comment", CommentViewModel);
         }
 
         [HttpPost]
-        public PartialViewResult ChildComment(string comment)
+        public PartialViewResult ChildComment(CommentViewModel comment)
         {
             _viewModel = new CommentViewModel();
-            CommentViewModel.Comment = comment;
+            //CommentViewModel.Comment = comment;
             return PartialView("_ChildComment", CommentViewModel);
+        }
+
+        [HttpPost]
+        public PartialViewResult Post(PostViewModel data)
+        {
+            _viewModel = new PostViewModel();
+            //PostViewModel.Question = data.Question;
+            return PartialView("_Post", PostViewModel);
         }
     }
 }

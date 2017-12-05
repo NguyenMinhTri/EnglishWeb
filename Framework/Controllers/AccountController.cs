@@ -188,6 +188,7 @@ namespace Framework.Controllers
                         user.CreatedDate = DateTime.Now;
                         user.Logined = true;
                         user.Status = true;
+                        user.Avatar = "avatar1.jpg";
                         var result = await UserManager.CreateAsync(user, model.Password);
                         if (result.Succeeded)
                         {

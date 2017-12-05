@@ -1315,7 +1315,6 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
     font-weight: 700; }
     .more-dropdown a:hover {
       color: #ff5e3a; }
-
 .more:hover .more-dropdown {
   visibility: visible;
   opacity: 1; }
@@ -1889,8 +1888,8 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
 .notification-list {
   margin-bottom: 0; }
   .notification-list .selectize-dropdown-content > *, .notification-list li {
-    padding: 25px;
-    border-bottom: 1px solid #e6ecf5;
+    padding: 25px !important;
+    border-bottom: 1px solid #e6ecf5 !important;
     display: flex;
     transition: all .3s ease;
     position: relative;
@@ -5097,7 +5096,9 @@ ol ol li {
 
 .points {
   font-size: 12px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  text-align: center;
+  }
   .points > span + span {
     margin-left: 15px; }
   .points.points-block {
@@ -5228,7 +5229,7 @@ ol ol li {
     max-width: 190px;
     max-height: 190px;
     }
-  .circle-pie-chart .pie-chart .content {
+  .circle-pie-chart .pie-chart .content, .circle-pie-chart .pie-chart-expert .content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -6918,4 +6919,20 @@ div#cau em {
 
 .dictionary-title .post-title span{
     font-size:22px;
+}
+
+.modal .ui-block-title {
+    border-top: none;
+}
+
+.modal .btn--half-width {
+    width: 49.5%;
+}
+
+ul.comments-list > li .more {opacity: 0;}
+
+ul.comments-list > li:hover .more {opacity: 1;}
+
+ul.statistics-list-count .points {
+    text-align: left;
 }
