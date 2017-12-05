@@ -73,6 +73,7 @@
     <Compile Include="RepositorySpace\OurWordRepository.cs" />
     <Compile Include="RepositorySpace\PostCommentDetailRepository.cs" />
     <Compile Include="RepositorySpace\PostRepository.cs" />
+    <Compile Include="RepositorySpace\PostTypeRepository.cs" />
     <Compile Include="RepositorySpace\PostVoteDetailRepository.cs" />
     <Compile Include="RepositorySpace\RoutingRepository.cs" />
   </ItemGroup>

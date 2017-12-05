@@ -102,6 +102,7 @@
     <Compile Include="Admin\Input\OurWordInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostCommentDetailInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\PostTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostVoteDetailInputAdminViewData.cs" />
     <Compile Include="BaseViewData.cs" />
     <Compile Include="ClientHome\CodeViewData.cs" />

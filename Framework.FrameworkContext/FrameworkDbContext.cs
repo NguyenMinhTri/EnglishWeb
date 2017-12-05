@@ -32,6 +32,8 @@ namespace Framework.FrameworkContext
         public DbSet<Routing> Routings { set; get; }
         public DbSet<OurWord> OurWords { set; get; }
         public DbSet<DetailOurWord> DetailOurWords { set; get; }
+        public DbSet<PostType> PostTypes { set; get; }
+
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -107,7 +109,9 @@ namespace Framework.FrameworkContext
             builder.Entity<DetailOurWord>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertDetailOurWord", "dbo"))
             .Update(u => u.HasName("UpdateDetailOurWord", "dbo"))
             .Delete(u => u.HasName("DeleteDetailOurWord", "dbo")));
-
+            builder.Entity<PostType>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertPostType", "dbo"))
+            .Update(u => u.HasName("UpdatePostType", "dbo"))
+            .Delete(u => u.HasName("DeletePostType", "dbo")));
             //st3. -- END
 
 

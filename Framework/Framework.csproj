@@ -238,6 +238,7 @@
     <Compile Include="Controllers\Admin\AdminOurWordController.cs" />
     <Compile Include="Controllers\Admin\AdminPostCommentDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
+    <Compile Include="Controllers\Admin\AdminPostTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\LearningController.cs" />
@@ -5094,6 +5095,7 @@
     <Content Include="Views\Home\_Post.cshtml" />
     <Content Include="Views\Statistics\_Student.cshtml" />
     <Content Include="Views\Statistics\_Expert.cshtml" />
+    <Content Include="Views\AdminPostType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
