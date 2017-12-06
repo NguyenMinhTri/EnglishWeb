@@ -45,6 +45,7 @@ namespace Framework.Schedule
             }
             //ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(response2.ToString());
             var response = await client.PostAsync(paramChatfuel, null);
+            await client.PostAsync("http://localhost:20000/Home/checkTimeOfPost", null);
         }
     }
 }
