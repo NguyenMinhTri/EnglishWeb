@@ -99,6 +99,7 @@
     <Compile Include="Admin\Input\DetailOurWordInputAdminViewData.cs" />
     <Compile Include="Admin\Input\DetailUserTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\FriendInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\HaveSendQuestionInputAdminViewData.cs" />
     <Compile Include="Admin\Input\MessageInputAdminViewData.cs" />
     <Compile Include="Admin\Input\NotificationInputAdminViewData.cs" />
     <Compile Include="Admin\Input\OurWordInputAdminViewData.cs" />

@@ -34,7 +34,7 @@ namespace Framework.FrameworkContext
         public DbSet<DetailOurWord> DetailOurWords { set; get; }
         public DbSet<PostType> PostTypes { set; get; }
         public DbSet<DetailUserType> DetailUserTypes { set; get; }
-
+        public DbSet<HaveSendQuestion> HaveSendQuestions { set; get; }
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -116,6 +116,9 @@ namespace Framework.FrameworkContext
             builder.Entity<DetailUserType>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertDetailUserType", "dbo"))
             .Update(u => u.HasName("UpdateDetailUserType", "dbo"))
             .Delete(u => u.HasName("DeleteDetailUserType", "dbo")));
+            builder.Entity<HaveSendQuestion>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertHaveSendQuestion", "dbo"))
+            .Update(u => u.HasName("UpdateHaveSendQuestion", "dbo"))
+            .Delete(u => u.HasName("DeleteHaveSendQuestion", "dbo")));
             //st3. -- END
 
 

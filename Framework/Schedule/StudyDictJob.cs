@@ -1,4 +1,5 @@
-﻿using Framework.Model;
+﻿using Framework.Common;
+using Framework.Model;
 using Framework.Service.Admin;
 using Framework.ViewData.Admin.GetData;
 using Newtonsoft.Json;
@@ -32,15 +33,14 @@ namespace Framework.Schedule
                 foreach(var userNoti in listNofity.reminduser)
                 {
                     paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/"+ userNoti.IdMess+"/"+ "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=59a43f64e4b03a25b73c0f23";
-                    int i = 1;
-                    foreach (var vocaID in userNoti.vocainfo)
+                    for(int i =1;i <=5; i++)
                     {
-                        paramChatfuel += "&word" + i.ToString() + "=" + vocaID.voca;
-                        paramChatfuel += "&pron" + i.ToString() + "=" + vocaID.pron;
-                        paramChatfuel += "&meanvn" + i.ToString() + "=" + vocaID.meanVN;
-                        paramChatfuel += "&meanen" + i.ToString() + "=" + vocaID.usecase;
-                        i++;
+                        paramChatfuel += "&word" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i-1].voca : "" );
+                        paramChatfuel += "&pron" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].pron : "");
+                        paramChatfuel += "&meanvn" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].meanVN : "");
+                        paramChatfuel += "&meanen" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].usecase : "");
                     }
+                    paramChatfuel += ChatBotMessenger.getNotiNull();
                 }
             }
             //ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(response2.ToString());

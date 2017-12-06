@@ -5104,6 +5104,8 @@
     <Content Include="Views\Statistics\_Student.cshtml" />
     <Content Include="Views\Statistics\_Expert.cshtml" />
     <Content Include="Views\AdminPostType\Index.cshtml" />
+    <Content Include="Views\AdminDetailUserType\Index.cshtml" />
+    <Content Include="Views\AdminHaveSendQuestion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
