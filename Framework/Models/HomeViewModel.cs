@@ -50,7 +50,7 @@ namespace Framework.ViewModels
         public String UserName { get; set; }
         public String Id_User { get; set; }
         public String Content { get; set; }
-        public String Tag { get; set; }
+        public int Option { get; set; }
         public int UpVote { get; set; }
         public int DownVote { get; set; }
         public int Vote { get; set; }
