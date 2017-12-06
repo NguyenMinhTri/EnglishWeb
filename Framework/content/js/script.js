@@ -337,12 +337,12 @@ $(document).on("click", ".news-feed-form .form-group .selection .togglebutton la
     }
 });
 
-$('#question-form').on("submit", function (e) {
+$(document).on("click", "#question-form input[type='submit']", function (e) {
     $(".waiting_loader").css("display", "block");
     e.preventDefault();
 
     $(this).find("input[name='DatePost']").val(Date.now);
-    var form = $(this);
+    var form = $(this).closest("form");
     var data = form.serialize();
 
     $.post('/Home/Post', data).done(function (html) {
