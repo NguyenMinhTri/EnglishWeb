@@ -148,15 +148,21 @@
 
                 <div class="control-block">
                     <div class="author-page author vcard inline-items">
-                        <div class="author-thumb sinhvien">
+                        <div class="author-thumb @Model.User.Degree">
                             <img alt="author" src="content/images/@Model.User.Avatar" class="avatar">
-                            <span class="icon-status online"></span>
                         </div>
                         <a href="Profile?option=newsfeed" class="author-name fn">
                             <div class="author-title">
                                 @Model.User.Name <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                             </div>
-                            <span class="author-subtitle">Sinh Viên</span>
+                            @if (Model.User.Degree == "giaosu")
+                            {
+                                <span class="author-subtitle">Giáo sư</span>
+                            }
+                            else
+                            {
+                                <span class="author-subtitle">Tiểu học</span>
+                            }
                         </a>
                     </div>
                 </div>
@@ -219,7 +225,6 @@
                     <li class="inline-items js-chat-open">
                         <div class="author-thumb trunghoc">
                             <img alt="author" src="content/images/avatar67-sm.jpg" class="avatar">
-                            <span class="icon-status online"></span>
                         </div>
                     </li>
                 </ul>
@@ -251,7 +256,6 @@
 
                         <div class="author-thumb trunghoc">
                             <img alt="author" src="content/images/avatar67-sm.jpg" class="avatar">
-                            <span class="icon-status online"></span>
                         </div>
 
                         <div class="author-status">
@@ -321,7 +325,6 @@
 
                             <div class="author-thumb trunghoc">
                                 <img alt="author" src="content/images/avatar67-sm.jpg" class="avatar">
-                                <span class="icon-status online"></span>
                             </div>
 
                             <div class="author-status">
@@ -503,9 +506,8 @@
                 </div>
 
                 <div class="author-page author vcard inline-items more">
-                    <div class="author-thumb sinhvien">
+                    <div class="author-thumb @Model.User.Degree">
                         <img alt="author" src="content/images/@Model.User.Avatar" class="avatar">
-                        <span class="icon-status online"></span>
                         <div class="more-dropdown more-with-triangle">
                             <div class="mCustomScrollbar" data-mcs-theme="dark">
                                 <ul class="account-settings">
@@ -538,7 +540,14 @@
                         <div class="author-title">
                             @Model.User.Name <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
-                        <span class="author-subtitle">Sinh Viên</span>
+                        @if (Model.User.Degree == "giaosu")
+                        {
+                            <span class="author-subtitle">Giáo sư</span>
+                        }
+                        else
+                        {
+                            <span class="author-subtitle">Tiểu học</span>
+                        }
                     </a>
                 </div>
 

@@ -412,7 +412,7 @@ input, .form-control {
   }
 
 .label-floating.with-icon .form-control, .label-floating.with-icon input, .label-floating.with-icon textarea {
-  padding-left: 80px;
+  padding-left: 90px;
   }
 
 .label-floating.has-danger:after {
@@ -470,7 +470,7 @@ select.form-control {
 
 .label-floating.with-icon label.control-label,
 .label-placeholder.with-icon label.control-label {
-  left: 80px;
+  left: 90px;
   }
 
 .date-time-picker input {
@@ -4436,8 +4436,11 @@ ol ol li {
     position: relative; }
   .news-feed-form .author-thumb {
     position: absolute;
-    top: 25px;
-    left: 25px; }
+    top: 20px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    }
   .news-feed-form .form-group:first-child {
     margin-bottom: 0;
     border-bottom: 1px solid #e6ecf5;

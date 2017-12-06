@@ -189,6 +189,7 @@ namespace Framework.Controllers
                         user.Logined = true;
                         user.Status = true;
                         user.Avatar = "avatar1.jpg";
+                        user.Degree = "tieuhoc";
                         var result = await UserManager.CreateAsync(user, model.Password);
                         if (result.Succeeded)
                         {

@@ -411,18 +411,36 @@
                 </div>
                 <div class="ui-block-content">
                     <ul class="widget w-personal-info item-block">
-                        <li>
-                            <span class="title">Về tôi</span>
-                            <span class="text">Chào, tôi là Thịnh, hiện là sinh viên của trường đại học CNTT.</span>
-                        </li>
-                        <li>
-                            <span class="title">Trình độ</span>
-                            <span class="text">Đại học</span>
-                        </li>
-                        <li>
-                            <span class="title">Mục tiêu</span>
-                            <span class="text">Giao tiếp một cách ngon lành!</span>
-                        </li>
+                        @if (Model.User.Degree == "giaosu")
+                        {
+                            <li>
+                                <span class="title">Về tôi</span>
+                                <span class="text">Chào, tôi là @Model.User.LastName!</span>
+                            </li>
+                            <li>
+                                <span class="title">Trình độ</span>
+                                <span class="text">Giáo sư</span>
+                            </li>
+                            <li>
+                                <span class="title">Lĩnh vực</span>
+                                <span class="text">Ngữ pháp tiếng Anh</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <span class="title">Về tôi</span>
+                                <span class="text">Chào, tôi là @Model.User.LastName, hiện là sinh viên của trường đại học CNTT.</span>
+                            </li>
+                            <li>
+                                <span class="title">Trình độ</span>
+                                <span class="text">Đại học</span>
+                            </li>
+                            <li>
+                                <span class="title">Mục tiêu</span>
+                                <span class="text">Giao tiếp một cách ngon lành!</span>
+                            </li>
+                        }
                     </ul>
 
                     <div class="widget w-socials">

@@ -98,6 +98,7 @@ namespace Framework.Controllers
         public ActionResult NewsFeed()
         {
             _viewModel = new NewsFeedViewModel();
+            CreateLayoutView("Trang cá nhân");
             return PartialView("_NewsFeed", NewsFeedViewModel);
         }
 

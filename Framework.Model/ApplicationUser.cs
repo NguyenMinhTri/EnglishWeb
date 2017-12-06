@@ -56,6 +56,7 @@ namespace Framework.Model
         public String Avatar { get; set; }
         public float Score { get; set; }
         public String Id_Messenger { get; set; }
+        public String Degree { get; set; }
 
         /// <summary>
         ///     Constructor which creates a new Guid for the Id

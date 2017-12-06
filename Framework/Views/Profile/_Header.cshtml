@@ -1,10 +1,9 @@
-﻿
-<div class="container">
+﻿<div class="container">
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-block">
                 <div class="top-header">
-                    <div class="top-header-thumb sinhvien">
+                    <div class="top-header-thumb @Model.User.Degree">
                         <img src="content/images/top-header1.jpg" alt="nature">
                     </div>
                     <div class="profile-section">
@@ -30,10 +29,7 @@
                                             <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                             <ul class="more-dropdown more-with-triangle">
                                                 <li>
-                                                    <a href="#">Báo cáo xấu</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Chặn người này</a>
+                                                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -65,12 +61,17 @@
                         </div>
                     </div>
                     <div class="top-header-author">
-                        <a href="Profile" class="author-thumb sinhvien">
-                            <img src="content/images/author-main1.jpg" alt="author">
+                        <a href="Profile" class="author-thumb @Model.User.Degree">
+                            <img src="content/images/@Model.User.Avatar" alt="author">
                         </a>
                         <div class="author-content">
-                            <a href="Profile" class="h4 author-name">Thịnh Phan</a>
-                            <div class="country">UIT, HCMC</div>
+                            <a href="Profile" class="h4 author-name">@Model.User.Name</a>
+                            @if(Model.User.Degree == "giaosu"){
+                            <div class="country">Giáo sư</div>
+                            }
+                            else{
+                            <div class="country">Tiểu học</div>
+                            }
                         </div>
                     </div>
                 </div>
