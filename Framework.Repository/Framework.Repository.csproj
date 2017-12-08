@@ -68,6 +68,7 @@
     <Compile Include="RepositorySpace\CommentVoteDetailRepository.cs" />
     <Compile Include="RepositorySpace\DetailOurWordRepository.cs" />
     <Compile Include="RepositorySpace\DetailUserTypeRepository.cs" />
+    <Compile Include="RepositorySpace\DictCacheRepository.cs" />
     <Compile Include="RepositorySpace\FriendRepository.cs" />
     <Compile Include="RepositorySpace\HaveSendQuestionRepository.cs" />
     <Compile Include="RepositorySpace\MessageRepository.cs" />

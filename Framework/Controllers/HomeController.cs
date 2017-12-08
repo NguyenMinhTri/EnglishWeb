@@ -17,16 +17,19 @@ using Framework.Model;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using Framework.Model.Google;
+using Newtonsoft.Json;
 
 namespace Framework.Controllers
 {
-    
+
     public class HomeController : LayoutController
     {
         IClientHomeService _clientHomeService;
         IPostService _postService;
         IDetailUserTypeService _detailUserTypeService;
         IHaveSendQuestionService _haveSendQuesService;
+ 		IPostCommentDetailService _commentOfPost;
         IPostTypeService _postTypeService;
 
         public HomeController(  ILayoutService layoutService,
@@ -34,7 +37,8 @@ namespace Framework.Controllers
             IPostService postService,
             IDetailUserTypeService detailUser,
             IHaveSendQuestionService haveSendQuesService,
-            IPostTypeService postTypeService
+            IPostTypeService postTypeService,
+            IPostCommentDetailService commentOfPost
             )
             : base(layoutService)
         {
@@ -43,6 +47,7 @@ namespace Framework.Controllers
             _detailUserTypeService = detailUser;
             _haveSendQuesService = haveSendQuesService;
             _postTypeService = postTypeService;
+			_commentOfPost = commentOfPost;
         }
 
         HomeViewModel HomeViewModel
@@ -100,7 +105,7 @@ namespace Framework.Controllers
             newPost.Post_Status = 0;
             _viewModel = new PostViewModel();
             FieldHelper.CopyNotNullValue(newPost, data);
-           
+
             _postService.Add(newPost);
             _postService.Save();
             string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
@@ -124,7 +129,7 @@ namespace Framework.Controllers
         [HttpGet]
         public string Replay(string hashcode)
         {
-            bool checkGio = true;
+            bool checkGio = false;
             int idQuestion = int.Parse(hashcode);
             var currentPost = _postService.GetById(int.Parse(hashcode));
             var userId = User.Identity.GetUserId();
@@ -132,7 +137,7 @@ namespace Framework.Controllers
             var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId).ToList().FirstOrDefault();
             if (sendQues != null)
             {
-                var timePost = sendQues.CreatedDate.Value.AddMinutes(5).Ticks;
+                var timePost = sendQues.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
                 var timeCurrent = DateTime.Now.Ticks;
                 if (timePost < timeCurrent)
                 {
@@ -141,10 +146,10 @@ namespace Framework.Controllers
 
             }
             //
-          //  currentPost.Post_Status = 1;
-           // _postService.Update(currentPost);
+            //  currentPost.Post_Status = 1;
+            // _postService.Update(currentPost);
             //_postService.Save();
-           // DateTime 
+            // DateTime 
             return checkGio ? "Vui lòng trả lời" : "Link hết hạn";
         }
 
@@ -152,12 +157,12 @@ namespace Framework.Controllers
         protected List<Post> getPost()
         {
             List<Post> listResult = new List<Post>();
-            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status ==0 ).ToList();
-            foreach(var post in listPost)
+            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status == 0 ).ToList();
+            foreach (var post in listPost)
             {
-                var timePost = post.CreatedDate.Value.AddMinutes(5).Ticks;
+                var timePost = post.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
                 var timeCurrent = DateTime.Now.Ticks;
-                if(timePost < timeCurrent)
+                if (timePost < timeCurrent)
                 {
                     listResult.Add(post);
                 }
@@ -169,37 +174,38 @@ namespace Framework.Controllers
         public async Task checkTimeOfPost()
         {
             List<Post> listPost = getPost();
-                //
-                foreach (var post in listPost)
-                {
-                    //Get expert user list 
-                    List<ApplicationUser> appUser = getExpertUserBasedOnType(post);
-                    //Update status
+            //
+            foreach (var post in listPost)
+            {
+                //Get expert user list 
+                List<ApplicationUser> appUser = getExpertUserBasedOnType(post);
+                //Update status
 
-                    //
-                    foreach (var expertUser in appUser)
+                //
+                foreach (var expertUser in appUser)
+                {
+                    if (_haveSendQuesService.GetAll().Where(x => x.QuesID == post.Id && x.UserID == expertUser.Id).ToList().Count == 0)
                     {
-                        if (_haveSendQuesService.GetAll().Where(x => x.QuesID == post.Id && x.UserID == expertUser.Id).ToList().Count == 0)
-                        {
-                            post.Status = false; // have send
-                            post.CreatedDate = DateTime.Now;
-                            _postService.Update(post);
-                            _postService.Save();
-                            await Task.Delay(300);
-                            await sendNofityToMessenger(post, expertUser);
-                            HaveSendQuestion haveSendQues = new HaveSendQuestion();
-                            haveSendQues.QuesID = post.Id;
-                            haveSendQues.UserID = expertUser.Id;
-                            haveSendQues.Status = false;
-                            haveSendQues.Protected = false;
-                            _haveSendQuesService.Add(haveSendQues);
-                            _haveSendQuesService.Save();
-                            break;
-                        }
+                        post.Status = false; // have send
+                   
+                        post.CreatedDate = DateTime.Now;
+                        _postService.Update(post);
+                        _postService.Save();
+                        await Task.Delay(300);
+                        await sendNofityToMessenger(post, expertUser);
+                        HaveSendQuestion haveSendQues = new HaveSendQuestion();
+                        haveSendQues.QuesID = post.Id;
+                        haveSendQues.UserID = expertUser.Id;
+                        haveSendQues.Status = false;
+                        haveSendQues.Protected = false;
+                        _haveSendQuesService.Add(haveSendQues);
+                        _haveSendQuesService.Save();
+                        break;
                     }
-                    //
                 }
-            
+                //
+            }
+
         }
         protected List<ApplicationUser> getExpertUserBasedOnType(Post post)
         {
@@ -209,13 +215,13 @@ namespace Framework.Controllers
             //Check expert info 
             //First condition : 
             List<DetailUserType> detailUser = _detailUserTypeService.GetAll().Where(x => x.Type == post.Id_Type).ToList();
-            if(detailUser == null)
+            if (detailUser == null)
             {
-                
+
                 return null;
             }
             //
-            foreach(var item in detailUser)
+            foreach (var item in detailUser)
             {
                 ListAppUser.Add(_service.GetUserById(item.UserID));
             }
@@ -230,9 +236,100 @@ namespace Framework.Controllers
             paramChatfuel += "&title=Bạn có 1 câu hỏi :" + post.Content;
             //MaHoaMD5.Encrypt()
             paramChatfuel += "&url=http://localhost:20000/Home/Replay?hashcode=" + post.Id;
+            paramChatfuel +="&idques=" + post.Id;
             paramChatfuel += ChatBotMessenger.getVocaNull();
             var response2 = await client.PostAsync(paramChatfuel, null);
             return "";
         }
+        [AllowAnonymous]
+        public string busyNotReplay(string idques, string idmessenger)
+        {
+            RootObject2 result = new RootObject2();
+            Message3 messPron = new Message3();
+           
+            //
+            bool isHetGio = false;
+            int idQuestion = int.Parse(idques);
+            var currentPost = _postService.GetById(idQuestion);
+            var userId = _service.listUserID().Where(x => x.Id_Messenger == idmessenger).FirstOrDefault().Id;
+            //Kiem tra xem con thoi gian tra loi hay ko
+            var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId ).ToList().FirstOrDefault();
+            if (sendQues != null && currentPost.Post_Status !=10 )
+            {
+                var timePost = sendQues.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
+                var timeCurrent = DateTime.Now.Ticks;
+                if (timePost < timeCurrent)
+                {
+                    isHetGio = true;
+                }
+
+            }
+            else
+            {
+                messPron.text = "Câu hỏi không tồn tại hoặc đã trả lời";
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
+            if (!isHetGio)
+            {
+                messPron.text = "Bạn đã bỏ qua câu hỏi số :" + idques;
+                currentPost.CreatedDate = DateTime.Now.AddMinutes(-TimeSetting.LimitMinuteForPost());
+                _postService.Update(currentPost);
+                _postService.Save();
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
+            messPron.text = "Hết giờ hoặc đã trả lời";
+            result.messages.Add(messPron);
+            return JsonConvert.SerializeObject(result);
+        }
+        [AllowAnonymous]
+        public string replayDirectly(string idques,string ketqua ,string idmessenger)
+        {
+            //
+            RootObject2 result = new RootObject2();
+            Message3 messPron = new Message3();
+            //
+            bool checkGio = false;
+            int idQuestion = int.Parse(idques);
+            var currentPost = _postService.GetById(idQuestion);
+            var userId = _service.listUserID().Where(x => x.Id_Messenger == idmessenger).FirstOrDefault().Id;
+            //Kiem tra xem con thoi gian tra loi hay ko
+            var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId).ToList().FirstOrDefault();
+            if (sendQues != null)
+            {
+                var timePost = sendQues.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
+                var timeCurrent = DateTime.Now.Ticks;
+                if (timePost < timeCurrent)
+                {
+                    checkGio = true;
+                }
+                else
+                {
+                    currentPost.Post_Status = 10;
+                    PostCommentDetail comment = new PostCommentDetail();
+                    comment.Content = ketqua;
+                    comment.Id_Friend = userId;
+                    comment.Id_Post = idQuestion;
+                    _commentOfPost.Add(comment);
+                    _commentOfPost.Save();
+                    _postService.Update(currentPost);
+                    _postService.Save();
+                    messPron.text = "Cám ơn bạn đã phản hồi";
+                    result.messages.Add(messPron);
+                    return JsonConvert.SerializeObject(result);
+                }
+
+            }
+            //
+            //  currentPost.Post_Status = 1;
+            // _postService.Update(currentPost);
+            //_postService.Save();
+            // DateTime 
+            return checkGio ? "Vui lòng trả lời" : "Link hết hạn";
+
+        }
     }
 }
+
+// Post mã 10 là bị bỏ qua or chưa dc trả lờ

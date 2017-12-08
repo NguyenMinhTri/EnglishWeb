@@ -119,6 +119,7 @@
     <Compile Include="Admin\CommentVoteDetailService.cs" />
     <Compile Include="Admin\DetailOurWordService.cs" />
     <Compile Include="Admin\DetailUserTypeService.cs" />
+    <Compile Include="Admin\DictCacheService.cs" />
     <Compile Include="Admin\FriendService.cs" />
     <Compile Include="Admin\HaveSendQuestionService.cs" />
     <Compile Include="Admin\MessageService.cs" />

@@ -84,6 +84,7 @@
     <Compile Include="RunTimeCache.cs" />
     <Compile Include="SlugHelper.cs" />
     <Compile Include="StringHelper.cs" />
+    <Compile Include="TimeSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

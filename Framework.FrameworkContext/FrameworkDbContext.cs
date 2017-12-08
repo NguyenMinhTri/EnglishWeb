@@ -35,6 +35,7 @@ namespace Framework.FrameworkContext
         public DbSet<PostType> PostTypes { set; get; }
         public DbSet<DetailUserType> DetailUserTypes { set; get; }
         public DbSet<HaveSendQuestion> HaveSendQuestions { set; get; }
+        public DbSet<DictCache> DictCaches { set; get; }
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -64,6 +65,7 @@ namespace Framework.FrameworkContext
             builder.Entity<ApplicationRole>().ToTable("AspNetRoles");
             builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("AspNetUserClaims");
             builder.Entity<ApplicationUserRole>().ToTable("AspNetUserRoles");
+
 
             // TODO 1_ThemBang: st3. Thêm đoạn code tương tự như sau để thêm store procedure
             //builder.Entity<Topic>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertTopic", schema))
@@ -119,10 +121,14 @@ namespace Framework.FrameworkContext
             builder.Entity<HaveSendQuestion>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertHaveSendQuestion", "dbo"))
             .Update(u => u.HasName("UpdateHaveSendQuestion", "dbo"))
             .Delete(u => u.HasName("DeleteHaveSendQuestion", "dbo")));
-            //st3. -- END
-
-
+            builder.Entity<DictCache>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertDictCache", "dbo"))
+            .Update(u => u.HasName("UpdateDictCache", "dbo"))
+            .Delete(u => u.HasName("DeleteDictCache", "dbo")));
         }
+        //st3. -- END
+
+
+    }
 
         //TODO 1_ThemBang: st4. vào package manager console gõ Add_Migration [Tên_migration tên gì cũng được miễn sao dễ hiểu]
         //tiếp tục gõ Update_Database
@@ -131,5 +137,5 @@ namespace Framework.FrameworkContext
         //TODO 2_CSCot: st2. vào package manager console gõ Add_Migration [Tên_migration tên gì cũng được miễn sao dễ hiểu]
         //tiếp tục gõ Update_Database
         //TODO 2_CSCot: st3....................................................................................End
-    }
+    
 }
