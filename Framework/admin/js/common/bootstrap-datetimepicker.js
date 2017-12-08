@@ -376,7 +376,7 @@
                 if (options.toolbarPlacement === 'bottom') {
                     content.append(toolbar);
                 }
-                return template.append(/content);
+                return template.append(content);
             },
 
             dataToOptions = function () {

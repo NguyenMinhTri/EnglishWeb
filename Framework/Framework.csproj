@@ -297,6 +297,7 @@
     <Content Include="admin\css\bootstrap.min.css" />
     <Content Include="admin\css\demo.css" />
     <Content Include="admin\css\font-awesome.min.css" />
+    <Content Include="admin\css\jquery-ui.css" />
     <Content Include="admin\css\main.css" />
     <Content Include="admin\css\maps\jquery-jvectormap-2.0.3.css" />
     <Content Include="admin\css\paper-dashboard.css" />
@@ -361,6 +362,7 @@
     <Content Include="admin\js\controller\blog.js" />
     <Content Include="admin\js\controller\doctor.js" />
     <Content Include="admin\js\controller\open_hour.js" />
+    <Content Include="admin\js\jquery-ui.min.js" />
     <Content Include="admin\js\main.js" />
     <Content Include="admin\vendors\animate.css\animate.css" />
     <Content Include="admin\vendors\animate.css\animate.min.css" />
