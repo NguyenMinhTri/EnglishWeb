@@ -35,7 +35,6 @@ namespace Framework.ViewModels
         public String FavoriteArtist { get; set; }
         public String FavoriteAuthor { get; set; }
         public String Facebook { get; set; }
-        public String Google { get; set; }
     }
 
     public class UpdatePasswordViewModel : LayoutViewModel, IRef<YourAccountController>

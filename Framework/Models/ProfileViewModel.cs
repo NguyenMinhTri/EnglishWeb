@@ -6,8 +6,37 @@ using System.Web;
 
 namespace Framework.ViewModels
 {
+    public class HeaderViewModel : LayoutViewModel, IRef<ProfileController>
+    {
+        public String Id { get; set; }
+        public String Name { get; set; }
+        public String Degree { get; set; }
+        public String Avatar { get; set; }
+        public String LastName { get; set; }
+    }
+
     public class NewsFeedViewModel : LayoutViewModel, IRef<ProfileController>
     {
+        public String LastName { get; set; }
+        public String Name { get; set; }
+        public String About { get; set; }
+        public String AboutToString
+        {
+            get
+            {
+                if (About == null)
+                {
+                    return "Chưa có thông tin";
+                }
+                else
+                {
+                    return About;
+                }
+            }
+        }
+        public String Facebook { get; set; }
+        public String Degree { get; set; }
+        public String Avatar { get; set; }
     }
 
     public class AboutViewModel : LayoutViewModel, IRef<ProfileController>
@@ -226,12 +255,12 @@ namespace Framework.ViewModels
             }
         }
         public String Facebook { get; set; }
-        public String Google { get; set; }
         public DateTime? CreatedDate { set; get; }
     }
 
     public class FriendViewModel : LayoutViewModel, IRef<ProfileController>
     {
+        public String LastName { get; set; }
     }
 
 }

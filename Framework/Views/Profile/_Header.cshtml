@@ -3,8 +3,15 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-block">
                 <div class="top-header">
-                    <div class="top-header-thumb @Model.User.Degree">
-                        <img src="content/images/top-header1.jpg" alt="nature">
+                    <div class="top-header-thumb @Model.Degree">
+                        @if (Model.Degree == "giaosu")
+                        {
+                            <img src="content/images/top-header2.jpg" alt="nature">
+                        }
+                        else
+                        {
+                            <img src="content/images/top-header1.jpg" alt="nature">
+                        }
                     </div>
                     <div class="profile-section">
                         <div class="row">
@@ -14,7 +21,7 @@
                                         <a href="#" onclick='getview("newsfeed")'>Timeline</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick='getview("about")'>Về bạn</a>
+                                        <a href="#" onclick='getview("about")'>Thông tin</a>
                                     </li>
 
                                 </ul>
@@ -28,9 +35,18 @@
                                         <div class="more">
                                             <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                             <ul class="more-dropdown more-with-triangle">
-                                                <li>
-                                                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
-                                                </li>
+                                                @if (Model.Id == Model.User.Id)
+                                                {
+                                                    <li>
+                                                        <a href="YourAccount?option=updateinfo">Quản lý tài khoản</a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a href="#" data-toggle="modal" data-target="#report-profile">Báo cáo xấu</a>
+                                                    </li>
+                                                }
                                             </ul>
                                         </div>
                                     </li>
@@ -39,38 +55,43 @@
                         </div>
 
                         <div class="control-block-button">
-                            <a href="YourAccount?option=requests" class="btn btn-control bg-blue">
-                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                            </a>
+                            @if (Model.Id == Model.User.Id)
+                            {
+                                <div class="btn btn-control bg-primary more">
+                                    <svg class="olymp-settings-icon"><use xlink:href="content/icons/icons.svg#olymp-settings-icon"></use></svg>
 
-                            <div class="btn btn-control bg-primary more">
-                                <svg class="olymp-settings-icon"><use xlink:href="content/icons/icons.svg#olymp-settings-icon"></use></svg>
+                                    <ul class="more-dropdown more-with-triangle triangle-bottom-right">
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#update-header-photo">Cài đặt ảnh đại diện</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#update-header-photo">Cài đặt ảnh nền</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <a href="YourAccount?option=requests" class="btn btn-control bg-blue">
+                                    <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                </a>
+                            }
 
-                                <ul class="more-dropdown more-with-triangle triangle-bottom-right">
-                                    <li>
-                                        <a href="#" data-toggle="modal" data-target="#update-header-photo">Cài đặt ảnh đại diện</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-toggle="modal" data-target="#update-header-photo">Cài đặt ảnh nền</a>
-                                    </li>
-                                    <li>
-                                        <a href="YourAccount?option=updateinfo">Quản lý tài khoản</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="top-header-author">
-                        <a href="Profile" class="author-thumb @Model.User.Degree">
-                            <img src="content/images/@Model.User.Avatar" alt="author">
+                        <a href="Profile" class="author-thumb @Model.Degree">
+                            <img src="content/images/@Model.Avatar" alt="author">
                         </a>
                         <div class="author-content">
-                            <a href="Profile" class="h4 author-name">@Model.User.Name</a>
-                            @if(Model.User.Degree == "giaosu"){
-                            <div class="country">Giáo sư</div>
+                            <a href="Profile" class="h4 author-noame">@Model.Name</a>
+                            @if (Model.Degree == "giaosu")
+                            {
+                                <div class="country">Giáo sư</div>
                             }
-                            else{
-                            <div class="country">Tiểu học</div>
+                            else
+                            {
+                                <div class="country">Tiểu học</div>
                             }
                         </div>
                     </div>
@@ -79,3 +100,41 @@
         </div>
     </div>
 </div>
+
+<!-- Window-popup Report -->
+
+<div class="modal fade" id="report-profile">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Đây là người xấu?</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <fieldset class="form-group label-floating is-select">
+                <label class="control-label">Người này đã vi phạm vì</label>
+                <select class="selectpicker form-control" size="auto">
+                    <option value="1">Đăng nhiều bài có nội dung xấu, kích động</option>
+                    <option value="2">Có tác động tiêu cực đến mọi người</option>
+                </select>
+            </fieldset>
+
+            <p>
+                Olympus cảm ơn bạn rất nhiều!
+            </p>
+            <p>
+                <b>Make Olympus great againt!</b>
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Thôi, tha</a>
+                <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center">Xóa dùm</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ... end Window-popup Report -->

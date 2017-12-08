@@ -2436,11 +2436,12 @@ body {
 .upload-photo-item {
   display: inline-block;
   vertical-align: middle;
-  width: 49%;
   padding: 50px;
   text-align: center;
   fill: #c2c5d9;
-  border-left: 1px solid #e6ecf5; }
+  border-left: 1px solid #e6ecf5;
+  flex: 1;
+  }
   .upload-photo-item:first-child {
     border-right: none; }
   .upload-photo-item h6, .upload-photo-item .h6 {
@@ -6928,14 +6929,22 @@ div#cau em {
     border-top: none;
 }
 
-.modal .btn--half-width {
-    width: 49.5%;
-}
-
 ul.comments-list > li .more {opacity: 0;}
 
 ul.comments-list > li:hover .more {opacity: 1;}
 
 ul.statistics-list-count .points {
     text-align: left;
+}
+
+.modal-button {
+    display: flex;
+}
+
+.modal-button .btn {
+    width: 100%;
+}
+
+.modal-button .btn:first-child {
+    margin-right: 5px;
 }

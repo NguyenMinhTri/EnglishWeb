@@ -1,7 +1,7 @@
 ﻿@model Framework.ViewModels.AboutViewModel
 
 <script>
-    document.title = "Về bạn | Olympus";
+    document.title = "Thông tin | Olympus";
 </script>
 
 <div class="container">
@@ -121,24 +121,14 @@
                             <a href="tel:@Model.Phone" class="text">@Model.PhoneToString</a>
                         </li>
                     </ul>
-                    @if (Model.Facebook != null || Model.Google != null)
+                    @if (Model.Facebook != null)
                     {
                         <div class="widget w-socials">
                             <h6 class="title">Mạng xã hội khác</h6>
-                            @if (Model.Facebook != null)
-                            {
                                 <a href="@Model.Facebook" class="social-item bg-facebook">
                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                     Facebook
                                 </a>
-                            }
-                            @if (Model.Google != null)
-                            {
-                                <a href="@Model.Google" class="social-item bg-dribbble">
-                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                    Google+
-                                </a>
-                            }
                         </div>
                     }
                </div>

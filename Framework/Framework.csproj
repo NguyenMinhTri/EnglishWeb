@@ -254,6 +254,7 @@
     <Compile Include="Controllers\Admin\AdminPostTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -5114,6 +5115,7 @@
     <Content Include="Views\AdminPostType\Index.cshtml" />
     <Content Include="Views\AdminDetailUserType\Index.cshtml" />
     <Content Include="Views\AdminHaveSendQuestion\Index.cshtml" />
+    <Content Include="Views\ErrorPage\Oops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
