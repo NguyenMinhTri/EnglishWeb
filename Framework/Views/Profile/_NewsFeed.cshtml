@@ -57,6 +57,13 @@
                                 <span class="text">Giao tiếp một cách ngon lành!</span>
                             </li>
                         }
+                        @if (Model.Id == Model.User.Id)
+                        {
+                            <li>
+                                <span class="title" data-toggle="tooltip" data-placement="right" data-original-title="Dùng để kết nối với Bot">Token</span>
+                                <a href="#" onclick="copyToClipboard('span#token')" data-toggle="modal" data-target="#token" class="text">Nhấp để lấy Token</a>
+                            </li>
+                        }
                     </ul>
 
                     <div class="widget w-socials">
@@ -161,3 +168,46 @@
         <!-- ... end Right Sidebar -->
     </div>
 </div>
+
+<!-- Window-popup Report -->
+
+<div class="modal fade" id="token">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Thông báo</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Đã lưu Token của bạn vào bộ nhớ tạm!
+            </p>
+            <p>
+                Nhấp OK để kết nối với Bot bạn nhé!
+            </p>
+            <span id="token" style="display: none">@Model.Id</span>
+            <div class="modal-button">
+                <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Bỏ qua</a>
+                <a href="https://www.messenger.com/t/SEUITEnglish" target="_blank" class="btn btn-primary btn-lg btn--half-width btn-icon-center">OK</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ... end Window-popup Report -->
+
+
+<script>
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>

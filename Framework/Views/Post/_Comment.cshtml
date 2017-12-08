@@ -1,0 +1,38 @@
+﻿@model Framework.ViewModels.CommentViewModel
+
+<li class="new-comment parent" style="display: none">
+    <div class="post__author author vcard inline-items sinhvien">
+        <img src="content/images/author-page.jpg" alt="author">
+
+        <div class="author-date">
+            <a class="h6 post__author-name fn" href="#">Thịnh Phan</a>
+            <div class="post__date">
+                <time class="published" data-time="">
+
+                </time>
+            </div>
+        </div>
+        <div class="more">
+            <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+            <div class="more-dropdown">
+                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+            </div>
+        </div>
+    </div>
+
+    <p id="comments">
+        @Model.Comment
+    </p>
+
+    <a href="#" class="post-add-icon inline-items upvote">
+        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+        <span>0</span>
+    </a>
+    <a href="#" class="post-add-icon inline-items downvote ">
+        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+        <span>0</span>
+    </a>
+    <a class="reply">Trả lời</a>
+
+    <ul class="children"></ul>
+</li>

@@ -10,13 +10,21 @@ namespace Framework.Service.Admin
 {
     public interface IPostVoteDetailService : IQlService<PostVoteDetail>
     {
+        PostVoteDetail getVoteByIdUser(string id);
     }
     public class PostVoteDetailService : QlService<PostVoteDetail>, IPostVoteDetailService
     {
         IPostVoteDetailRepository _postVoteDetailRepository;
-        public PostVoteDetailService(IPostVoteDetailRepository postVoteDetailRepository, IUnitOfWork unitOfWork) : base(postVoteDetailRepository, unitOfWork) 
+        public PostVoteDetailService(IPostVoteDetailRepository postVoteDetailRepository, IUnitOfWork unitOfWork)
+            : base(postVoteDetailRepository, unitOfWork)
         {
             this._repository = postVoteDetailRepository;
+            _postVoteDetailRepository = postVoteDetailRepository;
+        }
+
+        public PostVoteDetail getVoteByIdUser(string id)
+        {
+            return _postVoteDetailRepository.GetSingleByCondition(x => x.Id_Friend == id);
         }
     }
 }

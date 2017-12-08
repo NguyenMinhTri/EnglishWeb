@@ -17,5 +17,7 @@ namespace Framework.Model
 		public String Id_Friend { get; set; }
         public String Content { get; set; }
         public String DateComment { get; set; }
+        public int UpVote { get; set; }
+        public int DownVote { get; set; }
 	}
 }

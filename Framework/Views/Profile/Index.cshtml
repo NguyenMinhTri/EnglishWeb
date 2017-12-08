@@ -27,8 +27,9 @@
                 initInput();
             }
         });
-        $('#partial').hide().fadeIn(500);
-        scrollto("#partial");
+        $('#partial').hide().fadeIn(500, function () {
+            scrollto("#partial");
+        });
     }
     var username = getQueryVariable("username");
     var option = getQueryVariable("option");

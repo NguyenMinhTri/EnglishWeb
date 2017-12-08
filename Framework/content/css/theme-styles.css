@@ -366,7 +366,9 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-content: space-around; }
+  justify-content: space-around;
+  cursor: pointer;
+  }
   .profile-menu li > div, .profile-menu li a {
     font-size: 14px;
     font-weight: 700;

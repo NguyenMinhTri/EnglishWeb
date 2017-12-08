@@ -1,5 +1,7 @@
 ﻿@model Framework.ViewModels.HomeViewModel
 
+<div class="waiting_loader" style="display: none"></div>
+
 <div class="header-spacer"></div>
 
 
@@ -13,141 +15,53 @@
 
                 @if (Model.Roles.Count == 0)
                 {
-                   <div class="ui-block">
-                    <div class="news-feed-form">
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                <form id="question-form">
-                                    <div class="author-thumb @Model.User.Degree">
-                                        <img src="content/images/@Model.User.Avatar" alt="author">
-                                    </div>
-                                    <div class="form-group with-icon label-floating is-empty">
-                                        <label class="control-label">Bạn đang thắc mắc về...</label>
-                                        <textarea class="form-control" placeholder="" name="Content"></textarea>
-                                        <div class="selection">
-                                            <p>Hỏi tất cả mọi người</p>
-                                            <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi Thầy cô nha!">
-                                                <label>
-                                                    <input type="checkbox">
-                                                </label>
+                    <div class="ui-block">
+                        <div class="news-feed-form">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                                    <form id="question-form">
+                                        <div class="author-thumb @Model.User.Degree">
+                                            <img src="content/images/@Model.User.Avatar" alt="author">
+                                        </div>
+                                        <div class="form-group with-icon label-floating is-empty">
+                                            <label class="control-label">Bạn đang thắc mắc về...</label>
+                                            <textarea class="form-control" placeholder="" name="Content"></textarea>
+                                            <div class="selection">
+                                                <p>Hỏi tất cả mọi người</p>
+                                                <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi Thầy cô nha!">
+                                                    <label>
+                                                        <input type="checkbox">
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="add-options-message row ask-teacher">
-                                        <label class="control-label">Vui lòng chọn loại câu hỏi</label>
-                                        <fieldset class="form-group">
-                                            <select class="selectpicker form-control" size="auto" name="Id_Type">
-                                                <option value="1">Ngữ pháp căn bản</option>
-                                                <option value="2">Mẫu câu, tình huống giao tiếp</option>
-                                                <option value="3">Các ngoại lệ trong Tiếng Anh</option>
-                                                <option value="4">Câu hỏi thuộc bài thi Toeic</option>
-                                                <option value="5">Câu hỏi thuộc bài thi IELTS</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <input type="hidden" name="DatePost" />
-                                    <input type="hidden" name="Id_User" value="@Model.User.Id" />
-                                    <input type="hidden" name="Option" value="0" />
+                                        <div class="add-options-message row ask-teacher">
+                                            <label class="control-label">Vui lòng chọn loại câu hỏi</label>
+                                            <fieldset class="form-group">
+                                                <select class="selectpicker form-control" size="auto" name="Id_Type">
+                                                    @foreach (var item in @Model.ListPostType)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <input type="hidden" name="DatePost" />
+                                        <input type="hidden" name="Id_User" value="@Model.User.Id" />
+                                        <input type="hidden" name="Option" value="0" />
 
-                                    <div class="status-footer">
-                                        <input type="submit" class="btn btn-primary btn-md-2" value="Đăng tải" />
-                                    </div>
-                                </form>
+                                        <div class="status-footer">
+                                            <input type="submit" class="btn btn-primary btn-md-2" value="Đăng tải" />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
                 }
 
-                <div class="ui-block" id="p1">
-                    <article class="hentry post">
-                        <div class="post__author author vcard inline-items sinhvien">
-                            <img src="content/images/author-page.jpg" alt="author" class="sinhvien">
-
-                            <div class="author-date">
-                                <a class="h6 post__author-name fn" href="Profile">Thịnh Phan</a>
-                                <div class="post__date">
-                                    <time class="published" data-time="1512151976579">
-                                        19 giờ trước
-                                    </time>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-                                <div class="more-dropdown">
-                                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h6 class="tag">
-                            Thể loại: <span>Ngữ pháp căn bản</span>
-                        </h6>
-                        <p>
-                            Học tiếng anh sao cho hiệu quả mọi người nhỉ?
-                        </p>
-
-                        <div class="post-additional-info inline-items">
-                            <a href="#" class="post-add-icon inline-items upvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                <span>0</span>
-                            </a>
-                            <a href="#" class="post-add-icon inline-items downvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                <span>0</span>
-                            </a>
-
-                            <div class="comments-shared">
-                                <div class="post-add-icon inline-items">
-                                    <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
-                                    <span>0</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="control-block-button post-control-button">
-                            <a href="#" class="btn btn-control upvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                            </a>
-
-                            <a href="#" class="btn btn-control downvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                            </a>
-                        </div>
-
-                    </article>
-
-                    <div class="comment-section">
-                        <ul class="comments-list"></ul>
-
-                        <form class="comment-form inline-items">
-                            <div class="post__author author vcard inline-items sinhvien">
-                                <img src="content/images/author-page.jpg" alt="author">
-                            </div>
-
-                            <div class="form-group with-icon-right ">
-                                <textarea class="form-control" placeholder="Trả lời nào..." id="comment" name="Content"></textarea>
-                                <div class="add-options-message">
-                                    <a class="options-message" id="submit">
-                                        <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
-                                    </a>
-                                </div>
-                                <span class="material-input"></span>
-                                <input type="hidden" name="Id_User" value="@Model.User.Id" />
-                                <input type="hidden" name="Id_Post" value="1" />
-                                <input type="hidden" name="Id_Comment" value="0" />
-                                <input type="hidden" name="DateComment" value="" />
-                            </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-                <div class="ui-block" id="p2">
+                @*<div class="ui-block" id="p2">
                     <article class="hentry post">
 
                         <div class="post__author author vcard inline-items sinhvien">
@@ -521,7 +435,7 @@
                         </form>
 
                     </div>
-                </div>
+                </div>*@
 
             </div>
 

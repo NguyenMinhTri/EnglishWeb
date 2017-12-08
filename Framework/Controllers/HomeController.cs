@@ -27,11 +27,14 @@ namespace Framework.Controllers
         IPostService _postService;
         IDetailUserTypeService _detailUserTypeService;
         IHaveSendQuestionService _haveSendQuesService;
+        IPostTypeService _postTypeService;
+
         public HomeController(  ILayoutService layoutService,
             IClientHomeService clientHomeService,
             IPostService postService,
             IDetailUserTypeService detailUser,
-            IHaveSendQuestionService haveSendQuesService
+            IHaveSendQuestionService haveSendQuesService,
+            IPostTypeService postTypeService
             )
             : base(layoutService)
         {
@@ -39,10 +42,10 @@ namespace Framework.Controllers
             _postService = postService;
             _detailUserTypeService = detailUser;
             _haveSendQuesService = haveSendQuesService;
+            _postTypeService = postTypeService;
         }
 
-
-        HomeViewModel ViewModel
+        HomeViewModel HomeViewModel
         {
             get
             {
@@ -66,14 +69,13 @@ namespace Framework.Controllers
             }
         }
 
-        public async System.Threading.Tasks.Task<ActionResult> Index(PostViewModel data)
+        public ActionResult Index(PostViewModel data)
         {
 
             _viewModel = new HomeViewModel();
             CreateLayoutView("Trang chủ");
-            var codes = _clientHomeService.GetCodes();
-            LayoutViewModel lay = ViewModel;
-            return View(ViewModel);
+            HomeViewModel.ListPostType = _postTypeService.GetAll().ToList();
+            return View(HomeViewModel);
         }
 
         [HttpPost]

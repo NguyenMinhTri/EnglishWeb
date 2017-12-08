@@ -100,7 +100,7 @@ namespace Framework.Controllers
                 username = _viewModel.User.UserName;
             }
             var user = _service.GetUserByUserName(username);
-            FieldHelper.CopyNotNullValue((HeaderViewModel)_viewModel, user);
+            FieldHelper.CopyNotNullValue(HeaderViewModel, user);
             return View(_viewModel);
         }
 

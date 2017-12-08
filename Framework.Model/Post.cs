@@ -18,7 +18,8 @@ namespace Framework.Model
         public int Option { get; set; }
         public String DatePost { get; set; }
         public int Post_Status { get; set; }
-
+        public int UpVote { get; set; }
+        public int DownVote { get; set; }
     }
     //Post - Post vote
     //Comment - Comment vote

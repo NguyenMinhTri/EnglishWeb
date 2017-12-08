@@ -17,6 +17,7 @@ namespace Framework.ViewModels
 
     public class NewsFeedViewModel : LayoutViewModel, IRef<ProfileController>
     {
+        public String Id { get; set; }
         public String LastName { get; set; }
         public String Name { get; set; }
         public String About { get; set; }

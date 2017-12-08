@@ -346,7 +346,7 @@ $(document).on("click", "#question-form input[type='submit']", function (e) {
     var data = form.serialize();
 
     $.post('/Home/Post', data).done(function (html) {
-        alert("OK")
+        
         //$("#partial").html(html);
     }).fail(function (response) {
         $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
