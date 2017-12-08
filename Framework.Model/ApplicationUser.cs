@@ -45,7 +45,6 @@ namespace Framework.Model
         public String Email { get; set; }
         public String Phone { get; set; }
         public String Facebook { get; set; }
-        public String Google { get; set; }
         public String Hobby { get; set; }
         public String FavoriteShow { get; set; }
         public String FavoriteFilm { get; set; }

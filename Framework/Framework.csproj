@@ -254,6 +254,7 @@
     <Compile Include="Controllers\Admin\AdminPostTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -296,6 +297,7 @@
     <Content Include="admin\css\bootstrap.min.css" />
     <Content Include="admin\css\demo.css" />
     <Content Include="admin\css\font-awesome.min.css" />
+    <Content Include="admin\css\jquery-ui.css" />
     <Content Include="admin\css\main.css" />
     <Content Include="admin\css\maps\jquery-jvectormap-2.0.3.css" />
     <Content Include="admin\css\paper-dashboard.css" />
@@ -360,6 +362,7 @@
     <Content Include="admin\js\controller\blog.js" />
     <Content Include="admin\js\controller\doctor.js" />
     <Content Include="admin\js\controller\open_hour.js" />
+    <Content Include="admin\js\jquery-ui.min.js" />
     <Content Include="admin\js\main.js" />
     <Content Include="admin\vendors\animate.css\animate.css" />
     <Content Include="admin\vendors\animate.css\animate.min.css" />
@@ -5114,6 +5117,7 @@
     <Content Include="Views\AdminPostType\Index.cshtml" />
     <Content Include="Views\AdminDetailUserType\Index.cshtml" />
     <Content Include="Views\AdminHaveSendQuestion\Index.cshtml" />
+    <Content Include="Views\ErrorPage\Oops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

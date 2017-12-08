@@ -28,6 +28,13 @@ namespace Framework.Controllers
             _clientProfileService = clientProfileService;
         }
 
+        HeaderViewModel HeaderViewModel
+        {
+            get
+            {
+                return (HeaderViewModel)_viewModel;
+            }
+        }
 
         NewsFeedViewModel NewsFeedViewModel
         {
@@ -53,33 +60,32 @@ namespace Framework.Controllers
             }
         }
 
-        public ActionResult Index(string option)
+        public ActionResult Index(string option, string username)
         {
+
+            _viewModel = new HeaderViewModel();
+
             if (option != null)
             {
                 switch (option.ToLower())
                 {
                     case "newsfeed":
                         {
-                            _viewModel = new NewsFeedViewModel();
                             CreateLayoutView("Trang cá nhân");
                             break;
                         }
                     case "about":
                         {
-                            _viewModel = new AboutViewModel();
-                            CreateLayoutView("Về bạn");
+                            CreateLayoutView("Thông tin");
                             break;
                         }
                     case "friend":
                         {
-                            _viewModel = new FriendViewModel();
                             CreateLayoutView("Bạn bè");
                             break;
                         }
                     default:
                         {
-                            _viewModel = new NewsFeedViewModel();
                             CreateLayoutView("Trang cá nhân");
                             break;
                         }
@@ -87,34 +93,56 @@ namespace Framework.Controllers
             }
             else
             {
-                _viewModel = new NewsFeedViewModel();
                 CreateLayoutView("Trang cá nhân");
             }
-
+            if (username == null || username == "false")
+            {
+                username = _viewModel.User.UserName;
+            }
+            var user = _service.GetUserByUserName(username);
+            FieldHelper.CopyNotNullValue((HeaderViewModel)_viewModel, user);
             return View(_viewModel);
         }
 
         [HttpGet]
-        public ActionResult NewsFeed()
+        public ActionResult NewsFeed(string username)
         {
             _viewModel = new NewsFeedViewModel();
             CreateLayoutView("Trang cá nhân");
+            if (username == "false")
+            {
+                username = _viewModel.User.UserName;
+            }
+            var user = _service.GetUserByUserName(username);
+            FieldHelper.CopyNotNullValue(NewsFeedViewModel, user);
             return PartialView("_NewsFeed", NewsFeedViewModel);
         }
 
         [HttpGet]
-        public ActionResult About()
+        public ActionResult About(string username)
         {
             _viewModel = new AboutViewModel();
-            CreateLayoutView("Về bạn");
-            FieldHelper.CopyNotNullValue(AboutViewModel, _viewModel.User);
+            CreateLayoutView("Thông tin");
+            if (username == "false")
+            {
+                username = _viewModel.User.UserName;
+            }
+            var user = _service.GetUserByUserName(username);
+            FieldHelper.CopyNotNullValue(AboutViewModel, user);
             return PartialView("_About", AboutViewModel);
         }
 
         [HttpGet]
-        public ActionResult Friend()
+        public ActionResult Friend(string username)
         {
             _viewModel = new FriendViewModel();
+            CreateLayoutView("Bạn bè");
+            if (username == "false")
+            {
+                username = _viewModel.User.UserName;
+            }
+            var user = _service.GetUserByUserName(username);
+            FieldHelper.CopyNotNullValue(FriendViewModel, user);
             return PartialView("_Friend", FriendViewModel);
         }
     }

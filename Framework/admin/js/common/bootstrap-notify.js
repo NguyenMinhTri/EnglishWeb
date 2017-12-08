@@ -385,7 +385,7 @@
 		}
 	});
 
-	$.notify = function (/content, options) {
+	$.notify = function (content, options) {
 		var plugin = new Notify(this, content, options);
 		return plugin.notify;
 	};

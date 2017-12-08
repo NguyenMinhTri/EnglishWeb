@@ -12,11 +12,16 @@
 <script>
     function getview(action) {
         $(".waiting_loader").css("display", "block");
-        var url = "/Profile/" + action;
+        var url = "/Profile/" + action + "?username=" + username;
         $("#partial").load(url, function (response, status, xhr) {
             if (status == "success") {
                 $(".waiting_loader").css("display", "none");
-                window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
+                if (username != "false") {
+                    window.history.pushState('', '', window.location.pathname + "?username=" + username + "&option=" + action.toLowerCase());
+                }
+                else {
+                    window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
+                }
                 $(".profile-menu a").removeClass("active");
                 $("a[onclick*=" + action + "]").addClass("active");
                 initInput();
@@ -25,7 +30,7 @@
         $('#partial').hide().fadeIn(500);
         scrollto("#partial");
     }
-
+    var username = getQueryVariable("username");
     var option = getQueryVariable("option");
     getview(option);
 

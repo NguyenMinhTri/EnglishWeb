@@ -1,0 +1,134 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Đã có lỗi xảy ra :(</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script src="~/content/js/webfontloader.min.js"></script>
+    <link rel="icon" href="~/content/images/favicon.png" type="image/icon">
+    <script>
+        WebFont.load({
+            google: {
+                families: ['Roboto:300,400,500,700:latin']
+            }
+        });
+    </script>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="~/content/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="~/content/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/content/css/bootstrap-grid.css">
+
+    <!-- Theme Styles CSS -->
+    <link rel="stylesheet" type="text/css" href="~/content/css/theme-styles.css">
+    <link rel="stylesheet" type="text/css" href="~/content/css/blocks.css">
+
+
+</head>
+
+<body>
+
+
+    <div class="main-header main-landing" style="    height: 100vh;  margin-bottom: 0;">
+
+        <div class="content-bg-wrap">
+            <div class="content-bg bg-landing"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 col-md-12 offset-md-0 col-sm-12 col-xs-12">
+                    <div class="main-header-content">
+                        <a href="/" class="logo">
+                            <img src="~/content/images/logo-landing.png" alt="Olympus">
+                            <h6 class="logo-title">olympus</h6>
+                            CONNECT 2 LEARN
+                        </a>
+
+                        <h1>Có gì đó không đúng</h1>
+                        <p>
+                            Hình như đã có lỗi gì đó xảy ra rồi, vui lòng thông báo cho Olympus biết để khắc phục nhé!
+                            <br />Cảm ơn bồ rất nhiều!!!
+                        </p>
+
+                        <a class="btn btn-purple btn-lg" data-toggle="modal" data-target="#report">Thông báo cho Admin!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img class="img-bottom" src="~/content/images/group-bottom.png" alt="friends">
+        <img class="img-rocket" src="~/content/images/rocket.png" alt="rocket">
+    </div>
+
+    <!-- Window-popup Report -->
+
+    <div class="modal fade" id="report">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="~/content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Có lỗi xảy ra?</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <div class="form-group label-floating">
+                    <label class="control-label">Bạn gặp phải lỗi này khi</label>
+                    <textarea class="form-control" placeholder=""></textarea>
+                </div>
+
+                <p>
+                    Olympus cảm ơn bạn rất nhiều!
+                </p>
+                <p>
+                    <b>Make Olympus great againt!</b>
+                </p>
+                <div class="modal-button">
+                    <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" onclick="location.replace('/');">Trở về</a>
+                    <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" data-toggle="modal" data-target="#thanks" data-dismiss="modal" aria-label="Close">Gửi đi</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ... end Window-popup Report -->
+
+    <div class="modal fade" id="thanks">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="~/content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Cảm ơn bạn</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>
+                    Olympus cảm ơn bạn rất nhiều!
+                </p>
+                <p>
+                    <b>Make Olympus great againt!</b>
+                </p>
+                <div class="modal-button">
+                    <a href="/" class="btn btn-primary btn-lg btn-icon-center">Trở lại với Olympus</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="~/content/js/theme-plugins.js" charset="utf-8"></script>
+</body>
+</html>

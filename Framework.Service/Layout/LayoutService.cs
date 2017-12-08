@@ -14,6 +14,7 @@ namespace Framework.Service
     public interface ILayoutService
     {
         ApplicationUser GetUserById(string userId);
+        ApplicationUser GetUserByUserName(string userName);
         List<String> GetRolesOfUser(string userId);
         List<ApplicationUser> listUserID();
     }
@@ -39,6 +40,11 @@ namespace Framework.Service
         public ApplicationUser GetUserById(string userId)
         {
             return _userRepository.GetSingleByCondition(x => x.Id == userId);
+        }
+
+        public ApplicationUser GetUserByUserName(string userName)
+        {
+            return _userRepository.GetSingleByCondition(x => x.UserName == userName);
         }
 
         public List<string> GetRolesOfUser(string userId)
