@@ -16,6 +16,7 @@ using Framework.Service.Client;
 using Framework.Model;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace Framework.Controllers
 {
@@ -72,22 +73,6 @@ namespace Framework.Controllers
             CreateLayoutView("Trang chủ");
             var codes = _clientHomeService.GetCodes();
             LayoutViewModel lay = ViewModel;
-            //Temp send messenger
-            //Post newPost = new Post();
-            ////PostViewModel.Question = data.Question;
-            ////PropertyCopy(newPost, data);
-            //newPost.Id_User = "4ffdcb92-b150-4ee0-8af1-19ec9d72bf6f";
-            //newPost.Content = "Ban co 1 question";
-            //newPost.Protected = false;
-            //newPost.Status = false;
-            //newPost.Id_Type = 3;
-            //_postService.Add(newPost);
-            //_postService.Save();
-            //string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
-            //Send notify
-          //  ApplicationUser user = getExpertUserBasedOnType(newPost);
-            //await sendNofityToMessenger(newPost, user);
-            //
             return View(ViewModel);
         }
 
@@ -110,11 +95,10 @@ namespace Framework.Controllers
         public async System.Threading.Tasks.Task<PartialViewResult> Post(PostViewModel data)
         {
             Post newPost = new Post();
+            newPost.Post_Status = 0;
             _viewModel = new PostViewModel();
-
-            //PostViewModel.Question = data.Question;
-            //PropertyCopy(newPost, data);
             FieldHelper.CopyNotNullValue(newPost, data);
+           
             _postService.Add(newPost);
             _postService.Save();
             string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
@@ -136,22 +120,53 @@ namespace Framework.Controllers
         }
         //Replay a question
         [HttpGet]
-        public PartialViewResult Replay(string hashcode)
+        public string Replay(string hashcode)
         {
+            bool checkGio = true;
+            int idQuestion = int.Parse(hashcode);
             var currentPost = _postService.GetById(int.Parse(hashcode));
-            currentPost.Status = true;
-            _postService.Update(currentPost);
-            _postService.Save();
+            var userId = User.Identity.GetUserId();
+            //Kiem tra xem con thoi gian tra loi hay ko
+            var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId).ToList().FirstOrDefault();
+            if (sendQues != null)
+            {
+                var timePost = sendQues.CreatedDate.Value.AddMinutes(5).Ticks;
+                var timeCurrent = DateTime.Now.Ticks;
+                if (timePost < timeCurrent)
+                {
+                    checkGio = true;
+                }
+
+            }
+            //
+          //  currentPost.Post_Status = 1;
+           // _postService.Update(currentPost);
+            //_postService.Save();
            // DateTime 
-            return PartialView("_Post", PostViewModel);
+            return checkGio ? "Vui lòng trả lời" : "Link hết hạn";
         }
 
+        //Get tat ca cac post co thoi gian tao it hon hien tai 5'
+        protected List<Post> getPost()
+        {
+            List<Post> listResult = new List<Post>();
+            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status ==0 ).ToList();
+            foreach(var post in listPost)
+            {
+                var timePost = post.CreatedDate.Value.AddMinutes(5).Ticks;
+                var timeCurrent = DateTime.Now.Ticks;
+                if(timePost < timeCurrent)
+                {
+                    listResult.Add(post);
+                }
+            }
+            return listResult;
+        }
         //Check time 5' and send this post for other expert
         [AllowAnonymous]
         public async Task checkTimeOfPost()
         {
-                List<Post> listPost = _postService.GetAll().Where(x => (x.CreatedDate.Value.AddMinutes(5) > DateTime.UtcNow) 
-                                                                 && x.Status == false  ).ToList();
+            List<Post> listPost = getPost();
                 //
                 foreach (var post in listPost)
                 {
@@ -164,7 +179,7 @@ namespace Framework.Controllers
                     {
                         if (_haveSendQuesService.GetAll().Where(x => x.QuesID == post.Id && x.UserID == expertUser.Id).ToList().Count == 0)
                         {
-                            post.Status = true; // have send
+                            post.Status = false; // have send
                             post.CreatedDate = DateTime.Now;
                             _postService.Update(post);
                             _postService.Save();
@@ -209,8 +224,8 @@ namespace Framework.Controllers
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + user.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=59a43f64e4b03a25b73c0f23";
-            paramChatfuel += "&title=" + post.Content;
+            var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + user.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a294932e4b0d0e603f29776";
+            paramChatfuel += "&title=Bạn có 1 câu hỏi :" + post.Content;
             //MaHoaMD5.Encrypt()
             paramChatfuel += "&url=http://localhost:20000/Home/Replay?hashcode=" + post.Id;
             paramChatfuel += ChatBotMessenger.getVocaNull();

@@ -20,7 +20,7 @@ namespace Framework.Schedule
                 .WithIdentity("trigger3", "group1")
                  // if a start time is not given (if this line were omitted), "now" is implied
                 .WithSimpleSchedule(x => x
-                    .WithIntervalInSeconds(600)
+                    .WithIntervalInSeconds(65)
                     .RepeatForever()) // note that 10 repeats will give a total of 11 firings
                 .ForJob(job) // identify job with handle to its JobDetail itself                   
                 .Build();

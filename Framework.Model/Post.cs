@@ -17,8 +17,9 @@ namespace Framework.Model
         public int Id_Type { get; set; }
         public int Option { get; set; }
         public String DatePost { get; set; }
+        public int Post_Status { get; set; }
 
-	}
+    }
     //Post - Post vote
     //Comment - Comment vote
 }

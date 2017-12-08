@@ -14,6 +14,8 @@ using Framework.Service.Admin;
 using System.Drawing;
 using System.IO;
 using Framework.Common;
+using Framework.Model.Google;
+using Newtonsoft.Json;
 
 namespace Framework.Controllers
 {
@@ -551,5 +553,26 @@ namespace Framework.Controllers
             }
         }
         #endregion
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public string registerChatBot(string idUser, string idmessenger)
+        {
+            RootObject2 result = new RootObject2();
+            Message3 messPron = new Message3();
+            
+            var user = _applicationUserService.GetUserById(idUser);
+            if(user == null)
+            {
+                messPron.text = "ID không tồn tại vui lòng kiểm tra lại";
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
+            user.Id_Messenger = idmessenger;
+            _applicationUserService.Update(user);
+            _applicationUserService.Save();
+            messPron.text = "Bạn đã liên kết với Messenger thành công";
+            result.messages.Add(messPron);
+            return JsonConvert.SerializeObject(result);
+        }
     }
 }

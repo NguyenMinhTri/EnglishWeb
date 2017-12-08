@@ -238,8 +238,6 @@ namespace Framework.Controllers
         {
 
             //post
-
-
             //
             contain = contain.ToLower().Trim();
             OxfordDict dict = new OxfordDict();
@@ -280,7 +278,6 @@ namespace Framework.Controllers
                 }
 
             }
-             
             RootObject2 hello = new RootObject2();
             Message2 sound = new Message2();
             Attachment2 attach = new Attachment2();
