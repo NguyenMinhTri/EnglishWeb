@@ -31,14 +31,16 @@ namespace Framework.Controllers
         IHaveSendQuestionService _haveSendQuesService;
  		IPostCommentDetailService _commentOfPost;
         IPostTypeService _postTypeService;
+        IPostVoteDetailService _postVoteDetailService;
 
-        public HomeController(  ILayoutService layoutService,
+        public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
             IPostService postService,
             IDetailUserTypeService detailUser,
             IHaveSendQuestionService haveSendQuesService,
             IPostTypeService postTypeService,
-            IPostCommentDetailService commentOfPost
+            IPostCommentDetailService commentOfPost,
+            IPostVoteDetailService postVoteDetailService
             )
             : base(layoutService)
         {
@@ -47,7 +49,9 @@ namespace Framework.Controllers
             _detailUserTypeService = detailUser;
             _haveSendQuesService = haveSendQuesService;
             _postTypeService = postTypeService;
+
 			_commentOfPost = commentOfPost;
+            _postVoteDetailService = postVoteDetailService;
         }
 
         HomeViewModel HomeViewModel
@@ -87,7 +91,11 @@ namespace Framework.Controllers
         public PartialViewResult Comment(CommentViewModel data)
         {
             _viewModel = new CommentViewModel();
-            //CommentViewModel.Comment = comment;
+            PostCommentDetail comment = new PostCommentDetail();
+            FieldHelper.CopyNotNullValue(comment, data);
+            _commentOfPost.Add(comment);
+            _commentOfPost.Save();
+            FieldHelper.CopyNotNullValue(CommentViewModel, comment);
             if (data.Id_Comment == 0)
             {
                 return PartialView("_Comment", CommentViewModel);
@@ -123,6 +131,16 @@ namespace Framework.Controllers
                 _haveSendQuesService.Save();
             }
             //
+
+            ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
+            FieldHelper.CopyNotNullValue(PostViewModel, user);
+            FieldHelper.CopyNotNullValue(PostViewModel, newPost);
+            PostViewModel.TypeToString = _postTypeService.GetById(newPost.Id_Type).Name;
+            PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User);
+            if (vote != null)
+            {
+                PostViewModel.Vote = vote.Vote;
+            }
             return PartialView("_Post", PostViewModel);
         }
         //Replay a question
@@ -187,7 +205,6 @@ namespace Framework.Controllers
                     if (_haveSendQuesService.GetAll().Where(x => x.QuesID == post.Id && x.UserID == expertUser.Id).ToList().Count == 0)
                     {
                         post.Status = false; // have send
-                   
                         post.CreatedDate = DateTime.Now;
                         _postService.Update(post);
                         _postService.Save();

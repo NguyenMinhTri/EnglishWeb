@@ -162,29 +162,30 @@ $(document).on("click", ".post-add-icon.upvote", function () {
     if ($(this).hasClass("clicked")) {
         $(this).removeClass("clicked");
         number_upvote--;
-        $(this).parent().next().find('.upvote').removeClass("clicked");
+        $(this).removeClass("active");
     }
     else {
         if ($(this).next().hasClass("clicked")) {
             $(this).next().removeClass("clicked");
             number_downvote--;
+            $(this).next().removeClass("active");
         }
         $(this).addClass("clicked");
         number_upvote++;
-        $(this).parent().next().find('.upvote').addClass("clicked");
-        $(this).parent().next().find('.downvote').removeClass("clicked");
+        $(this).addClass("active");
+        $(this).next().removeClass("active");
     }
 
     downvote.text(number_downvote);
     upvote.text(number_upvote);
 
     if (number_upvote > number_downvote) {
-        $(this).addClass("active");
-        $(this).next().removeClass("active");
+        $(this).parent().next().find('.upvote').addClass("clicked");
+        $(this).parent().next().find('.downvote').removeClass("clicked");
     }
     else {
-        $(this).removeClass("active");
-        $(this).next().addClass("active");
+        $(this).parent().next().find('.upvote').removeClass("clicked");
+        $(this).parent().next().find('.downvote').addClass("clicked");
     }
     scrollto("#" + $(this).parent().closest(".ui-block").attr("id"));
 })
@@ -198,39 +199,32 @@ $(document).on("click", ".post-add-icon.downvote", function () {
     if ($(this).hasClass("clicked")) {
         $(this).removeClass("clicked");
         number_downvote--;
-        $(this).parent().next().find('.downvote').removeClass("clicked");
+        $(this).removeClass("active");
     }
     else {
         if ($(this).prev().hasClass("clicked")) {
             $(this).prev().removeClass("clicked");
             number_upvote--;
+            $(this).prev().removeClass("active");
         }
         $(this).addClass("clicked");
         number_downvote++;
-        $(this).parent().next().find('.downvote').addClass("clicked");
-        $(this).parent().next().find('.upvote').removeClass("clicked");
+        $(this).addClass("active");
+        $(this).prev().removeClass("active");
     }
 
     downvote.text(number_downvote);
     upvote.text(number_upvote);
 
     if (number_downvote > number_upvote) {
-        $(this).addClass("active");
-        $(this).prev().removeClass("active");
+        $(this).parent().next().find('.downvote').addClass("clicked");
+        $(this).parent().next().find('.upvote').removeClass("clicked");
     }
     else {
-        $(this).removeClass("active");
-        $(this).prev().addClass("active");
+        $(this).parent().next().find('.downvote').removeClass("clicked");
+        $(this).parent().next().find('.upvote').addClass("clicked");
     }
     scrollto("#" + $(this).parent().closest(".ui-block").attr("id"));
-})
-
-$(document).on("click", ".hentry.post .post-control-button .btn-control.upvote", function () {
-    $(this).parent().prev().find('.upvote').click();
-})
-
-$(document).on("click", ".hentry.post .post-control-button .btn-control.downvote", function () {
-    $(this).parent().prev().find('.downvote').click();
 })
 
 $(document).on("click", ".comments-shared .post-add-icon.inline-items", function () {
@@ -346,65 +340,12 @@ $(document).on("click", "#question-form input[type='submit']", function (e) {
     var data = form.serialize();
 
     $.post('/Home/Post', data).done(function (html) {
-        
-        //$("#partial").html(html);
+        $("#partial").append(html);
+        $(".landing-main-content").remove();
     }).fail(function (response) {
         $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
         $("#notify-button").click();
     }).always(function () {
         $(".waiting_loader").css("display", "none");
     });
-});
-
-$(document).on("click", "#submit.options-message.active", function () {
-    var parent = $(this).parent().parent().parent();
-    var comment_section = parent.parent().find(".comments-list");
-    var textarea = $(this).parent().parent().find("textarea#comment");
-    var total = parent.parent().parent().find(".comments-shared span:last-child");
-    var comment = textarea.val();
-    var button = $(this);
-    var form = $(this).closest("form");
-    $(form).find("input[name='DateComment']").val(Date.now);
-    var new_comment;
-    if (comment.length != 0) {
-        if (!$(this).hasClass("child-comment")) {
-            var data = form.serialize();
-            $.post("/Home/Comment", data).done(function (html) {
-                $(comment_section).append(html);
-                textarea.val("");
-                button.removeClass("active");
-                total.text($(comment_section).find("li").length);
-                new_comment = $(comment_section).find("li.new-comment");
-                new_comment.find(".author-date time").attr("data-time", Date.now);
-                $(comment_section).find("li.new-comment").show('slow').addClass("showed");
-            }).fail(function (response) {
-                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
-                $("#notify-button").click();
-            })
-        }
-        else {
-            var index = $(this).attr("class").match(/(?:\s|^)child-comment-(\d+)/)[1];
-            var parentcomment_section = $(comment_section).find("li.parent")[index];
-            var childcomment_section = $(parentcomment_section).find("ul.children");
-            var parentcomment_section_id = $(parentcomment_section).attr("id");
-            $(form).find("input[name='Id_Comment']").val(parentcomment_section_id.substr(parentcomment_section_id.lastIndexOf("-") + 1));
-            var data = form.serialize();
-            $.post("/Home/Comment", data).done(function (html) {
-                $(childcomment_section).append(html);
-                textarea.val("");
-                new_comment = $(comment_section).find("li.new-comment");
-                new_comment.find(".author-date time").attr("data-time", Date.now);
-                button.removeClass("active").removeClass(function (index, className) {
-                    return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
-                }).removeClass("child-comment");
-                total.text($(comment_section).find("li").length);
-                $(childcomment_section).find("li.new-comment").show('slow').addClass("showed");
-                $(form).find("input[name='Id_Comment']").val("");
-                scrollto(parentcomment_section);
-            }).fail(function (response) {
-                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
-                $("#notify-button").click();
-            })
-        }
-    }
 });

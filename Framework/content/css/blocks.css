@@ -4296,11 +4296,12 @@ ol ol li {
     margin-bottom: 0; }
     .comment-form .post__author img {
       margin-right: 8px;
-      width: 28px;
-      height: 28px; }
+      width: 40px;
+      height: 40px;
+      }
   .comment-form .form-group {
     margin-bottom: 0;
-    width: calc(100% - 40px);
+    width: calc(100% - 52px);
     }
   .comment-form textarea {
     min-height: 60px;

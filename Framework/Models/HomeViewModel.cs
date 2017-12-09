@@ -16,17 +16,12 @@ namespace Framework.ViewModels
 
     public class CommentViewModel : LayoutViewModel, IRef<HomeController>
     {
-        public String Name
-        {
-            get
-            {
-                return FirstName + " " + LastName;
-            }
-        }
-        public String FirstName { get; set; }
+        public int Id { get; set; }
+        public String Name { get; set; }
         public String LastName { get; set; }
         public String Avatar { get; set; }
         public String UserName { get; set; }
+        public String Degree { get; set; }
         public String Id_User { get; set; }
         public int Id_Post { get; set; }
         public int Id_Comment { get; set; }
@@ -55,6 +50,6 @@ namespace Framework.ViewModels
         public String TypeToString { get; set; }
         public String Degree { get; set; }
         public int Vote { get; set; }
-
+        public int Comment { get; set; }
     }
 }

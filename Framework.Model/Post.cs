@@ -20,6 +20,7 @@ namespace Framework.Model
         public int Post_Status { get; set; }
         public int UpVote { get; set; }
         public int DownVote { get; set; }
+        public int Comment { get; set; }
     }
     //Post - Post vote
     //Comment - Comment vote

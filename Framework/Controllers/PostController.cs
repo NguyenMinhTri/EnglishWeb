@@ -23,17 +23,20 @@ namespace Framework.Controllers
         IPostService _postService;
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
+        IPostCommentDetailService _commentOfPost;
 
         public PostController(ILayoutService layoutService,
             IPostService postService,
             IPostTypeService postTypeService,
-            IPostVoteDetailService postVoteDetailService
+            IPostVoteDetailService postVoteDetailService,
+             IPostCommentDetailService commentOfPost
             )
             : base(layoutService)
         {
             _postService = postService;
             _postTypeService = postTypeService;
             _postVoteDetailService = postVoteDetailService;
+            _commentOfPost = commentOfPost;
         }
 
         PostViewModel PostViewModel
@@ -41,6 +44,14 @@ namespace Framework.Controllers
             get
             {
                 return (PostViewModel)_viewModel;
+            }
+        }
+
+        CommentViewModel CommentViewModel
+        {
+            get
+            {
+                return (CommentViewModel)_viewModel;
             }
         }
 
@@ -62,29 +73,26 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public JsonResult Answer(CommentViewModel data)
+        public PartialViewResult Comment(CommentViewModel data)
         {
-            if (data.Content != null)
+            _viewModel = new CommentViewModel();
+            PostCommentDetail comment = new PostCommentDetail();
+            FieldHelper.CopyNotNullValue(comment, data);
+            _commentOfPost.Add(comment);
+            _commentOfPost.Save();
+
+            ApplicationUser user = _service.GetUserById(comment.Id_Friend);
+            FieldHelper.CopyNotNullValue(CommentViewModel, user);
+            FieldHelper.CopyNotNullValue(CommentViewModel, comment);
+
+            if (data.Id_Comment == 0)
             {
-                try
-                {
-                    return Json(new
-                    {
-                        result = "success"
-                    });
-                }
-                catch (Exception e)
-                {
-                    return Json(new
-                    {
-                        result = "failed",
-                    });
-                }
+                return PartialView("_Comment", CommentViewModel);
             }
-            return Json(new
+            else
             {
-                result = "failed"
-            });
+                return PartialView("_ChildComment", CommentViewModel);
+            }
         }
     }
 }
