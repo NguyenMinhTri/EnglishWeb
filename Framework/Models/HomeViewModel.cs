@@ -53,4 +53,13 @@ namespace Framework.ViewModels
         public int Vote { get; set; }
         public int Comment { get; set; }
     }
+
+    public class VotePostViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public String Id_User { get; set; }
+        public int Id_Post { get; set; }
+        public int Vote { get; set; }
+
+    }
+
 }

@@ -171,7 +171,7 @@
         var comment = textarea.val();
         var button = $(this);
         var form = $(this).closest("form");
-        var total_comment = parseInt('@Model.Comment');
+        var total_comment = parseInt(total.text());
         total_comment++;
         $(form).find("input[name='Comment']").val(total_comment);
         $(form).find("input[name='DateComment']").val(Date.now);

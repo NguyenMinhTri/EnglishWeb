@@ -24,7 +24,7 @@ namespace Framework.Service.Admin
 
         public PostVoteDetail getVoteByIdUser(string id)
         {
-            return _postVoteDetailRepository.GetSingleByCondition(x => x.Id_Friend == id);
+            return _postVoteDetailRepository.GetSingleByCondition(x => x.Id_User == id);
         }
     }
 }

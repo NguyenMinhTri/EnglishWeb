@@ -97,5 +97,31 @@ namespace Framework.Controllers
                 return PartialView("_ChildComment", CommentViewModel);
             }
         }
+
+        [HttpPost]
+        public JsonResult VotePost(CommentViewModel data)
+        {
+            if (data.Content != null)
+            {
+                try
+                {
+                    return Json(new
+                    {
+                        result = "success"
+                    });
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "failed",
+                    });
+                }
+            }
+            return Json(new
+            {
+                result = "failed",
+            });
+        }
     }
 }

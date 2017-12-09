@@ -1,5 +1,11 @@
 ﻿@model Framework.ViewModels.LayoutViewModel
-
+@{
+    int role = 0;
+    if (Model.User.Roles.Count != 0)
+    {
+        role = Model.User.Roles.ToList()[0].Id;
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,7 +160,11 @@
                             <div class="author-title">
                                 @Model.User.Name <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                             </div>
-                            @if (Model.User.Degree == "giaosu")
+                            @if (role == 1)
+                            {
+                                <span class="author-subtitle">Admin</span>
+                            }
+                            else if (role == 2)
                             {
                                 <span class="author-subtitle">Giáo sư</span>
                             }
