@@ -98,6 +98,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="Dictionary?option=dictionaries">
+                            <svg class="olymp-badge-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỪ ĐIỂN"><use xlink:href="content/icons/icons.svg#olymp-badge-icon"></use></svg>
+                            <span class="left-menu-title">Từ điển</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="Learning">
                             <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
                             <span class="left-menu-title">Tự học</span>
@@ -141,15 +147,21 @@
 
                 <div class="control-block">
                     <div class="author-page author vcard inline-items">
-                        <div class="author-thumb sinhvien">
-                            <img alt="author" src="content/images/author-page.jpg" class="avatar">
-                            <span class="icon-status online"></span>
+                        <div class="author-thumb @Model.User.Degree">
+                            <img alt="author" src="content/images/@Model.User.Avatar" class="avatar">
                         </div>
-                        <a href="/" class="author-name fn">
+                        <a href="Profile?username=@Model.User.UserName&option=newsfeed" class="author-name fn">
                             <div class="author-title">
-                                Demo <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+                                @Model.User.Name <svg class="olymp-dropdown-arrow-icon"><use xlink:href="content/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                             </div>
-                            <span class="author-subtitle">Student</span>
+                            @if (Model.User.Degree == "giaosu")
+                            {
+                                <span class="author-subtitle">Giáo sư</span>
+                            }
+                            else
+                            {
+                                <span class="author-subtitle">Tiểu học</span>
+                            }
                         </a>
                     </div>
                 </div>
@@ -166,9 +178,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/">
+                        <a href="Profile?username=@Model.User.UserName&option=newsfeed">
                             <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="NEWSFEED"><use xlink:href="content/icons/icons.svg#olymp-newsfeed-icon"></use></svg>
                             <span class="left-menu-title">Newsfeed</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Dictionary?option=dictionaries">
+                            <svg class="olymp-badge-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỪ ĐIỂN"><use xlink:href="content/icons/icons.svg#olymp-badge-icon"></use></svg>
+                            <span class="left-menu-title">Từ điển</span>
                         </a>
                     </li>
                     <li>

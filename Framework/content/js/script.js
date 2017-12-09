@@ -260,7 +260,7 @@ $(document).on("click", ".comments-list a.reply", function () {
     var textarea = parent.find("textarea#comment");
     var arr = Array.prototype.slice.call(parent.find("li.parent"));
     var index = arr.indexOf($(this).parent()[0]);
-    var button = parent.find(".options-message#submit").removeClass (function (index, className) {
+    var button = parent.find(".options-message#submit").removeClass(function (index, className) {
         return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
     }).addClass("child-comment child-comment-" + index);
     scrollto(textarea);
@@ -332,20 +332,34 @@ $(document).on("click", ".news-feed-form .form-group .selection .togglebutton la
 });
 
 $(document).on("click", "#question-form input[type='submit']", function (e) {
-    $(".waiting_loader").css("display", "block");
     e.preventDefault();
 
-    var form = $(this).closest("form");
-    $(form).find("input[name='DatePost']").val(Date.now);
-    var data = form.serialize();
+    var comment = $("#question-form textarea").val();
+    if (comment.length != 0) {
+        $(".waiting_loader").css("display", "block");
 
-    $.post('/Home/Post', data).done(function (html) {
-        $("#partial").append(html);
-        $(".landing-main-content").remove();
-    }).fail(function (response) {
-        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
-        $("#notify-button").click();
-    }).always(function () {
-        $(".waiting_loader").css("display", "none");
-    });
+        var form = $(this).closest("form");
+        $(form).find("input[name='DatePost']").val(Date.now);
+        var data = form.serialize();
+
+        $.post('/Home/Post', data).done(function (html) {
+            $("#partial").append(html);
+            $(".landing-main-content").remove();
+            $("#thankyou-button").click();
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            $("#notify-button").click();
+        }).always(function () {
+            $(".waiting_loader").css("display", "none");
+        });
+    }
+});
+
+$(document).on('keyup', "#question-form textarea", function (e) {
+    if ($(this).val().replace(/\r?\n/g, "").length != 0) {
+        $("#question-form input[type='submit']").addClass("active");
+    }
+    else {
+        $("#question-form input[type='submit']").removeClass("active");
+    }
 });

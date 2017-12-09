@@ -21,20 +21,7 @@
                     <h5 style=" color: gray; font-weight: 500; ">Hãy chọn đáp án mà bạn thấy đúng nhất!</h5>
                     <br />
                     <ol class="reading">
-                        @{
-                            int i = 0;
-                            foreach (var items in Model.listTracNghiem)
-                            {
-                                <li>
-                                    <h4 class="listen-question" answer="3" id="cau_@i">@items.Question</h4>
-                                    <ul>
-                                       
-                                    </ul>
-                                    <input type="hidden" name="cau_@i">
-                                </li>
-                                i++;
-                            }
-                        }
+                        
                     </ol>
                 </div>
             </div>

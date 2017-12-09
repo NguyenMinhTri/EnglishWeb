@@ -6889,6 +6889,17 @@ a.reply:hover {
     margin-bottom: 0;
     padding: 15px;
     font-size: 15px;
+    background-color: #ff763a;
+    cursor: no-drop;
+}
+
+.status-footer .btn.active {
+    background-color: #ff3407;
+    cursor: pointer;
+}
+
+.status-footer .btn.active:hover {
+    background-color: #ff763a;
 }
 
 .add-options-message.ask-teacher .control-label span {
