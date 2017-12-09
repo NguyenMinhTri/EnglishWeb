@@ -4212,8 +4212,9 @@ ol ol li {
   .comments-list .post-add-icon {
     margin-right: 20px; }
   .comments-list .post__author img {
-    width: 26px;
-    height: 26px; }
+    /* width: 26px; */
+    /* height: 26px; */
+    }
   .comments-list.style-2 li .post__author img {
     float: left; }
   .comments-list.style-2 .reply {

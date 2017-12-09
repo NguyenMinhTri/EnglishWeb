@@ -5125,6 +5125,8 @@
     <Content Include="Views\Post\_Activities.cshtml" />
     <Content Include="Views\Home\_Comment.cshtml" />
     <Content Include="Views\Home\_ChildComment.cshtml" />
+    <Content Include="Views\Learning\_MultipleCaahoice.cshtml" />
+    <Content Include="Views\Learning\_MultipleChoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

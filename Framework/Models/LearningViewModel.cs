@@ -1,4 +1,5 @@
 ﻿using Framework.Controllers;
+using Framework.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace Framework.ViewModels
     }
     public class GrammarViewModel : LayoutViewModel, IRef<LearningController>
     {
+    }
+    public class MultipleChoiceViewModel : LayoutViewModel, IRef<LearningController>
+    {
+        public List<TracNghiem> listTracNghiem { get; set; }
     }
 
 }

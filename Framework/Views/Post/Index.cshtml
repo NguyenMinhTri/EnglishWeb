@@ -88,6 +88,7 @@
                                 <input type="hidden" name="Id_User" value="@Model.User.Id" />
                                 <input type="hidden" name="Id_Post" value="@Model.Id" />
                                 <input type="hidden" name="Id_Comment" value="0" />
+                                <input type="hidden" name="Comment" value="0" />
                                 <input type="hidden" name="DateComment" value="" />
                             </div>
 
@@ -170,6 +171,9 @@
         var comment = textarea.val();
         var button = $(this);
         var form = $(this).closest("form");
+        var total_comment = parseInt('@Model.Comment');
+        total_comment++;
+        $(form).find("input[name='Comment']").val(total_comment);
         $(form).find("input[name='DateComment']").val(Date.now);
         var new_comment;
         if (comment.length != 0) {
@@ -179,12 +183,12 @@
                     $(comment_section).append(html);
                     textarea.val("");
                     button.removeClass("active");
-                    total.text($(comment_section).find("li").length);
                     new_comment = $(comment_section).find("li.new-comment");
                     $(comment_section).find("li.new-comment").show('slow').addClass("showed");
                 }).fail(function (response) {
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();
+                    total_comment--;
                 })
             }
             else {
@@ -201,15 +205,16 @@
                     button.removeClass("active").removeClass(function (index, className) {
                         return (className.match(/(^|\s)child-comment-\S+/g) || []).join(' ');
                     }).removeClass("child-comment");
-                    total.text($(comment_section).find("li").length);
                     $(childcomment_section).find("li.new-comment").show('slow').addClass("showed");
                     $(form).find("input[name='Id_Comment']").val("");
                     scrollto(parentcomment_section);
                 }).fail(function (response) {
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();
+                    total_comment--;
                 })
             }
+            total.text(total_comment);
         }
     });
 

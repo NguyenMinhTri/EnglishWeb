@@ -35,6 +35,7 @@ namespace Framework.ViewModels
 
     public class PostViewModel : LayoutViewModel, IRef<HomeController>
     {
+        public List<CommentViewModel> listComment { get; set; }
         public int Id { get; set; }
         public String Name { get; set; }
         public String LastName { get; set; }

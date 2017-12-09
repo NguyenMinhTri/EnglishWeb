@@ -80,7 +80,10 @@ namespace Framework.Controllers
             FieldHelper.CopyNotNullValue(comment, data);
             _commentOfPost.Add(comment);
             _commentOfPost.Save();
-
+            Post post = _postService.GetById(comment.Id_Post);
+            post.Comment++;
+            _postService.Update(post);
+            _postService.Save();
             ApplicationUser user = _service.GetUserById(comment.Id_User);
             FieldHelper.CopyNotNullValue(CommentViewModel, user);
             FieldHelper.CopyNotNullValue(CommentViewModel, comment);

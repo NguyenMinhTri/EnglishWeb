@@ -36,7 +36,12 @@ namespace Framework.Service.Admin
             int maxTime = timeNotify;
             int minTime = maxTime - 1;
             //Update ngay gui nhac nho
-            var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true && x.Schedule.Hour <= maxTime && x.Schedule.Hour > minTime && x.UpdatedDate.Value.Day != nowDay).Select(x => x.Id).ToList();
+            List<int> listID = new List<int>();
+            if (timeNotify!=-1)
+                listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true && x.Schedule.Hour <= maxTime && x.Schedule.Hour > minTime && x.UpdatedDate.Value.Day != nowDay).Select(x => x.Id).ToList();
+            else
+                listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true ).Select(x => x.Id).ToList();
+
             foreach (var id in listID)
             {
                 var temp = GetById(id);
