@@ -10,10 +10,10 @@ namespace Framework.Model
     {
         public TracNghiem ()
         {
-            ABCD = new List<DapAn>();
+            ABCD = new DapAn[4];
         }
         public string Question { set; get; }
-        public List<DapAn> ABCD { set; get; }
+        public DapAn [] ABCD { set; get; }
     }
     public class DapAn
     {

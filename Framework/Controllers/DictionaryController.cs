@@ -366,14 +366,37 @@ namespace Framework.Controllers
             listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, currentUser.StudySchedule);
             foreach(var id in listIDWord)
             {
-
+                dataTracNghiem.Add(RandomTracNghiemChoVoca(id));
             }
             //
         } 
-        protected void RandomTracNghiem(ref TracNghiem cauTracNghiem)
+        protected TracNghiem RandomTracNghiemChoVoca(int idWord)
         {
+            TracNghiem cauTracNghiem = new TracNghiem();
+            var vocaCanHoc = _ourWordService.GetById(idWord);
+            Random rnd = new Random();
             var listDict = _dictCache.GetAll();
-            //for()
+            int pos = rnd.Next(0, listDict.Count);
+            var ramdomPo = randomPosition();
+            cauTracNghiem.Question = vocaCanHoc.MeanEn;
+            for (int i=0;i<4;i++)
+            {
+                DapAn dapAn = new DapAn();
+                if (i ==0)
+                {
+                    dapAn.Checked = true;
+                    dapAn.Contain = vocaCanHoc.Word;
+                    cauTracNghiem.ABCD[ramdomPo[i]]= dapAn;
+                }
+                else
+                {
+                    int posDictCache = rnd.Next(0, listDict.Count);
+                    dapAn.Contain = listDict.ElementAt(posDictCache).VocaID;
+                    cauTracNghiem.ABCD[ramdomPo[i]]= dapAn;
+                }
+                
+            }
+            return cauTracNghiem;
         }
         protected List<int> randomPosition()
         {
