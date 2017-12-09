@@ -327,7 +327,7 @@ namespace Framework.Controllers
                     currentPost.Post_Status = 10;
                     PostCommentDetail comment = new PostCommentDetail();
                     comment.Content = ketqua;
-                    comment.Id_Friend = userId;
+                    comment.Id_User = userId;
                     comment.Id_Post = idQuestion;
                     _commentOfPost.Add(comment);
                     _commentOfPost.Save();

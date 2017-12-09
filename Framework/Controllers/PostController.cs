@@ -81,7 +81,7 @@ namespace Framework.Controllers
             _commentOfPost.Add(comment);
             _commentOfPost.Save();
 
-            ApplicationUser user = _service.GetUserById(comment.Id_Friend);
+            ApplicationUser user = _service.GetUserById(comment.Id_User);
             FieldHelper.CopyNotNullValue(CommentViewModel, user);
             FieldHelper.CopyNotNullValue(CommentViewModel, comment);
 
