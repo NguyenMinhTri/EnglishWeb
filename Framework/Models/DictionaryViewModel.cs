@@ -22,6 +22,7 @@ namespace Framework.ViewModels
         public string m_Type { set; get; }
         public string m_Pron { set; get; }
         public string m_SoundUrl { set; get; }
+        public string m_MeanVn { set; get; }
         public List<Explanation> m_Explanation;
         public ExampleTraCau m_ExaTraCau;
         public GoogleTrans m_GoogleTrans;

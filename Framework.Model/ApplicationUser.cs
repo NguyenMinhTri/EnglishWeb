@@ -56,7 +56,7 @@ namespace Framework.Model
         public float Score { get; set; }
         public String Id_Messenger { get; set; }
         public String Degree { get; set; }
-
+        public int StudySchedule { set; get; }
         /// <summary>
         ///     Constructor which creates a new Guid for the Id
         /// </summary>

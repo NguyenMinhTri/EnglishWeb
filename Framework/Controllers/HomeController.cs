@@ -235,7 +235,7 @@ namespace Framework.Controllers
             var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + user.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a294932e4b0d0e603f29776";
             paramChatfuel += "&title=Bạn có 1 câu hỏi :" + post.Content;
             //MaHoaMD5.Encrypt()
-            paramChatfuel += "&url=http://localhost:20000/Home/Replay?hashcode=" + post.Id;
+            paramChatfuel += "&url=http://localhost:20000/Post?id=" + post.Id;
             paramChatfuel +="&idques=" + post.Id;
             paramChatfuel += ChatBotMessenger.getVocaNull();
             var response2 = await client.PostAsync(paramChatfuel, null);
@@ -298,7 +298,8 @@ namespace Framework.Controllers
             var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId).ToList().FirstOrDefault();
             if (sendQues != null)
             {
-                var timePost = sendQues.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
+                int tempMinute = TimeSetting.LimitMinuteForPost();
+                var timePost = sendQues.CreatedDate.Value.AddMinutes(tempMinute).Ticks;
                 var timeCurrent = DateTime.Now.Ticks;
                 if (timePost < timeCurrent)
                 {

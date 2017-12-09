@@ -20,6 +20,7 @@ namespace Framework.ViewData.Admin.GetData
         {
             vocainfo = new List<VocaInfo>();
         }
+        public string UrlStudy { set; get; }
         public string IdMess { get; set; }
         public List<VocaInfo> vocainfo { get; set; }
     }

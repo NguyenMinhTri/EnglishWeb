@@ -11,7 +11,7 @@ namespace Framework.Service.Admin
     public interface IDetailOurWordService : IQlService<DetailOurWord>
     {
         List<String> listUserToNofity();
-        List<int> listIdOutWord(string iduser);
+        List<int> listIdOutWord(string iduser, int timeNotify);
     }
     public class DetailOurWordService : QlService<DetailOurWord>, IDetailOurWordService
     {
@@ -30,10 +30,10 @@ namespace Framework.Service.Admin
             List <string> result =  _detailOurWordRepository.GetMulti(x => x.Schedule.Hour <= maxTime && x.Schedule.Hour > minTime && x.UpdatedDate.Value.Day != nowDay).Select(x => x.Id_Messenger).ToList();
             return result;
         }
-        public List<int> listIdOutWord(string iduser)
+        public List<int> listIdOutWord(string iduser, int timeNotify)
         {
             int nowDay = DateTime.Now.Day;
-            int maxTime = 1;
+            int maxTime = timeNotify;
             int minTime = maxTime - 1;
             //Update ngay gui nhac nho
             var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true && x.Schedule.Hour <= maxTime && x.Schedule.Hour > minTime && x.UpdatedDate.Value.Day != nowDay).Select(x => x.Id).ToList();

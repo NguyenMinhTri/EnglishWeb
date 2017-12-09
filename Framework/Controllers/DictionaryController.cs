@@ -131,7 +131,22 @@ namespace Framework.Controllers
                         DictionariesViewModel.isGoogleTrans = true;
                         DictionariesViewModel.m_GoogleTrans = googleTransJson;
                     }
-                        
+                    try
+                    {
+                        GoogleTrans detailVietnamese = new GoogleTrans();
+                        detailVietnamese = await _clientDictionaryService.startGoogleDetailTrans(keyword);
+
+                        string meanVN = detailVietnamese.dict.First().pos + ": ";
+                        foreach (var item in detailVietnamese.dict.First().terms)
+                        {
+                            meanVN += item + ", ";
+                        }
+                        DictionariesViewModel.m_MeanVn = meanVN;
+                    }
+                    catch
+                    {
+
+                    }
                     DictionariesViewModel.m_Explanation = dict.m_Explanation;
                     DictionariesViewModel.m_SoundUrl = dict.m_SoundUrl;
                     DictionariesViewModel.m_Type = dict.m_Type;
@@ -146,19 +161,12 @@ namespace Framework.Controllers
         [HttpPost]
         public async Task<JsonResult> Tick(OurWordViewModel ourword)
         {
-            GoogleTrans detailVietnamese = new GoogleTrans();
-            detailVietnamese = await _clientDictionaryService.startGoogleDetailTrans(ourword.Word);
 
-            string meanVN = detailVietnamese.dict.First().pos + ": ";
-            foreach (var item in detailVietnamese.dict.First().terms)
-            {
-                meanVN += item + ", ";
-            }
 
             OurWord newOurWord = new OurWord();
             DetailOurWord detailWord = new DetailOurWord();
             FieldHelper.CopyNotNullValue(newOurWord, ourword);
-            newOurWord.MeanVi = meanVN;
+           
             if (ourword != null)
             {
 
@@ -173,7 +181,7 @@ namespace Framework.Controllers
                 detailWord.Id_OurWord = newOurWord.Id;
                 detailWord.Learned = 1;
                 detailWord.Id = 0;
-                detailWord.Schedule = DateTime.Now;
+                detailWord.Schedule = new DateTime(0,0,0, user.StudySchedule,0,0);
                 detailWord.UpdatedDate = DateTime.Now;
                 // detailWord.
                 try
@@ -194,22 +202,8 @@ namespace Framework.Controllers
 
                 }
 
-                //_ourWordService.addDictfavorite(newOurWord, user);
-                //Add
-                //_ourWordService.Add(newOurWord);
-
-                //Update
-                //newOurWord = _ourWordService.GetById(1);
-                //FieldHelper.CopyNotNullValue(newOurWord, ourword);
-                //_ourWordService.Update(newOurWord);
-
-                //Delete
-                //newOurWord = _ourWordService.GetById(1);
-                //_ourWordService.Delete(newOurWord);
-
                 try
                 {
-                    // _ourWordService.Save();
                     return Json(new
                     {
                         result = "success"
@@ -336,7 +330,7 @@ namespace Framework.Controllers
             {
                 RemindUser reminderUser = new RemindUser();
                 reminderUser.IdMess = userDetail.Id_Messenger;
-                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id);
+                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, userDetail.StudySchedule);
                 //Update thoi gian 
 
                 //
@@ -362,6 +356,45 @@ namespace Framework.Controllers
             }
             return JsonConvert.SerializeObject(listUserNotify);
         }
+        [AllowAnonymous]
+        public void studyVoca()
+        {
+            List<int> randDomPost = randomPosition();
+            List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
+            List<int> listIDWord = new List<int>();
+            var currentUser =_service.GetUserById(User.Identity.GetUserId());
+            listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, currentUser.StudySchedule);
+            foreach(var id in listIDWord)
+            {
 
+            }
+            //
+        } 
+        protected void RandomTracNghiem(ref TracNghiem cauTracNghiem)
+        {
+            var listDict = _dictCache.GetAll();
+            //for()
+        }
+        protected List<int> randomPosition()
+        {
+            List<int> posResult =new List<int>();
+            
+            Random rnd = new Random();
+            int count = 0;
+            while (true)
+            {
+                int pos = rnd.Next(0, 4);
+                if (posResult.Where(x=> x == pos).ToList().Count == 0)
+                {
+                    posResult.Add(pos);
+                    count++;
+                    if(count > 3)
+                    {
+                        break;
+                    }
+                }
+            }
+            return posResult;
+        }
     }
 }

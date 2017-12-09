@@ -15,6 +15,7 @@ namespace Framework.ViewModels
         public String Pronounciation { get; set; }
         public String MeanVi { get; set; }
         public String MeanEn { get; set; }
+        public String UrlMP3 { set; get; }
     }
 
 }

@@ -91,6 +91,7 @@
     <Compile Include="TableJoin\AppointmentGetAll.cs" />
     <Compile Include="TableJoin\DoctorGetAll.cs" />
     <Compile Include="TableJoin\DoctorWithName.cs" />
+    <Compile Include="TracNghiem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
