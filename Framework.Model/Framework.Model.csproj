@@ -68,6 +68,7 @@
     <Compile Include="DictCache.cs" />
     <Compile Include="GoogleJson.cs" />
     <Compile Include="HaveSendQuestion.cs" />
+    <Compile Include="LearnVoca.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Dictionary.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Friend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing.cs" />
+    <Compile Include="SubType.cs" />
     <Compile Include="TableJoin\ApplicationUserRoleGetAll.cs" />
     <Compile Include="TableJoin\AppointmentDetailGetAll.cs" />
     <Compile Include="TableJoin\AppointmentGetAll.cs" />

@@ -101,6 +101,7 @@
     <Compile Include="Admin\Input\DictCacheInputAdminViewData.cs" />
     <Compile Include="Admin\Input\FriendInputAdminViewData.cs" />
     <Compile Include="Admin\Input\HaveSendQuestionInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\LearnVocaInputAdminViewData.cs" />
     <Compile Include="Admin\Input\MessageInputAdminViewData.cs" />
     <Compile Include="Admin\Input\NotificationInputAdminViewData.cs" />
     <Compile Include="Admin\Input\OurWordInputAdminViewData.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Admin\Input\PostInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostVoteDetailInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\SubTypeInputAdminViewData.cs" />
     <Compile Include="BaseViewData.cs" />
     <Compile Include="ClientHome\CodeViewData.cs" />
     <Compile Include="Control\AutoForm.cs" />

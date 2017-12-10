@@ -36,6 +36,8 @@ namespace Framework.FrameworkContext
         public DbSet<DetailUserType> DetailUserTypes { set; get; }
         public DbSet<HaveSendQuestion> HaveSendQuestions { set; get; }
         public DbSet<DictCache> DictCaches { set; get; }
+        public DbSet<SubType> SubTypes { set; get; }
+        public DbSet<LearnVoca> LearnVocas { set; get; }
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -65,7 +67,6 @@ namespace Framework.FrameworkContext
             builder.Entity<ApplicationRole>().ToTable("AspNetRoles");
             builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("AspNetUserClaims");
             builder.Entity<ApplicationUserRole>().ToTable("AspNetUserRoles");
-
 
             // TODO 1_ThemBang: st3. Thêm đoạn code tương tự như sau để thêm store procedure
             //builder.Entity<Topic>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertTopic", schema))
@@ -124,6 +125,12 @@ namespace Framework.FrameworkContext
             builder.Entity<DictCache>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertDictCache", "dbo"))
             .Update(u => u.HasName("UpdateDictCache", "dbo"))
             .Delete(u => u.HasName("DeleteDictCache", "dbo")));
+            builder.Entity<SubType>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertSubType", "dbo"))
+            .Update(u => u.HasName("UpdateSubType", "dbo"))
+            .Delete(u => u.HasName("DeleteSubType", "dbo")));
+            builder.Entity<LearnVoca>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertLearnVoca", "dbo"))
+            .Update(u => u.HasName("UpdateLearnVoca", "dbo"))
+            .Delete(u => u.HasName("DeleteLearnVoca", "dbo")));
         }
         //st3. -- END
 

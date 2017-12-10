@@ -247,6 +247,8 @@
     <Compile Include="Controllers\Admin\AdminDetailUserTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminDictCacheController.cs" />
     <Compile Include="Controllers\Admin\AdminFriendController.cs" />
+    <Compile Include="Controllers\Admin\AdminHaveSendQuestionController.cs" />
+    <Compile Include="Controllers\Admin\AdminLearnVocaController.cs" />
     <Compile Include="Controllers\Admin\AdminMessageController.cs" />
     <Compile Include="Controllers\Admin\AdminNotificationController.cs" />
     <Compile Include="Controllers\Admin\AdminOurWordController.cs" />
@@ -254,6 +256,7 @@
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminPostTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
+    <Compile Include="Controllers\Admin\AdminSubTypeController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -5127,6 +5130,8 @@
     <Content Include="Views\Home\_ChildComment.cshtml" />
     <Content Include="Views\Learning\_MultipleCaahoice.cshtml" />
     <Content Include="Views\Learning\_MultipleChoice.cshtml" />
+    <Content Include="Views\AdminSubType\Index.cshtml" />
+    <Content Include="Views\AdminLearnVoca\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -122,6 +122,7 @@
     <Compile Include="Admin\DictCacheService.cs" />
     <Compile Include="Admin\FriendService.cs" />
     <Compile Include="Admin\HaveSendQuestionService.cs" />
+    <Compile Include="Admin\LearnVocaService.cs" />
     <Compile Include="Admin\MessageService.cs" />
     <Compile Include="Admin\NotificationService.cs" />
     <Compile Include="Admin\OurWordService.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Admin\PostTypeService.cs" />
     <Compile Include="Admin\PostVoteDetailService.cs" />
     <Compile Include="Admin\RoutingService.cs" />
+    <Compile Include="Admin\SubTypeService.cs" />
     <Compile Include="Client\ClientLearningService.cs" />
     <Compile Include="Client\ClientEntertainmentService.cs" />
     <Compile Include="Client\ClientDictionaryService.cs" />

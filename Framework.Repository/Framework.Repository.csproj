@@ -71,6 +71,7 @@
     <Compile Include="RepositorySpace\DictCacheRepository.cs" />
     <Compile Include="RepositorySpace\FriendRepository.cs" />
     <Compile Include="RepositorySpace\HaveSendQuestionRepository.cs" />
+    <Compile Include="RepositorySpace\LearnVocaRepository.cs" />
     <Compile Include="RepositorySpace\MessageRepository.cs" />
     <Compile Include="RepositorySpace\NotificationRepository.cs" />
     <Compile Include="RepositorySpace\OurWordRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="RepositorySpace\PostTypeRepository.cs" />
     <Compile Include="RepositorySpace\PostVoteDetailRepository.cs" />
     <Compile Include="RepositorySpace\RoutingRepository.cs" />
+    <Compile Include="RepositorySpace\SubTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

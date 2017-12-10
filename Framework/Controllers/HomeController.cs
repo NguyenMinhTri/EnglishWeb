@@ -32,7 +32,7 @@ namespace Framework.Controllers
  		IPostCommentDetailService _commentOfPost;
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
-
+        ISubTypeService _subType;
         public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
             IPostService postService,
@@ -40,7 +40,8 @@ namespace Framework.Controllers
             IHaveSendQuestionService haveSendQuesService,
             IPostTypeService postTypeService,
             IPostCommentDetailService commentOfPost,
-            IPostVoteDetailService postVoteDetailService
+            IPostVoteDetailService postVoteDetailService,
+            ISubTypeService subType
             )
             : base(layoutService)
         {
@@ -49,9 +50,9 @@ namespace Framework.Controllers
             _detailUserTypeService = detailUser;
             _haveSendQuesService = haveSendQuesService;
             _postTypeService = postTypeService;
-
 			_commentOfPost = commentOfPost;
             _postVoteDetailService = postVoteDetailService;
+            _subType = subType;
         }
 
         HomeViewModel HomeViewModel
@@ -80,6 +81,7 @@ namespace Framework.Controllers
 
         public ActionResult Index(PostViewModel data)
         {
+            
 
             _viewModel = new HomeViewModel();
             CreateLayoutView("Trang chủ");
@@ -129,6 +131,23 @@ namespace Framework.Controllers
                 haveSendQues.Protected = false;
                 _haveSendQuesService.Add(haveSendQues);
                 _haveSendQuesService.Save();
+            }
+            else
+            {
+                //Send thong cho người dùng đăng ký loại câu hỏi đó
+
+                List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
+                foreach(var itemUser in userSubQues)
+                {
+                    await sendNofityToMessenger(newPost, itemUser);
+                    HaveSendQuestion haveSendQues = new HaveSendQuestion();
+                    haveSendQues.QuesID = newPost.Id;
+                    haveSendQues.UserID = itemUser.Id;
+                    haveSendQues.Status = false;
+                    haveSendQues.Protected = false;
+                    _haveSendQuesService.Add(haveSendQues);
+                    _haveSendQuesService.Save();
+                }
             }
             //
 
@@ -182,7 +201,7 @@ namespace Framework.Controllers
         protected List<Post> getPost()
         {
             List<Post> listResult = new List<Post>();
-            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status == 0 ).ToList();
+            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status == 0  && post.Option == 1).ToList();
             foreach (var post in listPost)
             {
                 var timePost = post.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
@@ -231,8 +250,35 @@ namespace Framework.Controllers
             }
 
         }
+        protected List<ApplicationUser> getNormalUserBasedOnType(Post post)
+        {
+            //
+            if (post.Option == 0)
+                return null;
+            List<ApplicationUser> ListAppUser = new List<ApplicationUser>();
+            //Khong gui lai 2 lan cho 1 expert
+
+            //Check expert info 
+            //First condition : 
+            List<SubType> detailUser = _subType.GetAll().Where(x => x.Id_Type == post.Id_Type).ToList();
+            if (detailUser == null)
+            {
+
+                return null;
+            }
+            //
+            foreach (var item in detailUser)
+            {
+                ListAppUser.Add(_service.GetUserById(item.Id_User));
+            }
+            //
+            return ListAppUser;
+        }
         protected List<ApplicationUser> getExpertUserBasedOnType(Post post)
         {
+            //
+            if (post.Option == 0)
+                return null;
             List<ApplicationUser> ListAppUser = new List<ApplicationUser>();
             //Khong gui lai 2 lan cho 1 expert
 
@@ -336,6 +382,7 @@ namespace Framework.Controllers
                     comment.Content = ketqua;
                     comment.Id_User = userId;
                     comment.Id_Post = idQuestion;
+                    comment.DateComment = DateTime.Now.Ticks.ToString();
                     _commentOfPost.Add(comment);
                     _commentOfPost.Save();
                     _postService.Update(currentPost);
@@ -359,6 +406,7 @@ namespace Framework.Controllers
         }
         public async Task<string> notifyForUserAboutQues(int idQues)
         {
+            //Thông báo cho người đặt câu hỏi
             var currentPost = _postService.GetById(idQues);
             var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).FirstOrDefault();
             var userOfPost = _service.GetUserById(currentPost.Id_User);
@@ -370,7 +418,44 @@ namespace Framework.Controllers
             var response2 = await client.PostAsync(paramChatfuel, null);
             return "";
         }
+        //Thông báo cho các user đăng ký loại câu hỏi đó
+        //public async Task<string> notifyForAllUserAboutQues(int idQues)
+        //{
+        //    //Thông báo cho người đặt câu hỏi
+        //    var currentPost = _postService.GetById(idQues);
+        //    var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).FirstOrDefault();
+        //    var userOfPost = _service.GetUserById(currentPost.Id_User);
+        //    HttpClient client = new HttpClient();
+        //    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+        //    var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userOfPost.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a2c0352e4b0d0e6161fc7a1";
+        //    paramChatfuel += "&traloicauhoi=" + currentPost.Content;
+        //    paramChatfuel += "&dapancauhoi=" + detailPost.Content;
+        //    var response2 = await client.PostAsync(paramChatfuel, null);
+        //}
+        //
+
+            // Hiển thị popup khi tạo acc mới, chọn chủ đề theo dõi
+        public PartialViewResult showPopupSurvey()
+        {
+            var subList = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
+            if(subList.Count == 0)
+            {
+                //Show popup to choose 
+                var listPostType = _postTypeService.GetAll().ToList();
+                return null;
+            }
+            return null;
+        }
+        //
+        public PartialViewResult loadNewFeeds()
+        {
+            var subListOfuser = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
+            return null;
+        }
+
     }
 }
 
 // Post mã 10 là bị bỏ qua or chưa dc trả lờ
+
+
