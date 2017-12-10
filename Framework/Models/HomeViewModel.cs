@@ -16,6 +16,11 @@ namespace Framework.ViewModels
 
     public class CommentViewModel : LayoutViewModel, IRef<HomeController>
     {
+        public CommentViewModel()
+        {
+           listChildComment = new List<CommentViewModel>();
+        }
+        public List<CommentViewModel> listChildComment { get; set; }
         public int Id { get; set; }
         public String Name { get; set; }
         public String LastName { get; set; }
@@ -35,6 +40,10 @@ namespace Framework.ViewModels
 
     public class PostViewModel : LayoutViewModel, IRef<HomeController>
     {
+        public PostViewModel()
+        {
+           listComment = new List<CommentViewModel>();
+        }
         public List<CommentViewModel> listComment { get; set; }
         public int Id { get; set; }
         public String Name { get; set; }

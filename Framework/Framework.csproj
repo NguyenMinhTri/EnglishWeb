@@ -5128,7 +5128,6 @@
     <Content Include="Views\Post\_Activities.cshtml" />
     <Content Include="Views\Home\_Comment.cshtml" />
     <Content Include="Views\Home\_ChildComment.cshtml" />
-    <Content Include="Views\Learning\_MultipleCaahoice.cshtml" />
     <Content Include="Views\Learning\_MultipleChoice.cshtml" />
     <Content Include="Views\AdminSubType\Index.cshtml" />
     <Content Include="Views\AdminLearnVoca\Index.cshtml" />

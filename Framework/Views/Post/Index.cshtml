@@ -55,20 +55,114 @@
                             </div>
                         </div>
 
-                        <div class="control-block-button post-control-button">
-                            <a class="btn btn-control upvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                            </a>
-
-                            <a class="btn btn-control downvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                            </a>
-                        </div>
-
                     </article>
 
                     <div class="comment-section">
-                        <ul class="comments-list"></ul>
+                        <ul class="comments-list">
+                            @foreach (var commentParent in Model.listComment)
+                            {
+                                string id = "p" + commentParent.Id_Post + "c-" + commentParent.Id;
+                                if (commentParent.listChildComment.Count != 0)
+                                {
+                                    @Html.Raw("<li class='has-children parent lazy-show not-showed' id='" + id + "'>")
+                                }
+                                else
+                                {
+                                    @Html.Raw("<li class='parent lazy-show not-showed' id='" + id + "'>")
+                                }
+                                <div class="post__author author vcard inline-items @commentParent.Degree">
+                                    <a href="Profile?username=@commentParent.UserName&option=newsfeed">
+                                        <img src="content/images/@commentParent.Avatar" alt="author">
+                                    </a>
+
+                                    <div class="author-date">
+                                        <a href="Profile?username=@commentParent.UserName&option=newsfeed" class="h6 post__author-name fn" href="#">@commentParent.Name</a>
+                                        <div class="post__date">
+                                            <time class="published" data-time="@commentParent.DateComment">
+                                            </time>
+                                        </div>
+                                    </div>
+
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <p>
+                                    @commentParent.Content
+                                </p>
+
+                                <a href="#" class="post-add-icon inline-items upvote">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@commentParent.UpVote</span>
+                                </a>
+                                <a href="#" class="post-add-icon inline-items downvote ">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@commentParent.DownVote</span>
+                                </a>
+                                <a class="reply">Trả lời</a>
+
+                                <div class="control-block-button post-control-button">
+                                    <a class="btn btn-control mark-answer">
+                                        <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                    </a>
+                                </div>
+
+                                <ul class="children">
+                                    @if (commentParent.listChildComment.Count != 0)
+                                    {
+                                        foreach (var childComment in commentParent.listChildComment)
+                                        {
+                                            <li class="showed">
+                                                <div class="post__author author vcard inline-items @childComment.Degree">
+                                                    <a href="Profile?username=@childComment.UserName&option=newsfeed">
+                                                        <img src="content/images/@childComment.Avatar" alt="author">
+                                                    </a>
+
+                                                    <div class="author-date">
+                                                        <a href="Profile?username=@childComment.UserName&option=newsfeed" class="h6 post__author-name fn">@childComment.Name</a>
+                                                        <div class="post__date">
+                                                            <time class="published" data-time="@childComment.DateComment">
+                                                            </time>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="more">
+                                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                        <div class="more-dropdown">
+                                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <p>@childComment.Content</p>
+
+                                                <a href="#" class="post-add-icon inline-items upvote active">
+                                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                    <span>@childComment.UpVote</span>
+                                                </a>
+                                                <a href="#" class="post-add-icon inline-items downvote ">
+                                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                    <span>@childComment.DownVote</span>
+                                                </a>
+                                            </li>
+
+                                        }
+                                    }
+                                </ul>
+                                @Html.Raw("</li>")
+                            }
+                        </ul>
+
+                        @if (Model.listComment.Count > 2)
+                        {
+                            <div class="more-comments">Xem thêm bình luận <span>+</span></div>
+                        }
 
                         <form class="comment-form inline-items">
                             <div class="post__author author vcard inline-items @Model.User.Degree">
@@ -217,5 +311,11 @@
             total.text(total_comment);
         }
     });
+
+    var section_comment = $(".comments-list li.parent");
+    if (parseInt(section_comment.length) > 2) {
+        $(".comments-list li.parent:nth-child(1)").removeClass("not-showed").addClass("showed");
+        $(".comments-list li.parent:nth-child(2)").removeClass("not-showed").addClass("showed");
+    }
 
 </script>

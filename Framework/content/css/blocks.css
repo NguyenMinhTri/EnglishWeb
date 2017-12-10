@@ -6961,3 +6961,23 @@ ul.statistics-list-count .points {
 .modal-button .btn:first-child {
     margin-right: 5px;
 }
+
+ul.multiplechoice li {
+    text-align: left;
+    flex: 1;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+ul.multiplechoice {
+    display: flex;
+}
+
+.multiplechoice label:before {
+    top: 10px;
+    left: 2px;
+}
+
+.multiplechoice :checked + label {
+    font-weight: bolder;
+}
