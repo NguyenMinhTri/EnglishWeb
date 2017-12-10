@@ -43,10 +43,11 @@ namespace Framework.Schedule
                             paramChatfuel += "&meanen" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].usecase : "");
                         }
                         paramChatfuel += ChatBotMessenger.getNotiNull();
+                        var response = await client.PostAsync(paramChatfuel, null);
                     }
                 }
                 //ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(response2.ToString());
-                //   var response = await client.PostAsync(paramChatfuel, null);
+                  
                 await client.PostAsync("http://localhost:20000/Home/checkTimeOfPost", null);
             }
             catch

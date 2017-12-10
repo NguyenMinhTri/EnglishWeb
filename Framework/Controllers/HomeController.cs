@@ -113,7 +113,7 @@ namespace Framework.Controllers
             newPost.Post_Status = 0;
             _viewModel = new PostViewModel();
             FieldHelper.CopyNotNullValue(newPost, data);
-
+            newPost.CreatedDate = DateTime.Now;
             _postService.Add(newPost);
             _postService.Save();
             string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
@@ -132,14 +132,21 @@ namespace Framework.Controllers
             }
             //
 
-            ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
-            FieldHelper.CopyNotNullValue(PostViewModel, user);
-            FieldHelper.CopyNotNullValue(PostViewModel, newPost);
-            PostViewModel.TypeToString = _postTypeService.GetById(newPost.Id_Type).Name;
-            PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User);
-            if (vote != null)
+            try
             {
-                PostViewModel.Vote = vote.Vote;
+                ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
+                FieldHelper.CopyNotNullValue(PostViewModel, user);
+                FieldHelper.CopyNotNullValue(PostViewModel, newPost);
+                PostViewModel.TypeToString = _postTypeService.GetById(newPost.Id_Type).Name;
+                PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User);
+                if (vote != null)
+                {
+                    PostViewModel.Vote = vote.Vote;
+                }
+            }
+            catch
+            {
+
             }
             return PartialView("_Post", PostViewModel);
         }
@@ -301,7 +308,7 @@ namespace Framework.Controllers
             return JsonConvert.SerializeObject(result);
         }
         [AllowAnonymous]
-        public string replayDirectly(string idques,string ketqua ,string idmessenger)
+        public async Task<string> replayDirectly(string idques, string ketqua, string idmessenger)
         {
             //
             RootObject2 result = new RootObject2();
@@ -317,7 +324,7 @@ namespace Framework.Controllers
             {
                 int tempMinute = TimeSetting.LimitMinuteForPost();
                 var timePost = sendQues.CreatedDate.Value.AddMinutes(tempMinute).Ticks;
-                var timeCurrent = DateTime.Now.Ticks;
+                var timeCurrent = DateTime.Now.AddMinutes(-5).Ticks;
                 if (timePost < timeCurrent)
                 {
                     checkGio = true;
@@ -335,6 +342,7 @@ namespace Framework.Controllers
                     _postService.Save();
                     messPron.text = "Cám ơn bạn đã phản hồi";
                     result.messages.Add(messPron);
+                    await notifyForUserAboutQues(idQuestion);
                     return JsonConvert.SerializeObject(result);
                 }
 
@@ -344,8 +352,23 @@ namespace Framework.Controllers
             // _postService.Update(currentPost);
             //_postService.Save();
             // DateTime 
-            return checkGio ? "Vui lòng trả lời" : "Link hết hạn";
+            messPron.text = "Hết hạn trả lời, cảm ơn bạn đã quan tâm";
+            result.messages.Add(messPron);
+            return JsonConvert.SerializeObject(result);
 
+        }
+        public async Task<string> notifyForUserAboutQues(int idQues)
+        {
+            var currentPost = _postService.GetById(idQues);
+            var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).FirstOrDefault();
+            var userOfPost = _service.GetUserById(currentPost.Id_User);
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userOfPost.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a2c0352e4b0d0e6161fc7a1";
+            paramChatfuel += "&traloicauhoi=" + currentPost.Content;
+            paramChatfuel += "&dapancauhoi=" + detailPost.Content;
+            var response2 = await client.PostAsync(paramChatfuel, null);
+            return "";
         }
     }
 }

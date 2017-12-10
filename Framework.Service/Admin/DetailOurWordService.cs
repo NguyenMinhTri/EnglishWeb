@@ -1,4 +1,4 @@
-using Framework.Model;
+﻿using Framework.Model;
 using Framework.Repository.RepositorySpace;
 using Framework.Repository.Infrastructure;
 using System;
@@ -32,25 +32,32 @@ namespace Framework.Service.Admin
         }
         public List<int> listIdOutWord(string iduser, int timeNotify)
         {
+            //Check đúng ngày đúng giờ hay ko
             int nowDay = DateTime.Now.Day;
-            int maxTime = timeNotify;
-            int minTime = maxTime - 1;
-            //Update ngay gui nhac nho
-            List<int> listID = new List<int>();
-            if (timeNotify!=-1)
-                listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true && x.Schedule.Hour <= maxTime && x.Schedule.Hour > minTime && x.UpdatedDate.Value.Day != nowDay).Select(x => x.Id).ToList();
-            else
-                listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true ).Select(x => x.Id).ToList();
-
-            foreach (var id in listID)
+            if(timeNotify ==-1)
             {
-                var temp = GetById(id);
-                temp.UpdatedDate = DateTime.Now;
-                Update(temp);
-                Save();
+                var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Learned == 1).ToList();
+                return listID.Select(x => x.Id_OurWord).ToList();
             }
-            //
-            return _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Status == true).Select(x=>x.Id_OurWord).ToList();
+            if (DateTime.Now.Hour == timeNotify)
+            {
+                //Update ngay gui nhac nho
+                //&& x.UpdatedDate.Value.Day != nowDay
+                
+                var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Schedule.Day != nowDay).ToList();
+                foreach (var id in listID)
+                {
+                    var temp = GetById(id.Id);
+                    temp.Status = false;
+                    //Hom nay da gui
+                    temp.Schedule = DateTime.Now;
+                    Update(temp);
+                    Save();
+                }
+                //
+                return listID.Select(x => x.Id_OurWord).ToList();
+            }
+            return null;
         }
     }
 }

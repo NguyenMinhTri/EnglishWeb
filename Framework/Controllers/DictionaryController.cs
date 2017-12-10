@@ -161,8 +161,6 @@ namespace Framework.Controllers
         [HttpPost]
         public async Task<JsonResult> Tick(OurWordViewModel ourword)
         {
-
-
             OurWord newOurWord = new OurWord();
             DetailOurWord detailWord = new DetailOurWord();
             FieldHelper.CopyNotNullValue(newOurWord, ourword);
@@ -181,8 +179,8 @@ namespace Framework.Controllers
                 detailWord.Id_OurWord = newOurWord.Id;
                 detailWord.Learned = 1;
                 detailWord.Id = 0;
-                detailWord.Schedule = new DateTime(0,0,0, user.StudySchedule,0,0);
-                detailWord.UpdatedDate = DateTime.Now;
+                detailWord.Schedule = DateTime.Now.AddDays(-1);
+           
                 // detailWord.
                 try
                 {
@@ -325,35 +323,43 @@ namespace Framework.Controllers
             ListUserNofity listUserNotify = new ListUserNofity();
             List<ApplicationUser> listUser = _service.listUserID();
             List<int> listIDWord = new List<int>();
-           
+
             foreach (var userDetail in listUser)
             {
                 RemindUser reminderUser = new RemindUser();
                 reminderUser.IdMess = userDetail.Id_Messenger;
-                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, userDetail.StudySchedule);
+                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, 13);
                 //Update thoi gian 
-
                 //
-                if(listIDWord.Count !=0 )
+                try
                 {
-                    int i = 0;
-                    foreach(var idWord in listIDWord)
+                    if (listIDWord != null || listIDWord.Count != 0)
                     {
-                        //Gioi han 5 tu
-                        if (i >= 5)
-                            break;
-                        VocaInfo vocaInfo = new VocaInfo();
-                        var tempWord = _ourWordService.GetById(idWord);
-                        vocaInfo.voca = tempWord.Word;
-                        vocaInfo.pron = tempWord.Pronounciation;
-                        vocaInfo.usecase = tempWord.MeanEn;
-                        vocaInfo.meanVN = tempWord.MeanVi;
-                        reminderUser.vocainfo.Add(vocaInfo);
-                        i++;
+                        int i = 0;
+                        foreach (var idWord in listIDWord)
+                        {
+                            //Gioi han 5 tu
+                            if (i >= 5)
+                                break;
+                            VocaInfo vocaInfo = new VocaInfo();
+                            var tempWord = _ourWordService.GetById(idWord);
+                            vocaInfo.voca = tempWord.Word;
+                            vocaInfo.pron = tempWord.Pronounciation;
+                            vocaInfo.usecase = tempWord.MeanEn;
+                            vocaInfo.meanVN = tempWord.MeanVi;
+                            reminderUser.vocainfo.Add(vocaInfo);
+                            i++;
+                        }
+                        if(i!=0)
+                        listUserNotify.reminduser.Add(reminderUser);
                     }
-                    listUserNotify.reminduser.Add(reminderUser);
                 }
-            }
+                catch
+                {
+
+                }
+               }
+                
             return JsonConvert.SerializeObject(listUserNotify);
         }
         [AllowAnonymous]
