@@ -78,6 +78,7 @@ namespace Framework.Controllers
             _viewModel = new CommentViewModel();
             PostCommentDetail comment = new PostCommentDetail();
             FieldHelper.CopyNotNullValue(comment, data);
+            comment.Corrected = false;
             _commentOfPost.Add(comment);
             _commentOfPost.Save();
             Post post = _postService.GetById(comment.Id_Post);
@@ -101,6 +102,15 @@ namespace Framework.Controllers
         [HttpPost]
         public JsonResult VotePost(CommentViewModel data)
         {
+            var userOfPost = _postService.GetById(data.Id_Post);
+            //Nếu vote đó của tác giả câu hỏi thì
+            if(data.Id_User == userOfPost.Id_User)
+            {
+                var commentOfPost = _commentOfPost.GetById(data.Id);
+                commentOfPost.Corrected = true;
+                _commentOfPost.Update(commentOfPost);
+                _commentOfPost.Save();
+            }
             if (data.Content != null)
             {
                 try
@@ -123,5 +133,6 @@ namespace Framework.Controllers
                 result = "failed",
             });
         }
+
     }
 }

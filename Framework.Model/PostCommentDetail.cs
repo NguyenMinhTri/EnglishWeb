@@ -19,5 +19,6 @@ namespace Framework.Model
         public String DateComment { get; set; }
         public int UpVote { get; set; }
         public int DownVote { get; set; }
-	}
+        public bool Corrected { get; set; }
+    }
 }

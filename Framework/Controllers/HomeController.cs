@@ -379,6 +379,7 @@ namespace Framework.Controllers
                 {
                     currentPost.Post_Status = 10;
                     PostCommentDetail comment = new PostCommentDetail();
+                    comment.Corrected = false;
                     comment.Content = ketqua;
                     comment.Id_User = userId;
                     comment.Id_Post = idQuestion;
@@ -452,7 +453,6 @@ namespace Framework.Controllers
             var subListOfuser = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
             return null;
         }
-
     }
 }
 
