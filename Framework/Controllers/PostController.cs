@@ -69,6 +69,29 @@ namespace Framework.Controllers
             {
                 PostViewModel.Vote = vote.Vote;
             }
+            List<PostCommentDetail> listComment = new List<PostCommentDetail>();
+            List<PostCommentDetail> listChildComment = new List<PostCommentDetail>();
+            listComment = _commentOfPost.getCommentOfPost(post.Id);
+            foreach (var parent in listComment)
+            {
+                CommentViewModel commentViewModel = new CommentViewModel();
+                user = _service.GetUserById(parent.Id_User);
+                FieldHelper.CopyNotNullValue(commentViewModel, user);
+                FieldHelper.CopyNotNullValue(commentViewModel, parent);
+                listChildComment = _commentOfPost.getChildOfComment(parent.Id_Post, parent.Id);
+                if (listChildComment.Count != 0)
+                {
+                    foreach (var child in listChildComment)
+                    {
+                        CommentViewModel commentChildViewModel = new CommentViewModel();
+                        user = _service.GetUserById(child.Id_User);
+                        FieldHelper.CopyNotNullValue(commentChildViewModel, user);
+                        FieldHelper.CopyNotNullValue(commentChildViewModel, child);
+                        commentViewModel.listChildComment.Add(commentChildViewModel);
+                    }
+                }
+                PostViewModel.listComment.Add(commentViewModel);
+            }
             return View(PostViewModel);
         }
 

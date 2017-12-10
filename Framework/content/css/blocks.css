@@ -6863,6 +6863,7 @@ a.reply:hover {
 
 .comments-list li.has-children ul.children {
     display: block;
+    background: #fafbfd;
 }
 
 .news-feed-form .form-group .selection {text-align: right;display: flex;align-items: baseline;justify-content: flex-end;}
@@ -6980,4 +6981,28 @@ ul.multiplechoice {
 
 .multiplechoice :checked + label {
     font-weight: bolder;
+}
+
+.comments-list .control-block-button {
+    right: -17px;
+    top: 17px;
+}
+
+.comments-list .answer .control-block-button .mark-answer {
+    background: #fc5e3b;
+}
+
+.comments-list .answer{
+    background: #e6ecf5;
+}
+
+.not-showed .mark-answer{
+    visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.showed .mark-answer{
+    visibility: visible;
+  opacity: 1;
 }
