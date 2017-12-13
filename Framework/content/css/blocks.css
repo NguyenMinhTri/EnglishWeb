@@ -4788,10 +4788,11 @@ ol ol li {
 
 .no-past-events {
   color: #d7d9e5;
-  padding: 65px 30px;
+  /* padding: 65px 30px; */
   position: relative;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  }
   .no-past-events .control-block-button {
     right: 25px;
     top: -25px;
@@ -4931,9 +4932,10 @@ ol ol li {
     border-radius: 100%;
     display: block;
     position: absolute;
-    left: -31px;
+    left: -29px;
     top: 5px;
-    background-color: #fff; }
+    background-color: #fff;
+    }
 
 .today-events .title {
   position: relative;
@@ -4950,15 +4952,28 @@ ol ol li {
     fill: #38a9ff; }
 
 .today-events .event-time {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  margin-right: 16px;
+  display:  flex;
+  }
   .today-events .event-time time {
-    font-size: 12px; }
+    font-size: 12px;
+    flex: 1;
+    }
 
 .today-events.calendar .list {
   margin-top: 0;
   position: relative;
   overflow: visible; }
-
+.today-events-thumb .date-title {
+    font-size: 30px;
+    text-align:  left;
+    font-weight: normal;
+}
+.today-events.calendar .card:first-child:before {
+    margin-top: -20px;
+    height: 150%;
+}
 .today-events.calendar .card {
   border-bottom: none;
   padding-left: 25px; }
@@ -4970,7 +4985,8 @@ ol ol li {
     background-color: #e6ecf5;
     position: absolute;
     left: 25px;
-    top: 0; }
+    top: 0;
+    }
   .today-events.calendar .card:last-child:before {
     height: 25px; }
   .today-events.calendar .card:last-child .card-header {
@@ -5007,13 +5023,17 @@ ol ol li {
   position: relative;
   background-image: url("../images//bg-event-day.jpg");
   text-align: center;
-  padding: 25px;
-  color: #fff; }
+  padding: 45px 25px;
+  color: #fff;
+  line-height: 5em;
+  }
   .today-events-thumb .day-number {
-    font-size: 80px;
+    font-size: 40px;
     font-weight: 300;
     line-height: 1;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    text-align:  left;
+    }
   .today-events-thumb .day-week {
     font-size: 24px;
     margin-bottom: 5px; }

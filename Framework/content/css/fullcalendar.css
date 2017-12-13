@@ -30,6 +30,7 @@ body .fc { /* extra precedence to overcome jqui */
 .fc-unthemed .fc-row,
 .fc-unthemed .fc-popover {
 	border-color: #ddd;
+	background:  white;
 }
 
 .fc-unthemed .fc-popover {
@@ -402,6 +403,7 @@ hr.fc-divider {
 	text-transform: uppercase;
 	border-right-width: 0;
 	border-left-width: 0;
+	cursor:  pointer;
 }
 
 @media (max-width: 380px) {
@@ -1286,7 +1288,8 @@ be a descendant of the grid when it is being dragged.
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	cursor: pointer;
+	text-align: right;
+	width: 100px;
 }
 
 .calendar-block-events .event-status {
@@ -1316,4 +1319,22 @@ be a descendant of the grid when it is being dragged.
 
 .fc-agendaWeek-view .calendar-block-events {
 	margin: 4px 0 0 3px;
+	display:  flex;
+}
+
+.fc-view-container {
+    padding-bottom: 40px;
+    background: #edf2f6;
+}
+
+.calendar-left .ui-block {
+    background:  white;
+    height: calc(100% - 53px);
+}
+.calendar-block-events li:first-child {
+    width:  unset;
+}
+
+.fc th:hover {
+    background: #edf2f6;
 }

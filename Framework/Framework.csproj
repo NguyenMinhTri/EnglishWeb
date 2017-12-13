@@ -3738,6 +3738,7 @@
     <Content Include="admin\vendors\validator\validator.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="cac-thi-co-ban-trong-tieng-anh.html" />
+    <Content Include="calendar.html" />
     <Content Include="content\css\blocks.css" />
     <Content Include="content\css\bootstrap-grid.css" />
     <Content Include="content\css\bootstrap-reboot.css" />
