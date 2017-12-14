@@ -1289,7 +1289,7 @@ be a descendant of the grid when it is being dragged.
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: right;
-	width: 100px;
+	width: 97px;
 }
 
 .calendar-block-events .event-status {
@@ -1337,4 +1337,10 @@ be a descendant of the grid when it is being dragged.
 
 .fc th:hover {
     background: #edf2f6;
+}
+.fc-slats tr {
+    height: 25px;
+}
+.today-events.calendar .card:first-child+.card:last-child:before {
+    height:  25px !important;
 }

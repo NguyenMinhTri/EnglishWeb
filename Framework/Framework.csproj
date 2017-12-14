@@ -262,6 +262,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\LearningController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="Models\DictionaryViewModel.cs" />
     <Compile Include="Models\LearningViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\CalendarViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\YourAccountViewModel.cs" />
     <Compile Include="Models\EntertainmentViewModel.cs" />
@@ -3738,7 +3740,6 @@
     <Content Include="admin\vendors\validator\validator.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="cac-thi-co-ban-trong-tieng-anh.html" />
-    <Content Include="calendar.html" />
     <Content Include="content\css\blocks.css" />
     <Content Include="content\css\bootstrap-grid.css" />
     <Content Include="content\css\bootstrap-reboot.css" />
@@ -5132,6 +5133,7 @@
     <Content Include="Views\Learning\_MultipleChoice.cshtml" />
     <Content Include="Views\AdminSubType\Index.cshtml" />
     <Content Include="Views\AdminLearnVoca\Index.cshtml" />
+    <Content Include="Views\Calendar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -5144,6 +5146,7 @@
     <Folder Include="content\upload\" />
     <Folder Include="Scripts\common\" />
     <Folder Include="Scripts\server\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.Common\Framework.Common.csproj">

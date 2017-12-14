@@ -4699,7 +4699,12 @@ ol ol li {
 
 .video-item .title {
   display: block;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
 
 .video-item .more {
   position: absolute;
@@ -4988,7 +4993,8 @@ ol ol li {
     top: 0;
     }
   .today-events.calendar .card:last-child:before {
-    height: 25px; }
+    height: 55px;
+    }
   .today-events.calendar .card:last-child .card-header {
     padding-bottom: 25px; }
   .today-events.calendar .card:first-child .card-header {
@@ -7027,4 +7033,7 @@ ul.multiplechoice {
 .showed .mark-answer{
     visibility: visible;
   opacity: 1;
+}
+.calendar .dropdown-menu.open {
+   position: absolute !important;
 }

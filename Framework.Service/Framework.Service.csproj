@@ -136,6 +136,7 @@
     <Compile Include="Client\ClientEntertainmentService.cs" />
     <Compile Include="Client\ClientDictionaryService.cs" />
     <Compile Include="Client\ClientProfileService.cs" />
+    <Compile Include="Client\ClientCalendarService.cs" />
     <Compile Include="Client\ClientStatisticsService.cs" />
     <Compile Include="Client\ClientHomeService.cs" />
     <Compile Include="Client\FriendService.cs" />
