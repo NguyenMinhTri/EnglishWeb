@@ -11,7 +11,6 @@ namespace Framework.ViewModels
     {
         public List<PostType> ListPostType { get; set; }
         public List<PostViewModel> ListPost { get; set; }
-
     }
 
     public class CommentViewModel : LayoutViewModel, IRef<HomeController>
@@ -79,5 +78,15 @@ namespace Framework.ViewModels
         public int Id_Post { get; set; }
         public String Id_User { get; set; }
         public bool Corrected { get; set; }
+    }
+
+    public class RegisterPostViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public string UserID { get; set; }
+        public List<int> TypeList { get; set; }
+        public RegisterPostViewModel()
+        {
+            TypeList = new List<int>();
+        }
     }
 }

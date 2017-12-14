@@ -81,7 +81,7 @@ namespace Framework.Controllers
             }
         }
 
-        public ActionResult Index(string option)
+        public ActionResult Index(string option, string userType)
         {
             if (option != null)
             {
@@ -136,7 +136,7 @@ namespace Framework.Controllers
                 _viewModel = new UpdateInfoViewModel();
                 CreateLayoutView("Cập nhật thông tin");
             }
-
+            ViewBag.newMember = userType;
             return View(_viewModel);
         }
 
@@ -152,7 +152,7 @@ namespace Framework.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public JsonResult UpdateInfo(UpdateInfoViewModel model)
+        public JsonResult UpdateInfo(UpdateInfoViewModel model, string userType)
         {
             if (ModelState.IsValid)
             {
@@ -163,6 +163,7 @@ namespace Framework.Controllers
                 try
                 {
                     _applicationUserService.Save();
+                    ViewBag.newMember = userType;
                     return Json(new
                     {
                         result = "success"

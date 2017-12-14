@@ -100,7 +100,14 @@ namespace Framework.Controllers
                         commentViewModel.listChildComment.Add(commentChildViewModel);
                     }
                 }
-                PostViewModel.listComment.Add(commentViewModel);
+                if (commentViewModel.Corrected)
+                {
+                    PostViewModel.listComment.Insert(0, commentViewModel);
+                }
+                else
+                {
+                    PostViewModel.listComment.Add(commentViewModel);
+                }
             }
             return View(PostViewModel);
         }
@@ -158,7 +165,7 @@ namespace Framework.Controllers
                     }
                     if (post.DownVote < 0)
                     {
-                        post.UpVote = 0;
+                        post.DownVote = 0;
                     }
                     _postVoteDetailService.Update(vote);
                 }
@@ -217,7 +224,7 @@ namespace Framework.Controllers
                     }
                     if (comment.DownVote < 0)
                     {
-                        comment.UpVote = 0;
+                        comment.DownVote = 0;
                     }
                     _commentVoteDetailService.Update(vote);
                 }
@@ -262,10 +269,13 @@ namespace Framework.Controllers
             if (data.Id_Comment != 0 && _postService.GetById(data.Id_Post).Id_User == data.Id_User)
             {
                 Comment oldCorrectComment = _commentOfPost.getCorrectComment(data.Id_Post);
-                oldCorrectComment.Corrected = false;
+                if (oldCorrectComment != null)
+                {
+                    oldCorrectComment.Corrected = false;
+                    _commentOfPost.Update(oldCorrectComment);
+                }
                 Comment comment = _commentOfPost.GetById(data.Id_Comment);
                 comment.Corrected = data.Corrected;
-                _commentOfPost.Update(oldCorrectComment);
                 _commentOfPost.Update(comment);
                 try
                 {

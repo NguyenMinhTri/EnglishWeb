@@ -1,5 +1,5 @@
 ﻿@model Framework.ViewModels.PostViewModel
-
+<div class="waiting_loader" style="display: none"></div>
 <div class="header-spacer"></div>
 
 <div class="container">
@@ -313,6 +313,7 @@
         $(form).find("input[name='DateComment']").val(Date.now);
         var new_comment;
         if (comment.length != 0) {
+            $(".waiting_loader").css("display", "block");
             if (!$(this).hasClass("child-comment")) {
                 var data = form.serialize();
                 $.post("/Post/Comment", data).done(function (html) {
@@ -325,7 +326,9 @@
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();
                     total_comment--;
-                })
+                }).always(function () {
+                    $(".waiting_loader").css("display", "none");
+                });
             }
             else {
                 var index = $(this).attr("class").match(/(?:\s|^)child-comment-(\d+)/)[1];
@@ -348,7 +351,9 @@
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();
                     total_comment--;
-                })
+                }).always(function () {
+                    $(".waiting_loader").css("display", "none");
+                });
             }
             total.text(total_comment);
         }
@@ -376,49 +381,39 @@
             vote = 1;
         }
         var data = { Id_User: '@Model.User.Id', Id_Post: '@Model.Id', Id_Comment: id_comment, Vote: vote, UpVote: upvote, DownVote: downvote };
-        $.post("/Post/VotePost", data).done(function (response) {
-            if (response.result == "success") {
-                var upvote = $(button).find("span");
-                var number_upvote = parseInt(upvote.text());
-                var downvote = $(button).next().find("span");
-                var number_downvote = parseInt(downvote.text());
-                if ($(button).hasClass("clicked")) {
-                    $(button).removeClass("clicked");
-                    number_upvote--;
-                    $(button).removeClass("active");
-                }
-                else {
-                    if ($(button).next().hasClass("clicked")) {
-                        $(button).next().removeClass("clicked");
-                        number_downvote--;
-                        $(button).next().removeClass("active");
-                    }
-                    $(button).addClass("clicked");
-                    number_upvote++;
-                    $(button).addClass("active");
-                    $(button).next().removeClass("active");
-                }
-
-                if (number_upvote < 0) {
-                    number_upvote = 0;
-                }
-                if (number_downvote < 0) {
-                    number_downvote = 0;
-                }
-                upvote.text(number_upvote);
-                downvote.text(number_downvote);
-
-                if (number_upvote > number_downvote) {
-                    $(button).parent().next().find('.upvote').addClass("clicked");
-                    $(button).parent().next().find('.downvote').removeClass("clicked");
-                }
-                else {
-                    $(button).parent().next().find('.upvote').removeClass("clicked");
-                    $(button).parent().next().find('.downvote').addClass("clicked");
-                }
-                scrollto(button.parent());
+        var upvote = $(button).find("span");
+        var number_upvote = parseInt(upvote.text());
+        var downvote = $(button).next().find("span");
+        var number_downvote = parseInt(downvote.text());
+        if ($(button).hasClass("clicked")) {
+            $(button).removeClass("clicked");
+            number_upvote--;
+            $(button).removeClass("active");
+        }
+        else {
+            if ($(button).next().hasClass("clicked")) {
+                $(button).next().removeClass("clicked");
+                number_downvote--;
+                $(button).next().removeClass("active");
             }
-            else {
+            $(button).addClass("clicked");
+            number_upvote++;
+            $(button).addClass("active");
+            $(button).next().removeClass("active");
+        }
+
+        if (number_upvote < 0) {
+            number_upvote = 0;
+        }
+        if (number_downvote < 0) {
+            number_downvote = 0;
+        }
+        upvote.text(number_upvote);
+        downvote.text(number_downvote);
+        scrollto(button.parent());
+
+        $.post("/Post/VotePost", data).done(function (response) {
+            if (response.result != "success") {
                 $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                 $("#notify-button").click();
             }
@@ -447,50 +442,39 @@
             downvote = 1;
         }
         var data = { Id_User: '@Model.User.Id', Id_Post: '@Model.Id', Id_Comment: id_comment, Vote: vote, UpVote: upvote, DownVote: downvote };
-        $.post("/Post/VotePost", data).done(function (response) {
-            if (response.result == "success") {
-                var downvote = $(button).find("span");
-                var number_downvote = parseInt(downvote.text());
-                var upvote = $(button).prev().find("span");
-                var number_upvote = parseInt(upvote.text());
+        var downvote = $(button).find("span");
+        var number_downvote = parseInt(downvote.text());
+        var upvote = $(button).prev().find("span");
+        var number_upvote = parseInt(upvote.text());
 
-                if ($(button).hasClass("clicked")) {
-                    $(button).removeClass("clicked");
-                    number_downvote--;
-                    $(button).removeClass("active");
-                }
-                else {
-                    if ($(button).prev().hasClass("clicked")) {
-                        $(button).prev().removeClass("clicked");
-                        number_upvote--;
-                        $(button).prev().removeClass("active");
-                    }
-                    $(button).addClass("clicked");
-                    number_downvote++;
-                    $(button).addClass("active");
-                    $(button).prev().removeClass("active");
-                }
-
-                if (number_upvote < 0) {
-                    number_upvote = 0;
-                }
-                if (number_downvote < 0) {
-                    number_downvote = 0;
-                }
-                upvote.text(number_upvote);
-                downvote.text(number_downvote);
-
-                if (number_downvote > number_upvote) {
-                    $(button).parent().next().find('.downvote').addClass("clicked");
-                    $(button).parent().next().find('.upvote').removeClass("clicked");
-                }
-                else {
-                    $(button).parent().next().find('.downvote').removeClass("clicked");
-                    $(button).parent().next().find('.upvote').addClass("clicked");
-                }
-                scrollto(button.parent());
+        if ($(button).hasClass("clicked")) {
+            $(button).removeClass("clicked");
+            number_downvote--;
+            $(button).removeClass("active");
+        }
+        else {
+            if ($(button).prev().hasClass("clicked")) {
+                $(button).prev().removeClass("clicked");
+                number_upvote--;
+                $(button).prev().removeClass("active");
             }
-            else {
+            $(button).addClass("clicked");
+            number_downvote++;
+            $(button).addClass("active");
+            $(button).prev().removeClass("active");
+        }
+
+        if (number_upvote < 0) {
+            number_upvote = 0;
+        }
+        if (number_downvote < 0) {
+            number_downvote = 0;
+        }
+        upvote.text(number_upvote);
+        downvote.text(number_downvote);
+        scrollto(button.parent());
+        $.post("/Post/VotePost", data).done(function (response) {
+            if (response.result != "success") {
                 $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                 $("#notify-button").click();
             }

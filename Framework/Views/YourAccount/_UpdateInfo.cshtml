@@ -151,6 +151,37 @@
     </div>
 </div>
 
+@if (ViewBag.newMember == "new")
+{
+<!-- Window-popup Thank you -->
+<a data-toggle="modal" data-target="#type" id="type-button"></a>
+<div class="modal fade" id="type">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Chào mừng bạn đến với <b>Olympus</b></h6>
+        </div>
+
+        <div class="ui-block-content">
+           <p>Đầu tiên, hãy cập nhật một số thông tin cơ bản nào!</p>
+            <p>Điều này sẽ giúp hệ thống chọn lựa những điều phù hợp nhất với bạn!</p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    setTimeout(function () { $("#type-button").click(); }, 3000);
+</script>
+}
+
+<!-- ... end Window-popup Thank you -->
+
 <script>
     $('#normal-form').on("submit", function (e) {
         $(".waiting_loader").css("display", "block");

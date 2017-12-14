@@ -33,6 +33,7 @@ namespace Framework.Controllers
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
         ISubTypeService _subType;
+        IDetailUserTypeService _detailUserType;
         public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
             IPostService postService,
@@ -41,7 +42,8 @@ namespace Framework.Controllers
             IPostTypeService postTypeService,
             ICommentService commentOfPost,
             IPostVoteDetailService postVoteDetailService,
-            ISubTypeService subType
+            ISubTypeService subType,
+            IDetailUserTypeService detailUserType
             )
             : base(layoutService)
         {
@@ -53,6 +55,7 @@ namespace Framework.Controllers
 			_commentOfPost = commentOfPost;
             _postVoteDetailService = postVoteDetailService;
             _subType = subType;
+            _detailUserType = detailUserType;
         }
 
         HomeViewModel HomeViewModel
@@ -79,13 +82,12 @@ namespace Framework.Controllers
             }
         }
 
-        public ActionResult Index(PostViewModel data)
+        public ActionResult Index(PostViewModel data, string userType)
         {
-            
-
             _viewModel = new HomeViewModel();
             CreateLayoutView("Trang chủ");
             HomeViewModel.ListPostType = _postTypeService.GetAll().ToList();
+            ViewBag.newMember = userType;
             return View(HomeViewModel);
         }
 
@@ -452,6 +454,41 @@ namespace Framework.Controllers
         {
             var subListOfuser = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
             return null;
+        }
+
+        [HttpPost]
+        public JsonResult RegisterType(RegisterPostViewModel data)
+        {
+            if (data.UserID == User.Identity.GetUserId())
+            {
+                DetailUserType type;
+                foreach (var item in data.TypeList)
+                {
+                    type = new DetailUserType();
+                    type.UserID = data.UserID;
+                    type.Type = item;
+                    _detailUserType.Add(type);
+                }
+                try
+                {
+                    _detailUserType.Save();
+                    return Json(new
+                    {
+                        result = "success"
+                    });
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "failed"
+                    });
+                }
+            }
+            return Json(new
+            {
+                result = "failed",
+            });
         }
     }
 }
