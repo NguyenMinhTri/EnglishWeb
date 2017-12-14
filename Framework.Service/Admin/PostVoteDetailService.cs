@@ -10,7 +10,7 @@ namespace Framework.Service.Admin
 {
     public interface IPostVoteDetailService : IQlService<PostVoteDetail>
     {
-        PostVoteDetail getVoteByIdUser(string id);
+        PostVoteDetail getVoteByIdUser(string id_Use, int id_Post);
     }
     public class PostVoteDetailService : QlService<PostVoteDetail>, IPostVoteDetailService
     {
@@ -22,9 +22,9 @@ namespace Framework.Service.Admin
             _postVoteDetailRepository = postVoteDetailRepository;
         }
 
-        public PostVoteDetail getVoteByIdUser(string id)
+        public PostVoteDetail getVoteByIdUser(string id_User, int id_Post)
         {
-            return _postVoteDetailRepository.GetSingleByCondition(x => x.Id_User == id);
+            return _postVoteDetailRepository.GetSingleByCondition(x => x.Id_User == id_User && x.Id_Post == id_Post);
         }
     }
 }

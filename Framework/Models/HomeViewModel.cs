@@ -35,7 +35,7 @@ namespace Framework.ViewModels
         public int DownVote { get; set; }
         public int Vote { get; set; }
         public String DateComment { get; set; }
-
+        public bool Corrected { get; set; }
     }
 
     public class PostViewModel : LayoutViewModel, IRef<HomeController>
@@ -63,12 +63,21 @@ namespace Framework.ViewModels
         public int Comment { get; set; }
     }
 
-    public class VotePostViewModel : LayoutViewModel, IRef<HomeController>
+    public class VoteViewModel : LayoutViewModel, IRef<HomeController>
     {
         public String Id_User { get; set; }
+        public int Id_Comment { get; set; }
         public int Id_Post { get; set; }
         public int Vote { get; set; }
-
+        public int UpVote { get; set; }
+        public int DownVote { get; set; }
     }
 
+    public class MarkAnswerViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public int Id_Comment { get; set; }
+        public int Id_Post { get; set; }
+        public String Id_User { get; set; }
+        public bool Corrected { get; set; }
+    }
 }

@@ -29,7 +29,7 @@ namespace Framework.Controllers
         IPostService _postService;
         IDetailUserTypeService _detailUserTypeService;
         IHaveSendQuestionService _haveSendQuesService;
- 		IPostCommentDetailService _commentOfPost;
+ 		ICommentService _commentOfPost;
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
         ISubTypeService _subType;
@@ -39,7 +39,7 @@ namespace Framework.Controllers
             IDetailUserTypeService detailUser,
             IHaveSendQuestionService haveSendQuesService,
             IPostTypeService postTypeService,
-            IPostCommentDetailService commentOfPost,
+            ICommentService commentOfPost,
             IPostVoteDetailService postVoteDetailService,
             ISubTypeService subType
             )
@@ -93,7 +93,7 @@ namespace Framework.Controllers
         public PartialViewResult Comment(CommentViewModel data)
         {
             _viewModel = new CommentViewModel();
-            PostCommentDetail comment = new PostCommentDetail();
+            Comment comment = new Comment();
             FieldHelper.CopyNotNullValue(comment, data);
             _commentOfPost.Add(comment);
             _commentOfPost.Save();
@@ -157,7 +157,7 @@ namespace Framework.Controllers
                 FieldHelper.CopyNotNullValue(PostViewModel, user);
                 FieldHelper.CopyNotNullValue(PostViewModel, newPost);
                 PostViewModel.TypeToString = _postTypeService.GetById(newPost.Id_Type).Name;
-                PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User);
+                PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User, newPost.Id);
                 if (vote != null)
                 {
                     PostViewModel.Vote = vote.Vote;
@@ -378,7 +378,7 @@ namespace Framework.Controllers
                 else
                 {
                     currentPost.Post_Status = 10;
-                    PostCommentDetail comment = new PostCommentDetail();
+                    Comment comment = new Comment();
                     comment.Corrected = false;
                     comment.Content = ketqua;
                     comment.Id_User = userId;

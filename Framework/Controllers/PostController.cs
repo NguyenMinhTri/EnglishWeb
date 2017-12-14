@@ -14,6 +14,7 @@ using System.Drawing.Text;
 using Framework.ViewModels;
 using Framework.Service.Client;
 using Framework.Model;
+using Microsoft.AspNet.Identity;
 
 namespace Framework.Controllers
 {
@@ -23,13 +24,15 @@ namespace Framework.Controllers
         IPostService _postService;
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
-        IPostCommentDetailService _commentOfPost;
+        ICommentVoteDetailService _commentVoteDetailService;
+        ICommentService _commentOfPost;
 
         public PostController(ILayoutService layoutService,
             IPostService postService,
             IPostTypeService postTypeService,
             IPostVoteDetailService postVoteDetailService,
-             IPostCommentDetailService commentOfPost
+             ICommentService commentOfPost,
+            ICommentVoteDetailService commentVoteDetailService
             )
             : base(layoutService)
         {
@@ -37,6 +40,7 @@ namespace Framework.Controllers
             _postTypeService = postTypeService;
             _postVoteDetailService = postVoteDetailService;
             _commentOfPost = commentOfPost;
+            _commentVoteDetailService = commentVoteDetailService;
         }
 
         PostViewModel PostViewModel
@@ -57,6 +61,7 @@ namespace Framework.Controllers
 
         public ActionResult Index(int id)
         {
+            string id_user = User.Identity.GetUserId();
             _viewModel = new PostViewModel();
             CreateLayoutView("Trả lời câu hỏi");
             Post post = _postService.GetById(id);
@@ -64,18 +69,23 @@ namespace Framework.Controllers
             FieldHelper.CopyNotNullValue(PostViewModel, user);
             FieldHelper.CopyNotNullValue(PostViewModel, post);
             PostViewModel.TypeToString = _postTypeService.GetById(post.Id_Type).Name;
-            PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(post.Id_User);
-            if (vote != null)
+            PostVoteDetail votePost = _postVoteDetailService.getVoteByIdUser(id_user, post.Id);
+            if (votePost != null)
             {
-                PostViewModel.Vote = vote.Vote;
+                PostViewModel.Vote = votePost.Vote;
             }
-            List<PostCommentDetail> listComment = new List<PostCommentDetail>();
-            List<PostCommentDetail> listChildComment = new List<PostCommentDetail>();
+            List<Comment> listComment = new List<Comment>();
+            List<Comment> listChildComment = new List<Comment>();
             listComment = _commentOfPost.getCommentOfPost(post.Id);
             foreach (var parent in listComment)
             {
                 CommentViewModel commentViewModel = new CommentViewModel();
                 user = _service.GetUserById(parent.Id_User);
+                CommentVoteDetail voteComment = _commentVoteDetailService.getVoteByIdUser(id_user, parent.Id);
+                if (voteComment != null)
+                {
+                    commentViewModel.Vote = voteComment.Vote;
+                }
                 FieldHelper.CopyNotNullValue(commentViewModel, user);
                 FieldHelper.CopyNotNullValue(commentViewModel, parent);
                 listChildComment = _commentOfPost.getChildOfComment(parent.Id_Post, parent.Id);
@@ -99,7 +109,7 @@ namespace Framework.Controllers
         public PartialViewResult Comment(CommentViewModel data)
         {
             _viewModel = new CommentViewModel();
-            PostCommentDetail comment = new PostCommentDetail();
+            Comment comment = new Comment();
             FieldHelper.CopyNotNullValue(comment, data);
             comment.Corrected = false;
             _commentOfPost.Add(comment);
@@ -123,21 +133,54 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public JsonResult VotePost(CommentViewModel data)
+        public JsonResult VotePost(VoteViewModel data)
         {
-            var userOfPost = _postService.GetById(data.Id_Post);
-            //Nếu vote đó của tác giả câu hỏi thì
-            if(data.Id_User == userOfPost.Id_User)
+            if (data.Id_Comment == 0)
             {
-                var commentOfPost = _commentOfPost.GetById(data.Id);
-                commentOfPost.Corrected = true;
-                _commentOfPost.Update(commentOfPost);
-                _commentOfPost.Save();
-            }
-            if (data.Content != null)
-            {
+                Post post = _postService.GetById(data.Id_Post);
+                PostVoteDetail vote;
+                vote = _postVoteDetailService.getVoteByIdUser(data.Id_User, data.Id_Post);
+                if (vote != null)
+                {
+                    if (data.Vote == vote.Vote)
+                    {
+                        vote.Vote = 0;
+                    }
+                    else
+                    {
+                        vote.Vote = data.Vote;
+                    }
+                    post.UpVote += data.UpVote;
+                    post.DownVote += data.DownVote;
+                    if (post.UpVote < 0)
+                    {
+                        post.UpVote = 0;
+                    }
+                    if (post.DownVote < 0)
+                    {
+                        post.UpVote = 0;
+                    }
+                    _postVoteDetailService.Update(vote);
+                }
+                else
+                {
+                    vote = new PostVoteDetail();
+                    FieldHelper.CopyNotNullValue(vote, data);
+                    _postVoteDetailService.Add(vote);
+                    if (vote.Vote > 0)
+                    {
+                        post.UpVote++;
+                    }
+                    else
+                    {
+                        post.DownVote++;
+                    }
+                }
+                _postService.Update(post);
                 try
                 {
+                    _postVoteDetailService.Save();
+                    _postService.Save();
                     return Json(new
                     {
                         result = "success"
@@ -151,11 +194,100 @@ namespace Framework.Controllers
                     });
                 }
             }
+            else
+            {
+                Comment comment = _commentOfPost.GetById(data.Id_Comment);
+                CommentVoteDetail vote;
+                vote = _commentVoteDetailService.getVoteByIdUser(data.Id_User, data.Id_Comment);
+                if (vote != null)
+                {
+                    if (data.Vote == vote.Vote)
+                    {
+                        vote.Vote = 0;
+                    }
+                    else
+                    {
+                        vote.Vote = data.Vote;
+                    }
+                    comment.UpVote += data.UpVote;
+                    comment.DownVote += data.DownVote;
+                    if (comment.UpVote < 0)
+                    {
+                        comment.UpVote = 0;
+                    }
+                    if (comment.DownVote < 0)
+                    {
+                        comment.UpVote = 0;
+                    }
+                    _commentVoteDetailService.Update(vote);
+                }
+                else
+                {
+                    vote = new CommentVoteDetail();
+                    FieldHelper.CopyNotNullValue(vote, data);
+                    _commentVoteDetailService.Add(vote);
+                    if (vote.Vote > 0)
+                    {
+                        comment.UpVote++;
+                    }
+                    else
+                    {
+                        comment.DownVote++;
+                    }
+                }
+                _commentOfPost.Update(comment);
+                try
+                {
+                    _commentVoteDetailService.Save();
+                    _commentOfPost.Save();
+                    return Json(new
+                    {
+                        result = "success"
+                    });
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "failed",
+                    });
+                }
+            }
+
+        }
+
+        [HttpPost]
+        public JsonResult MarkAnswer(MarkAnswerViewModel data)
+        {
+            if (data.Id_Comment != 0 && _postService.GetById(data.Id_Post).Id_User == data.Id_User)
+            {
+                Comment oldCorrectComment = _commentOfPost.getCorrectComment(data.Id_Post);
+                oldCorrectComment.Corrected = false;
+                Comment comment = _commentOfPost.GetById(data.Id_Comment);
+                comment.Corrected = data.Corrected;
+                _commentOfPost.Update(oldCorrectComment);
+                _commentOfPost.Update(comment);
+                try
+                {
+                    _commentOfPost.Save();
+                    return Json(new
+                    {
+                        result = "success",
+                        answer = "p" + data.Id_Post + "c-" + data.Id_Comment
+                    });
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "failed"
+                    });
+                }
+            }
             return Json(new
             {
                 result = "failed",
             });
         }
-
     }
 }

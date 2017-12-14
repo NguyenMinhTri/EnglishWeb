@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace Framework.Model
 {
 
-    [Table("PostCommentDetail")]
-    public class PostCommentDetail : Auditable
+    [Table("Comment")]
+    public class Comment : Auditable
     {
 		public int Id { get; set; }
 		public int Id_Post { get; set; }

@@ -38,14 +38,39 @@
                         </p>
 
                         <div class="post-additional-info inline-items">
-                            <a href="#" class="post-add-icon inline-items upvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                <span>@Model.UpVote</span>
-                            </a>
-                            <a href="#" class="post-add-icon inline-items downvote">
-                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                <span>@Model.DownVote</span>
-                            </a>
+                            @if (Model.Vote == 1)
+                            {
+                                <a href="#" class="post-add-icon inline-items upvote active clicked">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@Model.UpVote</span>
+                                </a>
+                                <a href="#" class="post-add-icon inline-items downvote">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@Model.DownVote</span>
+                                </a>
+                            }
+                            else if (Model.Vote == -1)
+                            {
+                                <a href="#" class="post-add-icon inline-items upvote">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@Model.UpVote</span>
+                                </a>
+                                <a href="#" class="post-add-icon inline-items downvote active clicked">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@Model.DownVote</span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="#" class="post-add-icon inline-items upvote">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@Model.UpVote</span>
+                                </a>
+                                <a href="#" class="post-add-icon inline-items downvote">
+                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                    <span>@Model.DownVote</span>
+                                </a>
+                            }
 
                             <div class="comments-shared">
                                 <div class="post-add-icon inline-items">
@@ -64,11 +89,25 @@
                                 string id = "p" + commentParent.Id_Post + "c-" + commentParent.Id;
                                 if (commentParent.listChildComment.Count != 0)
                                 {
-                                    @Html.Raw("<li class='has-children parent lazy-show not-showed' id='" + id + "'>")
+                                    if (commentParent.Corrected)
+                                    {
+                                        @Html.Raw("<li class='has-children parent lazy-show not-showed answer' id='" + id + "'>")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<li class='has-children parent lazy-show not-showed' id='" + id + "'>")
+                                    }
                                 }
                                 else
                                 {
-                                    @Html.Raw("<li class='parent lazy-show not-showed' id='" + id + "'>")
+                                    if (commentParent.Corrected)
+                                    {
+                                        @Html.Raw("<li class='parent lazy-show not-showed answer' id='" + id + "'>")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<li class='parent lazy-show not-showed' id='" + id + "'>")
+                                    }
                                 }
                                 <div class="post__author author vcard inline-items @commentParent.Degree">
                                     <a href="Profile?username=@commentParent.UserName&option=newsfeed">
@@ -89,28 +128,55 @@
                                             <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <p>
                                     @commentParent.Content
                                 </p>
+                                if (commentParent.Vote == 1)
+                                {
+                                    <a href="#" class="post-add-icon inline-items upvote clicked active">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>@commentParent.UpVote</span>
+                                    </a>
+                                    <a href="#" class="post-add-icon inline-items downvote ">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>@commentParent.DownVote</span>
+                                    </a>
+                                }
+                                else if (commentParent.Vote == -1)
+                                {
+                                    <a href="#" class="post-add-icon inline-items upvote">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>@commentParent.UpVote</span>
+                                    </a>
+                                    <a href="#" class="post-add-icon inline-items downvote clicked active">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>@commentParent.DownVote</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="#" class="post-add-icon inline-items upvote">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>@commentParent.UpVote</span>
+                                    </a>
+                                    <a href="#" class="post-add-icon inline-items downvote">
+                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                        <span>@commentParent.DownVote</span>
+                                    </a>
+                                }
 
-                                <a href="#" class="post-add-icon inline-items upvote">
-                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                    <span>@commentParent.UpVote</span>
-                                </a>
-                                <a href="#" class="post-add-icon inline-items downvote ">
-                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                    <span>@commentParent.DownVote</span>
-                                </a>
                                 <a class="reply">Trả lời</a>
 
-                                <div class="control-block-button post-control-button">
-                                    <a class="btn btn-control mark-answer">
-                                        <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
-                                    </a>
-                                </div>
+                                if (Model.User.Id == Model.Id_User)
+                                {
+                                    <div class="control-block-button post-control-button">
+                                        <a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận">
+                                            <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                        </a>
+                                    </div>
+                                }
 
                                 <ul class="children">
                                     @if (commentParent.listChildComment.Count != 0)
@@ -140,16 +206,8 @@
 
                                                 </div>
 
-                                                <p>@childComment.Content</p>
+                                                <p style=" margin-bottom: 0; ">@childComment.Content</p>
 
-                                                <a href="#" class="post-add-icon inline-items upvote active">
-                                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                                    <span>@childComment.UpVote</span>
-                                                </a>
-                                                <a href="#" class="post-add-icon inline-items downvote ">
-                                                    <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                                    <span>@childComment.DownVote</span>
-                                                </a>
                                             </li>
 
                                         }
@@ -241,22 +299,6 @@
 </div>
 
 <script>
-    var upVote = parseInt('@Model.UpVote');
-    var downVote = parseInt('@Model.DownVote');
-    if (upVote > downVote) {
-        $(".post-add-icon.upvote").addClass("active");
-    }
-    else if (upVote < downVote) {
-        $(".post-add-icon.downvote").addClass("active");
-    }
-    var vote = parseInt('@Model.Vote');
-    if (vote > 0) {
-        $(".btn.btn-control.upvote").addClass("clicked");
-    }
-    else if (vote < 0) {
-        $(".btn.btn-control..downvote").addClass("clicked");
-    }
-
     $(document).on("click", "#submit.options-message.active", function () {
         var parent = $(this).parent().parent().parent();
         var comment_section = parent.parent().find(".comments-list");
@@ -312,10 +354,171 @@
         }
     });
 
-    var section_comment = $(".comments-list li.parent");
-    if (parseInt(section_comment.length) > 2) {
-        $(".comments-list li.parent:nth-child(1)").removeClass("not-showed").addClass("showed");
-        $(".comments-list li.parent:nth-child(2)").removeClass("not-showed").addClass("showed");
-    }
+    $(".comments-list li.parent:nth-child(1)").removeClass("not-showed").addClass("showed");
+    $(".comments-list li.parent:nth-child(2)").removeClass("not-showed").addClass("showed");
 
+    $(document).on("click", ".post-add-icon.upvote", function () {
+        var button = $(this);
+        var id_comment = 0;
+        var vote, upvote, downvote;
+        if (button.parent().attr("id") != null) {
+            id_comment = button.parent().attr("id").substr($(button).parent().attr("id").lastIndexOf("-") + 1)
+        }
+        if ($(button).hasClass("clicked")) {
+            vote = 0;
+            upvote = -1;
+        }
+        else {
+            if ($(button).next().hasClass("clicked")) {
+                downvote = -1;
+            }
+            upvote = 1;
+            vote = 1;
+        }
+        var data = { Id_User: '@Model.User.Id', Id_Post: '@Model.Id', Id_Comment: id_comment, Vote: vote, UpVote: upvote, DownVote: downvote };
+        $.post("/Post/VotePost", data).done(function (response) {
+            if (response.result == "success") {
+                var upvote = $(button).find("span");
+                var number_upvote = parseInt(upvote.text());
+                var downvote = $(button).next().find("span");
+                var number_downvote = parseInt(downvote.text());
+                if ($(button).hasClass("clicked")) {
+                    $(button).removeClass("clicked");
+                    number_upvote--;
+                    $(button).removeClass("active");
+                }
+                else {
+                    if ($(button).next().hasClass("clicked")) {
+                        $(button).next().removeClass("clicked");
+                        number_downvote--;
+                        $(button).next().removeClass("active");
+                    }
+                    $(button).addClass("clicked");
+                    number_upvote++;
+                    $(button).addClass("active");
+                    $(button).next().removeClass("active");
+                }
+
+                if (number_upvote < 0) {
+                    number_upvote = 0;
+                }
+                if (number_downvote < 0) {
+                    number_downvote = 0;
+                }
+                upvote.text(number_upvote);
+                downvote.text(number_downvote);
+
+                if (number_upvote > number_downvote) {
+                    $(button).parent().next().find('.upvote').addClass("clicked");
+                    $(button).parent().next().find('.downvote').removeClass("clicked");
+                }
+                else {
+                    $(button).parent().next().find('.upvote').removeClass("clicked");
+                    $(button).parent().next().find('.downvote').addClass("clicked");
+                }
+                scrollto(button.parent());
+            }
+            else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+        })
+    })
+
+    $(document).on("click", ".post-add-icon.downvote", function () {
+        var button = $(this);
+        var id_comment = 0;
+        var vote, upvote, downvote;
+        if (button.parent().attr("id") != null) {
+            id_comment = button.parent().attr("id").substr($(button).parent().attr("id").lastIndexOf("-") + 1)
+        }
+        if ($(button).hasClass("clicked")) {
+            vote = 0;
+            downvote = -1;
+        }
+        else {
+            if ($(button).prev().hasClass("clicked")) {
+                upvote = -1;
+            }
+            vote = -1;
+            downvote = 1;
+        }
+        var data = { Id_User: '@Model.User.Id', Id_Post: '@Model.Id', Id_Comment: id_comment, Vote: vote, UpVote: upvote, DownVote: downvote };
+        $.post("/Post/VotePost", data).done(function (response) {
+            if (response.result == "success") {
+                var downvote = $(button).find("span");
+                var number_downvote = parseInt(downvote.text());
+                var upvote = $(button).prev().find("span");
+                var number_upvote = parseInt(upvote.text());
+
+                if ($(button).hasClass("clicked")) {
+                    $(button).removeClass("clicked");
+                    number_downvote--;
+                    $(button).removeClass("active");
+                }
+                else {
+                    if ($(button).prev().hasClass("clicked")) {
+                        $(button).prev().removeClass("clicked");
+                        number_upvote--;
+                        $(button).prev().removeClass("active");
+                    }
+                    $(button).addClass("clicked");
+                    number_downvote++;
+                    $(button).addClass("active");
+                    $(button).prev().removeClass("active");
+                }
+
+                if (number_upvote < 0) {
+                    number_upvote = 0;
+                }
+                if (number_downvote < 0) {
+                    number_downvote = 0;
+                }
+                upvote.text(number_upvote);
+                downvote.text(number_downvote);
+
+                if (number_downvote > number_upvote) {
+                    $(button).parent().next().find('.downvote').addClass("clicked");
+                    $(button).parent().next().find('.upvote').removeClass("clicked");
+                }
+                else {
+                    $(button).parent().next().find('.downvote').removeClass("clicked");
+                    $(button).parent().next().find('.upvote').addClass("clicked");
+                }
+                scrollto(button.parent());
+            }
+            else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+        })
+    });
+    $(document).on("click", ".mark-answer", function () {
+        var button = $(this);
+        var id_comment = button.closest("li").attr("id").substr($(button).closest("li").attr("id").lastIndexOf("-") + 1)
+        var data = { Id_User: '@Model.User.Id', Id_Post: '@Model.Id', Id_Comment: id_comment, Corrected: true };
+        $(".mark-answer").closest("li").not(button).removeClass("answer");
+        button.closest("li").addClass("answer");
+        $.post("/Post/MarkAnswer", data).done(function (response) {
+            if (response.result == "success") {
+                if (button.closest("li").attr("id") != response.answer) {
+                    $(".mark-answer").closest("li").removeClass("answer");
+                    $("#" + response.answer).addClass("answer");
+                }
+            }
+            else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+        })
+    })
 </script>

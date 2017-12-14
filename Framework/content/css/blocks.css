@@ -7010,10 +7010,12 @@ ul.multiplechoice {
 
 .comments-list .answer .control-block-button .mark-answer {
     background: #fc5e3b;
+    transition:  all .5s;
 }
 
 .comments-list .answer{
     background: #e6ecf5;
+    transition:  all .5s;
 }
 
 .not-showed .mark-answer{

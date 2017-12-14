@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Framework.Repository.RepositorySpace
 {
-    public interface IPostCommentDetailRepository : IRepository<PostCommentDetail>
+    public interface ICommentRepository : IRepository<Comment>
     {
     }
-    public class PostCommentDetailRepository : BaseRepository<PostCommentDetail>, IPostCommentDetailRepository
+    public class CommentRepository : BaseRepository<Comment>, ICommentRepository
     {
-        public PostCommentDetailRepository(IDbFactory dbFactory)
+        public CommentRepository(IDbFactory dbFactory)
             : base(dbFactory)
         {
         }

@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace Framework.ViewData.Admin.Input
 {
 
-    public class PostCommentDetailInputAdminViewData : BaseInputViewData<PostCommentDetail>
+    public class CommentInputAdminViewData : BaseInputViewData<Comment>
     {
     }
 }

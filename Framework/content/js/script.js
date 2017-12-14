@@ -153,80 +153,6 @@ $(document).ready(function () {
 
 })(jQuery);
 
-$(document).on("click", ".post-add-icon.upvote", function () {
-    var upvote = $(this).find("span");
-    var number_upvote = parseInt(upvote.text());
-    var downvote = $(this).next().find("span");
-    var number_downvote = parseInt(downvote.text());
-
-    if ($(this).hasClass("clicked")) {
-        $(this).removeClass("clicked");
-        number_upvote--;
-        $(this).removeClass("active");
-    }
-    else {
-        if ($(this).next().hasClass("clicked")) {
-            $(this).next().removeClass("clicked");
-            number_downvote--;
-            $(this).next().removeClass("active");
-        }
-        $(this).addClass("clicked");
-        number_upvote++;
-        $(this).addClass("active");
-        $(this).next().removeClass("active");
-    }
-
-    downvote.text(number_downvote);
-    upvote.text(number_upvote);
-
-    if (number_upvote > number_downvote) {
-        $(this).parent().next().find('.upvote').addClass("clicked");
-        $(this).parent().next().find('.downvote').removeClass("clicked");
-    }
-    else {
-        $(this).parent().next().find('.upvote').removeClass("clicked");
-        $(this).parent().next().find('.downvote').addClass("clicked");
-    }
-    scrollto("#" + $(this).parent().closest(".ui-block").attr("id"));
-})
-
-$(document).on("click", ".post-add-icon.downvote", function () {
-    var downvote = $(this).find("span");
-    var number_downvote = parseInt(downvote.text());
-    var upvote = $(this).prev().find("span");
-    var number_upvote = parseInt(upvote.text());
-
-    if ($(this).hasClass("clicked")) {
-        $(this).removeClass("clicked");
-        number_downvote--;
-        $(this).removeClass("active");
-    }
-    else {
-        if ($(this).prev().hasClass("clicked")) {
-            $(this).prev().removeClass("clicked");
-            number_upvote--;
-            $(this).prev().removeClass("active");
-        }
-        $(this).addClass("clicked");
-        number_downvote++;
-        $(this).addClass("active");
-        $(this).prev().removeClass("active");
-    }
-
-    downvote.text(number_downvote);
-    upvote.text(number_upvote);
-
-    if (number_downvote > number_upvote) {
-        $(this).parent().next().find('.downvote').addClass("clicked");
-        $(this).parent().next().find('.upvote').removeClass("clicked");
-    }
-    else {
-        $(this).parent().next().find('.downvote').removeClass("clicked");
-        $(this).parent().next().find('.upvote').addClass("clicked");
-    }
-    scrollto("#" + $(this).parent().closest(".ui-block").attr("id"));
-})
-
 $(document).on("click", ".comments-shared .post-add-icon.inline-items", function () {
     $(this).parent().parent().parent().parent().find(".comment-section").toggle('fast');
 });
@@ -237,7 +163,7 @@ $(document).on("click", ".comment-section .more-comments", function () {
     });
     var total_comment = parseInt($(this).parent().prev().find(".post-additional-info .comments-shared span:last-child").text());
     var current_comment = $(this).prev().find("li.showed").length + 2;
-    if (current_comment == total_comment) {
+    if (current_comment >= total_comment) {
         $(this).slideUp();
     }
 });
@@ -253,7 +179,6 @@ $(document).on('keyup', 'textarea#comment', function (e) {
         $(this).parent().find(".options-message#submit.active").click();
     }
 });
-
 
 $(document).on("click", ".comments-list a.reply", function () {
     var parent = $(this).parent().parent().parent();

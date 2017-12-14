@@ -12,20 +12,20 @@ using System.Web.Mvc;
 namespace Framework.Controllers
 {
     [Authorize(Roles = "admin")]
-    public class AdminPostCommentDetailController : AdminBaseController<PostCommentDetail, PostCommentDetailInputAdminViewData>
+    public class AdminCommentController : AdminBaseController<Comment, CommentInputAdminViewData>
     {
-        IPostCommentDetailService _postCommentDetailService;
-        public AdminPostCommentDetailController(IPostCommentDetailService postCommentDetailService, ILayoutAdminService layoutService)
+        ICommentService _postCommentDetailService;
+        public AdminCommentController(ICommentService postCommentDetailService, ILayoutAdminService layoutService)
             : base(postCommentDetailService, layoutService)
         {
             _postCommentDetailService = postCommentDetailService;
         }
         //
-        // GET: /PostCommentDetailAdmin/
+        // GET: /CommentAdmin/
         public ActionResult Index()
         {
             CreateLayoutAdminView();
-            AutoForm<PostCommentDetailInputAdminViewData> newPatientItems = new AutoForm<PostCommentDetailInputAdminViewData>();
+            AutoForm<CommentInputAdminViewData> newPatientItems = new AutoForm<CommentInputAdminViewData>();
             ViewBag.Forms = newPatientItems.GetControls();
             return View();
         }
