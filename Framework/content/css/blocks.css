@@ -7037,3 +7037,48 @@ ul.multiplechoice {
 .calendar .dropdown-menu.open {
    position: absolute !important;
 }
+
+.activity li.inline-items {
+    display:  flex;
+    align-items:  center;
+    cursor: pointer;
+}
+
+.activity li.inline-items a{
+   font-weight: 500;
+   line-height:1.5em;
+}
+
+.activity .notification-event{
+    width: 100%;
+    max-width: unset !important;
+    margin-left: 10px;
+}
+
+.activity .author-thumb {height:  100% !important;}
+
+.activity li.inline-items:hover {
+    background: #fc5e3b;
+    color: white;
+}
+
+.activity li.inline-items:hover a{
+    color: white;
+}
+
+.activity li.inline-items:hover .notification-icon {
+    color: #ffffff;
+    fill: #ffffff;
+}
+
+.activity li.inline-items:hover .author-thumb img {
+    border-color: #ffffff !important;
+}
+
+.activity li.inline-items:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.activity .author-thumb img {
+    border-color: #ffe243;
+}

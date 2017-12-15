@@ -109,6 +109,7 @@ namespace Framework.Controllers
                     PostViewModel.listComment.Add(commentViewModel);
                 }
             }
+            ViewBag.ListPostType = _postTypeService.GetAll().ToList();
             return View(PostViewModel);
         }
 

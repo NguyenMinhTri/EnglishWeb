@@ -29,7 +29,7 @@ namespace Framework.Controllers
         IPostService _postService;
         IDetailUserTypeService _detailUserTypeService;
         IHaveSendQuestionService _haveSendQuesService;
- 		ICommentService _commentOfPost;
+        ICommentService _commentOfPost;
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
         ISubTypeService _subType;
@@ -52,7 +52,7 @@ namespace Framework.Controllers
             _detailUserTypeService = detailUser;
             _haveSendQuesService = haveSendQuesService;
             _postTypeService = postTypeService;
-			_commentOfPost = commentOfPost;
+            _commentOfPost = commentOfPost;
             _postVoteDetailService = postVoteDetailService;
             _subType = subType;
             _detailUserType = detailUserType;
@@ -121,54 +121,49 @@ namespace Framework.Controllers
             _postService.Add(newPost);
             _postService.Save();
             string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
-            //Send notify
-            ApplicationUser user = getExpertUserBasedOnType(newPost).FirstOrDefault();
-            if (user != null)
+            if (data.Option != 0)
             {
-                await sendNofityToMessenger(newPost, user);
-                HaveSendQuestion haveSendQues = new HaveSendQuestion();
-                haveSendQues.QuesID = newPost.Id;
-                haveSendQues.UserID = user.Id;
-                haveSendQues.Status = false;
-                haveSendQues.Protected = false;
-                _haveSendQuesService.Add(haveSendQues);
-                _haveSendQuesService.Save();
-            }
-            else
-            {
-                //Send thong cho người dùng đăng ký loại câu hỏi đó
-
-                List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
-                foreach(var itemUser in userSubQues)
+                ApplicationUser user = getExpertUserBasedOnType(newPost).FirstOrDefault();
+                if (user != null)
                 {
-                    await sendNofityToMessenger(newPost, itemUser);
+                    await sendNofityToMessenger(newPost, user);
                     HaveSendQuestion haveSendQues = new HaveSendQuestion();
                     haveSendQues.QuesID = newPost.Id;
-                    haveSendQues.UserID = itemUser.Id;
+                    haveSendQues.UserID = user.Id;
                     haveSendQues.Status = false;
                     haveSendQues.Protected = false;
                     _haveSendQuesService.Add(haveSendQues);
                     _haveSendQuesService.Save();
                 }
-            }
-            //
-
-            try
-            {
-                ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
-                FieldHelper.CopyNotNullValue(PostViewModel, user);
-                FieldHelper.CopyNotNullValue(PostViewModel, newPost);
-                PostViewModel.TypeToString = _postTypeService.GetById(newPost.Id_Type).Name;
-                PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User, newPost.Id);
-                if (vote != null)
+                else
                 {
-                    PostViewModel.Vote = vote.Vote;
+                    //Send thong cho người dùng đăng ký loại câu hỏi đó
+
+                    List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
+                    foreach (var itemUser in userSubQues)
+                    {
+                        await sendNofityToMessenger(newPost, itemUser);
+                        HaveSendQuestion haveSendQues = new HaveSendQuestion();
+                        haveSendQues.QuesID = newPost.Id;
+                        haveSendQues.UserID = itemUser.Id;
+                        haveSendQues.Status = false;
+                        haveSendQues.Protected = false;
+                        _haveSendQuesService.Add(haveSendQues);
+                        _haveSendQuesService.Save();
+                    }
                 }
             }
-            catch
+            //Send notify
+            ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
+            FieldHelper.CopyNotNullValue(PostViewModel, userPost);
+            FieldHelper.CopyNotNullValue(PostViewModel, newPost);
+            PostViewModel.TypeToString = _postTypeService.GetById(newPost.Id_Type).Name;
+            PostVoteDetail vote = _postVoteDetailService.getVoteByIdUser(newPost.Id_User, newPost.Id);
+            if (vote != null)
             {
-
+                PostViewModel.Vote = vote.Vote;
             }
+
             return PartialView("_Post", PostViewModel);
         }
         //Replay a question
@@ -203,7 +198,7 @@ namespace Framework.Controllers
         protected List<Post> getPost()
         {
             List<Post> listResult = new List<Post>();
-            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status == 0  && post.Option == 1).ToList();
+            List<Post> listPost = _postService.GetAll().Where(post => post.Post_Status == 0 && post.Option == 1).ToList();
             foreach (var post in listPost)
             {
                 var timePost = post.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
@@ -308,7 +303,7 @@ namespace Framework.Controllers
             paramChatfuel += "&title=Bạn có 1 câu hỏi :" + post.Content;
             //MaHoaMD5.Encrypt()
             paramChatfuel += "&url=http://localhost:20000/Post?id=" + post.Id;
-            paramChatfuel +="&idques=" + post.Id;
+            paramChatfuel += "&idques=" + post.Id;
             paramChatfuel += ChatBotMessenger.getVocaNull();
             var response2 = await client.PostAsync(paramChatfuel, null);
             return "";
@@ -318,15 +313,15 @@ namespace Framework.Controllers
         {
             RootObject2 result = new RootObject2();
             Message3 messPron = new Message3();
-           
+
             //
             bool isHetGio = false;
             int idQuestion = int.Parse(idques);
             var currentPost = _postService.GetById(idQuestion);
             var userId = _service.listUserID().Where(x => x.Id_Messenger == idmessenger).FirstOrDefault().Id;
             //Kiem tra xem con thoi gian tra loi hay ko
-            var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId ).ToList().FirstOrDefault();
-            if (sendQues != null && currentPost.Post_Status !=10 )
+            var sendQues = _haveSendQuesService.GetAll().Where(x => x.QuesID == idQuestion && x.UserID == userId).ToList().FirstOrDefault();
+            if (sendQues != null && currentPost.Post_Status != 10)
             {
                 var timePost = sendQues.CreatedDate.Value.AddMinutes(TimeSetting.LimitMinuteForPost()).Ticks;
                 var timeCurrent = DateTime.Now.Ticks;
@@ -437,11 +432,11 @@ namespace Framework.Controllers
         //}
         //
 
-            // Hiển thị popup khi tạo acc mới, chọn chủ đề theo dõi
+        // Hiển thị popup khi tạo acc mới, chọn chủ đề theo dõi
         public PartialViewResult showPopupSurvey()
         {
             var subList = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
-            if(subList.Count == 0)
+            if (subList.Count == 0)
             {
                 //Show popup to choose 
                 var listPostType = _postTypeService.GetAll().ToList();

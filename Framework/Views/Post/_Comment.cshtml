@@ -1,6 +1,6 @@
 ﻿@model Framework.ViewModels.CommentViewModel
 @{
-    var id = "p"+@Model.Id_Post+"dc-" + @Model.Id;
+    var id = "p"+@Model.Id_Post+"c-" + @Model.Id;
 }
 
 <li class="new-comment parent" style="display: none" id="@id">
@@ -37,6 +37,9 @@
     </a>
     <a class="reply">Trả lời</a>
 
+    <div id="mark-answer">
+
+    </div>
     <ul class="children"></ul>
 </li>
 
@@ -47,5 +50,8 @@
     }
     else if (vote < 0) {
         $(".post-add-icon.downvote").addClass("active");
+    }
+    if ($("#UserId").val() == '@Model.Id_User') {
+        $("#mark-answer").append('<div class="control-block-button post-control-button"><a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận"> <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg> </a></div>')
     }
 </script>

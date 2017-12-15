@@ -1,13 +1,16 @@
 ﻿@model Framework.ViewModels.CommentViewModel
+@{
+    var id = "p" + @Model.Id_Post + "c-" + @Model.Id;
+}
 
-<li class="new-comment parent" style="display: none">
-    <div class="post__author author vcard inline-items sinhvien">
-        <img src="content/images/author-page.jpg" alt="author">
+<li class="new-comment parent" style="display: none" id="@id">
+    <div class="post__author author vcard inline-items @Model.Degree">
+        <img src="content/images/@Model.Avatar" alt="author">
 
         <div class="author-date">
-            <a class="h6 post__author-name fn" href="#">Thịnh Phan</a>
+            <a href="Profile?username=@Model.UserName&option=newsfeed" class="h6 post__author-name fn">@Model.Name</a>
             <div class="post__date">
-                <time class="published" data-time="">
+                <time class="published" data-time="@Model.DateComment">
 
                 </time>
             </div>
@@ -15,24 +18,40 @@
         <div class="more">
             <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
             <div class="more-dropdown">
-                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
             </div>
         </div>
     </div>
 
     <p id="comments">
-        @Model.Comment
+        @Model.Content
     </p>
 
     <a href="#" class="post-add-icon inline-items upvote">
         <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-        <span>0</span>
+        <span>@Model.UpVote</span>
     </a>
     <a href="#" class="post-add-icon inline-items downvote ">
         <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-        <span>0</span>
+        <span>@Model.DownVote</span>
     </a>
     <a class="reply">Trả lời</a>
 
+    <div id="mark-answer">
+
+    </div>
     <ul class="children"></ul>
 </li>
+
+<script>
+    var vote = parseInt('@Model.Vote');
+    if (vote > 0) {
+        $(".post-add-icon.upvote").addClass("active");
+    }
+    else if (vote < 0) {
+        $(".post-add-icon.downvote").addClass("active");
+    }
+    if ($("#UserId").val() == '@Model.Id_User') {
+        $("#mark-answer").append('<div class="control-block-button post-control-button"><a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận"> <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg> </a></div>')
+    }
+</script>
