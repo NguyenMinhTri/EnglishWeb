@@ -25,11 +25,13 @@ namespace Framework.Controllers
         IOurWordService _ourWordService;
         IDetailOurWordService _detailOutWordService;
         IDictCacheService _dictCache;
+        IToiecGroupService _toiecService;
         public LearningController(ILayoutService layoutService,
             IClientLearningService clientLearningService,
                     IDetailOurWordService detailOutWordService,
             IOurWordService ourWordService,
-            IDictCacheService dictCache
+            IDictCacheService dictCache,
+            IToiecGroupService toiecService
             )
             : base(layoutService)
         {
@@ -37,6 +39,7 @@ namespace Framework.Controllers
             _detailOutWordService = detailOutWordService;
             _ourWordService = ourWordService;
             _dictCache = dictCache;
+            _toiecService = toiecService;
         }
 
         MultipleChoiceViewModel MultipleChoiceViewModel
@@ -224,6 +227,49 @@ namespace Framework.Controllers
             foreach (var id in listIDWord)
             {
                 dataTracNghiem.Add(RandomTracNghiemChoVoca(id));
+            }
+            MultipleChoiceViewModel.listTracNghiem = dataTracNghiem;
+            return PartialView("_MultipleChoice", MultipleChoiceViewModel);
+        }
+        //MultiChoice Toiec
+        [AllowAnonymous]
+        public async System.Threading.Tasks.Task<ActionResult> MultipleChoiceToiec()
+        {
+            _viewModel = new MultipleChoiceViewModel();
+            List<int> randDomPost = randomPosition();
+            List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
+            var listToiecQues = await _toiecService.GetListFeedTextOfGroup();
+            foreach(var item in listToiecQues.data)
+            {
+                TracNghiem tracnghiem = new TracNghiem();
+                tracnghiem.Question = item.message;
+                tracnghiem.UrlImage = item.imageURL;
+                //Tạo random postion
+                var ramdomPo = randomPosition();
+                DapAn dapAnTracNghiem = new DapAn();
+                if (item.DapAn == "a" || item.DapAn == "A")
+                {
+                    dapAnTracNghiem.Checked = true;
+                    tracnghiem.ABCD[0] = dapAnTracNghiem;
+                }                
+                else if (item.DapAn == "b" || item.DapAn == "B")
+                {
+                    dapAnTracNghiem.Checked = true;
+                    tracnghiem.ABCD[1] = dapAnTracNghiem;
+                }
+                else if (item.DapAn == "c" || item.DapAn == "C")
+                {
+                    dapAnTracNghiem.Checked = true;
+                    tracnghiem.ABCD[2] = dapAnTracNghiem;
+                }
+                else if (item.DapAn == "d" || item.DapAn == "D")
+                {
+                    dapAnTracNghiem.Checked = true;
+                    tracnghiem.ABCD[3] = dapAnTracNghiem;
+                }
+
+                
+                dataTracNghiem.Add(tracnghiem);
             }
             MultipleChoiceViewModel.listTracNghiem = dataTracNghiem;
             return PartialView("_MultipleChoice", MultipleChoiceViewModel);

@@ -21,6 +21,7 @@ namespace Framework.Model
         public int UpVote { get; set; }
         public int DownVote { get; set; }
         public int Comment { get; set; }
+        public string Id_PostFB { set; get; } 
     }
     //Post - Post vote
     //Comment - Comment vote

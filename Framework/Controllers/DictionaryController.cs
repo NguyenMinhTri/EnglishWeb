@@ -241,13 +241,13 @@ namespace Framework.Controllers
             GoogleTrans googleTransJson = new GoogleTrans();
             GoogleTrans detailVietnamese = new GoogleTrans();
             //Explain main of letter
-            Message3 messExplaintion = new Message3();
+            MessJson messExplaintion = new MessJson();
             //Pron
-            Message3 messPron = new Message3();
+            MessJson messPron = new MessJson();
             //Vietnamese
-            Message3 messVietnamese = new Message3();
+            MessJson messVietnamese = new MessJson();
             //
-            RootObject2 hello = new RootObject2();
+            ChatfuelJson hello = new ChatfuelJson();
             Message2 sound = new Message2();
             Attachment2 attach = new Attachment2();
             sound.attachment.type = "audio";
@@ -328,7 +328,7 @@ namespace Framework.Controllers
             {
                 RemindUser reminderUser = new RemindUser();
                 reminderUser.IdMess = userDetail.Id_Messenger;
-                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, 13);
+                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, DateTime.Now.Hour);
                 //Update thoi gian 
                 //
                 try
@@ -369,7 +369,7 @@ namespace Framework.Controllers
             List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
             List<int> listIDWord = new List<int>();
             var currentUser =_service.GetUserById(User.Identity.GetUserId());
-            listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, currentUser.StudySchedule);
+            listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, -1);
             foreach(var id in listIDWord)
             {
                 dataTracNghiem.Add(RandomTracNghiemChoVoca(id));

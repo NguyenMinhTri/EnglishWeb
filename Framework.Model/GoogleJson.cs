@@ -34,13 +34,13 @@ namespace Framework.Model.Google
         
         public Attachment2 attachment { get; set; }
     }
-    public class Message3 : MessageObject
+    public class MessJson : MessageObject
     {
         public string text { get; set; }
     }
-    public class RootObject2
+    public class ChatfuelJson
     {
-        public RootObject2()
+        public ChatfuelJson()
         {
             messages = new List<MessageObject>();
         }

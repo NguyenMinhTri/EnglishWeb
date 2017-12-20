@@ -110,6 +110,7 @@
     <Compile Include="Admin\Input\PostTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostVoteDetailInputAdminViewData.cs" />
     <Compile Include="Admin\Input\SubTypeInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\ToiecGroupInputAdminViewData.cs" />
     <Compile Include="BaseViewData.cs" />
     <Compile Include="ClientHome\CodeViewData.cs" />
     <Compile Include="Control\AutoForm.cs" />

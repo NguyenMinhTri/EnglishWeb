@@ -15,6 +15,9 @@ using Framework.ViewModels;
 using Framework.Service.Client;
 using Framework.Model;
 using Microsoft.AspNet.Identity;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Framework.Model.Google;
 
 namespace Framework.Controllers
 {
@@ -26,13 +29,14 @@ namespace Framework.Controllers
         IPostVoteDetailService _postVoteDetailService;
         ICommentVoteDetailService _commentVoteDetailService;
         ICommentService _commentOfPost;
-
+        IToiecGroupService _fbService;
         public PostController(ILayoutService layoutService,
             IPostService postService,
             IPostTypeService postTypeService,
             IPostVoteDetailService postVoteDetailService,
              ICommentService commentOfPost,
-            ICommentVoteDetailService commentVoteDetailService
+            ICommentVoteDetailService commentVoteDetailService,
+            IToiecGroupService fbService
             )
             : base(layoutService)
         {
@@ -41,6 +45,7 @@ namespace Framework.Controllers
             _postVoteDetailService = postVoteDetailService;
             _commentOfPost = commentOfPost;
             _commentVoteDetailService = commentVoteDetailService;
+            _fbService = fbService;
         }
 
         PostViewModel PostViewModel
@@ -299,6 +304,47 @@ namespace Framework.Controllers
             {
                 result = "failed",
             });
+        }
+        [AllowAnonymous]
+        public async Task CheckAnswerOnFB()
+        {
+            //Lay danh sách cac bài post chưa có câu trả lời
+            var listPost = _postService.GetAll().Where(x => x.Id_PostFB != null && x.Post_Status == 0);
+            foreach (var post in listPost)
+            {
+                var dapAn = await _fbService.DetectedAnswOfPost(post.Id_PostFB);
+                if (dapAn != "")
+                {
+                    post.Post_Status = 10;
+                    Comment comment = new Comment();
+                    comment.Corrected = false;
+                    comment.Content = dapAn;
+                    //Admin
+                    comment.Id_User = "eddf2dd7-5cfd-4828-904d-ed686780327a";
+                    comment.Id_Post = post.Id;
+                    comment.DateComment = DateTime.Now.Ticks.ToString();
+                    _commentOfPost.Add(comment);
+                    _commentOfPost.Save();
+                    _postService.Update(post);
+                    _postService.Save();
+                    await notifyForUserAboutQues(post.Id);
+                }
+            }
+        }
+        //Thông báo cho người đăng câu hỏi là đã có đáp án
+        public async Task<string> notifyForUserAboutQues(int idQues)
+        {
+            //Thông báo cho người đặt câu hỏi
+            var currentPost = _postService.GetById(idQues);
+            var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).LastOrDefault();
+            var userOfPost = _service.GetUserById(currentPost.Id_User);
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userOfPost.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a2c0352e4b0d0e6161fc7a1";
+            paramChatfuel += "&traloicauhoi=" + currentPost.Content;
+            paramChatfuel += "&dapancauhoi=" + detailPost.Content;
+            var response2 = await client.PostAsync(paramChatfuel, null);
+            return "";
         }
     }
 }

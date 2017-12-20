@@ -26,7 +26,7 @@ namespace Framework.FrameworkContext
         public DbSet<Message> Messages { set; get; }
         public DbSet<Notification> Notifications { set; get; }
         public DbSet<Post> Posts { set; get; }
-        public DbSet<PostCommentDetail> PostCommentDetails { set; get; }
+        public DbSet<Comment> PostCommentDetails { set; get; }
         public DbSet<PostVoteDetail> PostVoteDetails { set; get; }
         public DbSet<CommentVoteDetail> CommentVoteDetails { set; get; }
         public DbSet<Routing> Routings { set; get; }
@@ -38,6 +38,7 @@ namespace Framework.FrameworkContext
         public DbSet<DictCache> DictCaches { set; get; }
         public DbSet<SubType> SubTypes { set; get; }
         public DbSet<LearnVoca> LearnVocas { set; get; }
+        public DbSet<ToiecGroup> ToiecGroups { set; get; }
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -98,7 +99,7 @@ namespace Framework.FrameworkContext
                        e => e.Property(x => x.CreatedDate));
 
 
-            builder.Entity<PostCommentDetail>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertPostCommentDetail", "dbo"))
+            builder.Entity<Comment>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertPostCommentDetail", "dbo"))
             .Update(u => u.HasName("UpdatePostCommentDetail", "dbo"))
             .Delete(u => u.HasName("DeletePostCommentDetail", "dbo")));
             builder.Entity<PostVoteDetail>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertPostVoteDetail", "dbo"))
@@ -131,6 +132,9 @@ namespace Framework.FrameworkContext
             builder.Entity<LearnVoca>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertLearnVoca", "dbo"))
             .Update(u => u.HasName("UpdateLearnVoca", "dbo"))
             .Delete(u => u.HasName("DeleteLearnVoca", "dbo")));
+            builder.Entity<ToiecGroup>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertToiecGroup", "dbo"))
+            .Update(u => u.HasName("UpdateToiecGroup", "dbo"))
+            .Delete(u => u.HasName("DeleteToiecGroup", "dbo")));
         }
         //st3. -- END
 

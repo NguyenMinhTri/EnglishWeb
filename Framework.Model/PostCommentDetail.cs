@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Framework.Model
 {
-
     [Table("Comment")]
     public class Comment : Auditable
     {

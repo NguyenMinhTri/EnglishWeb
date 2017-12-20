@@ -62,16 +62,20 @@
     <Compile Include="Auditable.cs" />
     <Compile Include="BotModel.cs" />
     <Compile Include="Code.cs" />
+    <Compile Include="CommentFB.cs" />
     <Compile Include="CommentVoteDetail.cs" />
     <Compile Include="DetailOurWord.cs" />
     <Compile Include="DetailUserType.cs" />
     <Compile Include="DictCache.cs" />
     <Compile Include="GoogleJson.cs" />
     <Compile Include="HaveSendQuestion.cs" />
+    <Compile Include="ImageFB.cs" />
     <Compile Include="LearnVoca.cs" />
+    <Compile Include="ListPostToiecFB.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Dictionary.cs" />
+    <Compile Include="NumberLikesFB.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -93,6 +97,7 @@
     <Compile Include="TableJoin\AppointmentGetAll.cs" />
     <Compile Include="TableJoin\DoctorGetAll.cs" />
     <Compile Include="TableJoin\DoctorWithName.cs" />
+    <Compile Include="ToiecGroup.cs" />
     <Compile Include="TracNghiem.cs" />
   </ItemGroup>
   <ItemGroup>

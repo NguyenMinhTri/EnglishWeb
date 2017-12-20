@@ -249,9 +249,7 @@ namespace Framework.Controllers
         }
         protected List<ApplicationUser> getNormalUserBasedOnType(Post post)
         {
-            //
-            if (post.Option == 0)
-                return null;
+            
             List<ApplicationUser> ListAppUser = new List<ApplicationUser>();
             //Khong gui lai 2 lan cho 1 expert
 
@@ -311,8 +309,8 @@ namespace Framework.Controllers
         [AllowAnonymous]
         public string busyNotReplay(string idques, string idmessenger)
         {
-            RootObject2 result = new RootObject2();
-            Message3 messPron = new Message3();
+            ChatfuelJson result = new ChatfuelJson();
+            MessJson messPron = new MessJson();
 
             //
             bool isHetGio = false;
@@ -354,8 +352,8 @@ namespace Framework.Controllers
         public async Task<string> replayDirectly(string idques, string ketqua, string idmessenger)
         {
             //
-            RootObject2 result = new RootObject2();
-            Message3 messPron = new Message3();
+            ChatfuelJson result = new ChatfuelJson();
+            MessJson messPron = new MessJson();
             //
             bool checkGio = false;
             int idQuestion = int.Parse(idques);
@@ -484,6 +482,88 @@ namespace Framework.Controllers
             {
                 result = "failed",
             });
+        }
+        //make question directly from Messenger
+        [AllowAnonymous]
+        public async Task<string> ToeicQues(string content, string idmessenger)
+        {
+
+            ChatfuelJson result = new ChatfuelJson();
+            MessJson messPron = new MessJson();
+            
+            var userMakeQues = _service.listUserID().Where(x => x.Id_Messenger == idmessenger).ToList();
+            if (userMakeQues.Count != 0)
+            {
+                Post newPost = new Model.Post();
+                newPost.Content = content;
+                newPost.DatePost = DateTime.Now.Ticks.ToString();
+                newPost.Id_User = userMakeQues.FirstOrDefault().Id;
+                newPost.Id_Type = 8; // TOIEC
+                _postService.Add(newPost);
+                _postService.Save();
+                //Send notify
+                List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
+                foreach (var itemUser in userSubQues)
+                {
+                    await sendNofityToMessenger(newPost, itemUser);
+                    HaveSendQuestion haveSendQues = new HaveSendQuestion();
+                    haveSendQues.QuesID = newPost.Id;
+                    haveSendQues.UserID = itemUser.Id;
+                    haveSendQues.Status = false;
+                    haveSendQues.Protected = false;
+                    _haveSendQuesService.Add(haveSendQues);
+                    _haveSendQuesService.Save();
+                }
+                messPron.text = "Câu hỏi của bạn đã được gửi đi cho mọi người";
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
+            else
+            {
+                messPron.text = "Hình như bạn chưa có tài khoản trên Olympus English";
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
+        }
+        //make question directly from Messenger
+        public async Task<string> IeltsQues(string content, string messengerid)
+        {
+            ChatfuelJson result = new ChatfuelJson();
+            MessJson messPron = new MessJson();
+
+            var userMakeQues = _service.listUserID().Where(x => x.Id_Messenger == messengerid).ToList();
+            if (userMakeQues.Count != 0)
+            {
+                Post newPost = new Model.Post();
+                newPost.Content = content;
+                newPost.DatePost = DateTime.Now.Ticks.ToString();
+                newPost.Id_User = userMakeQues.FirstOrDefault().Id;
+                newPost.Id_Type = 9; // TOIEC
+                _postService.Add(newPost);
+                _postService.Save();
+                //Send notify
+                List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
+                foreach (var itemUser in userSubQues)
+                {
+                    await sendNofityToMessenger(newPost, itemUser);
+                    HaveSendQuestion haveSendQues = new HaveSendQuestion();
+                    haveSendQues.QuesID = newPost.Id;
+                    haveSendQues.UserID = itemUser.Id;
+                    haveSendQues.Status = false;
+                    haveSendQues.Protected = false;
+                    _haveSendQuesService.Add(haveSendQues);
+                    _haveSendQuesService.Save();
+                }
+                messPron.text = "Câu hỏi của bạn đã được gửi đi cho mọi người";
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
+            else
+            {
+                messPron.text = "Hình như bạn chưa có tài khoản trên Olympus English";
+                result.messages.Add(messPron);
+                return JsonConvert.SerializeObject(result);
+            }
         }
     }
 }

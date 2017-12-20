@@ -557,8 +557,8 @@ namespace Framework.Controllers
         [AllowAnonymous]
         public string registerChatBot(string idUser, string idmessenger)
         {
-            RootObject2 result = new RootObject2();
-            Message3 messPron = new Message3();
+            ChatfuelJson result = new ChatfuelJson();
+            MessJson messPron = new MessJson();
             
             var user = _applicationUserService.GetUserById(idUser);
             if(user == null)

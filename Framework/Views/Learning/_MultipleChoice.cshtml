@@ -27,7 +27,19 @@
                             foreach (var items in @Model.listTracNghiem)
                             {
                                 @Html.Raw("<li>")
-                                @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question + "</h4>")
+                                
+                                {
+                                    @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question + "</h4>")
+                                    if (@items.UrlImage == null || @items.UrlImage == "")
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<img src='" + @items.UrlImage + "'  class='listen-question' answer='True' id='cau_" + i + "'>")
+                                    }
+                                }
+
                                 @Html.Raw("<ul class='multiplechoice'>")
 
                                 int j = 0;
