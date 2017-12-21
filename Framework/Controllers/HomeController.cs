@@ -34,6 +34,7 @@ namespace Framework.Controllers
         IPostVoteDetailService _postVoteDetailService;
         ISubTypeService _subType;
         IDetailUserTypeService _detailUserType;
+        IToiecGroupService _fbService;
         public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
             IPostService postService,
@@ -43,7 +44,8 @@ namespace Framework.Controllers
             ICommentService commentOfPost,
             IPostVoteDetailService postVoteDetailService,
             ISubTypeService subType,
-            IDetailUserTypeService detailUserType
+            IDetailUserTypeService detailUserType,
+            IToiecGroupService fbService
             )
             : base(layoutService)
         {
@@ -56,6 +58,7 @@ namespace Framework.Controllers
             _postVoteDetailService = postVoteDetailService;
             _subType = subType;
             _detailUserType = detailUserType;
+            _fbService = fbService;
         }
 
         HomeViewModel HomeViewModel
@@ -118,6 +121,12 @@ namespace Framework.Controllers
             _viewModel = new PostViewModel();
             FieldHelper.CopyNotNullValue(newPost, data);
             newPost.CreatedDate = DateTime.Now;
+            if (data.Option == 0 && newPost.Id_Type == 8)
+            {
+                //post to fb toiec
+                var IdPost = await _fbService.PostingToGroupFB(newPost.Content);
+                newPost.Id_PostFB = IdPost.id;
+            }
             _postService.Add(newPost);
             _postService.Save();
             string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
@@ -135,23 +144,25 @@ namespace Framework.Controllers
                     _haveSendQuesService.Add(haveSendQues);
                     _haveSendQuesService.Save();
                 }
-                else
-                {
-                    //Send thong cho người dùng đăng ký loại câu hỏi đó
+            }
+            else
+            {
+                //Send thong cho người dùng đăng ký loại câu hỏi đó
 
-                    List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
-                    foreach (var itemUser in userSubQues)
-                    {
-                        await sendNofityToMessenger(newPost, itemUser);
-                        HaveSendQuestion haveSendQues = new HaveSendQuestion();
-                        haveSendQues.QuesID = newPost.Id;
-                        haveSendQues.UserID = itemUser.Id;
-                        haveSendQues.Status = false;
-                        haveSendQues.Protected = false;
-                        _haveSendQuesService.Add(haveSendQues);
-                        _haveSendQuesService.Save();
-                    }
+                List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
+                foreach (var itemUser in userSubQues)
+                {
+                    await sendNofityToMessenger(newPost, itemUser);
+                    HaveSendQuestion haveSendQues = new HaveSendQuestion();
+                    haveSendQues.QuesID = newPost.Id;
+                    haveSendQues.UserID = itemUser.Id;
+                    haveSendQues.Status = false;
+                    haveSendQues.Protected = false;
+                    _haveSendQuesService.Add(haveSendQues);
+                    _haveSendQuesService.Save();
                 }
+
+
             }
             //Send notify
             ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
@@ -249,7 +260,7 @@ namespace Framework.Controllers
         }
         protected List<ApplicationUser> getNormalUserBasedOnType(Post post)
         {
-            
+
             List<ApplicationUser> ListAppUser = new List<ApplicationUser>();
             //Khong gui lai 2 lan cho 1 expert
 
@@ -309,6 +320,7 @@ namespace Framework.Controllers
         [AllowAnonymous]
         public string busyNotReplay(string idques, string idmessenger)
         {
+
             ChatfuelJson result = new ChatfuelJson();
             MessJson messPron = new MessJson();
 
@@ -404,7 +416,7 @@ namespace Framework.Controllers
         {
             //Thông báo cho người đặt câu hỏi
             var currentPost = _postService.GetById(idQues);
-            var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).FirstOrDefault();
+            var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).LastOrDefault();
             var userOfPost = _service.GetUserById(currentPost.Id_User);
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -490,7 +502,7 @@ namespace Framework.Controllers
 
             ChatfuelJson result = new ChatfuelJson();
             MessJson messPron = new MessJson();
-            
+            MessJson messPron2 = new MessJson();
             var userMakeQues = _service.listUserID().Where(x => x.Id_Messenger == idmessenger).ToList();
             if (userMakeQues.Count != 0)
             {
@@ -499,8 +511,19 @@ namespace Framework.Controllers
                 newPost.DatePost = DateTime.Now.Ticks.ToString();
                 newPost.Id_User = userMakeQues.FirstOrDefault().Id;
                 newPost.Id_Type = 8; // TOIEC
+                                     //Send lên nhóm fb
+
+                {
+                    //post to fb toiec
+                    //Gửi cho admin trước khi dc duyệt
+                    
+                    //
+                    //var IdPost = await _fbService.PostingToGroupFB(newPost.Content);
+                    //  newPost.Id_PostFB = IdPost.id;
+                }
                 _postService.Add(newPost);
                 _postService.Save();
+                await NotifyForAdminToApprove(newPost.Id);
                 //Send notify
                 List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
                 foreach (var itemUser in userSubQues)
@@ -514,8 +537,10 @@ namespace Framework.Controllers
                     _haveSendQuesService.Add(haveSendQues);
                     _haveSendQuesService.Save();
                 }
-                messPron.text = "Câu hỏi của bạn đã được gửi đi cho mọi người";
+                messPron.text = "Câu hỏi của bạn đã được gửi đi cho mọi người !";
                 result.messages.Add(messPron);
+               // messPron2.text = "https://www.facebook.com/" + newPost.Id_PostFB;
+                //result.messages.Add(messPron2);
                 return JsonConvert.SerializeObject(result);
             }
             else
@@ -564,6 +589,62 @@ namespace Framework.Controllers
                 result.messages.Add(messPron);
                 return JsonConvert.SerializeObject(result);
             }
+        }
+
+        //Lay danh sách bài post trên group fb có đáp án > 4
+        [AllowAnonymous]
+        public async Task<string> GetPostFB()
+        {
+            var listPost = await _fbService.GetListFeedTextOfGroup();
+
+            string output = JsonConvert.SerializeObject(listPost);
+            return output;
+        }
+
+        public async Task<string> NotifyForAdminToApprove(int idQues)
+        {
+            var currentPost = _postService.GetById(idQues);
+            //  var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).LastOrDefault();
+            //var userOfPost = _service.GetUserById(currentPost.Id_User);
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + "2040670422625565" + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a35ec92e4b01f1986153d63";
+            paramChatfuel += "&cauhoicanduyet=" + currentPost.Content;
+            paramChatfuel += "&idquesnew=" + idQues;
+            var response2 = await client.PostAsync(paramChatfuel, null);
+            return "";
+        }
+        //Approved from Admin, admin xác nhận , câu hỏi dc post lên nhóm fb
+        [AllowAnonymous]
+        public async Task<string> ApprovedQuestion(string idques)
+        {
+            ChatfuelJson result = new ChatfuelJson();
+            MessJson messPron = new MessJson();
+            result.messages.Add(messPron);
+
+            var currentPost = _postService.GetById(int.Parse(idques));
+            var IdPost = await _fbService.PostingToGroupFB(currentPost.Content);
+            currentPost.Id_PostFB = IdPost.id;
+            _postService.Update(currentPost);
+            _postService.Save();
+            //Notify for user, this question is approved by admin
+            await NotifyForUser(currentPost.Id);
+            //
+            messPron.text = "Thành công";
+            return JsonConvert.SerializeObject(result);
+        }
+        //Thông báo cho người dùng câu hỏi đã được duyệt vào nhóm fb
+        public async Task<string> NotifyForUser(int idQues)
+        {
+            var currentPost = _postService.GetById(idQues);
+            //  var detailPost = _commentOfPost.GetAll().Where(x => x.Id_Post == idQues).LastOrDefault();
+            var userOfPost = _service.GetUserById(currentPost.Id_User);
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userOfPost.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a35f43fe4b01f19863c896a";
+            paramChatfuel += "&questioncontent=" + currentPost.Content;
+            var response2 = await client.PostAsync(paramChatfuel, null);
+            return "";
         }
     }
 }
