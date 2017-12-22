@@ -6686,7 +6686,7 @@ ol.old-words li a{vertical-align: sub;color: black;}
 }
 
 .reading h4{
-      display: inline-block;
+      display: inline;
       font-weight: 400;
 }
 
