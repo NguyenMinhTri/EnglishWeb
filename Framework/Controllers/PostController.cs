@@ -30,14 +30,14 @@ namespace Framework.Controllers
         ICommentVoteDetailService _commentVoteDetailService;
         ICommentService _commentOfPost;
         IToiecGroupService _fbService;
+        IDetailUserTypeService _detailUserTypeService;
         public PostController(ILayoutService layoutService,
             IPostService postService,
             IPostTypeService postTypeService,
             IPostVoteDetailService postVoteDetailService,
-             ICommentService commentOfPost,
+            ICommentService commentOfPost,
             ICommentVoteDetailService commentVoteDetailService,
-            IToiecGroupService fbService
-            )
+            IDetailUserTypeService detailUserTypeService, IToiecGroupService fbService)
             : base(layoutService)
         {
             _postService = postService;
@@ -45,6 +45,7 @@ namespace Framework.Controllers
             _postVoteDetailService = postVoteDetailService;
             _commentOfPost = commentOfPost;
             _commentVoteDetailService = commentVoteDetailService;
+            _detailUserTypeService = detailUserTypeService; 
             _fbService = fbService;
         }
 
@@ -114,7 +115,16 @@ namespace Framework.Controllers
                     PostViewModel.listComment.Add(commentViewModel);
                 }
             }
-            ViewBag.ListPostType = _postTypeService.GetAll().ToList();
+            List<PostType> listPostType = _postTypeService.GetAll().ToList();
+            List<PostTypeViewModel> listPostTypeViewModel = new List<PostTypeViewModel>();
+            foreach (PostType item in listPostType)
+            {
+                PostTypeViewModel postType = new PostTypeViewModel();
+                FieldHelper.CopyNotNullValue(postType, item);
+                postType.Register = _detailUserTypeService.getRegisterPostType(id_user, item.Id);
+                listPostTypeViewModel.Add(postType);
+            }
+            ViewBag.ListPostType = listPostTypeViewModel;
             return View(PostViewModel);
         }
 

@@ -18,8 +18,10 @@
                             <div class="author-date">
                                 <a class="h6 post__author-name fn" href="Profile?username=@Model.UserName&option=newsfeed">@Model.Name</a>
                                 <div class="post__date">
-                                    <time class="published" data-time="@Model.DatePost">
-                                    </time>
+                                    <a href="Post?Id=@Model.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
+                                        <time class="published" data-time="@Model.DatePost">
+                                        </time>
+                                    </a>
                                 </div>
                             </div>
                             <div class="more">
@@ -31,7 +33,9 @@
                         </div>
 
                         <h6 class="tag">
-                            Thể loại: <span>@Model.TypeToString</span>
+                            <a href="/?type=@Model.Id_Type">
+                                Thể loại: <span>@Model.TypeToString</span>
+                            </a>
                         </h6>
                         <p>
                             @Model.Content
@@ -91,7 +95,7 @@
                                 {
                                     if (commentParent.Corrected)
                                     {
-                                        @Html.Raw("<li class='has-children parent lazy-show not-showed answer' id='" + id + "'>")
+                                        @Html.Raw("<li class='has-children parent lazy-show showed answer' id='" + id + "'>")
                                     }
                                     else
                                     {
@@ -102,7 +106,7 @@
                                 {
                                     if (commentParent.Corrected)
                                     {
-                                        @Html.Raw("<li class='parent lazy-show not-showed answer' id='" + id + "'>")
+                                        @Html.Raw("<li class='parent lazy-show showed answer' id='" + id + "'>")
                                     }
                                     else
                                     {

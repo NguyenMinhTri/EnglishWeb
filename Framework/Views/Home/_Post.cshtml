@@ -25,7 +25,9 @@
         </div>
 
         <h6 class="tag">
-            Thể loại: <span>@Model.TypeToString</span>
+            <a href="/?type=@Model.Id_Type">
+                Thể loại: <span>@Model.TypeToString</span>
+            </a>
         </h6>
         <p>
             @Model.Content

@@ -7066,7 +7066,8 @@ ul.multiplechoice {
     color: white;
 }
 
-.activity li.inline-items:hover .notification-icon {
+.activity li.inline-items:hover .notification-icon,
+.activity li.inline-items:hover .notification-icon .active {
     color: #ffffff;
     fill: #ffffff;
 }
@@ -7081,4 +7082,20 @@ ul.multiplechoice {
 
 .activity .author-thumb img {
     border-color: #ffe243;
+}
+
+.activity .notification-icon .active {
+    fill: #f55d3c;
+}
+
+h6.tag a {
+    color:  unset;
+}
+
+h6.tag a:hover {
+    font-weight: 500;
+}
+
+.btn-more:hover {
+    background: #fc5e3b;
 }

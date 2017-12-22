@@ -158,7 +158,7 @@ $(document).on("click", ".comments-shared .post-add-icon.inline-items", function
 });
 
 $(document).on("click", ".comment-section .more-comments", function () {
-    $(".lazy-show.not-showed").slice(0, 2).slideDown(function () {
+    $(this).parent().find(".lazy-show.not-showed").slice(0, 2).slideDown(function () {
         $(this).removeClass("not-showed").addClass("showed");
     });
     var total_comment = parseInt($(this).parent().prev().find(".post-additional-info .comments-shared span:last-child").text());

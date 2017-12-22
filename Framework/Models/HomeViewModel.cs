@@ -9,8 +9,33 @@ namespace Framework.ViewModels
 {
     public class HomeViewModel : LayoutViewModel, IRef<HomeController>
     {
-        public List<PostType> ListPostType { get; set; }
+        public List<PostTypeViewModel> ListPostType { get; set; }
         public List<PostViewModel> ListPost { get; set; }
+        public HomeViewModel()
+        {
+            ListPostType = new List<PostTypeViewModel>();
+            ListPost = new List<PostViewModel>();
+        }
+    }
+
+    public class MorePostViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public List<PostViewModel> ListPost { get; set; }
+        public string UserId { get; set; }
+        public string Degree { get; set; }
+        public string UserName { get; set; }
+        public string Avatar { get; set; }
+        public MorePostViewModel()
+        {
+            ListPost = new List<PostViewModel>();
+        }
+    }
+
+    public class PostTypeViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public int Id { get; set; }
+        public String Name { get; set; }
+        public bool Register { get; set; }
     }
 
     public class CommentViewModel : LayoutViewModel, IRef<HomeController>

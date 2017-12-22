@@ -34,6 +34,7 @@ namespace Framework.Controllers
         IPostVoteDetailService _postVoteDetailService;
         ISubTypeService _subType;
         IDetailUserTypeService _detailUserType;
+ICommentVoteDetailService _commentVoteDetailService;
         IToiecGroupService _fbService;
         public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
@@ -45,6 +46,7 @@ namespace Framework.Controllers
             IPostVoteDetailService postVoteDetailService,
             ISubTypeService subType,
             IDetailUserTypeService detailUserType,
+            ICommentVoteDetailService commentVoteDetailService,
             IToiecGroupService fbService
             )
             : base(layoutService)
@@ -58,6 +60,7 @@ namespace Framework.Controllers
             _postVoteDetailService = postVoteDetailService;
             _subType = subType;
             _detailUserType = detailUserType;
+            _commentVoteDetailService = commentVoteDetailService;
             _fbService = fbService;
         }
 
@@ -85,14 +88,155 @@ namespace Framework.Controllers
             }
         }
 
-        public ActionResult Index(PostViewModel data, string userType)
+        public ActionResult Index(PostViewModel data, string userType, int? type)
         {
             _viewModel = new HomeViewModel();
-            CreateLayoutView("Trang chủ");
-            HomeViewModel.ListPostType = _postTypeService.GetAll().ToList();
+            string id_user = User.Identity.GetUserId();
+            List<Post> listPost = new List<Post>();
+            if (type == null)
+            {
+                CreateLayoutView("Trang chủ");
+                listPost = _postService.getPostByUserType(id_user).Take(5).ToList();
+            }
+            else
+            {
+                CreateLayoutView("Thể loại: " + _postTypeService.GetById(type.GetValueOrDefault()).Name);
+                listPost = _postService.getPostByType(type.GetValueOrDefault()).Take(5).ToList();
+            }
+            List<PostType> listPostType = _postTypeService.GetAll().ToList();
+            foreach (PostType item in listPostType){
+                PostTypeViewModel postType = new PostTypeViewModel();
+                FieldHelper.CopyNotNullValue(postType, item);
+                postType.Register = _detailUserTypeService.getRegisterPostType(id_user, item.Id);
+                HomeViewModel.ListPostType.Add(postType);
+            }
             ViewBag.newMember = userType;
+            ViewBag.type = type.GetValueOrDefault();
+
+            foreach (Post post in listPost)
+            {
+                PostViewModel postViewModel = new PostViewModel();
+                ApplicationUser user = _service.GetUserById(post.Id_User);
+                FieldHelper.CopyNotNullValue(postViewModel, user);
+                FieldHelper.CopyNotNullValue(postViewModel, post);
+
+                postViewModel.TypeToString = _postTypeService.GetById(post.Id_Type).Name;
+                PostVoteDetail votePost = _postVoteDetailService.getVoteByIdUser(id_user, post.Id);
+                if (votePost != null)
+                {
+                    postViewModel.Vote = votePost.Vote;
+                }
+                List<Comment> listComment = new List<Comment>();
+                List<Comment> listChildComment = new List<Comment>();
+                listComment = _commentOfPost.getCommentOfPost(post.Id);
+                foreach (var parent in listComment)
+                {
+                    CommentViewModel commentViewModel = new CommentViewModel();
+                    user = _service.GetUserById(parent.Id_User);
+                    CommentVoteDetail voteComment = _commentVoteDetailService.getVoteByIdUser(id_user, parent.Id);
+                    if (voteComment != null)
+                    {
+                        commentViewModel.Vote = voteComment.Vote;
+                    }
+                    FieldHelper.CopyNotNullValue(commentViewModel, user);
+                    FieldHelper.CopyNotNullValue(commentViewModel, parent);
+                    listChildComment = _commentOfPost.getChildOfComment(parent.Id_Post, parent.Id);
+                    if (listChildComment.Count != 0)
+                    {
+                        foreach (var child in listChildComment)
+                        {
+                            CommentViewModel commentChildViewModel = new CommentViewModel();
+                            user = _service.GetUserById(child.Id_User);
+                            FieldHelper.CopyNotNullValue(commentChildViewModel, user);
+                            FieldHelper.CopyNotNullValue(commentChildViewModel, child);
+                            commentViewModel.listChildComment.Add(commentChildViewModel);
+                        }
+                    }
+                    if (commentViewModel.Corrected)
+                    {
+                        postViewModel.listComment.Insert(0, commentViewModel);
+                    }
+                    else
+                    {
+                        postViewModel.listComment.Add(commentViewModel);
+                    }
+                }
+                HomeViewModel.ListPost.Add(postViewModel);
+            }
             return View(HomeViewModel);
         }
+
+        public PartialViewResult MorePost(int page, int? type)
+        {
+            MorePostViewModel morePostViewModel = new MorePostViewModel();
+            string id_user = User.Identity.GetUserId();
+            List<Post> listPost = new List<Post>();
+            if (type == null)
+            {
+                listPost = _postService.getPostByUserType(id_user).Skip(page*5).Take(5).ToList();
+            }
+            else
+            {
+                listPost = _postService.getPostByType(type.GetValueOrDefault()).Skip(page*5).Take(5).ToList();
+            }
+            foreach (Post post in listPost)
+            {
+                PostViewModel postViewModel = new PostViewModel();
+                ApplicationUser user = _service.GetUserById(post.Id_User);
+                FieldHelper.CopyNotNullValue(postViewModel, user);
+                FieldHelper.CopyNotNullValue(postViewModel, post);
+
+                postViewModel.TypeToString = _postTypeService.GetById(post.Id_Type).Name;
+                PostVoteDetail votePost = _postVoteDetailService.getVoteByIdUser(id_user, post.Id);
+                if (votePost != null)
+                {
+                    postViewModel.Vote = votePost.Vote;
+                }
+                List<Comment> listComment = new List<Comment>();
+                List<Comment> listChildComment = new List<Comment>();
+                listComment = _commentOfPost.getCommentOfPost(post.Id);
+                foreach (var parent in listComment)
+                {
+                    CommentViewModel commentViewModel = new CommentViewModel();
+                    user = _service.GetUserById(parent.Id_User);
+                    CommentVoteDetail voteComment = _commentVoteDetailService.getVoteByIdUser(id_user, parent.Id);
+                    if (voteComment != null)
+                    {
+                        commentViewModel.Vote = voteComment.Vote;
+                    }
+                    FieldHelper.CopyNotNullValue(commentViewModel, user);
+                    FieldHelper.CopyNotNullValue(commentViewModel, parent);
+                    listChildComment = _commentOfPost.getChildOfComment(parent.Id_Post, parent.Id);
+                    if (listChildComment.Count != 0)
+                    {
+                        foreach (var child in listChildComment)
+                        {
+                            CommentViewModel commentChildViewModel = new CommentViewModel();
+                            user = _service.GetUserById(child.Id_User);
+                            FieldHelper.CopyNotNullValue(commentChildViewModel, user);
+                            FieldHelper.CopyNotNullValue(commentChildViewModel, child);
+                            commentViewModel.listChildComment.Add(commentChildViewModel);
+                        }
+                    }
+                    if (commentViewModel.Corrected)
+                    {
+                        postViewModel.listComment.Insert(0, commentViewModel);
+                    }
+                    else
+                    {
+                        postViewModel.listComment.Add(commentViewModel);
+                    }
+                }
+                morePostViewModel.ListPost.Add(postViewModel);
+                ApplicationUser userT = _service.GetUserById(id_user);
+                morePostViewModel.UserId = userT.Id;
+                morePostViewModel.Degree = userT.Degree;
+                morePostViewModel.UserName = userT.UserName;
+                morePostViewModel.Avatar = userT.Avatar;
+            }
+            return PartialView("_MorePost", morePostViewModel);
+        }
+
 
         [HttpPost]
         public PartialViewResult Comment(CommentViewModel data)
@@ -464,9 +608,11 @@ namespace Framework.Controllers
         [HttpPost]
         public JsonResult RegisterType(RegisterPostViewModel data)
         {
-            if (data.UserID == User.Identity.GetUserId())
+            string userId = User.Identity.GetUserId();
+            if (data.UserID == userId)
             {
                 DetailUserType type;
+                _detailUserType.removeByUserId(userId);
                 foreach (var item in data.TypeList)
                 {
                     type = new DetailUserType();

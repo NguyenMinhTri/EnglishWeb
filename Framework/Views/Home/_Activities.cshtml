@@ -18,11 +18,18 @@
                             @Html.Raw("<img src='content/images/icon-chat" + i + ".png' alt='author'>")
                         </div>
                         <div class="notification-event">
-                            <a href="#" class="h6 notification-friend">@item.Name</a>
+                            <a href="/?type=@item.Id" class="h6 notification-friend">@item.Name</a>
                         </div>
                         <span class="notification-icon" data-toggle="tooltip" data-placement="top" data-original-title="YÊU THÍCH">
-                            <a>
+                            <a id="@item.Id">
+                                @if (item.Register)
+                                {
+                                <svg class="olymp-star-icon active"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                }
+                                else
+                                {
                                 <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                }
                             </a>
                         </span>
                     </li>
@@ -33,3 +40,56 @@
 </aside>
 
 <!-- ... end Right Sidebar -->
+
+<a data-toggle="modal" data-target="#thanks" id="thanks-button"></a>
+
+<div class="modal fade" id="thanks">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="~/content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Cảm ơn bạn</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Cảm ơn bạn!
+            </p>
+            <p>
+                Olympus đã ghi nhớ lựa chọn!
+            </p>
+            <p>
+                <b>Chúc bạn học tốt nhá!!!</b>
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" onclick="location.reload()">Áp dụng thay đổi</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var typeList = [];
+    $(document).on("click", ".notification-icon a", function () {
+        $(this).find("svg").toggleClass( "active" );
+        $(".notification-icon a .active").each(function () {
+            typeList.push($(this).parent().attr("id"));
+        });
+        var data = { UserID: '@Model.User.Id', TypeList: typeList }
+        $.post('/Home/RegisterType', data).done(function (response) {
+            if (response.result == "success") {
+                $("#thanks-button").click();
+            }
+            else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            $("#notify-button").click();
+        })
+    })
+</script>

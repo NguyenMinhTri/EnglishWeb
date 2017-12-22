@@ -4,6 +4,7 @@ using Framework.Repository.RepositorySpace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -67,7 +68,5 @@ namespace Framework.Service
         {
             return _repository.GetSingleById(id);
         }
-
-
     }
 }
