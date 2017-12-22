@@ -248,11 +248,13 @@ $(document).on("click", ".news-feed-form .form-group .selection .togglebutton la
         $(".news-feed-form .form-group .selection p").text("Hỏi thầy cô cho chắc").css("color", "#fe5e3a");
         $(this).parent().parent().attr("title", "Tắt để hỏi mọi người nha!").attr("data-original-title", "Tắt để hỏi mọi người nha!");
         $("input[name='Option']").val("1");
+        $(".news-feed-form #home-1 .post-control-button").fadeIn();
     }
     else {
         $(".news-feed-form .form-group .selection p").text("Hỏi tất cả mọi người").css("color", "#888da8");
         $(this).parent().parent().attr("title", "Bật để hỏi Thầy cô nha!").attr("data-original-title", "Bật để hỏi Thầy cô nha!");
         $("input[name='Option']").val("0");
+        $(".news-feed-form #home-1 .post-control-button").fadeOut();
     }
 });
 
@@ -268,7 +270,7 @@ $(document).on("click", "#question-form input[type='submit']", function (e) {
         var data = form.serialize();
 
         $.post('/Home/Post', data).done(function (html) {
-            $("#partial").append(html);
+            $("#partial-question").prepend(html);
             $("#question-form textarea").val("");
             $(".landing-main-content").remove();
         }).fail(function (response) {

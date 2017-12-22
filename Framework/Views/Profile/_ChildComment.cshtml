@@ -1,9 +1,6 @@
 ﻿@model Framework.ViewModels.CommentViewModel
-@{
-    var id = "p"+@Model.Id_Post+"c-" + @Model.Id;
-}
 
-<li class="new-comment parent" style="display: none" id="@id">
+<li class="new-comment child" style="display: none">
     <div class="post__author author vcard inline-items @Model.Degree">
         <img src="content/images/@Model.Avatar" alt="author">
 
@@ -21,11 +18,10 @@
                 <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
             </div>
         </div>
+
     </div>
 
-    <p id="comments">
-        @Model.Content
-    </p>
+    <p>@Model.Content</p>
 
     <a href="#" class="post-add-icon inline-items upvote">
         <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
@@ -35,12 +31,6 @@
         <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
         <span>@Model.DownVote</span>
     </a>
-    <a class="reply">Trả lời</a>
-
-    <div id="mark-answer">
-
-    </div>
-    <ul class="children"></ul>
 </li>
 
 <script>
@@ -50,8 +40,5 @@
     }
     else if (vote < 0) {
         $(".post-add-icon.downvote").addClass("active");
-    }
-    if ($("#UserId").val() == '@Model.Id_User') {
-        $("#mark-answer").append('<div class="control-block-button post-control-button"><a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận"> <svg class="olymp-like-post-icon"><use xlink:href="content/icons/icons.svg#olymp-like-post-icon"></use></svg> </a></div>')
     }
 </script>

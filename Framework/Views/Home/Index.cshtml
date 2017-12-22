@@ -20,6 +20,11 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                                    <div class="control-block-button post-control-button" style="display:none">
+                                        <a class="btn btn-control expert-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Câu hỏi dành cho Chuyên gia">
+                                            <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                        </a>
+                                    </div>
                                     <form id="question-form">
                                         <div class="author-thumb @Model.User.Degree">
                                             <img src="content/images/@Model.User.Avatar" alt="author">
@@ -36,6 +41,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="add-options-message row ask-teacher">
                                             <label class="control-label">Vui lòng chọn loại câu hỏi</label>
                                             <fieldset class="form-group">
@@ -59,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="partial"></div>
+                    <div id="partial-question"></div>
                 }
                 @if (Model.ListPost.Count == 0)
                 {
@@ -104,6 +110,15 @@
                                 <p>
                                     @post.Content
                                 </p>
+
+                                @if (post.Option == 1)
+                                {
+                                <div class="control-block-button post-control-button">
+                                    <a class="btn btn-control expert-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Câu hỏi dành cho Chuyên gia">
+                                        <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                    </a>
+                                </div>
+                                }
 
                                 <div class="post-additional-info inline-items">
                                     @if (post.Vote == 1)
@@ -241,7 +256,7 @@
                                         {
                                             <div class="control-block-button post-control-button">
                                                 <a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận">
-                                                    <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                                    <svg class="olymp-like-post-icon"><use xlink:href="content/icons/icons.svg#olymp-like-post-icon"></use></svg>
                                                 </a>
                                             </div>
                                         }
@@ -323,7 +338,7 @@
             </div>
             @if (Model.ListPost != null)
             {
-                <a id="load-more-button" class="btn btn-control btn-more" ><svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
+                <a id="load-more-button" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
             }
         </main>
 
@@ -360,7 +375,7 @@
                     </p>
                     <div class="modal-button">
                         <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Thôi, tha</a>
-                        <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center">Xóa dùm</a>
+                        <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" data-toggle="modal" data-target="#thankreport" data-dismiss="modal" aria-label="Close">Xóa dùm</a>
                     </div>
                 </div>
 
@@ -393,6 +408,32 @@
         </div>
 
         <!-- ... end Window-popup Thank you -->
+
+        <div class="modal fade" id="thankreport">
+            <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+                </a>
+
+                <div class="ui-block-title">
+                    <h6 class="title">Đã báo cáo thành công</h6>
+                </div>
+
+                <div class="ui-block-content">
+                    <p>
+                        Olympus cảm ơn bạn rất nhiều!
+                    </p>
+                    <p>
+                        <b>Make Olympus great againt!</b>
+                    </p>
+                    <div class="modal-button">
+                        <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>
 

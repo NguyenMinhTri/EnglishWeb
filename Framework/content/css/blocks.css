@@ -7099,3 +7099,12 @@ h6.tag a:hover {
 .btn-more:hover {
     background: #fc5e3b;
 }
+
+a.btn.btn-control.expert-answer {
+    background-color: #ff5e3a;
+}
+
+.news-feed-form #home-1 .post-control-button{
+    top: 20px;
+    right: -2px;
+}

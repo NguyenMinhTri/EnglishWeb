@@ -12,6 +12,7 @@ namespace Framework.Service.Admin
     {
         List<Post> getPostByUserType(string id_user);
         List<Post> getPostByType(int type);
+        List<Post> getPostByUser(string id_user);
     }
     public class PostService : QlService<Post>, IPostService
     {
@@ -48,6 +49,10 @@ namespace Framework.Service.Admin
         public List<Post> getPostByType(int type)
         {
             return  _postRepository.GetMulti(x => x.Id_Type == type).OrderByDescending(x => x.DatePost).ToList();
+        }
+        public List<Post> getPostByUser(string id_user)
+        {
+            return _postRepository.GetMulti(x => x.Id_User == id_user).OrderByDescending(x => x.DatePost).ToList();
         }
     }
 }

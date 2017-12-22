@@ -1,4 +1,5 @@
 ﻿<div class="header-spacer"></div>
+<div class="waiting_loader" style="display: none"></div>
 
 @Html.Partial("_Header")
 
@@ -11,7 +12,9 @@
 
 <script>
     function getview(action) {
-        $(".waiting_loader").css("display", "block");
+        if ($(".fakeloader").css("display") == "none") {
+            $(".waiting_loader").css("display", "block");
+        }
         var url = "/Profile/" + action + "?username=" + username;
         $("#partial").load(url, function (response, status, xhr) {
             if (status == "success") {

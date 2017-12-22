@@ -960,7 +960,13 @@
     <Content Include="Views\AdminSubType\Index.cshtml" />
     <Content Include="Views\AdminLearnVoca\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
-    <Content Include="Views\Home\_MorePost.cshtml" />    <Content Include="Views\AdminToiecGroup\Index.cshtml" />  </ItemGroup>
+    <Content Include="Views\Home\_MorePost.cshtml" />
+    <Content Include="Views\AdminToiecGroup\Index.cshtml" />
+    <Content Include="Views\Profile\_Comment.cshtml" />
+    <Content Include="Views\Profile\_ChildComment.cshtml" />
+    <Content Include="Views\Profile\_MorePost.cshtml" />
+    <Content Include="Views\Profile\_Post.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

@@ -34,7 +34,7 @@ namespace Framework.Controllers
         IPostVoteDetailService _postVoteDetailService;
         ISubTypeService _subType;
         IDetailUserTypeService _detailUserType;
-ICommentVoteDetailService _commentVoteDetailService;
+        ICommentVoteDetailService _commentVoteDetailService;
         IToiecGroupService _fbService;
         public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
@@ -104,7 +104,8 @@ ICommentVoteDetailService _commentVoteDetailService;
                 listPost = _postService.getPostByType(type.GetValueOrDefault()).Take(5).ToList();
             }
             List<PostType> listPostType = _postTypeService.GetAll().ToList();
-            foreach (PostType item in listPostType){
+            foreach (PostType item in listPostType)
+            {
                 PostTypeViewModel postType = new PostTypeViewModel();
                 FieldHelper.CopyNotNullValue(postType, item);
                 postType.Register = _detailUserTypeService.getRegisterPostType(id_user, item.Id);
@@ -171,13 +172,13 @@ ICommentVoteDetailService _commentVoteDetailService;
             MorePostViewModel morePostViewModel = new MorePostViewModel();
             string id_user = User.Identity.GetUserId();
             List<Post> listPost = new List<Post>();
-            if (type == null)
+            if (type == 0)
             {
-                listPost = _postService.getPostByUserType(id_user).Skip(page*5).Take(5).ToList();
+                listPost = _postService.getPostByUserType(id_user).Skip(page * 5).Take(5).ToList();
             }
             else
             {
-                listPost = _postService.getPostByType(type.GetValueOrDefault()).Skip(page*5).Take(5).ToList();
+                listPost = _postService.getPostByType(type.GetValueOrDefault()).Skip(page * 5).Take(5).ToList();
             }
             foreach (Post post in listPost)
             {
@@ -236,7 +237,6 @@ ICommentVoteDetailService _commentVoteDetailService;
             }
             return PartialView("_MorePost", morePostViewModel);
         }
-
 
         [HttpPost]
         public PartialViewResult Comment(CommentViewModel data)
@@ -657,12 +657,12 @@ ICommentVoteDetailService _commentVoteDetailService;
                 newPost.DatePost = DateTime.Now.Ticks.ToString();
                 newPost.Id_User = userMakeQues.FirstOrDefault().Id;
                 newPost.Id_Type = 8; // TOIEC
-                                     //Send lên nhóm fb
+                //Send lên nhóm fb
 
                 {
                     //post to fb toiec
                     //Gửi cho admin trước khi dc duyệt
-                    
+
                     //
                     //var IdPost = await _fbService.PostingToGroupFB(newPost.Content);
                     //  newPost.Id_PostFB = IdPost.id;
@@ -685,7 +685,7 @@ ICommentVoteDetailService _commentVoteDetailService;
                 }
                 messPron.text = "Câu hỏi của bạn đã được gửi đi cho mọi người !";
                 result.messages.Add(messPron);
-               // messPron2.text = "https://www.facebook.com/" + newPost.Id_PostFB;
+                // messPron2.text = "https://www.facebook.com/" + newPost.Id_PostFB;
                 //result.messages.Add(messPron2);
                 return JsonConvert.SerializeObject(result);
             }

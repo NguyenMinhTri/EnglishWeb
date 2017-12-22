@@ -1,4 +1,5 @@
 ﻿using Framework.Controllers;
+using Framework.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,13 @@ namespace Framework.ViewModels
         public String Facebook { get; set; }
         public String Degree { get; set; }
         public String Avatar { get; set; }
+        public List<PostType> ListPostType { get; set; }
+        public List<PostViewModel> ListPost { get; set; }
+        public NewsFeedViewModel()
+        {
+            ListPostType = new List<PostType>();
+            ListPost = new List<PostViewModel>();
+        }
     }
 
     public class AboutViewModel : LayoutViewModel, IRef<ProfileController>
