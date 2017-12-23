@@ -230,6 +230,7 @@
             data += "&Url=" + window.location.href;
             var button = $(this);
             $.post('/Account/Register', data).done(function (response) {
+                console.log(response.result)
                 if ($(".checkbox input[type=checkbox]:checked").length != 0) {
                     if (response.result == "success") {
                         $("#notify-button").click();

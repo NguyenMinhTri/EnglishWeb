@@ -654,7 +654,7 @@ namespace Framework.Controllers
             {
                 Post newPost = new Model.Post();
                 newPost.Content = content;
-                newPost.DatePost = DateTime.Now.Ticks.ToString();
+                newPost.DatePost = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds.ToString();
                 newPost.Id_User = userMakeQues.FirstOrDefault().Id;
                 newPost.Id_Type = 8; // TOIEC
                 //Send lên nhóm fb
