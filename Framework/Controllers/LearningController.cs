@@ -15,6 +15,7 @@ using Framework.ViewModels;
 using Framework.Service.Client;
 using Framework.Model;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace Framework.Controllers
 {
@@ -238,7 +239,7 @@ namespace Framework.Controllers
             _viewModel = new MultipleChoiceViewModel();
             List<int> randDomPost = randomPosition();
             List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
-            var listToiecQues = await _toiecService.GetListFeedTextOfGroup();
+            var listToiecQues =  _toiecService.GetToiecExamList();
             foreach(var item in listToiecQues.data)
             {
                 TracNghiem tracnghiem = new TracNghiem();
@@ -273,6 +274,12 @@ namespace Framework.Controllers
             }
             MultipleChoiceViewModel.listTracNghiem = dataTracNghiem;
             return PartialView("_MultipleChoice", MultipleChoiceViewModel);
+        }
+        //
+        [AllowAnonymous]
+        public async Task autoGeneratorToiecExam()
+        {
+            var listToiecQues = await _toiecService.GetListFeedTextOfGroup();
         }
     }
 }

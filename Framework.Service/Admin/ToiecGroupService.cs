@@ -23,6 +23,7 @@ namespace Framework.Service.Admin
         Task<string> DetectedAnswOfPost(string postid);
         Task<ListPostFB> GetListFeedTextOfGroup(string id = "1446400445645839");
         Task<ImageFB> PostingToGroupFB(string content);
+        ListPostFB GetToiecExamList();
     }
     public class ToiecGroupService : QlService<ToiecGroup>, IToiecGroupService
     {
@@ -351,6 +352,24 @@ namespace Framework.Service.Admin
             }
             var contents = await reponse.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ImageFB>(contents);
+        }
+        //Get 10 toiec sentence
+        public ListPostFB GetToiecExamList()
+        {
+            ListPostFB result = new ListPostFB();
+            var listAllToiecExam = GetAll().Where(x => x.DapAn != null && x.DapAn !="");
+            var tempToiec = listAllToiecExam.Skip(Math.Max(0, listAllToiecExam.Count() - 10)).ToList();
+            foreach(var postData in tempToiec)
+            {
+                Model.Feeds.Datum temp = new Model.Feeds.Datum();
+                temp.id = postData.Id_Post;
+                temp.imageURL = postData.ImageUrl;
+                temp.message = postData.Content;
+                temp.DapAn = postData.DapAn;
+                temp.GiaiThich = postData.GiaiThich;
+                result.data.Add(temp);
+            }
+            return result;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Framework.Schedule
 {
     public class JobScheduler
     {
+        public static int ToiecUpdatedTime = 0;
         public static void Start()
         {
             IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();

@@ -270,6 +270,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\WebhookController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
     <Compile Include="Infrastructure\CustomUserIdProvider.cs" />
@@ -395,6 +396,7 @@
     <Content Include="content\icons\shuffle-on.svg" />
     <Content Include="content\icons\shuffle.svg" />
     <Content Include="content\icons\sound.svg" />
+    <Content Include="content\icons\voice.svg" />
     <Content Include="content\images\account-bottom.png" />
     <Content Include="content\images\admin.png" />
     <Content Include="content\images\author-main1.jpg" />
@@ -818,7 +820,13 @@
     <Content Include="content\js\smooth-scroll.min.js" />
     <Content Include="content\js\theme-plugins.js" />
     <Content Include="content\js\word-youtube.js" />
+    <Content Include="content\mp3\Dance With Me - Nouvelle Vague.MP3" />
+    <Content Include="content\mp3\Enchanté %28Carine%29 - Fergie, Axl Jack.mp3" />
+    <Content Include="content\mp3\Havana - Camila Cabello.mp3" />
+    <Content Include="content\mp3\How Long - Charlie Puth.MP3" />
+    <Content Include="content\mp3\James Has Changed - Phoebe Ryan.mp3" />
     <Content Include="content\mp3\Ket_1_3.mp3" />
+    <Content Include="content\mp3\Starry Starry Night - Lianne La Havas.mp3" />
     <Content Include="dai-tu.html" />
     <Content Include="danh-tu-dem-duoc-va-danh-tu-khong-dem-duoc.html" />
     <Content Include="danh-tu-so-it-so-nhieu.html" />

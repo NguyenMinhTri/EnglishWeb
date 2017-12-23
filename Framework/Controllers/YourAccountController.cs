@@ -17,12 +17,22 @@ using Microsoft.AspNet.Identity;
 using Framework.Model;
 using Framework.Models;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Security.Cryptography;
+using Newtonsoft.Json;
+using System.Net;
+using Framework.Model.Bot;
 
 namespace Framework.Controllers
 {
 
     public class YourAccountController : LayoutController
     {
+        string pageToken = "EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp";
+        string appSecret = "e4bb9e8c052fd8008d6d3b3d1ac7c9b9";
         IApplicationUserService _applicationUserService;
         public YourAccountController(ILayoutService layoutService,
             IApplicationUserService applicationUserService)
@@ -264,6 +274,142 @@ namespace Framework.Controllers
         {
             _viewModel = new RequestsViewModel();
             return PartialView("_Requests", RequestsViewModel);
+        }
+        [AllowAnonymous]
+        public ActionResult Get()
+        {
+            var querystrings = Request.QueryString;
+            if (querystrings["hub.verify_token"] == pageToken)
+            {
+                var retVal = querystrings["hub.challenge"];
+                return Json(int.Parse(retVal), JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<HttpResponseMessage> Post()
+        {
+            var signature = Request.Headers.GetValues("X-Hub-Signature").FirstOrDefault().Replace("sha1=", "");
+            Stream req = Request.InputStream;
+            req.Seek(0, System.IO.SeekOrigin.Begin);
+            string body = new StreamReader(req).ReadToEnd();
+            if (!VerifySignature(signature, body))
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+
+            var value = JsonConvert.DeserializeObject<WebhookModel>(body);
+            if (value._object != "page")
+                return new HttpResponseMessage(HttpStatusCode.OK);
+
+            foreach (var item in value.entry[0].messaging)
+            {
+                if (item.message == null && item.postback == null)
+                    continue;
+                else
+                    await SendMessage(GetMessageTemplate(item.message.text, item.sender.id));
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+        [AllowAnonymous]
+        private bool VerifySignature(string signature, string body)
+        {
+            var hashString = new StringBuilder();
+            using (var crypto = new HMACSHA1(Encoding.UTF8.GetBytes(appSecret)))
+            {
+                var hash = crypto.ComputeHash(Encoding.UTF8.GetBytes(body));
+                foreach (var item in hash)
+                    hashString.Append(item.ToString("X2"));
+            }
+
+            return hashString.ToString().ToLower() == signature.ToLower();
+        }
+        [AllowAnonymous]
+        /// <summary>
+        /// get text message template
+        /// </summary>
+        /// <param name="text">text</param>
+        /// <param name="sender">sender id</param>
+        /// <returns>json</returns>
+        private JObject GetMessageTemplate(string text, string sender)
+        {
+            return JObject.FromObject(new
+            {
+                recipient = new { id = sender },
+                message = new { text = text }
+            });
+        }
+
+        /// <summary>
+        /// send message
+        /// </summary>
+        /// <param name="json">json</param>
+        private async Task SendMessage(JObject json)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage res = await client.PostAsync($"https://graph.facebook.com/v2.6/me/messages?access_token={pageToken}", new StringContent(json.ToString(), Encoding.UTF8, "application/json"));
+            }
+        }
+        [AllowAnonymous]
+        [ActionName("Get")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ReceivePost(BotRequest data)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                foreach (var entry in data.entry)
+                {
+                    foreach (var message in entry.messaging)
+                    {
+                        if (string.IsNullOrWhiteSpace(message?.message?.text))
+                            continue;
+
+                        var msg = "You said: " + message.message.text;
+                        var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
+                        PostRaw("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp", json);
+                        //var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp");
+                        //httpWebRequest.ContentType = "application/json";
+                        //httpWebRequest.Method = "POST";
+                        //var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                        //using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                        //{
+                        //    var result = streamReader.ReadToEnd();
+                        //}
+                    }
+                }
+            });
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+        [AllowAnonymous]
+        private string PostRaw(string url, string data)
+        {
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.ContentType = "application/json";
+                request.Method = "POST";
+                using (var requestWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    requestWriter.Write(data);
+                    requestWriter.Flush();
+                    requestWriter.Close();
+                }
+                var response = (HttpWebResponse)request.GetResponse();
+                if (response == null)
+                    throw new InvalidOperationException("GetResponse returns null");
+
+                using (var sr = new StreamReader(response.GetResponseStream()))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+            catch
+            {
+                return "";
+            }
         }
     }
 }

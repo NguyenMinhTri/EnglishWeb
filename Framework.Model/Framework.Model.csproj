@@ -44,6 +44,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -67,12 +68,14 @@
     <Compile Include="DetailOurWord.cs" />
     <Compile Include="DetailUserType.cs" />
     <Compile Include="DictCache.cs" />
+    <Compile Include="FbBotDataClasses.cs" />
     <Compile Include="GoogleJson.cs" />
     <Compile Include="HaveSendQuestion.cs" />
     <Compile Include="ImageFB.cs" />
     <Compile Include="LearnVoca.cs" />
     <Compile Include="ListPostToiecFB.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="MessengerBot.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="NumberLikesFB.cs" />

@@ -20,12 +20,14 @@ using Newtonsoft.Json;
 using Framework.Model.Bot;
 using Microsoft.AspNet.Identity;
 using Framework.ViewData.Admin.GetData;
+using System.Net.Http;
 
 namespace Framework.Controllers
 {
 
     public class DictionaryController : LayoutController
     {
+
         IClientDictionaryService _clientDictionaryService;
         IOurWordService _ourWordService;
         IDetailOurWordService _detailOutWordService;
@@ -120,7 +122,7 @@ namespace Framework.Controllers
                         dict = await _clientDictionaryService.startCrawlerOxford(keyword);
                         downloadSucceeded = true;
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         downloadSucceeded = false;
 
@@ -151,7 +153,7 @@ namespace Framework.Controllers
                     DictionariesViewModel.m_SoundUrl = dict.m_SoundUrl;
                     DictionariesViewModel.m_Type = dict.m_Type;
                     DictionariesViewModel.m_Voca = dict.m_Voca;
-                    DictionariesViewModel.m_Pron = dict.m_Pron.Replace("BrE","");
+                    DictionariesViewModel.m_Pron = dict.m_Pron.Replace("BrE", "");
                 }
                 DictionariesViewModel.m_ExaTraCau = await _clientDictionaryService.startCrawlerTraCau(keyword);
             }
@@ -164,7 +166,7 @@ namespace Framework.Controllers
             OurWord newOurWord = new OurWord();
             DetailOurWord detailWord = new DetailOurWord();
             FieldHelper.CopyNotNullValue(newOurWord, ourword);
-           
+
             if (ourword != null)
             {
 
@@ -180,7 +182,7 @@ namespace Framework.Controllers
                 detailWord.Learned = 1;
                 detailWord.Id = 0;
                 detailWord.Schedule = DateTime.Now.AddDays(-1);
-           
+
                 // detailWord.
                 try
                 {
@@ -192,8 +194,10 @@ namespace Framework.Controllers
                 }
                 try
                 {
+                    
                     _detailOutWordService.Add(detailWord);
                     _detailOutWordService.Save();
+                    await sendNotificationEnlish();
                 }
                 catch (Exception e)
                 {
@@ -350,16 +354,16 @@ namespace Framework.Controllers
                             reminderUser.vocainfo.Add(vocaInfo);
                             i++;
                         }
-                        if(i!=0)
-                        listUserNotify.reminduser.Add(reminderUser);
+                        if (i != 0)
+                            listUserNotify.reminduser.Add(reminderUser);
                     }
                 }
                 catch
                 {
 
                 }
-               }
-                
+            }
+
             return JsonConvert.SerializeObject(listUserNotify);
         }
         [AllowAnonymous]
@@ -368,14 +372,14 @@ namespace Framework.Controllers
             List<int> randDomPost = randomPosition();
             List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
             List<int> listIDWord = new List<int>();
-            var currentUser =_service.GetUserById(User.Identity.GetUserId());
+            var currentUser = _service.GetUserById(User.Identity.GetUserId());
             listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, -1);
-            foreach(var id in listIDWord)
+            foreach (var id in listIDWord)
             {
                 dataTracNghiem.Add(RandomTracNghiemChoVoca(id));
             }
             //
-        } 
+        }
         protected TracNghiem RandomTracNghiemChoVoca(int idWord)
         {
             TracNghiem cauTracNghiem = new TracNghiem();
@@ -385,45 +389,67 @@ namespace Framework.Controllers
             int pos = rnd.Next(0, listDict.Count);
             var ramdomPo = randomPosition();
             cauTracNghiem.Question = vocaCanHoc.MeanEn;
-            for (int i=0;i<4;i++)
+            for (int i = 0; i < 4; i++)
             {
                 DapAn dapAn = new DapAn();
-                if (i ==0)
+                if (i == 0)
                 {
                     dapAn.Checked = true;
                     dapAn.Contain = vocaCanHoc.Word;
-                    cauTracNghiem.ABCD[ramdomPo[i]]= dapAn;
+                    cauTracNghiem.ABCD[ramdomPo[i]] = dapAn;
                 }
                 else
                 {
                     int posDictCache = rnd.Next(0, listDict.Count);
                     dapAn.Contain = listDict.ElementAt(posDictCache).VocaID;
-                    cauTracNghiem.ABCD[ramdomPo[i]]= dapAn;
+                    cauTracNghiem.ABCD[ramdomPo[i]] = dapAn;
                 }
-                
+
             }
             return cauTracNghiem;
         }
         protected List<int> randomPosition()
         {
-            List<int> posResult =new List<int>();
-            
+            List<int> posResult = new List<int>();
+
             Random rnd = new Random();
             int count = 0;
             while (true)
             {
                 int pos = rnd.Next(0, 4);
-                if (posResult.Where(x=> x == pos).ToList().Count == 0)
+                if (posResult.Where(x => x == pos).ToList().Count == 0)
                 {
                     posResult.Add(pos);
                     count++;
-                    if(count > 3)
+                    if (count > 3)
                     {
                         break;
                     }
                 }
             }
             return posResult;
+        }
+        protected async Task<string> sendNotificationEnlish()
+        {
+            string paramChatfuel = "";
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var responseVoca = notifyMessenger();
+            ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(responseVoca);
+            foreach (var userNoti in listNofity.reminduser)
+            {
+                paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userNoti.IdMess + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a28393be4b0d0e6fdab76b3";
+                for (int i = 1; i <= 5; i++)
+                {
+                    paramChatfuel += "&word" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].voca : "");
+                    paramChatfuel += "&pron" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].pron : "");
+                    paramChatfuel += "&meanvn" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].meanVN : "");
+                    paramChatfuel += "&meanen" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].usecase : "");
+                }
+                paramChatfuel += ChatBotMessenger.getNotiNull();
+                var response = await client.PostAsync(paramChatfuel, null);
+            }
+            return "";
         }
     }
 }

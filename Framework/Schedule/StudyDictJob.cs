@@ -27,6 +27,8 @@ namespace Framework.Schedule
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response2 = await client.PostAsync("http://olympusenglish.azurewebsites.net/Dictionary/notifyMessenger", null);
+                if (JobScheduler.ToiecUpdatedTime == 0)
+                    await client.PostAsync("http://olympusenglish.azurewebsites.net/Learning/autoGeneratorToiecExam", null);
                 if (response2.Content != null)
                 {
                     // Error Here
@@ -50,11 +52,17 @@ namespace Framework.Schedule
                   
                 await client.PostAsync("http://olympusenglish.azurewebsites.net/Home/checkTimeOfPost", null);
                 await client.PostAsync("http://olympusenglish.azurewebsites.net/Post/CheckAnswerOnFB", null);
+                if (JobScheduler.ToiecUpdatedTime >= 15)
+                {
+                    JobScheduler.ToiecUpdatedTime = 0;
+                }
+                JobScheduler.ToiecUpdatedTime++;
             }
             catch
             {
 
             }
+
         }
     }
 }
