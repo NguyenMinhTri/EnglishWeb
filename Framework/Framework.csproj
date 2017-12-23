@@ -812,6 +812,7 @@
     <Content Include="content\js\jquery.gifplayer.js" />
     <Content Include="content\js\main.js" />
     <Content Include="content\js\readremaining.jquery.js" />
+    <Content Include="content\js\responsivevoice.js" />
     <Content Include="content\js\run-chart.js" />
     <Content Include="content\js\script.js" />
     <Content Include="content\js\smooth-scroll.min.js" />
