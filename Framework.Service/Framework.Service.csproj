@@ -127,7 +127,7 @@
     <Compile Include="Admin\MessageService.cs" />
     <Compile Include="Admin\NotificationService.cs" />
     <Compile Include="Admin\OurWordService.cs" />
-    <Compile Include="Admin\PostCommentDetailService.cs" />
+    <Compile Include="Admin\CommentService.cs" />
     <Compile Include="Admin\PostService.cs" />
     <Compile Include="Admin\PostTypeService.cs" />
     <Compile Include="Admin\PostVoteDetailService.cs" />

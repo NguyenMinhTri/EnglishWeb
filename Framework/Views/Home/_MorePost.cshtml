@@ -27,15 +27,15 @@
                         </div>
                     </div>
                 </div>
-
+                <p>
+                    @post.Content
+                </p>
                 <h6 class="tag">
                     <a href="/?type=@post.Id_Type">
                         Thể loại: <span>@post.TypeToString</span>
                     </a>
                 </h6>
-                <p>
-                    @post.Content
-                </p>
+         
 
                 @if (post.Option == 1)
                 {

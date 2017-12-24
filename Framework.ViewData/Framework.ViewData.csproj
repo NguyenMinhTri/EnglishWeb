@@ -105,7 +105,7 @@
     <Compile Include="Admin\Input\MessageInputAdminViewData.cs" />
     <Compile Include="Admin\Input\NotificationInputAdminViewData.cs" />
     <Compile Include="Admin\Input\OurWordInputAdminViewData.cs" />
-    <Compile Include="Admin\Input\PostCommentDetailInputAdminViewData.cs" />
+    <Compile Include="Admin\Input\CommentInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostVoteDetailInputAdminViewData.cs" />

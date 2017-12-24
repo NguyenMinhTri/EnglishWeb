@@ -23,15 +23,15 @@
                 </div>
             </div>
         </div>
-
+        <p>
+            @Model.Content
+        </p>
         <h6 class="tag">
             <a href="/?type=@Model.Id_Type">
                 Thể loại: <span>@Model.TypeToString</span>
             </a>
         </h6>
-        <p>
-            @Model.Content
-        </p>
+      
 
         @if (Model.Option == 1)
         {

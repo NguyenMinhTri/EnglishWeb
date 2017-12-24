@@ -7089,6 +7089,7 @@ ul.multiplechoice {
 
 h6.tag a {
     color:  unset;
+    font-size:  13px;
 }
 
 h6.tag a:hover {
@@ -7106,4 +7107,13 @@ a.btn.btn-control.expert-answer {
 .news-feed-form #home-1 .post-control-button{
     top: 20px;
     right: -2px;
+}
+article.hentry.post > p {
+    font-size:  20px;
+    text-align:  justify;
+}
+article.hentry.post > h6.tag {
+    margin: 0 0 25px 0;
+    width:  100%;
+    text-align:  right;
 }

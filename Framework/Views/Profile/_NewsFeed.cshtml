@@ -31,7 +31,7 @@
                                         <textarea class="form-control" placeholder="" name="Content"></textarea>
                                         <div class="selection">
                                             <p>Hỏi tất cả mọi người</p>
-                                            <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi Thầy cô nha!">
+                                            <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi chuyên gia nha!">
                                                 <label>
                                                     <input type="checkbox">
                                                 </label>
@@ -100,15 +100,15 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <p>
+                                @post.Content
+                            </p>
                             <h6 class="tag">
                                 <a href="/?type=@post.Id_Type">
                                     Thể loại: <span>@post.TypeToString</span>
                                 </a>
                             </h6>
-                            <p>
-                                @post.Content
-                            </p>
+                           
 
                             @if (post.Option == 1)
                             {

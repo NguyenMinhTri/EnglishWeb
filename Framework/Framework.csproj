@@ -102,9 +102,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -257,7 +258,7 @@
     <Compile Include="Controllers\Admin\AdminMessageController.cs" />
     <Compile Include="Controllers\Admin\AdminNotificationController.cs" />
     <Compile Include="Controllers\Admin\AdminOurWordController.cs" />
-    <Compile Include="Controllers\Admin\AdminPostCommentDetailController.cs" />
+    <Compile Include="Controllers\Admin\AdminCommentController.cs" />
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminPostTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
@@ -270,7 +271,6 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
-    <Compile Include="Controllers\WebhookController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
     <Compile Include="Infrastructure\CustomUserIdProvider.cs" />
@@ -907,7 +907,7 @@
     <Content Include="Views\AdminFriend\Index.cshtml" />
     <Content Include="Views\AdminMessage\Index.cshtml" />
     <Content Include="Views\AdminNotification\Index.cshtml" />
-    <Content Include="Views\AdminPostCommentDetail\Index.cshtml" />
+    <Content Include="Views\AdminComment\Index.cshtml" />
     <Content Include="Views\AdminPostVoteDetail\Index.cshtml" />
     <Content Include="Views\AdminPost\Index.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

@@ -245,14 +245,14 @@ $(document).ready(function () {
 
 $(document).on("click", ".news-feed-form .form-group .selection .togglebutton label input[type=checkbox]", function () {
     if ($(this).is(':checked')) {
-        $(".news-feed-form .form-group .selection p").text("Hỏi thầy cô cho chắc").css("color", "#fe5e3a");
+        $(".news-feed-form .form-group .selection p").text("Hỏi chuyên gia cho chắc").css("color", "#fe5e3a");
         $(this).parent().parent().attr("title", "Tắt để hỏi mọi người nha!").attr("data-original-title", "Tắt để hỏi mọi người nha!");
         $("input[name='Option']").val("1");
         $(".news-feed-form #home-1 .post-control-button").fadeIn();
     }
     else {
         $(".news-feed-form .form-group .selection p").text("Hỏi tất cả mọi người").css("color", "#888da8");
-        $(this).parent().parent().attr("title", "Bật để hỏi Thầy cô nha!").attr("data-original-title", "Bật để hỏi Thầy cô nha!");
+        $(this).parent().parent().attr("title", "Bật để hỏi chuyên gia nha!").attr("data-original-title", "Bật để hỏi chuyên gia nha!");
         $("input[name='Option']").val("0");
         $(".news-feed-form #home-1 .post-control-button").fadeOut();
     }

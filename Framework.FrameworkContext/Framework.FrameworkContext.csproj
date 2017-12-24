@@ -60,22 +60,6 @@
     <Compile Include="FrameworkConfiguration.cs" />
     <Compile Include="FrameworkDbContext.cs" />
     <Compile Include="FrameworkHistoryContext.cs" />
-    <Compile Include="Migrations\201712041409136_adsadas.cs" />
-    <Compile Include="Migrations\201712041409136_adsadas.Designer.cs">
-      <DependentUpon>201712041409136_adsadas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712041421050_adsadasasd.cs" />
-    <Compile Include="Migrations\201712041421050_adsadasasd.Designer.cs">
-      <DependentUpon>201712041421050_adsadasasd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712051558006_qwdasdqwe.cs" />
-    <Compile Include="Migrations\201712051558006_qwdasdqwe.Designer.cs">
-      <DependentUpon>201712051558006_qwdasdqwe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712051604044_qwdasdqwewqe.cs" />
-    <Compile Include="Migrations\201712051604044_qwdasdqwewqe.Designer.cs">
-      <DependentUpon>201712051604044_qwdasdqwewqe.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -104,18 +88,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712041409136_adsadas.resx">
-      <DependentUpon>201712041409136_adsadas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712041421050_adsadasasd.resx">
-      <DependentUpon>201712041421050_adsadasasd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712051558006_qwdasdqwe.resx">
-      <DependentUpon>201712051558006_qwdasdqwe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712051604044_qwdasdqwewqe.resx">
-      <DependentUpon>201712051604044_qwdasdqwewqe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.asd.resources" />
     <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.asd1.resources" />
     <EmbeddedResource Include="obj\Release\Framework.FrameworkContext.Migrations.dsds.resources" />

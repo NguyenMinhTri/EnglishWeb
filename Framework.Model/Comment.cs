@@ -10,10 +10,10 @@ namespace Framework.Model
     [Table("Comment")]
     public class Comment : Auditable
     {
-		public int Id { get; set; }
-		public int Id_Post { get; set; }
+        public int Id { get; set; }
+        public int Id_Post { get; set; }
         public int Id_Comment { get; set; }
-		public String Id_User { get; set; }
+        public String Id_User { get; set; }
         public String Content { get; set; }
         public String DateComment { get; set; }
         public int UpVote { get; set; }
