@@ -29,25 +29,25 @@ namespace Framework.Schedule
                 var response2 = await client.PostAsync("http://olympusenglish.azurewebsites.net/Dictionary/notifyMessenger", null);
                 if (JobScheduler.ToiecUpdatedTime == 0)
                     await client.PostAsync("http://olympusenglish.azurewebsites.net/Learning/autoGeneratorToiecExam", null);
-                if (response2.Content != null)
-                {
-                    // Error Here
-                    var responseContent = await response2.Content.ReadAsStringAsync();
-                    ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(responseContent);
-                    foreach (var userNoti in listNofity.reminduser)
-                    {
-                        paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userNoti.IdMess + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a28393be4b0d0e6fdab76b3";
-                        for (int i = 1; i <= 5; i++)
-                        {
-                            paramChatfuel += "&word" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].voca : "");
-                            paramChatfuel += "&pron" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].pron : "");
-                            paramChatfuel += "&meanvn" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].meanVN : "");
-                            paramChatfuel += "&meanen" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].usecase : "");
-                        }
-                        paramChatfuel += ChatBotMessenger.getNotiNull();
-                        var response = await client.PostAsync(paramChatfuel, null);
-                    }
-                }
+                //if (response2.Content != null)
+                //{
+                //    // Error Here
+                //    var responseContent = await response2.Content.ReadAsStringAsync();
+                //    ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(responseContent);
+                //    foreach (var userNoti in listNofity.reminduser)
+                //    {
+                //        paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + userNoti.IdMess + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a28393be4b0d0e6fdab76b3";
+                //        for (int i = 1; i <= 5; i++)
+                //        {
+                //            paramChatfuel += "&word" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].voca : "");
+                //            paramChatfuel += "&pron" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].pron : "");
+                //            paramChatfuel += "&meanvn" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].meanVN : "");
+                //            paramChatfuel += "&meanen" + i.ToString() + "=" + ((i <= userNoti.vocainfo.Count) ? userNoti.vocainfo[i - 1].usecase : "");
+                //        }
+                //        paramChatfuel += ChatBotMessenger.getNotiNull();
+                //        var response = await client.PostAsync(paramChatfuel, null);
+                //    }
+                //}
                 //ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(response2.ToString());
                   
                 await client.PostAsync("http://olympusenglish.azurewebsites.net/Home/checkTimeOfPost", null);

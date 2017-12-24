@@ -10,6 +10,10 @@ namespace Framework.Model.Google
     {
 
     }
+    public class Recipient
+    {
+        public string id { get; set; }
+    }
     public class Payload2
     {
         public string url { get; set; }
@@ -20,14 +24,15 @@ namespace Framework.Model.Google
         public Attachment2()
         {
             payload = new Payload2();
+            type = "audio";
         }
         public string type { get; set; }
         public Payload2 payload { get; set; }
     }
 
-    public class Message2 : MessageObject
+    public class AttachmentJson : MessageObject
     {
-        public Message2()
+        public AttachmentJson()
         {
             attachment = new Attachment2();
         }
@@ -42,8 +47,10 @@ namespace Framework.Model.Google
     {
         public ChatfuelJson()
         {
+            recipient = new Recipient();
             messages = new List<MessageObject>();
         }
+        public Recipient recipient { get; set; }
         public List<MessageObject> messages { get; set; }
     }
     public class Sentence
@@ -94,5 +101,16 @@ namespace Framework.Model.Google
         public List<Sentence> sentences { get; set; }
         public List<Dict> dict { get; set; }
         public string src { get; set; }
+    }
+
+
+    public class JsonMessengerText 
+    {
+        public JsonMessengerText()
+        {
+            recipient = new Recipient();
+        }
+        public Recipient recipient { get; set; }
+        public MessageObject message { get; set; }
     }
 }

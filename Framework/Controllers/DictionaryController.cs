@@ -21,6 +21,7 @@ using Framework.Model.Bot;
 using Microsoft.AspNet.Identity;
 using Framework.ViewData.Admin.GetData;
 using System.Net.Http;
+using System.Net;
 
 namespace Framework.Controllers
 {
@@ -157,6 +158,21 @@ namespace Framework.Controllers
                 }
                 DictionariesViewModel.m_ExaTraCau = await _clientDictionaryService.startCrawlerTraCau(keyword);
             }
+            try
+            {
+                DictCache cacheDict = new DictCache();
+                cacheDict.VocaID = keyword;
+                cacheDict.Pron = DictionariesViewModel.m_Pron;
+                cacheDict.MeanEN = DictionariesViewModel.m_Explanation.FirstOrDefault().m_UseCase;
+                cacheDict.MeanVN = DictionariesViewModel.m_MeanVn;
+                cacheDict.SoundUrl = DictionariesViewModel.m_SoundUrl;
+                _dictCache.Add(cacheDict);
+                _dictCache.Save();
+            }
+            catch(Exception e)
+            {
+
+            }
             return PartialView("_Dictionaries", DictionariesViewModel);
         }
 
@@ -197,7 +213,7 @@ namespace Framework.Controllers
                     
                     _detailOutWordService.Add(detailWord);
                     _detailOutWordService.Save();
-                    await sendNotificationEnlish();
+                    notifyMessenger();
                 }
                 catch (Exception e)
                 {
@@ -252,9 +268,10 @@ namespace Framework.Controllers
             MessJson messVietnamese = new MessJson();
             //
             ChatfuelJson hello = new ChatfuelJson();
-            Message2 sound = new Message2();
-            Attachment2 attach = new Attachment2();
+            AttachmentJson sound = new AttachmentJson();
             sound.attachment.type = "audio";
+            Attachment2 attach = new Attachment2();
+            
             Payload2 payload = new Payload2();
             //
             if (dictTemp != null)
@@ -339,26 +356,10 @@ namespace Framework.Controllers
                 {
                     if (listIDWord != null || listIDWord.Count != 0)
                     {
-                        int i = 0;
-                        foreach (var idWord in listIDWord)
-                        {
-                            //Gioi han 5 tu
-                            if (i >= 5)
-                                break;
-                            VocaInfo vocaInfo = new VocaInfo();
-                            var tempWord = _ourWordService.GetById(idWord);
-                            vocaInfo.voca = tempWord.Word;
-                            vocaInfo.pron = tempWord.Pronounciation;
-                            vocaInfo.usecase = tempWord.MeanEn;
-                            vocaInfo.meanVN = tempWord.MeanVi;
-                            reminderUser.vocainfo.Add(vocaInfo);
-                            i++;
-                        }
-                        if (i != 0)
-                            listUserNotify.reminduser.Add(reminderUser);
+                        sendNotificationEnlishVoca(listIDWord, userDetail.Id_Messenger);
                     }
                 }
-                catch
+                catch(Exception e)
                 {
 
                 }
@@ -450,6 +451,71 @@ namespace Framework.Controllers
                 var response = await client.PostAsync(paramChatfuel, null);
             }
             return "";
+        }
+        protected string sendNotificationEnlishVoca(List<int> listIdWord, string messID)
+        {
+            //ChatfuelJson jsonMessenger = new ChatfuelJson();
+            //MessJson messExplaintion = new MessJson();
+            //MessJson messPron = new MessJson();
+            //MessJson messVietnamese = new MessJson();
+            //AttachmentJson sound = new AttachmentJson();
+           // jsonMessenger.recipient.id = messID;
+            //
+            foreach (var idWord in listIdWord)
+            {
+                JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+                MessJson messExplaintion = new MessJson();
+                jsonTextMessenger.recipient.id = messID;
+                JsonMessengerText jsonSoundMessenger = new JsonMessengerText();
+                jsonSoundMessenger.recipient.id = messID;
+                
+                AttachmentJson sound = new AttachmentJson();
+                var tempWord = _ourWordService.GetById(idWord);
+                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.Word).FirstOrDefault();
+                messExplaintion.text = infoVoca.VocaID;
+                messExplaintion.text += "\r\n" + infoVoca.Pron;
+                messExplaintion.text += "\r\n" + infoVoca.MeanEN;
+                messExplaintion.text += "\r\n"+ infoVoca.MeanVN;
+                sound.attachment.payload.url = infoVoca.SoundUrl;
+                //
+                jsonTextMessenger.message = messExplaintion;
+                jsonSoundMessenger.message = sound;
+                //
+                string temp = JsonConvert.SerializeObject(jsonTextMessenger);
+                temp = JsonConvert.SerializeObject(jsonSoundMessenger);
+                PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+                PostRaw("", JsonConvert.SerializeObject(jsonSoundMessenger));
+            }
+            return "";
+        }
+        //Post method
+        [AllowAnonymous]
+        private string PostRaw(string url, string data)
+        {
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp");
+                request.ContentType = "application/json";
+                request.Method = "POST";
+                using (var requestWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    requestWriter.Write(data);
+                    requestWriter.Flush();
+                    requestWriter.Close();
+                }
+                var response = (HttpWebResponse)request.GetResponse();
+                if (response == null)
+                    throw new InvalidOperationException("GetResponse returns null");
+
+                using (var sr = new StreamReader(response.GetResponseStream()))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+            catch
+            {
+                return "";
+            }
         }
     }
 }
