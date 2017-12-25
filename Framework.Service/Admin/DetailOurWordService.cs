@@ -12,6 +12,7 @@ namespace Framework.Service.Admin
     {
         List<String> listUserToNofity();
         List<int> listIdOutWord(string iduser, int timeNotify);
+        List<DetailOurWord> listOutWord(string iduser, int timeNotify);
     }
     public class DetailOurWordService : QlService<DetailOurWord>, IDetailOurWordService
     {
@@ -30,6 +31,11 @@ namespace Framework.Service.Admin
             List <string> result =  _detailOurWordRepository.GetMulti(x => x.Schedule.Hour <= maxTime && x.Schedule.Hour > minTime && x.UpdatedDate.Value.Day != nowDay).Select(x => x.Id_Messenger).ToList();
             return result;
         }
+        public List<DetailOurWord> listOutWord(string iduser, int timeNotify)
+        {
+            var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser).ToList();
+            return listID.ToList();
+        }
         public List<int> listIdOutWord(string iduser, int timeNotify)
         {
             //Check đúng ngày đúng giờ hay ko
@@ -44,7 +50,7 @@ namespace Framework.Service.Admin
                 //Update ngay gui nhac nho
                 //&& x.UpdatedDate.Value.Day != nowDay
                 
-                var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Schedule.Day != nowDay).ToList();
+                var listID = _detailOurWordRepository.GetMulti(x => x.Id_User == iduser && x.Schedule.Day != nowDay && x.Learned == 1).ToList();
                 foreach (var id in listID)
                 {
                     var temp = GetById(id.Id);

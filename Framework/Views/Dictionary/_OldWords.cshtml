@@ -14,15 +14,12 @@
         <div class="post-content-wrap">
             <div class="post-content">
                 <ol class="old-words">
-                    <li>
-                        <h5><a href="" target="_blank">hello</a></h5>
-                    </li>
-                    <li>
-                        <h5><a href="" target="_blank">dictionary</a></h5>
-                    </li>
-                    <li>
-                        <h5><a href="" target="_blank">world</a></h5>
-                    </li>
+                    @foreach (var oldWord in @Model.ListOldWords)
+                    {
+                        <li>
+                            <h5><a href="" target="_blank">@oldWord.m_Voca</a></h5>
+                        </li>
+                    }
                 </ol>
             </div>
         </div>

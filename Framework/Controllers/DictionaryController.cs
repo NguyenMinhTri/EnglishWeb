@@ -245,6 +245,17 @@ namespace Framework.Controllers
         public ActionResult OldWords()
         {
             _viewModel = new OldWordsViewModel();
+            var listIDWord = _detailOutWordService.listOutWord(User.Identity.GetUserId(), -1);
+            foreach(var idWord in listIDWord)
+            {
+                OldWordViewModelItem item = new OldWordViewModelItem();
+                var tempWord = _ourWordService.GetById(idWord.Id_OurWord);
+                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.Word).FirstOrDefault();
+                item.Id = tempWord.Id;
+                item.Learned = idWord.Learned;
+                item.m_Voca = tempWord.Word;
+                OldWordsViewModel.ListOldWords.Add(item);
+            }
             return PartialView("_OldWords", OldWordsViewModel);
         }
         [AllowAnonymous]

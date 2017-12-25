@@ -27,8 +27,18 @@ namespace Framework.ViewModels
         public ExampleTraCau m_ExaTraCau;
         public GoogleTrans m_GoogleTrans;
     }
-
+    public class OldWordViewModelItem
+    {
+        public int Id { get; set; }
+        public string m_Voca { set; get; }
+        public int Learned { get; set; }
+    }
     public class OldWordsViewModel : LayoutViewModel, IRef<DictionaryController>
     {
+        public OldWordsViewModel()
+        {
+            ListOldWords = new List<OldWordViewModelItem>();
+        }
+        public List<OldWordViewModelItem> ListOldWords { set; get; }
     }
 }
