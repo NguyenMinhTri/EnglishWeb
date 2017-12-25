@@ -30,19 +30,16 @@ namespace Framework.Controllers
     {
 
         IClientDictionaryService _clientDictionaryService;
-        IOurWordService _ourWordService;
         IDetailOurWordService _detailOutWordService;
         IDictCacheService _dictCache;
         public DictionaryController(ILayoutService layoutService,
             IClientDictionaryService clientDictionaryService,
-            IOurWordService ourWordService,
             IDetailOurWordService detailOutWordService,
             IDictCacheService dictCache
             )
             : base(layoutService)
         {
             _clientDictionaryService = clientDictionaryService;
-            _ourWordService = ourWordService;
             _detailOutWordService = detailOutWordService;
             _dictCache = dictCache;
         }
@@ -79,7 +76,7 @@ namespace Framework.Controllers
                     case "oldwords":
                         {
                             _viewModel = new OldWordsViewModel();
-                            CreateLayoutView("Từ đã tra");
+                            CreateLayoutView("Danh sách từ yêu thích");
                             break;
                         }
                     default:
@@ -160,16 +157,27 @@ namespace Framework.Controllers
             }
             try
             {
-                DictCache cacheDict = new DictCache();
-                cacheDict.VocaID = keyword;
-                cacheDict.Pron = DictionariesViewModel.m_Pron;
-                cacheDict.MeanEN = DictionariesViewModel.m_Explanation.FirstOrDefault().m_UseCase;
-                cacheDict.MeanVN = DictionariesViewModel.m_MeanVn;
-                cacheDict.SoundUrl = DictionariesViewModel.m_SoundUrl;
-                _dictCache.Add(cacheDict);
-                _dictCache.Save();
+                DictCache dictCache = _dictCache.findWordCache(keyword);
+                if (dictCache == null)
+                {
+                    dictCache = new DictCache();
+                    dictCache.VocaID = keyword;
+                    dictCache.Pron = DictionariesViewModel.m_Pron;
+                    dictCache.MeanEn = DictionariesViewModel.m_Explanation.FirstOrDefault().m_UseCase;
+                    dictCache.MeanVi = DictionariesViewModel.m_MeanVn;
+                    dictCache.SoundUrl = DictionariesViewModel.m_SoundUrl;
+                    _dictCache.Add(dictCache);
+                    _dictCache.Save();
+                }
+                else
+                {
+                    if (_detailOutWordService.findDetailOurWord(User.Identity.GetUserId(), dictCache.Id) != null)
+                    {
+                        DictionariesViewModel.love = true;
+                    }
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
@@ -177,51 +185,54 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Tick(OurWordViewModel ourword)
+        public async Task<JsonResult> Tick(OurWordViewModel data)
         {
-            OurWord newOurWord = new OurWord();
-            DetailOurWord detailWord = new DetailOurWord();
-            FieldHelper.CopyNotNullValue(newOurWord, ourword);
-
-            if (ourword != null)
+            if (data != null)
             {
+                DictCache dictCache = _dictCache.findWordCache(data.VocaID);
 
+                if (dictCache == null)
+                {
+                    dictCache = new DictCache();
+                    data.MeanVi = HttpUtility.HtmlDecode(data.MeanVi).ToString();
+                    FieldHelper.CopyNotNullValue(dictCache, data);
+                    try
+                    {
+                        _dictCache.Add(dictCache);
+                        _dictCache.Save();
+                    }
+                    catch (Exception e)
+                    {
+                        return Json(new
+                        {
+                            result = "failed",
+                        });
+                    }
+                }
                 var userId = User.Identity.GetUserId();
-                ApplicationUser user = _service.GetUserById(userId);
-                //Add
 
-                _ourWordService.Add(newOurWord);
-                _ourWordService.Save();
-                detailWord.Id_User = userId;
-                detailWord.Id_Messenger = user.Id_Messenger;
-                detailWord.Id_OurWord = newOurWord.Id;
-                detailWord.Learned = 1;
-                detailWord.Id = 0;
-                detailWord.Schedule = DateTime.Now.AddDays(-1);
+                DetailOurWord detailWord = _detailOutWordService.findDetailOurWord(userId, dictCache.Id);
 
-                // detailWord.
-                try
+                if (detailWord == null)
                 {
-                    //detailWord.Schedule = new DateTime(0, 0, 0, 1, 0, 0);
-                }
-                catch
-                {
-
-                }
-                try
-                {
-                    
+                    ApplicationUser user = _service.GetUserById(userId);
+                    detailWord = new DetailOurWord();
+                    detailWord.Id_User = userId;
+                    detailWord.Id_Messenger = user.Id_Messenger;
+                    detailWord.Id_OurWord = dictCache.Id;
+                    detailWord.Learned = 1;
+                    detailWord.Id = 0;
+                    detailWord.Schedule = DateTime.Now.AddDays(-1);
                     _detailOutWordService.Add(detailWord);
-                    _detailOutWordService.Save();
                     notifyMessenger();
                 }
-                catch (Exception e)
+                else
                 {
-
+                    _detailOutWordService.Delete(detailWord);
                 }
-
                 try
                 {
+                    _detailOutWordService.Save();
                     return Json(new
                     {
                         result = "success"
@@ -246,14 +257,14 @@ namespace Framework.Controllers
         {
             _viewModel = new OldWordsViewModel();
             var listIDWord = _detailOutWordService.listOutWord(User.Identity.GetUserId(), -1);
-            foreach(var idWord in listIDWord)
+            foreach (var idWord in listIDWord)
             {
                 OldWordViewModelItem item = new OldWordViewModelItem();
-                var tempWord = _ourWordService.GetById(idWord.Id_OurWord);
-                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.Word).FirstOrDefault();
+                var tempWord = _dictCache.GetById(idWord.Id_OurWord);
+                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.VocaID).FirstOrDefault();
                 item.Id = tempWord.Id;
                 item.Learned = idWord.Learned;
-                item.m_Voca = tempWord.Word;
+                item.m_Voca = tempWord.VocaID;
                 OldWordsViewModel.ListOldWords.Add(item);
             }
             return PartialView("_OldWords", OldWordsViewModel);
@@ -293,8 +304,8 @@ namespace Framework.Controllers
             if (dictTemp != null)
             {
                 messPron.text = dictTemp.Pron;
-                messExplaintion.text = dictTemp.MeanEN;
-                messVietnamese.text = dictTemp.MeanVN;
+                messExplaintion.text = dictTemp.MeanEn;
+                messVietnamese.text = dictTemp.MeanVi;
                 sound.attachment.payload.url = dictTemp.SoundUrl;
             }
             else
@@ -339,8 +350,8 @@ namespace Framework.Controllers
                 DictCache cacheDict = new DictCache();
                 cacheDict.VocaID = contain;
                 cacheDict.Pron = messPron.text;
-                cacheDict.MeanEN = messExplaintion.text;
-                cacheDict.MeanVN = messVietnamese.text;
+                cacheDict.MeanEn = messExplaintion.text;
+                cacheDict.MeanVi = messVietnamese.text;
                 cacheDict.SoundUrl = dict.m_SoundUrl;
                 _dictCache.Add(cacheDict);
                 _dictCache.Save();
@@ -400,7 +411,7 @@ namespace Framework.Controllers
         protected TracNghiem RandomTracNghiemChoVoca(int idWord)
         {
             TracNghiem cauTracNghiem = new TracNghiem();
-            var vocaCanHoc = _ourWordService.GetById(idWord);
+            var vocaCanHoc = _dictCache.GetById(idWord);
             Random rnd = new Random();
             var listDict = _dictCache.GetAll();
             int pos = rnd.Next(0, listDict.Count);
@@ -412,7 +423,7 @@ namespace Framework.Controllers
                 if (i == 0)
                 {
                     dapAn.Checked = true;
-                    dapAn.Contain = vocaCanHoc.Word;
+                    dapAn.Contain = vocaCanHoc.VocaID;
                     cauTracNghiem.ABCD[ramdomPo[i]] = dapAn;
                 }
                 else
@@ -488,12 +499,12 @@ namespace Framework.Controllers
                 jsonSoundMessenger.recipient.id = messID;
 
                 AttachmentJson sound = new AttachmentJson();
-                var tempWord = _ourWordService.GetById(idWord);
-                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.Word).FirstOrDefault();
+                var tempWord = _dictCache.GetById(idWord);
+                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.VocaID).FirstOrDefault();
                 messExplaintion.text = infoVoca.VocaID;
                 messExplaintion.text += "\r\n" + infoVoca.Pron;
-                messExplaintion.text += "\r\n" + infoVoca.MeanEN;
-                messExplaintion.text += "\r\n" + infoVoca.MeanVN;
+                messExplaintion.text += "\r\n" + infoVoca.MeanEn;
+                messExplaintion.text += "\r\n" + infoVoca.MeanVi;
                 sound.attachment.payload.url = infoVoca.SoundUrl;
                 //
                 jsonTextMessenger.message = messExplaintion;
@@ -507,7 +518,7 @@ namespace Framework.Controllers
             }
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            if(isCheck)
+            if (isCheck)
                 await client.PostAsync("https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + messID + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a3fc60de4b037186c58ec99", null);
             return "";
         }

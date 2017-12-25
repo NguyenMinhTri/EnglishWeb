@@ -10,6 +10,7 @@ namespace Framework.Service.Admin
 {
     public interface IDictCacheService : IQlService<DictCache>
     {
+        DictCache findWordCache(string word);
     }
     public class DictCacheService : QlService<DictCache>, IDictCacheService
     {
@@ -17,6 +18,17 @@ namespace Framework.Service.Admin
         public DictCacheService(IDictCacheRepository dictCacheRepository, IUnitOfWork unitOfWork) : base(dictCacheRepository, unitOfWork) 
         {
             this._repository = dictCacheRepository;
+            _dictCacheRepository = dictCacheRepository;
+        }
+
+        public DictCache findWordCache(string word)
+        {
+            DictCache dictCache = _dictCacheRepository.GetSingleByCondition(x => x.VocaID == word);
+            if (dictCache != null)
+            {
+                return dictCache;
+            }
+            return null;
         }
     }
 }

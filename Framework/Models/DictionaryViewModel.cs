@@ -16,6 +16,7 @@ namespace Framework.ViewModels
             m_Explanation = new List<Explanation>();
             m_ExaTraCau = new ExampleTraCau();
             isGoogleTrans = false;
+            love = false;
         }
         public bool isGoogleTrans { set; get; }
         public string m_Voca { set; get; }
@@ -26,6 +27,7 @@ namespace Framework.ViewModels
         public List<Explanation> m_Explanation;
         public ExampleTraCau m_ExaTraCau;
         public GoogleTrans m_GoogleTrans;
+        public bool love;
     }
     public class OldWordViewModelItem
     {

@@ -75,7 +75,6 @@
     <Compile Include="RepositorySpace\LearnVocaRepository.cs" />
     <Compile Include="RepositorySpace\MessageRepository.cs" />
     <Compile Include="RepositorySpace\NotificationRepository.cs" />
-    <Compile Include="RepositorySpace\OurWordRepository.cs" />
     <Compile Include="RepositorySpace\CommentRepository.cs" />
     <Compile Include="RepositorySpace\PostRepository.cs" />
     <Compile Include="RepositorySpace\PostTypeRepository.cs" />

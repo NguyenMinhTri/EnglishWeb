@@ -261,7 +261,6 @@
     <Compile Include="Controllers\Admin\AdminLearnVocaController.cs" />
     <Compile Include="Controllers\Admin\AdminMessageController.cs" />
     <Compile Include="Controllers\Admin\AdminNotificationController.cs" />
-    <Compile Include="Controllers\Admin\AdminOurWordController.cs" />
     <Compile Include="Controllers\Admin\AdminCommentController.cs" />
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\Admin\AdminPostTypeController.cs" />
@@ -957,7 +956,6 @@
     <Content Include="Views\Post\_Comment.cshtml" />
     <Content Include="Views\Post\_ChildComment.cshtml" />
     <Content Include="Views\AdminDetailOurWord\Index.cshtml" />
-    <Content Include="Views\AdminOurWord\Index.cshtml" />
     <Content Include="Views\Home\_Post.cshtml" />
     <Content Include="Views\Statistics\_Student.cshtml" />
     <Content Include="Views\Statistics\_Expert.cshtml" />

@@ -59,21 +59,27 @@
                             <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="NEWSFEED"><use xlink:href="content/icons/icons.svg#olymp-newsfeed-icon"></use></svg>
                         </a>
                     </li>
-                    <li>
-                        <a href="Calendar">
-                            <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="LỊCH BIỂU"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
-                        </a>
-                    </li>
+                    @if (role == 2)
+                    {
+                        <li>
+                            <a href="Calendar">
+                                <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="LỊCH BIỂU"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a href="Dictionary?option=dictionaries">
                             <svg class="olymp-badge-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỪ ĐIỂN"><use xlink:href="content/icons/icons.svg#olymp-badge-icon"></use></svg>
                         </a>
                     </li>
-                    <li>
-                        <a href="Learning">
-                            <svg class="olymp-comments-post-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-                        </a>
-                    </li>
+                    @if (role == 0)
+                    {
+                        <li>
+                            <a href="Learning">
+                                <svg class="olymp-comments-post-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a href="Entertainment">
                             <svg class="olymp-headphones-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="GIẢI TRÍ"><use xlink:href="content/icons/icons.svg#olymp-headphones-icon"></use></svg>
@@ -108,24 +114,30 @@
                             <span class="left-menu-title">Newsfeed</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="Calendar">
-                            <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="LỊCH BIỂU"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
-                            <span class="left-menu-title">Lịch biểu</span>
-                        </a>
-                    </li>
+                    @if (role == 2)
+                    {
+                        <li>
+                            <a href="Calendar">
+                                <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="LỊCH BIỂU"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
+                                <span class="left-menu-title">Lịch biểu</span>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a href="Dictionary?option=dictionaries">
                             <svg class="olymp-badge-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỪ ĐIỂN"><use xlink:href="content/icons/icons.svg#olymp-badge-icon"></use></svg>
                             <span class="left-menu-title">Từ điển</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="Learning">
-                            <svg class="olymp-comments-post-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-                            <span class="left-menu-title">Tự học</span>
-                        </a>
-                    </li>
+                    @if (role == 0)
+                    {
+                        <li>
+                            <a href="Learning">
+                                <svg class="olymp-comments-post-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+                                <span class="left-menu-title">Tự học</span>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a href="Entertainment">
                             <svg class="olymp-headphones-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="GIẢI TRÍ"><use xlink:href="content/icons/icons.svg#olymp-headphones-icon"></use></svg>
@@ -206,24 +218,30 @@
                             <span class="left-menu-title">Newsfeed</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="Calendar">
-                            <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="LỊCH BIỂU"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
-                            <span class="left-menu-title">Lịch biểu</span>
-                        </a>
-                    </li>
+                    @if (role == 2)
+                    {
+                        <li>
+                            <a href="Calendar">
+                                <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="LỊCH BIỂU"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
+                                <span class="left-menu-title">Lịch biểu</span>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a href="Dictionary?option=dictionaries">
                             <svg class="olymp-badge-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỪ ĐIỂN"><use xlink:href="content/icons/icons.svg#olymp-badge-icon"></use></svg>
                             <span class="left-menu-title">Từ điển</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="Learning">
-                            <svg class="olymp-comments-post-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-                            <span class="left-menu-title">Tự học</span>
-                        </a>
-                    </li>
+                    @if (role == 0)
+                    {
+                        <li>
+                            <a href="Learning">
+                                <svg class="olymp-comments-post-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="TỰ HỌC"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+                                <span class="left-menu-title">Tự học</span>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a href="Entertainment">
                             <svg class="olymp-headphones-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="GIẢI TRÍ"><use xlink:href="content/icons/icons.svg#olymp-headphones-icon"></use></svg>

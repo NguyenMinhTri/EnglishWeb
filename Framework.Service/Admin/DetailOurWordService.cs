@@ -13,6 +13,7 @@ namespace Framework.Service.Admin
         List<String> listUserToNofity();
         List<int> listIdOutWord(string iduser, int timeNotify);
         List<DetailOurWord> listOutWord(string iduser, int timeNotify);
+        DetailOurWord findDetailOurWord(string id_user, int id_word);
     }
     public class DetailOurWordService : QlService<DetailOurWord>, IDetailOurWordService
     {
@@ -21,6 +22,16 @@ namespace Framework.Service.Admin
         {
             this._repository = detailOurWordRepository;
             this._detailOurWordRepository = detailOurWordRepository;
+        }
+
+        public DetailOurWord findDetailOurWord(string id_user, int id_word)
+        {
+            DetailOurWord detailOurWord = _detailOurWordRepository.GetSingleByCondition(x => x.Id_User == id_user && x.Id_OurWord == id_word);
+            if (detailOurWord != null)
+            {
+                return detailOurWord;
+            }
+            return null;
         }
 
         public List<String> listUserToNofity()

@@ -51,7 +51,8 @@
         if (keyword != "") {
             widget = new YG.Widget("widget-1", {
                 width: 640,
-                components: 9, //search box & caption 
+                components: 9, //search box & caption
+                autoStart: 0,
                 events: {
                     'onSearchDone': onSearchDone,
                     'onVideoChange': onVideoChange,

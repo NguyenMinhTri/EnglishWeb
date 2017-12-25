@@ -29,7 +29,14 @@
                                 @Html.Raw("<li>")
                                 
                                 {
-                                    @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question + "</h4>")
+                                    if (@items.Question != null)
+                                    {
+                                        @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question.Replace("\n","<br/>") + "</h4>")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question + "</h4>")
+                                    }
                                     if (@items.UrlImage == null || @items.UrlImage == "")
                                     {
 

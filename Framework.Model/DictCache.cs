@@ -14,8 +14,8 @@ namespace Framework.Model
 		public int Id { get; set; }
 		public string VocaID { get; set; }
 		public string Pron { get; set; }
-		public string MeanVN { get; set; }
-		public string MeanEN { get; set; }
+		public string MeanVi { get; set; }
+		public string MeanEn { get; set; }
 		public string SoundUrl { get; set; }
 	}
 }

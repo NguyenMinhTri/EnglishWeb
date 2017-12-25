@@ -11,11 +11,11 @@ namespace Framework.ViewModels
 
     public class OurWordViewModel : LayoutViewModel, IRef<DictionaryController>
     {
-        public String Word { get; set; }
-        public String Pronounciation { get; set; }
+        public String VocaID { get; set; }
+        public String Pron { get; set; }
         public String MeanVi { get; set; }
         public String MeanEn { get; set; }
-        public String UrlMP3 { set; get; }
+        public String SoundUrl { set; get; }
     }
 
 }

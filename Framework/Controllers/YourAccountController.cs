@@ -286,72 +286,8 @@ namespace Framework.Controllers
             }
             return null;
         }
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<HttpResponseMessage> Post()
-        {
-            var signature = Request.Headers.GetValues("X-Hub-Signature").FirstOrDefault().Replace("sha1=", "");
-            Stream req = Request.InputStream;
-            req.Seek(0, System.IO.SeekOrigin.Begin);
-            string body = new StreamReader(req).ReadToEnd();
-            if (!VerifySignature(signature, body))
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+ 
 
-            var value = JsonConvert.DeserializeObject<WebhookModel>(body);
-            if (value._object != "page")
-                return new HttpResponseMessage(HttpStatusCode.OK);
-
-            foreach (var item in value.entry[0].messaging)
-            {
-                if (item.message == null && item.postback == null)
-                    continue;
-                else
-                    await SendMessage(GetMessageTemplate(item.message.text, item.sender.id));
-            }
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
-        }
-        [AllowAnonymous]
-        private bool VerifySignature(string signature, string body)
-        {
-            var hashString = new StringBuilder();
-            using (var crypto = new HMACSHA1(Encoding.UTF8.GetBytes(appSecret)))
-            {
-                var hash = crypto.ComputeHash(Encoding.UTF8.GetBytes(body));
-                foreach (var item in hash)
-                    hashString.Append(item.ToString("X2"));
-            }
-
-            return hashString.ToString().ToLower() == signature.ToLower();
-        }
-        [AllowAnonymous]
-        /// <summary>
-        /// get text message template
-        /// </summary>
-        /// <param name="text">text</param>
-        /// <param name="sender">sender id</param>
-        /// <returns>json</returns>
-        private JObject GetMessageTemplate(string text, string sender)
-        {
-            return JObject.FromObject(new
-            {
-                recipient = new { id = sender },
-                message = new { text = text }
-            });
-        }
-
-        /// <summary>
-        /// send message
-        /// </summary>
-        /// <param name="json">json</param>
-        private async Task SendMessage(JObject json)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage res = await client.PostAsync($"https://graph.facebook.com/v2.6/me/messages?access_token={pageToken}", new StringContent(json.ToString(), Encoding.UTF8, "application/json"));
-            }
-        }
         [AllowAnonymous]
         public ActionResult ReceivePost(BotRequest data)
         {

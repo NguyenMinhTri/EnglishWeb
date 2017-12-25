@@ -1,4 +1,5 @@
 ﻿@model Framework.ViewModels.CalendarViewModel
+<div class="waiting_loader" style="display: none"></div>
 
 <!-- Styles for plugins -->
 <link rel="stylesheet" href="content/css/jquery.mCustomScrollbar.min.css">
@@ -49,7 +50,7 @@
 
                             <div class="list">
                                 <div class="control-block-button">
-                                    <a href="#" class="btn btn-control bg-breez" data-toggle="modal" data-target="#create-event">
+                                    <a href="#" class="btn btn-control bg-breez" data-toggle="modal" data-target="#create-event" id="add_event">
                                         <svg class="olymp-plus-icon"><use xlink:href="content/icons/icons.svg#olymp-plus-icon"></use></svg>
                                     </a>
                                 </div>
@@ -63,7 +64,7 @@
                                                     <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
                                                     <ul class="more-dropdown">
                                                         <li>
-                                                            <a href="#">Xóa khung giờ này</a>
+                                                            <a class="delete-event">Xóa khung giờ này</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -149,36 +150,199 @@
                                                                                 <tr data-time="06-07">
                                                                                     <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>06AM - 07AM</span></td>
                                                                                     <td class="fc-widget-content">
-                                                                                        <ul class="calendar-block-events"></ul>
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <tr data-time="07-08" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>07AM - 08AM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="08-09" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>08AM - 09AM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
+                                                                                <tr data-time="07-08" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>07AM - 08AM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="08-09" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>08AM - 09AM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
                                                                                 <tr data-time="09-10" class="fc-minor">
                                                                                     <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>09AM - 10AM</span></td>
                                                                                     <td class="fc-widget-content">
                                                                                         <ul class="calendar-block-events">
-                                                                                            <li><span class="event-status fc-sun completed"></span>
+                                                                                            <li><span class="event-status fc-sun completed"></span></li>
                                                                                             <li><span class="event-status fc-mon completed"></span> </li>
                                                                                             <li><span class="event-status fc-tue "></span> </li>
                                                                                             <li><span class="event-status fc-wed "></span> </li>
                                                                                             <li><span class="event-status fc-thu "></span> </li>
                                                                                             <li><span class="event-status fc-fri "></span> </li>
                                                                                             <li><span class="event-status fc-sat "></span> </li>
-                                                                                            </li>
                                                                                         </ul>
                                                                                     </td>
                                                                                 </tr>
-                                                                                <tr data-time="11-12" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>11AM - 12PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="12-13" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>12PM - 13PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="13-14" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>13PM - 14PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="14-15" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>14PM - 15PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="15-16" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>15PM - 16PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="16-17" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>16PM - 17PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="17-18" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>17PM - 18PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="18-19" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>18PM - 19PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="19-20" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>19PM - 20PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="20-21" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>20PM - 21PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
+                                                                                <tr data-time="11-12" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>11AM - 12PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="12-13" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>12PM - 13PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="13-14" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>13PM - 14PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="14-15" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>14PM - 15PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="15-16" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>15PM - 16PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="16-17" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>16PM - 17PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="17-18" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>17PM - 18PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="18-19" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>18PM - 19PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="19-20" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>19PM - 20PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="20-21" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>20PM - 21PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
                                                                                 <tr data-time="21-22">
                                                                                     <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>21PM - 22PM</span></td>
                                                                                     <td class="fc-widget-content">
@@ -192,8 +356,34 @@
                                                                                             <li><span class="event-status fc-sat "></span> </li>
                                                                                         </ul>
                                                                                 </tr>
-                                                                                <tr data-time="22-23" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>22PM - 23PM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
-                                                                                <tr data-time="23-24" class="fc-minor"><td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>23PM - 24AM</span></td><td class="fc-widget-content"><ul class="calendar-block-events"></ul></td></tr>
+                                                                                <tr data-time="22-23" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>22PM - 23PM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr data-time="23-24" class="fc-minor">
+                                                                                    <td class="fc-axis fc-time fc-widget-content" style="width: 55px;"><span>23PM - 24AM</span></td>
+                                                                                    <td class="fc-widget-content">
+                                                                                        <ul class="calendar-block-events">
+                                                                                            <li><span class="event-status fc-sun "></span></li>
+                                                                                            <li><span class="event-status fc-mon "></span> </li>
+                                                                                            <li><span class="event-status fc-tue "></span> </li>
+                                                                                            <li><span class="event-status fc-wed "></span> </li>
+                                                                                            <li><span class="event-status fc-thu "></span> </li>
+                                                                                            <li><span class="event-status fc-fri "></span> </li>
+                                                                                            <li><span class="event-status fc-sat "></span> </li>
+                                                                                        </ul>
+                                                                                    </td>
+                                                                                </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </div><div class="fc-content-skeleton"><table><tbody><tr><td class="fc-axis" style="width: 5px;"></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td><td><div class="fc-content-col"><div class="fc-event-container fc-helper-container"></div><div class="fc-event-container"></div><div class="fc-highlight-container"></div><div class="fc-bgevent-container"></div><div class="fc-business-container"></div></div></td></tr></tbody></table></div><hr class="fc-divider fc-widget-header" style="display: none;">
@@ -209,7 +399,7 @@
                                         <div class="no-past-events">
                                             <div class="control-block-button">
 
-                                                <a href="#" class="btn btn-control bg-breez" data-toggle="modal" data-target="#create-event">
+                                                <a href="#" class="btn btn-control bg-breez" data-toggle="modal" data-target="#create-event" id="add_event">
                                                     <svg class="olymp-plus-icon"><use xlink:href="content/icons/icons.svg#olymp-plus-icon"></use></svg>
                                                     <div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 36px; top: -41.2px; background-color: rgb(255, 255, 255); transform: scale(2.60417);"></div></div>
                                                 </a>
@@ -245,18 +435,19 @@
 
         <div class="ui-block-content">
 
-            <div class="form-group date-time-picker label-floating">
-                <label class="control-label">Ngày</label>
-                <input name="datetimepicker" id="datetimepicker" value="">
-                <span class="input-group-addon">
-                    <svg class="olymp-calendar-icon icon"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
-                </span>
-            </div>
-
             <div class="row calendar">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group date-time-picker label-floating">
+                        <label class="control-label">Ngày</label>
+                        <input class="datetimepicker" id="datetimepicker" value="">
+                        <span class="input-group-addon">
+                            <svg class="olymp-calendar-icon icon"><use xlink:href="content/icons/icons.svg#olymp-calendar-icon"></use></svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group label-floating is-select">
-                        <label class="control-label">Khoảng thời gian</label>
+                        <label class="control-label select-time">Khoảng thời gian</label>
                         <select class="selectpicker form-control" size="auto">
                             <option value="06-07">06AM - 07AM</option>
                             <option value="07-08">07AM - 08AM</option>
@@ -278,18 +469,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="form-group label-floating is-select">
-                        <label class="control-label">AM-PM</label>
-                        <select class="selectpicker form-control" size="auto">
-                            <option value="AM">AM</option>
-                            <option value="PM">PM</option>
-                        </select>
-                    </div>
-                </div>
             </div>
 
-            <button class="btn btn-breez btn-lg full-width">Create Event</button>
+            <button class="btn btn-breez btn-lg full-width">Thêm lịch</button>
 
         </div>
 
@@ -297,7 +479,37 @@
 </div>
 <!-- ... end Window-popup Create Event -->
 
+<a data-toggle="modal" data-target="#thanks" id="thanks-button"></a>
+
+<div class="modal fade" id="thanks">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="~/content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Cảm ơn chuyên gia</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Cảm ơn chuyên gia!
+            </p>
+            <p>
+                Olympus đã ghi nhớ!
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close" onclick="Click();">OK</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <script>
+    function Click() {
+        $("th[data-date='" + $(".today-events-thumb .day-number ").text() + "']").click();
+    }
     $("th.fc-day-header.fc-widget-header").click(function () {
         $(".day-number").text($(this).attr("data-date"));
         $(".card").remove();
@@ -307,7 +519,7 @@
         var time;
         for (i = 0; i < timeList.length; i++) {
             time = $(timeList[i]).find(".fc-axis span").text();
-            $("#calendar-list").append("<div class='card' style='display:none'><div class='card-header' role='tab'><div class='event-time'><time>" + time + "</time><div class='more'><svg class='olymp-three-dots-icon'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='content/icons/icons.svg#olymp-three-dots-icon'></use></svg><ul class='more-dropdown'><li> <a href='#'>Xóa khung giờ này</a></li> </ul></div></div></div></div>");
+            $("#calendar-list").append("<div class='card' style='display:none'><div class='card-header' role='tab'><div class='event-time'><time>" + time + "</time><div class='more'><svg class='olymp-three-dots-icon'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='content/icons/icons.svg#olymp-three-dots-icon'></use></svg><ul class='more-dropdown'><li> <a class='delete-event'>Xóa khung giờ này</a></li> </ul></div></div></div></div>");
             $(".card").slideDown();
         }
         if ($(".card").length == 0) {
@@ -347,5 +559,42 @@
                 $(this).click();
             }
         })
+    });
+    $("#add_event").click(function () {
+        $("#datetimepicker").attr("value", $(".today-events-thumb .day-number ").text());
+        $('.calendar .select-time + .bootstrap-select .dropdown-menu.inner li').removeClass("hidden").addClass("ok");
+        $('.calendar .select-time + .bootstrap-select .dropdown-menu.inner li span.text').each(function () {
+            var li = $(this);
+            $('.today-events .event-time time').each(function () {
+                if ($(this).text() == li.text()) {
+                    li.closest("li").removeClass("ok");
+                    return false;
+                }
+            })
+        });
+        $('.selectpicker.form-control').val($($('.calendar .select-time + .bootstrap-select .dropdown-menu.inner li.ok span.text')[0]).text().replace(/AM/gi, '').replace(/PM/gi, '').replace(/ /gi, ''));
+        $('.selectpicker.form-control').selectpicker('refresh');
+        $('.calendar .select-time + .bootstrap-select .dropdown-menu.inner li span.text').each(function () {
+            var li = $(this);
+            $('.today-events .event-time time').each(function () {
+                if ($(this).text() == li.text()) {
+                    li.closest("li").addClass("hidden").removeClass("ok");
+                }
+            })
+        });
+
+    })
+    $(".row.calendar + button.btn.btn-breez.btn-lg.full-width").click(function () {
+        $("tr[data-time='" + $(".selectpicker.form-control").val() + "']").find("." + $(".fc-day-header[data-date='" + $("#datetimepicker").val() + "']").attr('data-title')).addClass("completed")
+        $("a.close.icon-close").click()
+        setTimeout(function () {
+            $("#thanks-button").click();
+        }, 500);
+    })
+    $(document).on("click", ".delete-event", function () {
+        $("tr[data-time='" + $(this).closest(".event-time").find("time").text().replace(/AM/gi, '').replace(/PM/gi, '').replace(/ /gi, '') + "']").find("." + $(".fc-day-header[data-date='" + $(".today-events-thumb .day-number ").text() + "']").attr('data-title')).removeClass("completed")
+        setTimeout(function () {
+            $("#thanks-button").click();
+        }, 500);
     })
 </script>

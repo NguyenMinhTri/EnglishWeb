@@ -1,26 +1,36 @@
 ﻿@model Framework.ViewModels.OldWordsViewModel
 
 <script>
-    document.title = "Từ đã tra | Olympus";
+    document.title = "Danh sách từ yêu thích | Olympus";
 </script>
 
 <div class="ui-block">
     <article class="hentry blog-post single-post single-post-v1">
-        <a href="#" onclick="$('#normal-form input#submit').click(); window.history.pushState('', '', window.location.pathname + '?option=dictionaries');" class="post-category bg-primary">Olymbus Dictionary</a>
+        <a href="#" id="to_dictionary" onclick="$('#normal-form input#submit').click(); window.history.pushState('', '', window.location.pathname + '?option=dictionaries');" class="post-category bg-primary">Olymbus Dictionary</a>
         <div class="dictionary-title">
-            <h1 class="post-title">Các từ đã tra</h1>
+            <h1 class="post-title">Danh sách yêu thích</h1>
         </div>
 
         <div class="post-content-wrap">
             <div class="post-content">
-                <ol class="old-words">
-                    @foreach (var oldWord in @Model.ListOldWords)
-                    {
-                        <li>
-                            <h5><a href="" target="_blank">@oldWord.m_Voca</a></h5>
-                        </li>
-                    }
-                </ol>
+                @if (Model.ListOldWords.Count != 0)
+                {
+                    <ol class="old-words">
+                        @foreach (var oldWord in @Model.ListOldWords)
+                        {
+                            <li>
+                                <h5><a onclick="$('#keyword').val('@oldWord.m_Voca');$('#to_dictionary').click()">@oldWord.m_Voca</a></h5>
+                            </li>
+                        }
+                    </ol>
+                }
+                else
+                {
+                    <div class="landing-main-content">
+                        <h2 class="title">Rất tiếc, không tìm thấy</h2>
+                        <p>Có vẻ như bạn chưa có từ nào trong danh sách yêu thích</p>
+                    </div>
+                }
             </div>
         </div>
     </article>

@@ -35,14 +35,12 @@ namespace Framework.Controllers
         //public static int m_countQues = 0;
         private const string DB_PATH = @"~/App_Data/OneData.db";
         IClientLearningService _clientLearningService;
-        IOurWordService _ourWordService;
         IDetailOurWordService _detailOutWordService;
         IDictCacheService _dictCache;
         IToiecGroupService _toiecService;
         public LearningController(ILayoutService layoutService,
             IClientLearningService clientLearningService,
                     IDetailOurWordService detailOutWordService,
-            IOurWordService ourWordService,
             IDictCacheService dictCache,
             IToiecGroupService toiecService
             )
@@ -50,7 +48,6 @@ namespace Framework.Controllers
         {
             _clientLearningService = clientLearningService;
             _detailOutWordService = detailOutWordService;
-            _ourWordService = ourWordService;
             _dictCache = dictCache;
             _toiecService = toiecService;
         }
@@ -180,7 +177,7 @@ namespace Framework.Controllers
         protected TracNghiem RandomTracNghiemChoVoca(int idWord)
         {
             TracNghiem cauTracNghiem = new TracNghiem();
-            var vocaCanHoc = _ourWordService.GetById(idWord);
+            var vocaCanHoc = _dictCache.GetById(idWord);
             Random rnd = new Random();
             var listDict = _dictCache.GetAll();
             int pos = rnd.Next(0, listDict.Count);
@@ -192,7 +189,7 @@ namespace Framework.Controllers
                 if (i == 0)
                 {
                     dapAn.Checked = true;
-                    dapAn.Contain = vocaCanHoc.Word;
+                    dapAn.Contain = vocaCanHoc.VocaID;
                     cauTracNghiem.ABCD[ramdomPo[i]] = dapAn;
                 }
                 else
@@ -407,7 +404,7 @@ namespace Framework.Controllers
                 }
                 JsonMessengerText jsonTextMessenger = new JsonMessengerText();
                 jsonTextMessenger.recipient.id = id;
-                messExplaintion.text = "Hết giờ ! chúc bạn học tốt "+ "\r\n"+"Số câu đúng : "+numberTrue.ToString() + "\r\n" + "Số câu sai : " + numberFalse.ToString();
+                messExplaintion.text = "Hết giờ! Chúc bạn học tốt!!! "+ "\r\n"+"Số câu đúng: "+numberTrue.ToString() + "\r\n" + "Số câu sai: " + numberFalse.ToString();
                 jsonTextMessenger.message = messExplaintion;
                 PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
                 //
@@ -451,7 +448,7 @@ namespace Framework.Controllers
                         JsonMessengerText jsonTextMessenger = new JsonMessengerText();
                         jsonTextMessenger.recipient.id = idMess;
                         MessJson messExplaintion = new MessJson();
-                        messExplaintion.text = "Sai rồi nha bạn vui lòng làm lại";
+                        messExplaintion.text = "Sai rồi, bạn vui lòng làm lại nha!";
                         jsonTextMessenger.message = messExplaintion;
                         PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
                         // isContinue = 1;
