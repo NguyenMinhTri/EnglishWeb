@@ -858,6 +858,7 @@
     <Content Include="content\fonts\fontawesome-webfont3295.ttf" />
     <Content Include="content\fonts\fontawesome-webfont3295.woff" />
     <Content Include="content\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="App_Data\OneData.db" />
     <None Include="Properties\PublishProfiles\olympusenglish - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -989,7 +990,6 @@
   <ItemGroup>
     <Folder Include="admin\css\maps\" />
     <Folder Include="admin\images\" />
-    <Folder Include="App_Data\" />
     <Folder Include="content\upload\" />
     <Folder Include="Scripts\client\" />
     <Folder Include="Scripts\common\" />

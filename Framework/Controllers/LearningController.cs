@@ -294,117 +294,129 @@ namespace Framework.Controllers
             var listToiecQues = await _toiecService.GetListFeedTextOfGroup();
         }
         [AllowAnonymous]
-        public async Task<string> MultiplechoiceOnline(string id)
+        public async Task<string> multiplechoiceOnline(string id)
         {
-            //create
-            using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+            try
             {
-                var items = db.GetCollection<Item>("items");
-                var item = items.FindOne(i => i.Id_Messenger == id);
-                //Create new item
-                if (item == null)
+                int numberTrue = 0;
+                int numberFalse = 0;
+                MessJson messExplaintion = new MessJson();
+                messExplaintion.text = "";
+                //create
+                using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
                 {
-                    Item newItem = new Item();
-                    newItem.Id_Messenger = id;
-                    newItem.Status = 0;
-                    items.Insert(newItem);
+                    var items = db.GetCollection<Item>("items");
+                    var item = items.FindOne(i => i.Id_Messenger == id);
+                    //Create new item
+                    if (item == null)
+                    {
+                        Item newItem = new Item();
+                        newItem.Id_Messenger = id;
+                        newItem.Status = 0;
+                        items.Insert(newItem);
+                    }
                 }
-            }
                 //
-            List<int> randDomPost = randomPosition();
-            List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
+                List<int> randDomPost = randomPosition();
+                List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
 
-            List<int> listIDWord = new List<int>();
-            var currentUser = _service.listUserID().Where(x => x.Id_Messenger == id.ToString()).FirstOrDefault();
-            listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, -1);
-            foreach (var idWord in listIDWord)
-            {
-                dataTracNghiem.Add(RandomTracNghiemChoVoca(idWord));
+                List<int> listIDWord = new List<int>();
+                var currentUser = _service.listUserID().Where(x => x.Id_Messenger == id.ToString()).FirstOrDefault();
+                listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, -1);
+                foreach (var idWord in listIDWord)
+                {
+                    dataTracNghiem.Add(RandomTracNghiemChoVoca(idWord));
+                }
+
+                int m_countQues = 0;
+                bool isBreak = false;
+                //Gửi đi từng question
+                while (true)
+                {
+                    UpdateLiteDb(id, 0);
+                    JsonMessengerText jsonMessenger = new JsonMessengerText();
+
+                    jsonMessenger.recipient.id = id;
+
+                    //tao 1 cau trac nghiem gui cho messenger
+                    MessageQuick messQuick = new MessageQuick();
+                    try
+                    {
+                        messQuick.text = dataTracNghiem[m_countQues].Question;
+
+                    }
+                    catch
+                    {
+                        isBreak = true;
+                        break;
+                    }
+                    for (int i = 0; i < 4; i++)
+                    {
+                        QuickReplyMess replay = new QuickReplyMess();
+                        replay.payload = dataTracNghiem[m_countQues].ABCD[i].Checked.ToString();
+                        replay.title = dataTracNghiem[m_countQues].ABCD[i].Contain + ".";
+                        messQuick.quick_replies.Add(replay);
+                    }
+                    jsonMessenger.message = messQuick;
+                    //send di
+                    var temp = JsonConvert.SerializeObject(jsonMessenger);
+                    PostRaw("", JsonConvert.SerializeObject(jsonMessenger));
+                    int countTime = 0;
+                    int isContinue = 0;
+                    while (isContinue == 0)
+                    {
+                        Task.WaitAll(Task.Delay(1000));
+                        using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+                        {
+                            // Get a collection (or create, if not exits)
+                            var col = db.GetCollection<Item>("items");
+                            isContinue = col.FindOne(x => x.Id_Messenger == id).Status;
+                        }
+                        //Dap an sai
+                        if (isContinue == 1)
+                        {
+                            //m_countQues++;
+                            numberFalse++;
+                            // isContinue = 0;
+                            break;
+                        }
+                        //Dap an dung
+                        else if (isContinue == 2)
+                        {
+                            m_countQues++;
+                            numberTrue++;
+                            if (m_countQues > dataTracNghiem.Count())
+                                isBreak = true;
+                            break;
+                        }
+                        //het gio
+                        if (countTime > 10)
+                        {
+                            //Update status
+                            UpdateLiteDb(id, 0);
+                            //
+                            m_countQues = dataTracNghiem.Count;
+                            countTime = 0;
+                            break;
+                            //  m_countQues--;
+                        }
+                        countTime++;
+                    }
+                    if (isBreak)
+                        break;
+                }
+                JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+                jsonTextMessenger.recipient.id = id;
+                messExplaintion.text = "Hết giờ ! chúc bạn học tốt "+ "\r\n"+"Số câu đúng : "+numberTrue.ToString() + "\r\n" + "Số câu sai : " + numberFalse.ToString();
+                jsonTextMessenger.message = messExplaintion;
+                PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+                //
+                return "";
             }
-
-            int m_countQues = 0;
-            bool isBreak = false;
-            //Gửi đi từng question
-            while (true)
+            catch(Exception e)
             {
-                UpdateLiteDb(id, 0);
-                JsonMessengerText jsonMessenger = new JsonMessengerText();
-
-                jsonMessenger.recipient.id = id;
-                
-                //tao 1 cau trac nghiem gui cho messenger
-                MessageQuick messQuick = new MessageQuick();
-                try
-                {
-                    messQuick.text = dataTracNghiem[m_countQues].Question;
-
-                }
-                catch
-                {
-                    isBreak = true;
-                    break;
-                }
-                for(int i= 0;i<4;i++)
-                {
-                    QuickReplyMess replay = new QuickReplyMess();
-                    replay.payload = dataTracNghiem[m_countQues].ABCD[i].Checked.ToString();
-                    replay.title = dataTracNghiem[m_countQues].ABCD[i].Contain+".";
-                    messQuick.quick_replies.Add(replay);
-                }
-                jsonMessenger.message = messQuick;
-                //send di
-                var temp = JsonConvert.SerializeObject(jsonMessenger);
-                PostRaw("", JsonConvert.SerializeObject(jsonMessenger));
-                int countTime = 0;
-                int isContinue = 0;
-                while (isContinue == 0 )
-                {
-                    Task.WaitAll(Task.Delay(1000));
-                    using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
-                    {
-                        // Get a collection (or create, if not exits)
-                        var col = db.GetCollection<Item>("items");
-                        isContinue = col.FindOne(x => x.Id_Messenger == id).Status;
-                    }
-                    //Dap an sai
-                    if (isContinue == 1)
-                    {
-                        //m_countQues++;
-                        // isContinue = 0;
-                        break;
-                    }
-                    //Dap an dung
-                    else if (isContinue == 2)
-                    {
-                        m_countQues++;
-                        if (m_countQues > dataTracNghiem.Count())
-                            isBreak = true;
-                        break;
-                    }
-                    //het gio
-                    if(countTime > 10)
-                    {
-                        //Update status
-                        UpdateLiteDb(id, 0);
-                        //
-                        m_countQues = dataTracNghiem.Count;
-                        countTime = 0;
-                        break;
-                        //  m_countQues--;
-                    }
-                    countTime++;
-                }
-                if (isBreak)
-                    break;
+                return e.Message;
             }
-            JsonMessengerText jsonTextMessenger = new JsonMessengerText();
-            jsonTextMessenger.recipient.id = id;
-            MessJson messExplaintion = new MessJson();
-            messExplaintion.text = "Hết giờ ! chúc bạn học tốt";
-            jsonTextMessenger.message = messExplaintion;
-            PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
-            //
-            return "";
         }
         [AllowAnonymous]
         public ActionResult ReceivePost(BotRequest data)
