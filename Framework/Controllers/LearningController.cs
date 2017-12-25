@@ -19,15 +19,21 @@ using System.Threading.Tasks;
 using Framework.Model.Google;
 using Newtonsoft.Json;
 using System.Net;
+using LiteDB;
 
 namespace Framework.Controllers
 {
-
+    public class Item
+    {
+        public int Id { get; set; }
+        public string Id_Messenger { get; set; }
+        public int Status { get; set; }
+    }
     public class LearningController : LayoutController
     {
-        public static int isContinue = 0;
-        public static int m_countQues = 0;
-        
+       // public static int isContinue = 0;
+        //public static int m_countQues = 0;
+        private const string DB_PATH = @"~/App_Data/OneData.db";
         IClientLearningService _clientLearningService;
         IOurWordService _ourWordService;
         IDetailOurWordService _detailOutWordService;
@@ -288,10 +294,23 @@ namespace Framework.Controllers
             var listToiecQues = await _toiecService.GetListFeedTextOfGroup();
         }
         [AllowAnonymous]
-        public string MultiplechoiceOnline(string id)
+        public async Task<string> MultiplechoiceOnline(string id)
         {
-
-            //
+            //create
+            using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+            {
+                var items = db.GetCollection<Item>("items");
+                var item = items.FindOne(i => i.Id_Messenger == id);
+                //Create new item
+                if (item == null)
+                {
+                    Item newItem = new Item();
+                    newItem.Id_Messenger = id;
+                    newItem.Status = 0;
+                    items.Insert(newItem);
+                }
+            }
+                //
             List<int> randDomPost = randomPosition();
             List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
 
@@ -302,19 +321,29 @@ namespace Framework.Controllers
             {
                 dataTracNghiem.Add(RandomTracNghiemChoVoca(idWord));
             }
-            
-            m_countQues = 0;
+
+            int m_countQues = 0;
+            bool isBreak = false;
             //Gửi đi từng question
-            while (m_countQues < dataTracNghiem.Count)
+            while (true)
             {
-                
+                UpdateLiteDb(id, 0);
                 JsonMessengerText jsonMessenger = new JsonMessengerText();
 
                 jsonMessenger.recipient.id = id;
-                isContinue = 0;
+                
                 //tao 1 cau trac nghiem gui cho messenger
                 MessageQuick messQuick = new MessageQuick();
-                messQuick.text = dataTracNghiem[m_countQues].Question;
+                try
+                {
+                    messQuick.text = dataTracNghiem[m_countQues].Question;
+
+                }
+                catch
+                {
+                    isBreak = true;
+                    break;
+                }
                 for(int i= 0;i<4;i++)
                 {
                     QuickReplyMess replay = new QuickReplyMess();
@@ -327,26 +356,37 @@ namespace Framework.Controllers
                 var temp = JsonConvert.SerializeObject(jsonMessenger);
                 PostRaw("", JsonConvert.SerializeObject(jsonMessenger));
                 int countTime = 0;
+                int isContinue = 0;
                 while (isContinue == 0 )
                 {
                     Task.WaitAll(Task.Delay(1000));
+                    using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+                    {
+                        // Get a collection (or create, if not exits)
+                        var col = db.GetCollection<Item>("items");
+                        isContinue = col.FindOne(x => x.Id_Messenger == id).Status;
+                    }
                     //Dap an sai
                     if (isContinue == 1)
                     {
                         //m_countQues++;
-                       // isContinue = 0;
+                        // isContinue = 0;
                         break;
                     }
                     //Dap an dung
                     else if (isContinue == 2)
                     {
                         m_countQues++;
+                        if (m_countQues > dataTracNghiem.Count())
+                            isBreak = true;
                         break;
                     }
                     //het gio
                     if(countTime > 10)
                     {
-                        isContinue = 0;
+                        //Update status
+                        UpdateLiteDb(id, 0);
+                        //
                         m_countQues = dataTracNghiem.Count;
                         countTime = 0;
                         break;
@@ -354,8 +394,15 @@ namespace Framework.Controllers
                     }
                     countTime++;
                 }
+                if (isBreak)
+                    break;
             }
-            
+            JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+            jsonTextMessenger.recipient.id = id;
+            MessJson messExplaintion = new MessJson();
+            messExplaintion.text = "Hết giờ ! chúc bạn học tốt";
+            jsonTextMessenger.message = messExplaintion;
+            PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
             //
             return "";
         }
@@ -364,36 +411,39 @@ namespace Framework.Controllers
         {
             try
             {
-                if (data.entry.FirstOrDefault().messaging.FirstOrDefault().message.quick_reply.payload == "True")
+                string strResult = data.entry.FirstOrDefault().messaging.FirstOrDefault().message.quick_reply.payload;
+                string idMess = data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id;
+                if (strResult == "True")
                 {
                     try
                     {
                         JsonMessengerText jsonTextMessenger = new JsonMessengerText();
-                        jsonTextMessenger.recipient.id = data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id;
+                        jsonTextMessenger.recipient.id = idMess;
                         MessJson messExplaintion = new MessJson();
                         messExplaintion.text = "Chính xác";
                         jsonTextMessenger.message = messExplaintion;
                         PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
-                       
-                        isContinue = 2;
+                        //isContinue = 2;
+                        //Update status
+                        UpdateLiteDb(jsonTextMessenger.recipient.id, 2);
                     }
                     catch
                     {
 
                     }
                 }
-                else
+                else if(strResult == "False")
                 {
                     try
                     {
                         JsonMessengerText jsonTextMessenger = new JsonMessengerText();
-                        jsonTextMessenger.recipient.id = data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id;
+                        jsonTextMessenger.recipient.id = idMess;
                         MessJson messExplaintion = new MessJson();
                         messExplaintion.text = "Sai rồi nha bạn vui lòng làm lại";
                         jsonTextMessenger.message = messExplaintion;
                         PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
-                       
-                        isContinue = 1;
+                        // isContinue = 1;
+                        UpdateLiteDb(jsonTextMessenger.recipient.id, 1);
                     }
                     catch
                     {
@@ -449,6 +499,27 @@ namespace Framework.Controllers
             catch
             {
                 return "";
+            }
+        }
+        public void UpdateLiteDb(string id, int status)
+        {
+            using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+            {
+                var items = db.GetCollection<Item>("items");
+                var item = items.FindOne(i => i.Id_Messenger == id);
+                //Create new item
+                if (item == null)
+                {
+                    Item newItem = new Item();
+                    newItem.Id_Messenger = id;
+                    newItem.Status = status;
+                    items.Insert(newItem);
+                }
+                else
+                {
+                    item.Status = status;
+                    items.Update(item);
+                }
             }
         }
     }
