@@ -16,12 +16,18 @@ using Framework.Service.Client;
 using Framework.Model;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
+using Framework.Model.Google;
+using Newtonsoft.Json;
+using System.Net;
 
 namespace Framework.Controllers
 {
 
     public class LearningController : LayoutController
     {
+        public static int isContinue = 0;
+        public static int m_countQues = 0;
+        
         IClientLearningService _clientLearningService;
         IOurWordService _ourWordService;
         IDetailOurWordService _detailOutWordService;
@@ -280,6 +286,170 @@ namespace Framework.Controllers
         public async Task autoGeneratorToiecExam()
         {
             var listToiecQues = await _toiecService.GetListFeedTextOfGroup();
+        }
+        [AllowAnonymous]
+        public string MultiplechoiceOnline(string id)
+        {
+
+            //
+            List<int> randDomPost = randomPosition();
+            List<TracNghiem> dataTracNghiem = new List<TracNghiem>();
+
+            List<int> listIDWord = new List<int>();
+            var currentUser = _service.listUserID().Where(x => x.Id_Messenger == id.ToString()).FirstOrDefault();
+            listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, -1);
+            foreach (var idWord in listIDWord)
+            {
+                dataTracNghiem.Add(RandomTracNghiemChoVoca(idWord));
+            }
+            
+            m_countQues = 0;
+            //Gửi đi từng question
+            while (m_countQues < dataTracNghiem.Count)
+            {
+                
+                JsonMessengerText jsonMessenger = new JsonMessengerText();
+
+                jsonMessenger.recipient.id = id;
+                isContinue = 0;
+                //tao 1 cau trac nghiem gui cho messenger
+                MessageQuick messQuick = new MessageQuick();
+                messQuick.text = dataTracNghiem[m_countQues].Question;
+                for(int i= 0;i<4;i++)
+                {
+                    QuickReplyMess replay = new QuickReplyMess();
+                    replay.payload = dataTracNghiem[m_countQues].ABCD[i].Checked.ToString();
+                    replay.title = dataTracNghiem[m_countQues].ABCD[i].Contain+".";
+                    messQuick.quick_replies.Add(replay);
+                }
+                jsonMessenger.message = messQuick;
+                //send di
+                var temp = JsonConvert.SerializeObject(jsonMessenger);
+                PostRaw("", JsonConvert.SerializeObject(jsonMessenger));
+                int countTime = 0;
+                while (isContinue == 0 )
+                {
+                    Task.WaitAll(Task.Delay(1000));
+                    //Dap an sai
+                    if (isContinue == 1)
+                    {
+                        //m_countQues++;
+                       // isContinue = 0;
+                        break;
+                    }
+                    //Dap an dung
+                    else if (isContinue == 2)
+                    {
+                        m_countQues++;
+                        break;
+                    }
+                    //het gio
+                    if(countTime > 10)
+                    {
+                        isContinue = 0;
+                        m_countQues = dataTracNghiem.Count;
+                        countTime = 0;
+                        break;
+                        //  m_countQues--;
+                    }
+                    countTime++;
+                }
+            }
+            
+            //
+            return "";
+        }
+        [AllowAnonymous]
+        public ActionResult ReceivePost(BotRequest data)
+        {
+            try
+            {
+                if (data.entry.FirstOrDefault().messaging.FirstOrDefault().message.quick_reply.payload == "True")
+                {
+                    try
+                    {
+                        JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+                        jsonTextMessenger.recipient.id = data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id;
+                        MessJson messExplaintion = new MessJson();
+                        messExplaintion.text = "Chính xác";
+                        jsonTextMessenger.message = messExplaintion;
+                        PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+                       
+                        isContinue = 2;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+                        jsonTextMessenger.recipient.id = data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id;
+                        MessJson messExplaintion = new MessJson();
+                        messExplaintion.text = "Sai rồi nha bạn vui lòng làm lại";
+                        jsonTextMessenger.message = messExplaintion;
+                        PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+                       
+                        isContinue = 1;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            catch
+            {
+                //try
+                //{
+                //    if (data.entry.FirstOrDefault().messaging.FirstOrDefault().message == null)
+                //    {
+                //        JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+                //        jsonTextMessenger.recipient.id = data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id;
+                //        MessJson messExplaintion = new MessJson();
+                //        messExplaintion.text = "Có lỗi xay ra, mong bạn thông cảm !";
+                //        jsonTextMessenger.message = messExplaintion;
+                //        PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+                //        isContinue = 1;
+                //    }
+                //}
+                //catch
+                //{
+
+                //}
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+        [AllowAnonymous]
+        private string PostRaw(string url, string data)
+        {
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp");
+                request.ContentType = "application/json";
+                request.Method = "POST";
+                using (var requestWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    requestWriter.Write(data);
+                    requestWriter.Flush();
+                    requestWriter.Close();
+                }
+                var response = (HttpWebResponse)request.GetResponse();
+                if (response == null)
+                    throw new InvalidOperationException("GetResponse returns null");
+
+                using (var sr = new StreamReader(response.GetResponseStream()))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+            catch
+            {
+                return "";
+            }
         }
     }
 }

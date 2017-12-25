@@ -251,7 +251,7 @@ namespace Framework.Controllers
         [HttpPost]
         public async Task<string> callChatBot(string contain, string id, string userid)
         {
-            contain = contain.ToLower().Trim();
+            contain = contain.ToString().ToLower().Trim();
             //Tim trong cache nếu ko có thì request crawler
             var dictTemp = _dictCache.GetAll().Where(x => x.VocaID == contain).FirstOrDefault();
             //post
@@ -271,7 +271,12 @@ namespace Framework.Controllers
             AttachmentJson sound = new AttachmentJson();
             sound.attachment.type = "audio";
             Attachment2 attach = new Attachment2();
-            
+            if (contain.LastOrDefault() == '.')
+            {
+                messPron.text = "";
+                hello.messages.Add(messPron);
+                return JsonConvert.SerializeObject(hello);
+            }
             Payload2 payload = new Payload2();
             //
             if (dictTemp != null)
@@ -338,7 +343,7 @@ namespace Framework.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public string notifyMessenger()
+        public async Task<string> notifyMessenger()
         {
             //  var listUser = _detailOutWordService.
             ListUserNofity listUserNotify = new ListUserNofity();
@@ -356,10 +361,10 @@ namespace Framework.Controllers
                 {
                     if (listIDWord != null || listIDWord.Count != 0)
                     {
-                        sendNotificationEnlishVoca(listIDWord, userDetail.Id_Messenger);
+                        await sendNotificationEnlishVoca(listIDWord, userDetail.Id_Messenger);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
 
                 }
@@ -435,7 +440,7 @@ namespace Framework.Controllers
             string paramChatfuel = "";
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            var responseVoca = notifyMessenger();
+            var responseVoca = notifyMessenger().Result;
             ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(responseVoca);
             foreach (var userNoti in listNofity.reminduser)
             {
@@ -452,30 +457,32 @@ namespace Framework.Controllers
             }
             return "";
         }
-        protected string sendNotificationEnlishVoca(List<int> listIdWord, string messID)
+        protected async Task<string> sendNotificationEnlishVoca(List<int> listIdWord, string messID)
         {
             //ChatfuelJson jsonMessenger = new ChatfuelJson();
             //MessJson messExplaintion = new MessJson();
             //MessJson messPron = new MessJson();
             //MessJson messVietnamese = new MessJson();
             //AttachmentJson sound = new AttachmentJson();
-           // jsonMessenger.recipient.id = messID;
+            // jsonMessenger.recipient.id = messID;
             //
+            bool isCheck = false;
             foreach (var idWord in listIdWord)
             {
+                isCheck = true;
                 JsonMessengerText jsonTextMessenger = new JsonMessengerText();
                 MessJson messExplaintion = new MessJson();
                 jsonTextMessenger.recipient.id = messID;
                 JsonMessengerText jsonSoundMessenger = new JsonMessengerText();
                 jsonSoundMessenger.recipient.id = messID;
-                
+
                 AttachmentJson sound = new AttachmentJson();
                 var tempWord = _ourWordService.GetById(idWord);
                 var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.Word).FirstOrDefault();
                 messExplaintion.text = infoVoca.VocaID;
                 messExplaintion.text += "\r\n" + infoVoca.Pron;
                 messExplaintion.text += "\r\n" + infoVoca.MeanEN;
-                messExplaintion.text += "\r\n"+ infoVoca.MeanVN;
+                messExplaintion.text += "\r\n" + infoVoca.MeanVN;
                 sound.attachment.payload.url = infoVoca.SoundUrl;
                 //
                 jsonTextMessenger.message = messExplaintion;
@@ -485,7 +492,12 @@ namespace Framework.Controllers
                 temp = JsonConvert.SerializeObject(jsonSoundMessenger);
                 PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
                 PostRaw("", JsonConvert.SerializeObject(jsonSoundMessenger));
+
             }
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            if(isCheck)
+                await client.PostAsync("https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + messID + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a3fc60de4b037186c58ec99", null);
             return "";
         }
         //Post method

@@ -103,6 +103,26 @@ namespace Framework.Model.Google
         public string src { get; set; }
     }
 
+    public class QuickReplyMess
+    {
+        public QuickReplyMess()
+        {
+            content_type = "text";
+        }
+        public string content_type { get; set; }
+        public string title { get; set; }
+        public string payload { get; set; }
+    }
+
+    public class MessageQuick : MessageObject
+    {
+        public MessageQuick()
+        {
+            quick_replies = new List<QuickReplyMess>();
+        }
+        public string text { get; set; }
+        public List<QuickReplyMess> quick_replies { get; set; }
+    }
 
     public class JsonMessengerText 
     {

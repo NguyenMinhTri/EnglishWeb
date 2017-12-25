@@ -47,7 +47,7 @@ namespace Framework.Service.Admin
         }
         public async Task<ImageFB> GetImageByPost(string id)
         {
-            var url = "https://graph.facebook.com/v2.11/" + id + "?fields=full_picture&access_token=" + Token.Facebook;
+            var url = "https://graph.facebook.com/v2.11/" + id + "?fields=full_picture,source&access_token=" + Token.Facebook;
             var httpClient = new HttpClient();
             string json = "";
                 while(true)
@@ -293,7 +293,10 @@ namespace Framework.Service.Admin
                         
                         postFB.DapAn = await DetectedAnswOfPost(postFB.id);
                         int countDapAn = postFB.DapAn.Count();
-                        postFB.imageURL = imageOfPost.full_picture;
+                        if (imageOfPost.source == null || imageOfPost.source == "")
+                            postFB.imageURL = imageOfPost.full_picture;
+                        else
+                            postFB.imageURL = imageOfPost.source;
                         if (countDapAn == 0)
                         {
 

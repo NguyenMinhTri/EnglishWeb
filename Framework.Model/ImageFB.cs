@@ -9,6 +9,7 @@ namespace Framework.Model
     public class ImageFB
     {
         public string full_picture { get; set; }
+        public string source { set; get; }
         public string id { get; set; }
     }
 }

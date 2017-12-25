@@ -353,34 +353,59 @@ namespace Framework.Controllers
             }
         }
         [AllowAnonymous]
-        [ActionName("Get")]
-        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult ReceivePost(BotRequest data)
         {
-            Task.Factory.StartNew(() =>
-            {
-                foreach (var entry in data.entry)
-                {
-                    foreach (var message in entry.messaging)
-                    {
-                        if (string.IsNullOrWhiteSpace(message?.message?.text))
-                            continue;
+            //data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id == 
+            var ctrlr = DependencyResolver.Current.GetService<LearningController>();
+            ctrlr.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlr);
+            ctrlr.ReceivePost(data);
+            //try
+            //{
+            //    Task.Factory.StartNew(() =>
+            //    {
+            //        foreach (var entry in data.entry)
+            //        {
+            //            foreach (var message in entry.messaging)
+            //            {
+            //                if (string.IsNullOrWhiteSpace(message?.message?.text))
+            //                    continue;
 
-                        var msg = "You said: " + message.message.text;
-                        var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
-                        PostRaw("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp", json);
-                        //var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp");
-                        //httpWebRequest.ContentType = "application/json";
-                        //httpWebRequest.Method = "POST";
-                        //var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                        //using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                        //{
-                        //    var result = streamReader.ReadToEnd();
-                        //}
-                    }
-                }
-            });
+            //                var msg = "You said: " + message.message.text;
+            //                var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
+            //                PostRaw("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp", json);
+            //            //var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp");
+            //            //httpWebRequest.ContentType = "application/json";
+            //            //httpWebRequest.Method = "POST";
+            //            //var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            //            //using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            //            //{
+            //            //    var result = streamReader.ReadToEnd();
+            //            //}
+            //        }
+            //        }
+            //    });
+            //}
+            //catch
+            //{
 
+            //}
+            //try
+            //{
+            //    if (data.entry.FirstOrDefault().messaging.FirstOrDefault().message.quick_reply.payload == "True")
+            //    {
+            //        LearningController.isContinue = 2;
+            //    }
+            //    else
+            //    {
+            //        LearningController.isContinue = 1;
+            //    }
+
+            //}
+            //catch(Exception e)
+            //{
+                
+
+            //}
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
         [AllowAnonymous]

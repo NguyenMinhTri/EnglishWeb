@@ -9,12 +9,21 @@ namespace Framework.SignalR
 {
     public class ChatHub : Hub
     {
-        public void SendChatMessage(string who, string message)
+        //public void SendChatMessage(string who, string message)
+        //{
+        //    string name = Context.User.Identity.Name;
+        //    Clients.Group(who).addChatMessage(name, message);
+        //}
+        public void LetsChat(string Cl_Name, string Cl_Message)
         {
-            string name = Context.User.Identity.Name;
-            Clients.Group(who).addChatMessage(name, message);
-        }
+            Clients.All.NewMessage(Cl_Name, Cl_Message);
 
+        }
+        public void Send(string name, string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            Clients.All.broadcastMessage(name, message);
+        }
         public override Task OnConnected()
         {
             string name = Context.User.Identity.Name;
