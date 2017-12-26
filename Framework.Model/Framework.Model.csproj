@@ -90,7 +90,6 @@
     <Compile Include="Comment.cs" />
     <Compile Include="PostType.cs" />
     <Compile Include="PostVoteDetail.cs" />
-    <Compile Include="Relationship.cs" />
     <Compile Include="Friend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing.cs" />
