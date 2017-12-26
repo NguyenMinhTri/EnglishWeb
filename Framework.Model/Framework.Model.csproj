@@ -65,7 +65,6 @@
     <Compile Include="ApplicationUserStore.cs" />
     <Compile Include="Auditable.cs" />
     <Compile Include="BotModel.cs" />
-    <Compile Include="Code.cs" />
     <Compile Include="CommentFB.cs" />
     <Compile Include="CommentVoteDetail.cs" />
     <Compile Include="DetailOurWord.cs" />
@@ -77,7 +76,6 @@
     <Compile Include="ImageFB.cs" />
     <Compile Include="LearnVoca.cs" />
     <Compile Include="ListPostToiecFB.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="MessengerBot.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Dictionary.cs" />

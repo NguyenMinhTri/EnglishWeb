@@ -25,7 +25,6 @@ namespace Framework.Service.Client
     }
     class ClientDictionaryService : IClientDictionaryService
     {
-        ICodeRepository _codeRepository;
         OxfordDict m_oxfordDict;
         public ClientDictionaryService(
             )

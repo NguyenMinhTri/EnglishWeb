@@ -251,7 +251,6 @@
     <Compile Include="Controllers\Admin\AdminApplicationUserController.cs" />
     <Compile Include="Controllers\Admin\AdminApplicationUserRoleController.cs" />
     <Compile Include="Controllers\Admin\AdminBaseController.cs" />
-    <Compile Include="Controllers\Admin\AdminCodeController.cs" />
     <Compile Include="Controllers\Admin\AdminCommentVoteDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminDetailOurWordController.cs" />
     <Compile Include="Controllers\Admin\AdminDetailUserTypeController.cs" />
@@ -259,7 +258,6 @@
     <Compile Include="Controllers\Admin\AdminFriendController.cs" />
     <Compile Include="Controllers\Admin\AdminHaveSendQuestionController.cs" />
     <Compile Include="Controllers\Admin\AdminLearnVocaController.cs" />
-    <Compile Include="Controllers\Admin\AdminMessageController.cs" />
     <Compile Include="Controllers\Admin\AdminNotificationController.cs" />
     <Compile Include="Controllers\Admin\AdminCommentController.cs" />
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
@@ -906,10 +904,8 @@
     <Content Include="Views\Control\TimeField.cshtml" />
     <Content Include="Views\Control\TinyMce.cshtml" />
     <Content Include="Views\Control\VideoField.cshtml" />
-    <Content Include="Views\AdminCode\Index.cshtml" />
     <Content Include="Views\AdminCommentVoteDetail\Index.cshtml" />
     <Content Include="Views\AdminFriend\Index.cshtml" />
-    <Content Include="Views\AdminMessage\Index.cshtml" />
     <Content Include="Views\AdminNotification\Index.cshtml" />
     <Content Include="Views\AdminComment\Index.cshtml" />
     <Content Include="Views\AdminPostVoteDetail\Index.cshtml" />

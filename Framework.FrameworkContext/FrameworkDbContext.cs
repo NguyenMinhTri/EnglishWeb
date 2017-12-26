@@ -22,8 +22,6 @@ namespace Framework.FrameworkContext
         //TODO 1_ThemBang: st2. Thêm DbSet<Lớp mới tạo ở bước 1> vào đây
         // Ví dụ ở đây là public DbSet<Comment> Comments { set; get; }
         public DbSet<Friend> Friends { set; get; }
-        public DbSet<Code> Codes { set; get; }
-        public DbSet<Message> Messages { set; get; }
         public DbSet<Notification> Notifications { set; get; }
         public DbSet<Post> Posts { set; get; }
         public DbSet<Comment> Comments { set; get; }
@@ -81,12 +79,6 @@ namespace Framework.FrameworkContext
                 .Insert(u => u.HasName("InsertFriend", "dbo"))
                 .Update(u => u.HasName("UpdateFriend", "dbo"))
                 .Delete(u => u.HasName("DeleteFriend", "dbo")));
-            builder.Entity<Code>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertCode", "dbo"))
-            .Update(u => u.HasName("UpdateCode", "dbo"))
-            .Delete(u => u.HasName("DeleteCode", "dbo")));
-            builder.Entity<Message>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertMessage", "dbo"))
-            .Update(u => u.HasName("UpdateMessage", "dbo"))
-            .Delete(u => u.HasName("DeleteMessage", "dbo")));
             builder.Entity<Notification>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertNotification", "dbo"))
             .Update(u => u.HasName("UpdateNotification", "dbo"))
             .Delete(u => u.HasName("DeleteNotification", "dbo")));

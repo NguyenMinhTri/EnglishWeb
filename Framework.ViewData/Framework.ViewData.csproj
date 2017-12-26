@@ -94,7 +94,6 @@
     <Compile Include="Admin\Input\ApplicationUserInputAdminViewData.cs" />
     <Compile Include="Admin\Input\ApplicationUserRoleInputAdminViewData.cs" />
     <Compile Include="Admin\Input\BaseInputViewData.cs" />
-    <Compile Include="Admin\Input\CodeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\CommentVoteDetailInputAdminViewData.cs" />
     <Compile Include="Admin\Input\DetailOurWordInputAdminViewData.cs" />
     <Compile Include="Admin\Input\DetailUserTypeInputAdminViewData.cs" />
@@ -102,7 +101,6 @@
     <Compile Include="Admin\Input\FriendInputAdminViewData.cs" />
     <Compile Include="Admin\Input\HaveSendQuestionInputAdminViewData.cs" />
     <Compile Include="Admin\Input\LearnVocaInputAdminViewData.cs" />
-    <Compile Include="Admin\Input\MessageInputAdminViewData.cs" />
     <Compile Include="Admin\Input\NotificationInputAdminViewData.cs" />
     <Compile Include="Admin\Input\CommentInputAdminViewData.cs" />
     <Compile Include="Admin\Input\PostInputAdminViewData.cs" />
@@ -111,7 +109,6 @@
     <Compile Include="Admin\Input\SubTypeInputAdminViewData.cs" />
     <Compile Include="Admin\Input\ToiecGroupInputAdminViewData.cs" />
     <Compile Include="BaseViewData.cs" />
-    <Compile Include="ClientHome\CodeViewData.cs" />
     <Compile Include="Control\AutoForm.cs" />
     <Compile Include="Control\AutoFormAttribute.cs" />
     <Compile Include="Control\ComboboxViewData.cs" />
@@ -138,6 +135,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ClientHome\" />
     <Folder Include="Routing\" />
   </ItemGroup>
   <ItemGroup>

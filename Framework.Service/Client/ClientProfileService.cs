@@ -12,7 +12,6 @@ namespace Framework.Service.Client
     }
     class ClientProfileService : IClientProfileService
     {
-        ICodeRepository _codeRepository;
         public ClientProfileService(
             )
         {
