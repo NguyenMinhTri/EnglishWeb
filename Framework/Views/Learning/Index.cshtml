@@ -1,4 +1,6 @@
-﻿@if (ViewBag.page == "Index")
+﻿<div class="waiting_loader" style="display: none"></div>
+
+@if (ViewBag.page == "Index")
 {
     <div class="container learning-section">
     <div>
@@ -50,7 +52,9 @@ else {
 
 <script>
     function getview(action) {
-        $(".waiting_loader").css("display", "block");
+        if ($(".fakeloader").css("display") == "none") {
+            $(".waiting_loader").css("display", "block");
+        }
         var url = "/Learning/" + action;
         $("#partial").load(url, function (response, status, xhr) {
             if (status == "success") {

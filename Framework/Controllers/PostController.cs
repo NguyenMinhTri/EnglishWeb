@@ -144,7 +144,7 @@ namespace Framework.Controllers
             ApplicationUser user = _service.GetUserById(comment.Id_User);
             FieldHelper.CopyNotNullValue(CommentViewModel, user);
             FieldHelper.CopyNotNullValue(CommentViewModel, comment);
-
+            CommentViewModel.Id_UserPost = post.Id_User;
             if (data.Id_Comment == 0)
             {
                 return PartialView("_Comment", CommentViewModel);

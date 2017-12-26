@@ -154,7 +154,15 @@ $(document).ready(function () {
 })(jQuery);
 
 $(document).on("click", ".comments-shared .post-add-icon.inline-items", function () {
-    $(this).parent().parent().parent().parent().find(".comment-section").toggle('fast');
+    var comment_section = $(this).parent().parent().parent().parent().find(".comment-section");
+    comment_section.toggle('fast', function () {
+        if ($(comment_section).css("display") == "none") {
+            $(comment_section).prev().css("border-radius", "5px");
+        }
+        else {
+            $(comment_section).prev().css("border-radius", "5px 5px 0 0");
+        }
+    });
 });
 
 $(document).on("click", ".comment-section .more-comments", function () {

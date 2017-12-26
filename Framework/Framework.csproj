@@ -788,6 +788,7 @@
     <Content Include="content\images\video-thumb.png" />
     <Content Include="content\images\video-youtube.jpg" />
     <Content Include="content\images\video-youtube1.jpg" />
+    <Content Include="content\images\video.jpg" />
     <Content Include="content\images\video1.jpg" />
     <Content Include="content\images\video10.jpg" />
     <Content Include="content\images\video11.jpg" />

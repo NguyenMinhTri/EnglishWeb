@@ -4,6 +4,8 @@
     document.title = "Trắc nghiệm | Olympus";
 </script>
 
+
+
 <div class="container game-learning">
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -27,11 +29,11 @@
                             foreach (var items in @Model.listTracNghiem)
                             {
                                 @Html.Raw("<li>")
-                                
+
                                 {
                                     if (@items.Question != null)
                                     {
-                                        @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question.Replace("\n","<br/>") + "</h4>")
+                                        @Html.Raw("<h4 class='listen-question' answer='True' id='cau_" + i + "'>" + @items.Question.Replace("\n", "<br/>") + "</h4>")
                                     }
                                     else
                                     {
@@ -43,7 +45,18 @@
                                     }
                                     else
                                     {
-                                        @Html.Raw("<img src='" + @items.UrlImage + "'  class='listen-question' answer='True' id='cau_" + i + "'>")
+                                        <div class="fb-media">
+                                            @Html.Raw("<img src='" + @items.UrlImage + "'  class='listen-question' answer='True' id='cau_" + i + "'>")
+                                            @*<div class="ui-block video-item">
+                                                <div class="video-player">
+                                                    <img src="content/images/video.jpg" alt="photo">
+                                                    <a href="#" class="play-video">
+                                                        <svg class="olymp-play-icon"><use xlink:href="content/icons/icons.svg#olymp-play-icon"></use></svg>
+                                                    </a>
+                                                    <div class="overlay overlay-dark"></div>
+                                                </div>
+                                            </div>*@
+                                        </div>
                                     }
                                 }
 
@@ -65,7 +78,7 @@
                                 @Html.Raw("</ul>")
                                 @Html.Raw("<input type='hidden' name='cau_" + i + "'>");
                             @Html.Raw("</li>")
-                                                                                        i++;
+                                                                                       i++;
                             }
                         }
                     </ol>

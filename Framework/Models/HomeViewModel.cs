@@ -52,6 +52,7 @@ namespace Framework.ViewModels
         public String UserName { get; set; }
         public String Degree { get; set; }
         public String Id_User { get; set; }
+        public String Id_UserPost { get; set; }
         public int Id_Post { get; set; }
         public int Id_Comment { get; set; }
         public String Content { get; set; }

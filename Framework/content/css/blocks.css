@@ -7130,3 +7130,16 @@ ol.old-words li a {
 ol.old-words li a:hover {
     font-weight: 500;
 }
+.fb-media {
+    text-align:  center;
+}
+
+.fb-media .ui-block.video-item {
+    width: 300px;
+    height:  auto;
+    margin:  auto;
+}
+
+.ui-block > article.hentry.post{
+        border-radius: 5px 5px 0 0 ;
+}
