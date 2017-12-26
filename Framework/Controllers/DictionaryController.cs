@@ -224,7 +224,7 @@ namespace Framework.Controllers
                     detailWord.Id = 0;
                     detailWord.Schedule = DateTime.Now.AddDays(-1);
                     _detailOutWordService.Add(detailWord);
-                    notifyMessenger();
+                    
                 }
                 else
                 {
@@ -233,6 +233,7 @@ namespace Framework.Controllers
                 try
                 {
                     _detailOutWordService.Save();
+                    await notifyMessenger();
                     return Json(new
                     {
                         result = "success"

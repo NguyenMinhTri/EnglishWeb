@@ -32,7 +32,6 @@ namespace Framework.Controllers
         ICommentService _commentOfPost;
         IPostTypeService _postTypeService;
         IPostVoteDetailService _postVoteDetailService;
-        ISubTypeService _subType;
         IDetailUserTypeService _detailUserType;
         ICommentVoteDetailService _commentVoteDetailService;
         IToiecGroupService _fbService;
@@ -44,7 +43,6 @@ namespace Framework.Controllers
             IPostTypeService postTypeService,
             ICommentService commentOfPost,
             IPostVoteDetailService postVoteDetailService,
-            ISubTypeService subType,
             IDetailUserTypeService detailUserType,
             ICommentVoteDetailService commentVoteDetailService,
             IToiecGroupService fbService
@@ -58,7 +56,6 @@ namespace Framework.Controllers
             _postTypeService = postTypeService;
             _commentOfPost = commentOfPost;
             _postVoteDetailService = postVoteDetailService;
-            _subType = subType;
             _detailUserType = detailUserType;
             _commentVoteDetailService = commentVoteDetailService;
             _fbService = fbService;
@@ -410,7 +407,7 @@ namespace Framework.Controllers
 
             //Check expert info 
             //First condition : 
-            List<SubType> detailUser = _subType.GetAll().Where(x => x.Id_Type == post.Id_Type).ToList();
+            List<DetailUserType> detailUser = _detailUserType.GetAll().Where(x => x.Type == post.Id_Type).ToList();
             if (detailUser == null)
             {
 
@@ -419,7 +416,7 @@ namespace Framework.Controllers
             //
             foreach (var item in detailUser)
             {
-                ListAppUser.Add(_service.GetUserById(item.Id_User));
+                ListAppUser.Add(_service.GetUserById(item.UserID));
             }
             //
             return ListAppUser;
@@ -586,24 +583,8 @@ namespace Framework.Controllers
         //}
         //
 
-        // Hiển thị popup khi tạo acc mới, chọn chủ đề theo dõi
-        public PartialViewResult showPopupSurvey()
-        {
-            var subList = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
-            if (subList.Count == 0)
-            {
-                //Show popup to choose 
-                var listPostType = _postTypeService.GetAll().ToList();
-                return null;
-            }
-            return null;
-        }
-        //
-        public PartialViewResult loadNewFeeds()
-        {
-            var subListOfuser = _subType.GetAll().Where(x => x.Id_User == User.Identity.GetUserId()).ToList();
-            return null;
-        }
+
+
 
         [HttpPost]
         public JsonResult RegisterType(RegisterPostViewModel data)
