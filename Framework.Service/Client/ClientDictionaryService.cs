@@ -36,7 +36,7 @@ namespace Framework.Service.Client
 
             //
             m_oxfordDict.m_Voca = voca;
-            var url = "https://www.oxfordlearnersdictionaries.com/definition/english/"+voca;
+            var url = "https://www.oxfordlearnersdictionaries.com/search/english/?q=" + voca;
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
             var htmlDocument = new HtmlDocument();

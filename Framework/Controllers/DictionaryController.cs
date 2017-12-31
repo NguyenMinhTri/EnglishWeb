@@ -183,7 +183,44 @@ namespace Framework.Controllers
             }
             return PartialView("_Dictionaries", DictionariesViewModel);
         }
+        [AllowAnonymous]
+        [HttpPost]
+        //Save word
+        public async Task<JsonResult> saveWord(string Voca, string userId = "7b00d4fa-c673-4bde-9eb0-90b37ffc2e66")
+        {
+            DictCache dictCache = _dictCache.findWordCache(Voca);
 
+            DetailOurWord detailWord = _detailOutWordService.findDetailOurWord(userId, dictCache.Id);
+            //tick từ mới thành công
+            if (detailWord == null)
+            {
+                ApplicationUser user = _service.GetUserById(userId);
+                detailWord = new DetailOurWord();
+                detailWord.Id_User = userId;
+                detailWord.Id_Messenger = user.Id_Messenger;
+                detailWord.Id_OurWord = dictCache.Id;
+                detailWord.Learned = 1;
+                detailWord.Id = 0;
+                detailWord.Schedule = DateTime.Now.AddDays(-1);
+                _detailOutWordService.Add(detailWord);
+                _detailOutWordService.Save();
+                await notifyMessenger();
+                return Json(new
+                {
+                    result = "True"
+                });
+            }
+            else
+            {
+                //tick cái nữa thì xóa tick
+                _detailOutWordService.Delete(detailWord);
+                await notifyMessenger();
+                return Json(new
+                {
+                    result = "False"
+                });
+            }
+        }
         [HttpPost]
         public async Task<JsonResult> Tick(OurWordViewModel data)
         {
@@ -279,7 +316,7 @@ namespace Framework.Controllers
             var dictTemp = _dictCache.GetAll().Where(x => x.VocaID == contain).FirstOrDefault();
             //post
             //
-
+            DictCache cacheDict;
             OxfordDict dict = new OxfordDict();
             GoogleTrans googleTransJson = new GoogleTrans();
             GoogleTrans detailVietnamese = new GoogleTrans();
@@ -348,7 +385,7 @@ namespace Framework.Controllers
                 }
                 sound.attachment.payload.url = dict.m_SoundUrl;
                 //Add database
-                DictCache cacheDict = new DictCache();
+                cacheDict = new DictCache();
                 cacheDict.VocaID = contain;
                 cacheDict.Pron = messPron.text;
                 cacheDict.MeanEn = messExplaintion.text;
@@ -356,6 +393,17 @@ namespace Framework.Controllers
                 cacheDict.SoundUrl = dict.m_SoundUrl;
                 _dictCache.Add(cacheDict);
                 _dictCache.Save();
+                dictTemp = cacheDict;
+            }
+            string userId = "7b00d4fa-c673-4bde-9eb0-90b37ffc2e66";
+            DetailOurWord detailWord = _detailOutWordService.findDetailOurWord(userId, dictTemp.Id);
+            if (detailWord == null)
+            {
+                hello.Selected = false;
+            }
+            else
+            {
+                hello.Selected = true;
             }
             hello.messages.Add(messPron);
             hello.messages.Add(messVietnamese);

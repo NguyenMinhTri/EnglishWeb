@@ -49,9 +49,11 @@ namespace Framework.Model.Google
         {
             recipient = new Recipient();
             messages = new List<MessageObject>();
+            Selected = false;
         }
         public Recipient recipient { get; set; }
         public List<MessageObject> messages { get; set; }
+        public bool Selected { set; get; }
     }
     public class Sentence
     {
