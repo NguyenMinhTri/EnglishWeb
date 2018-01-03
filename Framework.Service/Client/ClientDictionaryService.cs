@@ -47,13 +47,24 @@ namespace Framework.Service.Client
             {
                 GetExampleListOxFord(tmp);
             }
+            try
+            {
+                var checkUseCaseNull = m_oxfordDict.m_Explanation.FirstOrDefault().m_UseCase;
+            }
+            catch
+            {
+                Explanation explanation = new Explanation();
+                explanation.m_UseCase = htmlDocument.DocumentNode.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("def")).FirstOrDefault().InnerText;
+                m_oxfordDict.m_Explanation.Add(explanation);
+            }
+
             return m_oxfordDict;
         }
         private string GetPronAndSoundOfOxford(HtmlNode htmlNode)
         {
             try
             {
-                m_oxfordDict.m_Pron = htmlNode.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("phon")).FirstOrDefault().InnerText;
+                m_oxfordDict.m_Pron = htmlNode.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("phon")).LastOrDefault().InnerText.Replace("NAmE","");
                 m_oxfordDict.m_Type = htmlNode.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("pos")).FirstOrDefault().InnerText;
                 m_oxfordDict.m_SoundUrl = htmlNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("sound audio_play_button pron-us icon-audio")).FirstOrDefault().ChildAttributes("data-src-mp3").FirstOrDefault().Value;
             }
@@ -72,6 +83,7 @@ namespace Framework.Service.Client
                 var exampleList = temp.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("def")).FirstOrDefault();
                 //Set value for usecase
                 explanation.m_UseCase = StringHelper.FirstLetterUpper(exampleList.InnerText);
+
                 //Get a example for usecase
                 List<HtmlNode> exampleList2 = temp.Descendants("span").Where(node => node.GetAttributeValue("class", "").Equals("x-g")).ToList();
                 foreach (var exam in exampleList2)
