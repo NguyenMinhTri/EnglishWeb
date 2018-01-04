@@ -7143,3 +7143,22 @@ ol.old-words li a:hover {
 .ui-block > article.hentry.post{
         border-radius: 5px 5px 0 0 ;
 }
+
+ol.old-words h5 {
+   width: 100%;
+}
+
+ol.old-words .more {
+   opacity: 0;
+}
+
+ol.old-words li:hover .more{
+    opacity: 1;
+    margin-top: 10px;
+}
+
+ol.old-words li .more svg.olymp-little-delete {
+    fill: #fc5e3b;
+    width: 15px;
+    height: 15px;
+}

@@ -280,7 +280,6 @@ $(document).on("click", "#question-form input[type='submit']", function (e) {
         $.post('/Home/Post', data).done(function (html) {
             $("#partial-question").prepend(html);
             $("#question-form textarea").val("");
-            $(".landing-main-content").remove();
         }).fail(function (response) {
             $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
             $("#notify-button").click();

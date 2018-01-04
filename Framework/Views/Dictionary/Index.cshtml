@@ -13,15 +13,17 @@
 
 <script>
     function getview(action) {
+        if ($(".fakeloader").css("display") == "none") {
+            $(".waiting_loader").css("display", "block");
+        }
         var url = "/Dictionary/" + action;
         $("#partial").load(url, function (response, status, xhr) {
             if (status == "success") {
+                $(".waiting_loader").css("display", "none");
                 window.history.pushState('', '', window.location.pathname + "?option=" + action.toLowerCase());
                 initInput();
             }
         });
-        $('#partial').hide().fadeIn(500);
-        scrollto("#partial");
     }
 
     var option = getQueryVariable("option");

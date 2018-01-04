@@ -2,6 +2,7 @@
 
 <script>
     document.title = "Danh sách từ yêu thích | Olympus";
+    scrollto("#partial");
 </script>
 
 <div class="ui-block">
@@ -20,6 +21,11 @@
                         {
                             <li>
                                 <h5><a onclick="$('#keyword').val('@oldWord.m_Voca');$('#to_dictionary').click()">@oldWord.m_Voca</a></h5>
+                                <div class="more">
+                                    <a class="remove-word" id="@oldWord.Id">
+                                        <svg class="olymp-little-delete" data-toggle="tooltip" data-placement="right" data-original-title="Xóa @oldWord.m_Voca"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
+                                    </a>
+                                </div>
                             </li>
                         }
                     </ol>
@@ -35,3 +41,22 @@
         </div>
     </article>
 </div>
+
+<script>
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    $(document).on("click", ".remove-word", function () {
+        $(this).closest("li").fadeOut("fast");
+        var data = { id: $(this).attr("id") }
+        $.post('/Dictionary/', data).done(function (response) {
+            if (response.result == "success") {
+            }
+            else {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            }
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+            $("#notify-button").click();
+        })
+    });
+</script>

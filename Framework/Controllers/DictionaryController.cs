@@ -299,7 +299,7 @@ namespace Framework.Controllers
         }
 
         [HttpGet]
-        public ActionResult OldWords()
+        public PartialViewResult OldWords()
         {
             _viewModel = new OldWordsViewModel();
             var listIDWord = _detailOutWordService.listOutWord(User.Identity.GetUserId(), -1);

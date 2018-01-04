@@ -10,329 +10,332 @@
         <!-- Main Content -->
 
         <div class="col-xl-6 push-xl-3 col-lg-12 push-lg-0 col-md-12 col-sm-12 col-xs-12">
-            @if (Model.User.Id == Model.Id)
-            {
-                <div class="ui-block">
-                    <div class="news-feed-form">
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                                <div class="control-block-button post-control-button" style="display:none">
-                                    <a class="btn btn-control expert-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Câu hỏi dành cho Chuyên gia">
-                                        <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
-                                    </a>
-                                </div>
-                                <form id="question-form">
-                                    <div class="author-thumb @Model.User.Degree">
-                                        <img src="content/images/@Model.User.Avatar" alt="author">
+            <div id="newsfeed-items-grid">
+                @if (Model.User.Id == Model.Id)
+                {
+                    <div class="ui-block">
+                        <div class="news-feed-form">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                                    <div class="control-block-button post-control-button" style="display:none">
+                                        <a class="btn btn-control expert-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Câu hỏi dành cho Chuyên gia">
+                                            <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                        </a>
                                     </div>
-                                    <div class="form-group with-icon label-floating is-empty">
-                                        <label class="control-label">Bạn đang thắc mắc về...</label>
-                                        <textarea class="form-control" placeholder="" name="Content"></textarea>
-                                        <div class="selection">
-                                            <p>Hỏi tất cả mọi người</p>
-                                            <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi chuyên gia nha!">
-                                                <label>
-                                                    <input type="checkbox">
-                                                </label>
+                                    <form id="question-form">
+                                        <div class="author-thumb @Model.User.Degree">
+                                            <img src="content/images/@Model.User.Avatar" alt="author">
+                                        </div>
+                                        <div class="form-group with-icon label-floating is-empty">
+                                            <label class="control-label">Bạn đang thắc mắc về...</label>
+                                            <textarea class="form-control" placeholder="" name="Content"></textarea>
+                                            <div class="selection">
+                                                <p>Hỏi tất cả mọi người</p>
+                                                <div class="togglebutton" data-toggle="tooltip" data-placement="top" title="Bật để hỏi chuyên gia nha!">
+                                                    <label>
+                                                        <input type="checkbox">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <script>
+                                                $.material.init();
+                                            </script>
+                                        </div>
+                                        <div class="add-options-message row ask-teacher">
+                                            <label class="control-label">Vui lòng chọn loại câu hỏi</label>
+                                            <fieldset class="form-group">
+                                                <select class="selectpicker form-control" size="auto" name="Id_Type">
+                                                    @foreach (var item in @Model.ListPostType)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <input type="hidden" name="DatePost" />
+                                        <input type="hidden" name="Id_User" value="@Model.User.Id" />
+                                        <input type="hidden" name="Option" value="0" />
+
+                                        <div class="status-footer">
+                                            <input type="submit" class="btn btn-primary btn-md-2" value="Đăng tải" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="partial-question"></div>
+                }
+                @if (Model.ListPost.Count == 0)
+                {
+                    <div class="landing-main-content">
+                        <h2 class="title">Rất tiếc, không tìm thấy</h2>
+                        <p>Có vẻ như chưa có câu hỏi nào được đặt cho bạn</p>
+                    </div>
+                }
+                else
+                {
+                    foreach (Framework.ViewModels.PostViewModel post in Model.ListPost)
+                    {
+                        <div class="ui-block" id="@post.Id">
+                            <article class="hentry post">
+                                <div class="post__author author vcard inline-items @post.Degree">
+                                    <a href="Profile?username=@post.UserName&option=newsfeed">
+                                        <img src="content/images/@post.Avatar" alt="author">
+                                    </a>
+
+                                    <div class="author-date">
+                                        <a class="h6 post__author-name fn" href="Profile?username=@post.UserName&option=newsfeed">@post.Name</a>
+                                        <div class="post__date">
+                                            <a href="Post?Id=@post.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
+                                                <time class="published" data-time="@post.DatePost">
+                                                </time>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="more">
+                                        <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                        <div class="more-dropdown">
+                                            <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>
+                                    @post.Content
+                                </p>
+                                <h6 class="tag">
+                                    <a href="/?type=@post.Id_Type">
+                                        Thể loại: <span>@post.TypeToString</span>
+                                    </a>
+                                </h6>
+
+
+                                @if (post.Option == 1)
+                                {
+                                    <div class="control-block-button post-control-button">
+                                        <a class="btn btn-control expert-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Câu hỏi dành cho Chuyên gia">
+                                            <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
+                                        </a>
+                                    </div>
+                                }
+
+                                <div class="post-additional-info inline-items">
+                                    @if (post.Vote == 1)
+                                    {
+                                        <a href="#" class="post-add-icon inline-items upvote active clicked">
+                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                            <span>@post.UpVote</span>
+                                        </a>
+                                        <a href="#" class="post-add-icon inline-items downvote">
+                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                            <span>@post.DownVote</span>
+                                        </a>
+                                    }
+                                    else if (post.Vote == -1)
+                                    {
+                                        <a href="#" class="post-add-icon inline-items upvote">
+                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                            <span>@post.UpVote</span>
+                                        </a>
+                                        <a href="#" class="post-add-icon inline-items downvote active clicked">
+                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                            <span>@post.DownVote</span>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" class="post-add-icon inline-items upvote">
+                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                            <span>@post.UpVote</span>
+                                        </a>
+                                        <a href="#" class="post-add-icon inline-items downvote">
+                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                            <span>@post.DownVote</span>
+                                        </a>
+                                    }
+
+                                    <div class="comments-shared">
+                                        <div class="post-add-icon inline-items">
+                                            <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
+                                            <span>@post.Comment</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </article>
+
+                            <div class="comment-section">
+                                <ul class="comments-list">
+                                    @foreach (var commentParent in post.listComment)
+                                    {
+                                        string id = "p" + commentParent.Id_Post + "c-" + commentParent.Id;
+                                        if (commentParent.listChildComment.Count != 0)
+                                        {
+                                            if (commentParent.Corrected)
+                                            {
+                                                @Html.Raw("<li class='has-children parent lazy-show showed answer' id='" + id + "'>")
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw("<li class='has-children parent lazy-show not-showed' id='" + id + "'>")
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (commentParent.Corrected)
+                                            {
+                                                @Html.Raw("<li class='parent lazy-show showed answer' id='" + id + "'>")
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw("<li class='parent lazy-show not-showed' id='" + id + "'>")
+                                            }
+                                        }
+                                        <div class="post__author author vcard inline-items @commentParent.Degree">
+                                            <a href="Profile?username=@commentParent.UserName&option=newsfeed">
+                                                <img src="content/images/@commentParent.Avatar" alt="author">
+                                            </a>
+
+                                            <div class="author-date">
+                                                <a href="Profile?username=@commentParent.UserName&option=newsfeed" class="h6 post__author-name fn" href="#">@commentParent.Name</a>
+                                                <div class="post__date">
+                                                    <time class="published" data-time="@commentParent.DateComment">
+                                                    </time>
+                                                </div>
+                                            </div>
+
+                                            <div class="more">
+                                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                <div class="more-dropdown">
+                                                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <script>
-                                            $.material.init();
-                                        </script>
-                                    </div>
-                                    <div class="add-options-message row ask-teacher">
-                                        <label class="control-label">Vui lòng chọn loại câu hỏi</label>
-                                        <fieldset class="form-group">
-                                            <select class="selectpicker form-control" size="auto" name="Id_Type">
-                                                @foreach (var item in @Model.ListPostType)
-                                                {
-                                                    <option value="@item.Id">@item.Name</option>
-                                                }
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <input type="hidden" name="DatePost" />
-                                    <input type="hidden" name="Id_User" value="@Model.User.Id" />
-                                    <input type="hidden" name="Option" value="0" />
 
-                                    <div class="status-footer">
-                                        <input type="submit" class="btn btn-primary btn-md-2" value="Đăng tải" />
+                                        <p>
+                                            @commentParent.Content
+                                        </p>
+                                        if (commentParent.Vote == 1)
+                                        {
+                                            <a href="#" class="post-add-icon inline-items upvote clicked active">
+                                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                <span>@commentParent.UpVote</span>
+                                            </a>
+                                            <a href="#" class="post-add-icon inline-items downvote ">
+                                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                <span>@commentParent.DownVote</span>
+                                            </a>
+                                        }
+                                        else if (commentParent.Vote == -1)
+                                        {
+                                            <a href="#" class="post-add-icon inline-items upvote">
+                                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                <span>@commentParent.UpVote</span>
+                                            </a>
+                                            <a href="#" class="post-add-icon inline-items downvote clicked active">
+                                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                <span>@commentParent.DownVote</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="post-add-icon inline-items upvote">
+                                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                <span>@commentParent.UpVote</span>
+                                            </a>
+                                            <a href="#" class="post-add-icon inline-items downvote">
+                                                <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
+                                                <span>@commentParent.DownVote</span>
+                                            </a>
+                                        }
+
+                                        <a class="reply">Trả lời</a>
+
+                                        if (Model.User.Id == post.Id_User)
+                                        {
+                                            <div class="control-block-button post-control-button">
+                                                <a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận">
+                                                    <svg class="olymp-like-post-icon"><use xlink:href="content/icons/icons.svg#olymp-like-post-icon"></use></svg>
+                                                </a>
+                                            </div>
+                                        }
+
+                                        <ul class="children">
+                                            @if (commentParent.listChildComment.Count != 0)
+                                            {
+                                                foreach (var childComment in commentParent.listChildComment)
+                                                {
+                                                    <li class="showed">
+                                                        <div class="post__author author vcard inline-items @childComment.Degree">
+                                                            <a href="Profile?username=@childComment.UserName&option=newsfeed">
+                                                                <img src="content/images/@childComment.Avatar" alt="author">
+                                                            </a>
+
+                                                            <div class="author-date">
+                                                                <a href="Profile?username=@childComment.UserName&option=newsfeed" class="h6 post__author-name fn">@childComment.Name</a>
+                                                                <div class="post__date">
+                                                                    <time class="published" data-time="@childComment.DateComment">
+                                                                    </time>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="more">
+                                                                <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                                                <div class="more-dropdown">
+                                                                    <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <p style=" margin-bottom: 0; ">@childComment.Content</p>
+
+                                                    </li>
+
+                                                }
+                                            }
+                                        </ul>
+                                        @Html.Raw("</li>")
+                                    }
+                                </ul>
+
+                                @if (post.listComment.Count > 2)
+                                {
+                                    <div class="more-comments">Xem thêm bình luận <span>+</span></div>
+                                }
+
+                                <form class="comment-form inline-items">
+                                    <div class="post__author author vcard inline-items @Model.User.Degree">
+                                        <a href="Profile?username=@Model.User.UserName&option=newsfeed">
+                                            <img src="content/images/@Model.User.Avatar" alt="author">
+                                        </a>
+                                    </div>
+
+                                    <div class="form-group with-icon-right ">
+                                        <textarea class="form-control" placeholder="Trả lời nào..." id="comment" name="Content"></textarea>
+                                        <div class="add-options-message">
+                                            <a class="options-message" id="submit">
+                                                <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
+                                            </a>
+                                        </div>
+                                        <span class="material-input"></span>
+                                        <input type="hidden" name="Id_User" value="@Model.User.Id" />
+                                        <input type="hidden" name="Id_Post" value="@post.Id" />
+                                        <input type="hidden" name="Id_Comment" value="0" />
+                                        <input type="hidden" name="Comment" value="0" />
+                                        <input type="hidden" name="DateComment" value="" />
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div id="partial-question"></div>
-            }
-            @if (Model.ListPost.Count == 0)
-            {
-                <div class="landing-main-content">
-                    <h2 class="title">Rất tiếc, không tìm thấy</h2>
-                    <p>Có vẻ như chưa có câu hỏi nào được đặt cho bạn</p>
-                </div>
-            }
-            else
-            {
-                foreach (Framework.ViewModels.PostViewModel post in Model.ListPost)
-                {
-                    <div class="ui-block" id="@post.Id">
-                        <article class="hentry post">
-                            <div class="post__author author vcard inline-items @post.Degree">
-                                <a href="Profile?username=@post.UserName&option=newsfeed">
-                                    <img src="content/images/@post.Avatar" alt="author">
-                                </a>
 
-                                <div class="author-date">
-                                    <a class="h6 post__author-name fn" href="Profile?username=@post.UserName&option=newsfeed">@post.Name</a>
-                                    <div class="post__date">
-                                        <a href="Post?Id=@post.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
-                                            <time class="published" data-time="@post.DatePost">
-                                            </time>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="more">
-                                    <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-                                    <div class="more-dropdown">
-                                        <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>
-                                @post.Content
-                            </p>
-                            <h6 class="tag">
-                                <a href="/?type=@post.Id_Type">
-                                    Thể loại: <span>@post.TypeToString</span>
-                                </a>
-                            </h6>
-                           
-
-                            @if (post.Option == 1)
-                            {
-                                <div class="control-block-button post-control-button">
-                                    <a class="btn btn-control expert-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Câu hỏi dành cho Chuyên gia">
-                                        <svg class="olymp-star-icon"><use xlink:href="content/icons/icons.svg#olymp-star-icon"></use></svg>
-                                    </a>
-                                </div>
-                            }
-
-                            <div class="post-additional-info inline-items">
-                                @if (post.Vote == 1)
-                                {
-                                    <a href="#" class="post-add-icon inline-items upvote active clicked">
-                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                        <span>@post.UpVote</span>
-                                    </a>
-                                    <a href="#" class="post-add-icon inline-items downvote">
-                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                        <span>@post.DownVote</span>
-                                    </a>
-                                }
-                                else if (post.Vote == -1)
-                                {
-                                    <a href="#" class="post-add-icon inline-items upvote">
-                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                        <span>@post.UpVote</span>
-                                    </a>
-                                    <a href="#" class="post-add-icon inline-items downvote active clicked">
-                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                        <span>@post.DownVote</span>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a href="#" class="post-add-icon inline-items upvote">
-                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                        <span>@post.UpVote</span>
-                                    </a>
-                                    <a href="#" class="post-add-icon inline-items downvote">
-                                        <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                        <span>@post.DownVote</span>
-                                    </a>
-                                }
-
-                                <div class="comments-shared">
-                                    <div class="post-add-icon inline-items">
-                                        <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
-                                        <span>@post.Comment</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </article>
-
-                        <div class="comment-section">
-                            <ul class="comments-list">
-                                @foreach (var commentParent in post.listComment)
-                                {
-                                    string id = "p" + commentParent.Id_Post + "c-" + commentParent.Id;
-                                    if (commentParent.listChildComment.Count != 0)
-                                    {
-                                        if (commentParent.Corrected)
-                                        {
-                                            @Html.Raw("<li class='has-children parent lazy-show showed answer' id='" + id + "'>")
-                                        }
-                                        else
-                                        {
-                                            @Html.Raw("<li class='has-children parent lazy-show not-showed' id='" + id + "'>")
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (commentParent.Corrected)
-                                        {
-                                            @Html.Raw("<li class='parent lazy-show showed answer' id='" + id + "'>")
-                                        }
-                                        else
-                                        {
-                                            @Html.Raw("<li class='parent lazy-show not-showed' id='" + id + "'>")
-                                        }
-                                    }
-                                    <div class="post__author author vcard inline-items @commentParent.Degree">
-                                        <a href="Profile?username=@commentParent.UserName&option=newsfeed">
-                                            <img src="content/images/@commentParent.Avatar" alt="author">
-                                        </a>
-
-                                        <div class="author-date">
-                                            <a href="Profile?username=@commentParent.UserName&option=newsfeed" class="h6 post__author-name fn" href="#">@commentParent.Name</a>
-                                            <div class="post__date">
-                                                <time class="published" data-time="@commentParent.DateComment">
-                                                </time>
-                                            </div>
-                                        </div>
-
-                                        <div class="more">
-                                            <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-                                            <div class="more-dropdown">
-                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <p>
-                                        @commentParent.Content
-                                    </p>
-                                    if (commentParent.Vote == 1)
-                                    {
-                                        <a href="#" class="post-add-icon inline-items upvote clicked active">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>@commentParent.UpVote</span>
-                                        </a>
-                                        <a href="#" class="post-add-icon inline-items downvote ">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>@commentParent.DownVote</span>
-                                        </a>
-                                    }
-                                    else if (commentParent.Vote == -1)
-                                    {
-                                        <a href="#" class="post-add-icon inline-items upvote">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>@commentParent.UpVote</span>
-                                        </a>
-                                        <a href="#" class="post-add-icon inline-items downvote clicked active">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>@commentParent.DownVote</span>
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        <a href="#" class="post-add-icon inline-items upvote">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>@commentParent.UpVote</span>
-                                        </a>
-                                        <a href="#" class="post-add-icon inline-items downvote">
-                                            <svg class="olymp-stats-arrow"><use xlink:href="content/icons/icons.svg#olymp-stats-arrow"></use></svg>
-                                            <span>@commentParent.DownVote</span>
-                                        </a>
-                                    }
-
-                                    <a class="reply">Trả lời</a>
-
-                                    if (Model.User.Id == post.Id_User)
-                                    {
-                                        <div class="control-block-button post-control-button">
-                                            <a class="btn btn-control mark-answer" data-toggle="tooltip" data-placement="bottom" data-original-title="Chấp nhận">
-                                                <svg class="olymp-like-post-icon"><use xlink:href="content/icons/icons.svg#olymp-like-post-icon"></use></svg>
-                                            </a>
-                                        </div>
-                                    }
-
-                                    <ul class="children">
-                                        @if (commentParent.listChildComment.Count != 0)
-                                        {
-                                            foreach (var childComment in commentParent.listChildComment)
-                                            {
-                                                <li class="showed">
-                                                    <div class="post__author author vcard inline-items @childComment.Degree">
-                                                        <a href="Profile?username=@childComment.UserName&option=newsfeed">
-                                                            <img src="content/images/@childComment.Avatar" alt="author">
-                                                        </a>
-
-                                                        <div class="author-date">
-                                                            <a href="Profile?username=@childComment.UserName&option=newsfeed" class="h6 post__author-name fn">@childComment.Name</a>
-                                                            <div class="post__date">
-                                                                <time class="published" data-time="@childComment.DateComment">
-                                                                </time>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="more">
-                                                            <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-                                                            <div class="more-dropdown">
-                                                                <a href="#" data-toggle="modal" data-target="#report">Báo cáo xấu</a>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style=" margin-bottom: 0; ">@childComment.Content</p>
-
-                                                </li>
-
-                                            }
-                                        }
-                                    </ul>
-                                    @Html.Raw("</li>")
-                                }
-                            </ul>
-
-                            @if (post.listComment.Count > 2)
-                            {
-                                <div class="more-comments">Xem thêm bình luận <span>+</span></div>
-                            }
-
-                            <form class="comment-form inline-items">
-                                <div class="post__author author vcard inline-items @Model.User.Degree">
-                                    <a href="Profile?username=@Model.User.UserName&option=newsfeed">
-                                        <img src="content/images/@Model.User.Avatar" alt="author">
-                                    </a>
-                                </div>
-
-                                <div class="form-group with-icon-right ">
-                                    <textarea class="form-control" placeholder="Trả lời nào..." id="comment" name="Content"></textarea>
-                                    <div class="add-options-message">
-                                        <a class="options-message" id="submit">
-                                            <svg class="olymp-speech-balloon-icon"><use xlink:href="content/icons/icons.svg#olymp-speech-balloon-icon"></use></svg>
-                                        </a>
-                                    </div>
-                                    <span class="material-input"></span>
-                                    <input type="hidden" name="Id_User" value="@Model.User.Id" />
-                                    <input type="hidden" name="Id_Post" value="@post.Id" />
-                                    <input type="hidden" name="Id_Comment" value="0" />
-                                    <input type="hidden" name="Comment" value="0" />
-                                    <input type="hidden" name="DateComment" value="" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+                    }
+                    <div class="partial"></div>
                 }
-                <div class="partial"></div>
-            }
-            @if (Model.ListPost != null)
+
+            </div>
+            @if (Model.ListPost.Count != 0)
             {
                 <a id="load-more-button" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
             }
@@ -352,42 +355,42 @@
                             <span class="title">Về tôi</span>
                             @if (Model.About != null)
                             {
-                            <span class="text">@Model.About</span>
+                                <span class="text">@Model.About</span>
                             }
                             else
                             {
-                            <span class="text">Chào, tôi là @Model.LastName!</span>
+                                <span class="text">Chào, tôi là @Model.LastName!</span>
                             }
                         </li>
 
                         @if (Model.Degree == "giaosu")
                         {
-                        <li>
-                            <span class="title">Trình độ</span>
-                            <span class="text">Giáo sư</span>
-                        </li>
-                        <li>
-                            <span class="title">Lĩnh vực</span>
-                            <span class="text">Ngữ pháp tiếng Anh</span>
-                        </li>
+                            <li>
+                                <span class="title">Trình độ</span>
+                                <span class="text">Giáo sư</span>
+                            </li>
+                            <li>
+                                <span class="title">Lĩnh vực</span>
+                                <span class="text">Ngữ pháp tiếng Anh</span>
+                            </li>
                         }
                         else
                         {
-                        <li>
-                            <span class="title">Trình độ</span>
-                            <span class="text">Đại học</span>
-                        </li>
-                        <li>
-                            <span class="title">Mục tiêu</span>
-                            <span class="text">Giao tiếp một cách ngon lành!</span>
-                        </li>
+                            <li>
+                                <span class="title">Trình độ</span>
+                                <span class="text">Đại học</span>
+                            </li>
+                            <li>
+                                <span class="title">Mục tiêu</span>
+                                <span class="text">Giao tiếp một cách ngon lành!</span>
+                            </li>
                         }
                         @if (Model.Id == Model.User.Id)
                         {
-                        <li>
-                            <span class="title" data-toggle="tooltip" data-placement="right" data-original-title="Dùng để kết nối với Bot">Token</span>
-                            <a href="#" onclick="copyToClipboard('span#token')" data-toggle="modal" data-target="#token" class="text">Nhấp để lấy Token</a>
-                        </li>
+                            <li>
+                                <span class="title" data-toggle="tooltip" data-placement="right" data-original-title="Dùng để kết nối với Bot">Token</span>
+                                <a href="#" onclick="copyToClipboard('span#token')" data-toggle="modal" data-target="#token" class="text">Nhấp để lấy Token</a>
+                            </li>
                         }
                     </ul>
 
@@ -611,8 +614,6 @@
     </div>
 </div>
 
-
-
 <script>
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
     function copyToClipboard(element) {
@@ -627,7 +628,7 @@
         $(".waiting_loader").css("display", "block");
         var page = $(".partial").length;
         $.post("/Profile/MorePost", { page: page + 1, username: getQueryVariable("username") }).done(function (html) {
-            $(".partial").append(html);
+            $(".partial:last-child").append(html);
             $(".partial").parent().append("<div class='partial'></div>");
             scrollto(".partial:last-child");
         }).fail(function (response) {
@@ -636,7 +637,7 @@
         }).always(function () {
             $(".waiting_loader").css("display", "none");
         });
-    })
+    });
 
     $(document).on("click", "#submit.options-message.active", function () {
         var parent = $(this).parent().parent().parent();

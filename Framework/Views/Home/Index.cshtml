@@ -334,9 +334,8 @@
                     <div class="partial"></div>
                 }
 
-
             </div>
-            @if (Model.ListPost != null)
+            @if (Model.ListPost.Count != 0)
             {
                 <a id="load-more-button" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
             }
@@ -442,7 +441,7 @@
         $(".waiting_loader").css("display", "block");
         var page = $(".partial").length;
         $.post("/Home/MorePost", { page: page + 1, type: '@ViewBag.type' }).done(function (html) {
-            $(".partial").append(html);
+            $(".partial:last-child").append(html);
             scrollto(".partial:last-child");
             $(".partial").parent().append("<div class='partial'></div>");
         }).fail(function (response) {
