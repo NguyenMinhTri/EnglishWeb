@@ -14,6 +14,7 @@ namespace Framework.ViewModels
         public String Degree { get; set; }
         public String Avatar { get; set; }
         public String LastName { get; set; }
+        public int CodeRelationshipId { get; set; }
     }
 
     public class NewsFeedViewModel : LayoutViewModel, IRef<ProfileController>
@@ -269,7 +270,10 @@ namespace Framework.ViewModels
 
     public class FriendViewModel : LayoutViewModel, IRef<ProfileController>
     {
-        public String LastName { get; set; }
+        public int Id { get; set; }
+        public String Id_User { get; set; }
+        public String Id_Friend { get; set; }
+        public int CodeRelationshipId { get; set; }
     }
 
 }

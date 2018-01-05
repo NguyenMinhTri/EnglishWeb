@@ -265,6 +265,7 @@
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminSubTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminToiecGroupController.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\PostController.cs" />

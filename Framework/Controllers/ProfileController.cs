@@ -21,6 +21,7 @@ namespace Framework.Controllers
 
     public class ProfileController : LayoutController
     {
+        IClientFriendService _friendService;
         IClientProfileService _clientProfileService;
         IPostService _postService;
         IPostTypeService _postTypeService;
@@ -33,7 +34,8 @@ namespace Framework.Controllers
             IPostTypeService postTypeService,
             IPostVoteDetailService postVoteDetailService,
             ICommentService commentOfPost,
-             ICommentVoteDetailService commentVoteDetailService
+             ICommentVoteDetailService commentVoteDetailService,
+            IClientFriendService friendService
             )
             : base(layoutService)
         {
@@ -43,6 +45,7 @@ namespace Framework.Controllers
             _postVoteDetailService = postVoteDetailService;
             _commentOfPost = commentOfPost;
             _commentVoteDetailService = commentVoteDetailService;
+            _friendService = friendService;
         }
 
         HeaderViewModel HeaderViewModel
@@ -118,6 +121,7 @@ namespace Framework.Controllers
             }
             var user = _service.GetUserByUserName(username);
             FieldHelper.CopyNotNullValue(HeaderViewModel, user);
+            HeaderViewModel.CodeRelationshipId = _friendService.FindRelationship(User.Identity.GetUserId(), user.Id);
             return View(_viewModel);
         }
 

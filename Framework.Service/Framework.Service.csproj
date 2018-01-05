@@ -138,7 +138,7 @@
     <Compile Include="Client\ClientCalendarService.cs" />
     <Compile Include="Client\ClientStatisticsService.cs" />
     <Compile Include="Client\ClientHomeService.cs" />
-    <Compile Include="Client\FriendService.cs" />
+    <Compile Include="Client\ClientFriendService.cs" />
     <Compile Include="Layout\LayoutAdminService.cs" />
     <Compile Include="QlService.cs" />
     <Compile Include="Layout\LayoutService.cs" />
