@@ -7162,3 +7162,7 @@ ol.old-words li .more svg.olymp-little-delete {
     width: 15px;
     height: 15px;
 }
+
+.friend-section img {
+    width:  100%;
+}

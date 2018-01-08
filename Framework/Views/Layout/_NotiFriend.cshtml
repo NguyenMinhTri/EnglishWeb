@@ -1,0 +1,40 @@
+﻿@model Framework.ViewModels.NotiFriendViewModel
+
+<li>
+    <div class="author-thumb tieuhoc">
+        <img src="content/images/@Model.Avatar" alt="author">
+    </div>
+    <div class="notification-event">
+        <a href="#" class="h6 notification-friend">@Model.Name</a>
+        <span class="chat-message-item">Cấp độ: <b>@Model.Career</b></span>
+    </div>
+    <span class="notification-icon">
+        <a href="#" class="accept-request">
+            <span class="icon-add without-text">
+                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+            </span>
+        </a>
+
+        <a href="#" class="accept-request request-del">
+            <span class="icon-minus">
+                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+            </span>
+        </a>
+
+    </span>
+</li>
+
+<li class="accepted">
+    <div class="author-thumb giaosu">
+        <img src="content/images/avatar57-sm.jpg" alt="author">
+    </div>
+    <div class="notification-event">
+        Bạn và <a href="#" class="h6 notification-friend">Lê Văn Duyệt</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href="#" class="notification-link">Lê Văn Duyệt </a>.
+    </div>
+    <span class="notification-icon">
+        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+    </span>
+    <div class="more">
+        <svg class="olymp-little-delete"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
+    </div>
+</li>

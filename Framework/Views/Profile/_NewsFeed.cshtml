@@ -410,86 +410,48 @@
         <!-- Right Sidebar -->
 
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="ui-block">
-                <div class="ui-block-title">
-                    <h6 class="title">Bạn bè (86)</h6>
-                </div>
-                <div class="ui-block-content">
-                    <ul class="widget w-faved-page js-zoom-gallery">
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar38-sm.jpg" alt="author">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar24-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar36-sm.jpg" alt="author">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar35-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar34-sm.jpg" alt="author">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar33-sm.jpg" alt="author">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar32-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar31-sm.jpg" alt="author">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar30-sm.jpg" alt="author">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar29-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar28-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar27-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar26-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="content/images/avatar25-sm.jpg" alt="user">
-                            </a>
-                        </li>
-                        <li class="all-users">
-                            <a href="#">+74</a>
-                        </li>
-                    </ul>
+            <div id="friend-section">
+                <div class="ui-block">
+                    <div class="ui-block-title">
+                        <h6 class="title">Bạn bè (@Model.ListFriend.Count)</h6>
+                    </div>
+                    <div class="ui-block-content friend-section">
+                        @if (@Model.ListFriend.Count > 0)
+                        {
+                            <ul class="widget w-faved-page js-zoom-gallery">
+
+                                @foreach (var friend in @Model.ListFriend.Take(10))
+                                {
+                                    <li>
+                                        <a href="Profile?username=@friend.Email&option=newsfeed" class="@friend.Degree author-thumb" data-toggle="tooltip" data-placement="right" data-original-title="@friend.Name">
+                                            <img src="content/images/@friend.Avatar">
+                                        </a>
+                                    </li>
+                                }
+                                @if (@Model.ListFriend.Count > 10)
+                                {
+                                    <li class="all-users">
+                                        <a href="#" onclick="getview('friend')">+@(Model.ListFriend.Count - 10)</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <div class="landing-main-content">
+                                @if (Model.User.Id == Model.Id)
+                                {
+                                    <h2 class="title">Bạn vẫn chưa kết bạn với ai!</h2>
+                                    <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
+                                }
+                                else
+                                {
+                                    <h2 class="title">@Model.LastName vẫn chưa kết bạn với ai!</h2>
+                                    <p>Hãy kết bạn với @Model.LastName để học hỏi thêm nhiều điều từ cậu ấy nhé!</p>
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

@@ -74,26 +74,56 @@
                             {
                                 if (Model.CodeRelationshipId == 0)
                                 {
-                                    <a href="#" class="btn btn-control bg-blue friend" id="add_friend" data-code="-1">
+                                    <a href="#" class="btn btn-control bg-primary friend delete" style="display: none" onclick="$('#confirm-delete-button').click();">
+                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                    </a>
+                                    <a href="#" class="btn btn-control bg-blue friend add" onclick="$('#confirm-add-button').click();">
                                         <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                     </a>
                                 }
-                                else if (Model.CodeRelationshipId == 1)
+                                else
                                 {
-                                    <a href="#" class="btn btn-control bg-primary friend" data-toggle="modal" data-target="#confirm-delete">
-                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                    </a>
+                                    if (Model.Id_User_Request == Model.User.Id)
+                                    {
+                                        <a href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click();">
+                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                        </a>
+                                        <a href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click();">
+                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        if (Model.CodeRelationshipId == -1)
+                                        {
+                                            <a href="#" class="btn btn-control bg-yellow friend add" onclick="$('#confirm-accept-button').click();">
+                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                            </a>
+                                            <a href="#" class="btn btn-control bg-primary friend delete" style="display: none" onclick="$('#confirm-delete-button').click();">
+                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click();">
+                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                            </a>
+                                            <a href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click();">
+                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                            </a>
+                                        }
+
+                                    }
                                 }
                             }
-
                         </div>
                     </div>
                     <div class="top-header-author">
-                        <a href="Profile" class="author-thumb @Model.Degree">
+                        <a class="author-thumb @Model.Degree">
                             <img src="content/images/@Model.Avatar" alt="author">
                         </a>
                         <div class="author-content">
-                            <a href="Profile" class="h4 author-noame">@Model.Name</a>
+                            <a class="h4 author-noame">@Model.Name</a>
                             @if (Model.Degree == "giaosu")
                             {
                                 <div class="country">Giáo sư</div>
@@ -173,6 +203,8 @@
     </div>
 </div>
 
+<a href="#" id="confirm-delete-button" data-toggle="modal" data-target="#confirm-delete" style=" display:none"></a>
+
 <div class="modal fade" id="confirm-delete">
     <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
         <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
@@ -190,30 +222,6 @@
             <div class="modal-button">
                 <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">Bỏ qua</a>
                 <a href="#" class="btn btn-primary btn-lg btn-icon-center" id="add_friend" data-code="0" data-dismiss="modal" aria-label="Close">Chắc chắn</a>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<a href="#" id="add-ok-button" data-toggle="modal" data-target="#add-ok" style="display:none"></a>
-
-<div class="modal fade" id="add-ok">
-    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
-        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
-        </a>
-
-        <div class="ui-block-title">
-            <h6 class="title">Đợi chờ là hạnh phúc...</h6>
-        </div>
-
-        <div class="ui-block-content">
-            <p>
-                Đợi <b>@Model.Name</b> đồng ý và 2 người sẽ trở thành bạn bè nhé!
-            </p>
-            <div class="modal-button">
-                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
             </div>
         </div>
     </div>
@@ -248,23 +256,144 @@
     </div>
 </div>
 
+<a href="#" id="confirm-add-button" data-toggle="modal" data-target="#confirm-add" style=" display:none"></a>
+
+<div class="modal fade" id="confirm-add">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Bạn có chắc chắn muốn kết bạn</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Bạn sẽ có thể theo dõi <b>@Model.Name</b> từ Newfeed của mình!
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">Bỏ qua</a>
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" id="add_friend" data-code="-1" data-dismiss="modal" aria-label="Close">Chắc chắn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="add-ok-button" data-toggle="modal" data-target="#add-ok" style="display:none"></a>
+
+<div class="modal fade" id="add-ok">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Đợi chờ là hạnh phúc...</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Đợi <b>@Model.Name</b> đồng ý và 2 người sẽ trở thành bạn bè nhé!
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="confirm-accept-button" data-toggle="modal" data-target="#confirm-accept" style=" display:none"></a>
+
+<div class="modal fade" id="confirm-accept">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Bạn có chắc chắn muốn kết bạn</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Bạn sẽ có thể theo dõi <b>@Model.Name</b> từ Newfeed của mình!
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">Bỏ qua</a>
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" id="add_friend" data-code="1" data-dismiss="modal" aria-label="Close">Chắc chắn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="accept-ok-button" data-toggle="modal" data-target="#accept-ok" style="display:none"></a>
+
+<div class="modal fade" id="accept-ok">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Chúc mừng...</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Bạn và <b>@Model.Name</b> đã trở thành bạn bè của nhau!
+            </p>
+            <p>
+                Giờ đây, bạn có thể theo dõi của @Model.Name từ Newfeed của mình!
+            </p>
+            <p>
+                Tương tác tốt nhé!!!
+            </p>
+            <p>
+                <b>Make Olympus great againt!</b>
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).on("click", "#add_friend", function () {
         var data = {
-            Id_User : '@Model.User.Id',
-            Id_Friend : '@Model.Id',
+            Id_User: '@Model.User.Id',
+            Id_Friend: '@Model.Id',
             CodeRelationshipId: $(this).attr("data-code"),
         }
-        $.post('/Dictionary/', data).done(function (response) {
+        $.post('/Friend/Friend_action', data).done(function (response) {
             if (response.result == "success") {
                 if (data.CodeRelationshipId == 0) {
                     $("#delete-ok-button").click();
-                    $("#add_friend.friend").removeClass("bg-primary").addClass("bg-blue");
+                    $(".friend").removeClass("bg-primary").addClass("bg-blue");
+                    $(".friend.delete").css("display", "none");
+                    $(".friend.add").css("display", "inline-block");
                 }
-                else if (data.CodeRelationshipId == -1){
+                else if (data.CodeRelationshipId == -1) {
                     $("#add-ok-button").click();
-                    $("#add_friend.friend").removeClass("bg-blue").addClass("bg-blue-light");
+                    $(".friend").removeClass("bg-blue").addClass("bg-primary");
+                    $(".friend.delete").css("display", "inline-block");
+                    $(".friend.add").css("display", "none");
+                } else if (data.CodeRelationshipId == 1) {
+                    $("#accept-ok-button").click();
+                    $(".friend").removeClass("bg-yellow").addClass("bg-primary");
+                    $(".friend.delete").css("display", "inline-block");
+                    $(".friend.add").css("display", "none");
                 }
+                data = {
+                    Id_User: '@Model.Id'
+                }
+                $.post("/Profile/FriendSection", data).done(function (html) {
+                    $("#friend-section").html(html);
+                }).fail(function (response) {
+                    $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                    $("#notify-button").click();
+                })
             }
             else {
                 $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");

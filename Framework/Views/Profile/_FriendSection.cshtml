@@ -1,0 +1,48 @@
+﻿@model Framework.ViewModels.FriendSectionViewModel
+
+<div class="ui-block">
+    <div class="ui-block-title">
+        <h6 class="title">Bạn bè (@Model.ListFriend.Count)</h6>
+    </div>
+    <div class="ui-block-content friend-section">
+        @if (@Model.ListFriend.Count > 0)
+        {
+            <ul class="widget w-faved-page js-zoom-gallery">
+
+                @foreach (var friend in @Model.ListFriend.Take(10))
+                {
+                    <li>
+                        <a href="Profile?username=@friend.Email&option=newsfeed" class="author-thumb @friend.Degree" data-toggle="tooltip" data-placement="right" data-original-title="@friend.Name">
+                            <img src="content/images/@friend.Avatar">
+                        </a>
+                    </li>
+                }
+                @if (@Model.ListFriend.Count > 10)
+                {
+                    <li class="all-users">
+                        <a href="#" onclick="getview('friend')">+@(Model.ListFriend.Count - 10)</a>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="landing-main-content">
+                @if (Model.Id == Model.Id_User)
+                {
+                    <h2 class="title">Bạn vẫn chưa kết bạn với ai!</h2>
+                    <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
+                }
+                else
+                {
+                    <h2 class="title">@Model.LastName vẫn chưa kết bạn với ai!</h2>
+                    <p>Hãy kết bạn với @Model.LastName để học hỏi thêm nhiều điều từ cậu ấy nhé!</p>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+</script>

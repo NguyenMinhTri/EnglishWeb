@@ -15,6 +15,7 @@ namespace Framework.ViewModels
         public String Avatar { get; set; }
         public String LastName { get; set; }
         public int CodeRelationshipId { get; set; }
+        public String Id_User_Request { get; set; }
     }
 
     public class NewsFeedViewModel : LayoutViewModel, IRef<ProfileController>
@@ -42,10 +43,12 @@ namespace Framework.ViewModels
         public String Avatar { get; set; }
         public List<PostType> ListPostType { get; set; }
         public List<PostViewModel> ListPost { get; set; }
+        public List<FriendViewModel> ListFriend { get; set; }
         public NewsFeedViewModel()
         {
             ListPostType = new List<PostType>();
             ListPost = new List<PostViewModel>();
+            ListFriend = new List<FriendViewModel>();
         }
     }
 
@@ -268,12 +271,44 @@ namespace Framework.ViewModels
         public DateTime? CreatedDate { set; get; }
     }
 
+    public class FriendSectionViewModel : LayoutViewModel, IRef<ProfileController>
+    {
+        public List<FriendViewModel> ListFriend { get; set; }
+        public String LastName { get; set; }
+        public String Id { get; set; }
+        public String Id_User { get; set; }
+        public FriendSectionViewModel()
+        {
+            ListFriend = new List<FriendViewModel>();
+        }
+    }
+
     public class FriendViewModel : LayoutViewModel, IRef<ProfileController>
+    {
+        public String Id { get; set; }
+        public String Name { get; set; }
+        public String Email { get; set; }
+        public String Avatar { get; set; }
+        public String Degree { get; set; }
+    }
+
+    public class FriendActionViewModel : LayoutViewModel, IRef<ProfileController>
     {
         public int Id { get; set; }
         public String Id_User { get; set; }
         public String Id_Friend { get; set; }
         public int CodeRelationshipId { get; set; }
+    }
+
+    public class NotiFriendViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public int Id { get; set; }
+        public String Id_User { get; set; }
+        public String Id_Friend { get; set; }
+        public int CodeRelationshipId { get; set; }
+        public String Name { get; set; }
+        public String Avatar { get; set; }
+        public String Career { get; set; }
     }
 
 }

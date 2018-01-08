@@ -976,6 +976,8 @@
     <Content Include="Views\Profile\_ChildComment.cshtml" />
     <Content Include="Views\Profile\_MorePost.cshtml" />
     <Content Include="Views\Profile\_Post.cshtml" />
+    <Content Include="Views\Layout\_NotiFriend.cshtml" />
+    <Content Include="Views\Profile\_FriendSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

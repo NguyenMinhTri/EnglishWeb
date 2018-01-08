@@ -121,7 +121,12 @@ namespace Framework.Controllers
             }
             var user = _service.GetUserByUserName(username);
             FieldHelper.CopyNotNullValue(HeaderViewModel, user);
-            HeaderViewModel.CodeRelationshipId = _friendService.FindRelationship(User.Identity.GetUserId(), user.Id);
+            Friend friend = _friendService.FindRelationship(User.Identity.GetUserId(), user.Id);
+            if (friend != null)
+            {
+                HeaderViewModel.CodeRelationshipId = friend.CodeRelationshipId;
+                HeaderViewModel.Id_User_Request = friend.Id_User;
+            }
             return View(_viewModel);
         }
 
@@ -191,9 +196,36 @@ namespace Framework.Controllers
                 }
                 NewsFeedViewModel.ListPost.Add(postViewModel);
             }
-
+            List<String> listFriend = _friendService.GetAllFriend(userCur.Id);
+            foreach (String friend in listFriend)
+            {
+                FriendViewModel friendViewModel = new FriendViewModel();
+                ApplicationUser user = _service.GetUserById(friend);
+                FieldHelper.CopyNotNullValue(friendViewModel, user);
+                NewsFeedViewModel.ListFriend.Add(friendViewModel);
+            }
             return PartialView("_NewsFeed", NewsFeedViewModel);
         }
+
+        public PartialViewResult FriendSection(string id_user)
+        {
+            List<String> listFriend = _friendService.GetAllFriend(id_user);
+            FriendSectionViewModel friendSection = new FriendSectionViewModel();
+
+            foreach (String friend in listFriend)
+            {
+                FriendViewModel friendViewModel = new FriendViewModel();
+                ApplicationUser user = _service.GetUserById(friend);
+                FieldHelper.CopyNotNullValue(friendViewModel, user);
+                friendSection.ListFriend.Add(friendViewModel);
+            }
+            ApplicationUser userCur = _service.GetUserById(id_user);
+            friendSection.LastName = userCur.LastName;
+            friendSection.Id = userCur.Id;
+            friendSection.Id_User = User.Identity.GetUserId();
+            return PartialView("_FriendSection", friendSection);
+        }
+
 
         public PartialViewResult MorePost(int page, string username)
         {

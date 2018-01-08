@@ -36,7 +36,7 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public JsonResult Friend_action(FriendViewModel data)
+        public JsonResult Friend_action(FriendActionViewModel data)
         {
             if (data.Id_User == User.Identity.GetUserId() && data.Id_Friend != null)
             {
@@ -56,6 +56,7 @@ namespace Framework.Controllers
                 }
                 else
                 {
+                    friend = new Friend();
                     FieldHelper.CopyNotNullValue(friend, data);
                     _friendService.Add(friend);
                 }
