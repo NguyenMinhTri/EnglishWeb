@@ -64,6 +64,10 @@
     <Compile Include="ApplicationUserRole.cs" />
     <Compile Include="ApplicationUserStore.cs" />
     <Compile Include="Auditable.cs" />
+    <Compile Include="BingSpellCheckError.cs" />
+    <Compile Include="BingSpellCheckFlaggedToken.cs" />
+    <Compile Include="BingSpellCheckResponse.cs" />
+    <Compile Include="BingSpellCheckSuggestion.cs" />
     <Compile Include="BotModel.cs" />
     <Compile Include="CommentFB.cs" />
     <Compile Include="CommentVoteDetail.cs" />

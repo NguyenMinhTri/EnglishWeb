@@ -131,6 +131,7 @@
     <Compile Include="Admin\RoutingService.cs" />
     <Compile Include="Admin\SubTypeService.cs" />
     <Compile Include="Admin\ToiecGroupService.cs" />
+    <Compile Include="Client\BingSpellCheckService.cs" />
     <Compile Include="Client\ClientLearningService.cs" />
     <Compile Include="Client\ClientEntertainmentService.cs" />
     <Compile Include="Client\ClientDictionaryService.cs" />
