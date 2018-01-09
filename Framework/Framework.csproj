@@ -978,6 +978,8 @@
     <Content Include="Views\Profile\_Post.cshtml" />
     <Content Include="Views\Layout\_NotiFriend.cshtml" />
     <Content Include="Views\Profile\_FriendSection.cshtml" />
+    <Content Include="Views\Friend\Index.cshtml" />
+    <Content Include="Views\Layout\_FriendChatSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
