@@ -450,6 +450,10 @@ select.form-control {
 .form-group.with-icon input {
   padding-left: 70px; }
 
+  input.error.form-control {
+    border: 1px solid #fe5e3b;
+}
+
 .form-group.with-button button {
   display: block;
   position: absolute;
@@ -462,7 +466,9 @@ select.form-control {
   color: #fff;
   fill: #fff;
   background-color: #d7d9e5;
-  border: none; }
+  border: none;
+  border-radius: 0 3px 3px 0;
+  }
 
 .form-group.with-button input {
   padding-right: 50px;
@@ -1219,11 +1225,11 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
 }
 .friend-header-thumb {
   border-bottom: 4px solid;
-  height: 120px;
+  height: 85px;
   overflow: hidden;
   }
   .friend-header-thumb img {
-    width: auto;
+    width: 100%;
     object-fit: cover;
     }
 
@@ -1383,7 +1389,9 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
 .create-group {
   background-color: transparent;
   border: 2px dashed #bbc0d5;
-  position: relative; }
+  position: relative;
+  height:  100%;
+  }
   .create-group .content {
     position: absolute;
     top: 50%;
@@ -7165,4 +7173,8 @@ ol.old-words li .more svg.olymp-little-delete {
 
 .friend-section img {
     width:  100%;
+}
+
+.friend-profile-empty{
+  margin-bottom: 15px;
 }

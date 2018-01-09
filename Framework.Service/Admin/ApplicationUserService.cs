@@ -14,6 +14,7 @@ namespace Framework.Service.Admin
     {
         ApplicationUser GetUserById(String id);
         List<String> GetRolesByUserId(string id);
+        List<string> FindFriend(string key);
     }
     public class ApplicationUserService : QlService<ApplicationUser>, IApplicationUserService
     {
@@ -37,6 +38,10 @@ namespace Framework.Service.Admin
         public List<string> GetRolesByUserId(string id)
         {
             return _userRoleRepository.GetMulti(x => x.UserId == id).Select(x => x.RoleId).ToList();
+        }
+        public List<string> FindFriend(string key)
+        {
+            return _applicationUserRepository.GetMulti(x => x.FirstName.Contains(key) || x.LastName.Contains(key)).Select(x => x.Id).ToList();
         }
     }
 }

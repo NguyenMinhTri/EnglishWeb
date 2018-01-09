@@ -21,13 +21,11 @@ namespace Framework
             //    namespaces: new[] { "Framework.Controllers" }
             //).RouteHandler = new ApplicationRouteHandler();
 
-
             routes.MapRoute(
                 name: "ABCRouting",
                 url: "a-{slug}",
                 defaults: new { controller = "Abc", action = "Index", slug = UrlParameter.Optional }
             );
-
 
             routes.MapRoute(
                 name: "Login",
@@ -40,7 +38,6 @@ namespace Framework
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
 
             routes.MapRoute(
                 name: "Language",

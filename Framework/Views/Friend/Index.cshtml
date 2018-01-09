@@ -1,0 +1,240 @@
+﻿@model Framework.ViewModels.FriendSectionViewModel
+@{
+
+    Random rnd = new Random();
+    int diem = rnd.Next(100, 400);
+}
+
+<div class="main-header">
+    <div class="content-bg-wrap">
+        <div class="content-bg bg-group"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 col-xs-12">
+                <div class="main-header-content">
+                    <h1>Tìm kiếm bạn bè</h1>
+                    Chúc bạn một ngày tốt lành!!!<br />
+                    @if (Model.ListFriend.Count == 0)
+                    {
+                        <p>
+                            Rất tiếc, Olympus chưa tìm thấy kết quả phù hợp với miêu tả của bạn. <br />
+                            Hãy thử tìm kiếm với từ khóa chính xác hơn, bạn nhé!!!
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            Olympus đã tìm thấy <span style=" font-size: 25px; text-shadow: 0 0 5px white; ">@Model.ListFriend.Count </span>kết quả phù hợp với miêu tả của bạn. <br />
+                            Tìm kiếm và kết nối để việc học tập dễ dàng hơn bạn nhé!!!
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img class="img-bottom" src="content/images/group-bottom.png" alt="friends">
+</div>
+
+<!-- Main Content Groups -->
+
+<div class="container">
+    <div class="row" id="friend-empty">
+        @if (Model.ListFriend.Count > 0)
+        {
+            foreach (var friend in @Model.ListFriend)
+            {
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-6 friend-profile">
+                    <div class="ui-block">
+                        <div class="friend-item">
+                            <div class="friend-header-thumb @friend.Degree">
+                                @if (friend.Degree == "giaosu")
+                                {
+                                    <img src="content/images/top-header2.jpg" alt="nature">
+                                }
+                                else
+                                {
+                                    <img src="content/images/top-header1.jpg" alt="nature">
+                                }
+                            </div>
+
+                            <div class="friend-item-content">
+
+                                <div class="more">
+                                    <svg class="olymp-three-dots-icon"><use xlink:href="content/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+                                    <ul class="more-dropdown">
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#report-profile">Báo cáo xấu</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="friend-avatar">
+                                    <div class="author-thumb maugiao">
+                                        <a href="Profile?username=@friend.Email&option=newsfeed" class="author-thumb @friend.Degree">
+                                            <img src="content/images/@friend.Avatar" alt="author">
+                                        </a>
+                                    </div>
+                                    <div class="author-content">
+                                        <a href="Profile?username=@friend.Email&option=newsfeed" class="h5 author-name">@friend.Name</a>
+                                        <div class="country">@friend.AddressToString</div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-container" data-slide="fade">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="friend-count" data-swiper-parallax="-500">
+                                                <a href="#" class="friend-count-item">
+                                                    <div class="h6">@friend.Friend</div>
+                                                    <div class="title">Bạn bè</div>
+                                                </a>
+                                                <a href="#" class="friend-count-item">
+                                                    <div class="h6">
+                                                        @diem
+                                                    </div>
+                                                    <div class="title">Điểm</div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <p class="friend-about" data-swiper-parallax="-500">
+                                                @friend.AboutToString
+                                            </p>
+                                            @if (friend.UpdatedDate != null)
+                                            {
+                                                <div class="friend-since" data-swiper-parallax="-100">
+                                                    <span>Làm bạn từ:</span>
+                                                    <div class="h6">@friend.UpdatedDate.ToString().Substring(0, 10)</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="friend-since" data-swiper-parallax="-100" style="visibility:hidden">
+                                                    <span>Làm bạn từ:</span>
+                                                    <div class="h6">Chưa có thông tin</div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <!-- If we need pagination -->
+                                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div style=" width: 100% ">
+                <div class="landing-main-content">
+                    <h2 class="title">Không tìm thấy kết quả!</h2>
+                    <p>Hãy thử tìm kiếm với từ khóa chính xác hơn, bạn nhé!!!</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- ... end Main Content Groups -->
+
+<!-- Window-popup Report -->
+
+<div class="modal fade" id="report-profile">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Đây là người xấu?</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <fieldset class="form-group label-floating is-select">
+                <label class="control-label">Người này đã vi phạm vì</label>
+                <select class="selectpicker form-control" size="auto">
+                    <option value="1">Đăng nhiều bài có nội dung xấu, kích động</option>
+                    <option value="2">Có tác động tiêu cực đến mọi người</option>
+                </select>
+            </fieldset>
+
+            <p>
+                Olympus cảm ơn bạn rất nhiều!
+            </p>
+            <p>
+                <b>Make Olympus great againt!</b>
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-secondary btn-lg btn--half-width btn-icon-center" data-dismiss="modal" aria-label="Close">Thôi, tha</a>
+                <a href="#" class="btn btn-primary btn-lg btn--half-width btn-icon-center" data-toggle="modal" data-target="#thankreport" data-dismiss="modal" aria-label="Close">Xóa dùm</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ... end Window-popup Report -->
+
+<div class="modal fade" id="thankreport">
+    <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+        <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+            <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+
+        <div class="ui-block-title">
+            <h6 class="title">Đã báo cáo thành công</h6>
+        </div>
+
+        <div class="ui-block-content">
+            <p>
+                Olympus cảm ơn bạn rất nhiều!
+            </p>
+            <p>
+                <b>Make Olympus great againt!</b>
+            </p>
+            <div class="modal-button">
+                <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            mode: 'horizontal',
+            watchActiveIndex: true,
+            loop: true,
+            prevButton: '.swiper-pagination-bullet:nth-child(1)',
+            nextButton: '.swiper-pagination-bullet:nth-child(2)',
+            onSlideChangeStart: function (swiper) {
+            },
+            onSlideChangeEnd: function (swiper) {
+                swiper.container.find(".swiper-pagination-bullet").removeClass("swiper-pagination-bullet-active")
+                if (swiper.activeIndex % 2 == 1) {
+                    swiper.container.find(".swiper-pagination-bullet:nth-child(1)").addClass("swiper-pagination-bullet-active")
+                }
+                else {
+                    swiper.container.find(".swiper-pagination-bullet:nth-child(2)").addClass("swiper-pagination-bullet-active")
+                }
+            }
+        });
+    })
+
+    var item = 4 - ($(".friend-profile").length % 4);
+    if (item != 4) {
+        for (i = 0; i < item; i++) {
+            $("#friend-empty").append(" <div class='col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-6 friend-profile-empty'><div class='friend-item create-group'></div></div>")
+        }
+    }
+</script>

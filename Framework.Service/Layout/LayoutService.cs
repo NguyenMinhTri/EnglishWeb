@@ -17,21 +17,27 @@ namespace Framework.Service
         ApplicationUser GetUserByUserName(string userName);
         List<String> GetRolesOfUser(string userId);
         List<ApplicationUser> listUserID();
+        List<String> GetAllFriend(string id_user);
+
     }
     public class LayoutService : ILayoutService
     {
         IUnitOfWork _unitOfWork;
         IApplicationUserRepository _userRepository;
         IApplicationUserRoleRepository _userRoleRepository;
+        IFriendRepository _friendRepository;
+
         public LayoutService(
             IApplicationUserRepository userRepository,
             IApplicationUserRoleRepository userRoleRepository,
+            IFriendRepository friendRepository,
             IUnitOfWork unitOfWork
 
             )
         {
             _userRepository = userRepository;
             _userRoleRepository = userRoleRepository;
+            _friendRepository = friendRepository;
             _unitOfWork = unitOfWork;
 
         }
@@ -54,6 +60,13 @@ namespace Framework.Service
         public List<ApplicationUser> listUserID()
         {
             return _userRepository.GetAll().ToList();
+        }
+        public List<String> GetAllFriend(string id_user)
+        {
+            List<String> listFriend = new List<String>();
+            listFriend = _friendRepository.GetMulti(x => x.Id_User == id_user && x.CodeRelationshipId == 1).Select(x => x.Id_Friend).ToList();
+            listFriend.AddRange(_friendRepository.GetMulti(x => x.Id_Friend == id_user && x.CodeRelationshipId == 1).Select(x => x.Id_User).ToList());
+            return listFriend;
         }
     }
 }

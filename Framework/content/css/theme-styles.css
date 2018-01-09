@@ -88,7 +88,9 @@
     color: #696d87;
     fill: #696d87;
     background-color: #494c62;
-    width: 50px; }
+    width: 50px;
+    outline:  none;
+    }
     .search-bar .form-group.with-button button svg {
       height: 22px;
       width: 22px; }

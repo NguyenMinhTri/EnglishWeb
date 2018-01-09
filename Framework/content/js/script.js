@@ -96,6 +96,24 @@ function getQueryVariable(variable) {
 
 $(document).ready(function () {
     $(document).on('keydown', 'input', function () { $(this).parent().removeClass('error'); });
+    $(document).on('keydown', ".w-search input[name='keyword'], .w-search-1 input[name='keyword']", function () {
+        if ($(this).val() === "") {
+            $(this).addClass("error");
+            $(this).next().css("cursor", "not-allowed");
+        }
+        else {
+            $(this).removeClass("error");
+            $(this).attr("placeholder", "Tìm kiếm bạn...");
+            $(this).next().css("cursor", "pointer");
+        }
+    });
+    $(".w-search, .w-search-1").submit(function () {
+        var input = $(this).find("input[name='keyword']");
+        if ($(input).val() === "") {
+            $(input).attr("placeholder", "Hãy nhập từ khóa...");
+            return false;
+        }
+    });
 });
 
 (function ($) {
@@ -295,5 +313,23 @@ $(document).on('keyup', "#question-form textarea", function (e) {
     }
     else {
         $("#question-form input[type='submit']").removeClass("active");
+    }
+});
+
+$("input[name='keyword']").keydown(function () {
+    if ($("input[name='keyword']").val() === "") {
+        $(this).addClass("error");
+        $(".w-search button[type='submit']").css("cursor", "not-allowed");
+    }
+    else {
+        $(this).removeClass("error");
+        $(this).attr("placeholder", "Tìm kiếm bạn...");
+        $(".w-search button[type='submit']").css("cursor", "pointer");
+    }
+});
+$(".w-search").submit(function () {
+    if ($("input[name='keyword']").val() === "") {
+        $("input[name='keyword']").attr("placeholder", "Hãy nhập từ khóa...");
+        return false;
     }
 });

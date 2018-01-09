@@ -290,6 +290,39 @@ namespace Framework.ViewModels
         public String Email { get; set; }
         public String Avatar { get; set; }
         public String Degree { get; set; }
+        public String Address { get; set; }
+        public String AddressToString
+        {
+            get
+            {
+                if (Address == null)
+                {
+                    return "Chưa có thông tin";
+                }
+                else
+                {
+                    return Address;
+                }
+            }
+        }
+        public String About { get; set; }
+        public String AboutToString
+        {
+            get
+            {
+                if (About == null)
+                {
+                    return "Chưa có thông tin";
+                }
+                else
+                {
+                    return About;
+                }
+            }
+        }
+        public DateTime? UpdatedDate { set; get; }
+        public int Friend { set; get; }
+
     }
 
     public class FriendActionViewModel : LayoutViewModel, IRef<ProfileController>

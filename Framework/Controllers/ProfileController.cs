@@ -72,11 +72,11 @@ namespace Framework.Controllers
             }
         }
 
-        FriendViewModel FriendViewModel
+        FriendSectionViewModel FriendSectionViewModel
         {
             get
             {
-                return (FriendViewModel)_viewModel;
+                return (FriendSectionViewModel)_viewModel;
             }
         }
 
@@ -311,15 +311,26 @@ namespace Framework.Controllers
         [HttpGet]
         public ActionResult Friend(string username)
         {
-            _viewModel = new FriendViewModel();
+            _viewModel = new FriendSectionViewModel();
             CreateLayoutView("Bạn bè");
             if (username == "false")
             {
                 username = _viewModel.User.UserName;
             }
             var user = _service.GetUserByUserName(username);
-            FieldHelper.CopyNotNullValue(FriendViewModel, user);
-            return PartialView("_Friend", FriendViewModel);
+            List<String> listFriend = _friendService.GetAllFriend(user.Id);
+            foreach (String friend in listFriend)
+            {
+                FriendViewModel friendViewModel = new FriendViewModel();
+                ApplicationUser userT = _service.GetUserById(friend);
+                FieldHelper.CopyNotNullValue(friendViewModel, userT);
+                FriendSectionViewModel.ListFriend.Add(friendViewModel);
+            }
+            FriendSectionViewModel.LastName = user.LastName;
+            FriendSectionViewModel.Id = user.Id;
+            FriendSectionViewModel.Id_User = User.Identity.GetUserId();
+            return PartialView("_Friend", FriendSectionViewModel);
         }
+
     }
 }

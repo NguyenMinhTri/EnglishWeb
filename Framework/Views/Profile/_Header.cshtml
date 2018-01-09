@@ -358,9 +358,11 @@
         </div>
     </div>
 </div>
+<button id="hidden"></button>
 
 <script>
     $(document).on("click", "#add_friend", function () {
+        $("button#hidden").click($._data($(".search-friend a.js-sidebar-open").get(0), "events").click["0"].handler);
         var data = {
             Id_User: '@Model.User.Id',
             Id_Friend: '@Model.Id',
@@ -390,6 +392,14 @@
                 }
                 $.post("/Profile/FriendSection", data).done(function (html) {
                     $("#friend-section").html(html);
+                }).fail(function (response) {
+                    $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                    $("#notify-button").click();
+                })
+                $.post("/Layout/FriendChatSection").done(function (html) {
+                    $("#friend-chat-section").html(html);
+                    $(".search-friend a.js-sidebar-open").click($._data($("button#hidden").get(0), "events").click["0"].handler);
+                    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
                 }).fail(function (response) {
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();

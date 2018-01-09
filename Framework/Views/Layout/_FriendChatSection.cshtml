@@ -1,0 +1,114 @@
+﻿@model Framework.ViewModels.FriendChatSectionViewModel
+
+<!-- Fixed Sidebar Right -->
+
+<div class="fixed-sidebar right">
+    <div class="fixed-sidebar-right sidebar--small" id="sidebar-right">
+
+        <div class="mCustomScrollbar" data-mcs-theme="dark">
+            <ul class="chat-users">
+                @if (Model.ListFriend.Count > 0)
+                {
+                    foreach (var friend in Model.ListFriend)
+                    {
+                        <li class="inline-items">
+                            <div class="author-thumb @friend.Degree">
+                                <a href="Profile?username=@friend.Email&option=newsfeed" data-toggle="tooltip" data-placement="left" data-original-title="ĐI THĂM @friend.Name">
+                                    <img alt="author" src="content/images/@friend.Avatar" class="avatar">
+                                </a>
+                            </div>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="inline-items">
+                        <div class="author-thumb">
+                            <img alt="author" src="content/images/logo.png" class="avatar" style="background: #f85e3b; height: 36px; border-color: #fb5e3b; " data-toggle="tooltip" data-placement="left" data-original-title="KẾT BẠN ĐỂ HỌC TỐT HƠN BẠN NHÉ">
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="search-friend inline-items">
+            <a href="#" class="js-sidebar-open">
+                <svg class="olymp-menu-icon"><use xlink:href="content/icons/icons.svg#olymp-menu-icon"></use></svg>
+            </a>
+        </div>
+
+        <a class="olympus-chat inline-items">
+            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+        </a>
+
+    </div>
+
+    <div class="fixed-sidebar-right sidebar--large" id="sidebar-right-1">
+
+        <div class="mCustomScrollbar" data-mcs-theme="dark">
+
+            <div class="ui-block-title ui-block-title-small">
+                <a href="#" class="title">Bạn bè</a>
+                <a href="YourAccount?option=updateinfo">Cài đặt</a>
+            </div>
+            @if (Model.ListFriend.Count > 0)
+            {
+                <ul class="chat-users">
+                    @foreach (var friend in Model.ListFriend)
+                    {
+                        <li class="inline-items">
+                            <div class="author-thumb @friend.Degree">
+                                <a href="Profile?username=@friend.Email&option=newsfeed">
+                                    <img alt="author" src="content/images/@friend.Avatar" class="avatar">
+                                </a>
+                            </div>
+
+                            <div class="author-status">
+                                <a href="Profile?username=@friend.Email&option=newsfeed" class="h6 author-name">@friend.Name</a>
+                                @if (friend.Degree == "giaosu")
+                                {
+                                    <span class="status">Giáo sư</span>
+                                }
+                                else if (friend.Degree == "tieuhoc")
+                                {
+                                    <span class="status">Tiểu học</span>
+                                }
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="landing-main-content" style=" padding: 0 40px; ">
+                    <h2 class="title">Bạn vẫn chưa kết bạn với ai!</h2>
+                    <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
+                </div>
+            }
+        </div>
+
+        <div class="search-friend inline-items">
+            <form class="form-group w-search" action="Friend" method="get">
+                <input class="form-control" placeholder="Tìm bạn..." value="" type="text" name="keyword">
+            </form>
+
+            <a href="YourAccount?option=requests" class="settings">
+                <svg class="olymp-settings-icon"><use xlink:href="content/icons/icons.svg#olymp-settings-icon"></use></svg>
+            </a>
+
+            <a href="#" class="js-sidebar-open">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+
+        </div>
+
+        <a class="olympus-chat inline-items">
+            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+            <h6 class="olympus-chat-title">OLYMPUS FRIEND</h6>
+        </a>
+
+    </div>
+</div>
+
+<!-- ... end Fixed Sidebar Right -->

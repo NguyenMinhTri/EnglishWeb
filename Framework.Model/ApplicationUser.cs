@@ -54,6 +54,7 @@ namespace Framework.Model
         public String FavoriteAuthor { get; set; }
         public String Avatar { get; set; }
         public float Score { get; set; }
+        public int Friend { get; set; }
         public String Id_Messenger { get; set; }
         public String Degree { get; set; }
         public int StudySchedule { set; get; }

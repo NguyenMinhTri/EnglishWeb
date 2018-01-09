@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Text;
 using Framework.Common;
 using Framework.ViewModels;
+using Framework.Model;
 
 namespace Framework.Controllers
 {
@@ -16,7 +17,6 @@ namespace Framework.Controllers
     public class LayoutController : Controller
     {
         protected LayoutViewModel _viewModel;
-
         protected ILayoutService _service;
         //
         // GET: /Layout/
@@ -49,7 +49,32 @@ namespace Framework.Controllers
             }
             _viewModel.User = user;
             if (user != null)
+            {
                 _viewModel.Roles = _service.GetRolesOfUser(user.Id);
+                List<String> listFriend = _service.GetAllFriend(user.Id);
+                foreach (String friend in listFriend)
+                {
+                    FriendChatViewModel friendChatViewModel = new FriendChatViewModel();
+                    ApplicationUser userT = _service.GetUserById(friend);
+                    FieldHelper.CopyNotNullValue(friendChatViewModel, userT);
+                    _viewModel.ListFriend.Add(friendChatViewModel);
+                }
+            }
+        }
+
+        public PartialViewResult FriendChatSection()
+        {
+            List<String> listFriend = _service.GetAllFriend(User.Identity.GetUserId());
+            FriendChatSectionViewModel friendSection = new FriendChatSectionViewModel();
+
+            foreach (String friend in listFriend)
+            {
+                FriendChatViewModel friendViewModel = new FriendChatViewModel();
+                ApplicationUser user = _service.GetUserById(friend);
+                FieldHelper.CopyNotNullValue(friendViewModel, user);
+                friendSection.ListFriend.Add(friendViewModel);
+            }
+            return PartialView("_FriendChatSection", friendSection);
         }
     }
 }
