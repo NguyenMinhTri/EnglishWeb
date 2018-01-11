@@ -60,15 +60,12 @@ namespace Framework.ViewModels
 
     }
 
-    public class MessengerViewModel : LayoutViewModel, IRef<YourAccountController>
-    {
-
-    }
-
     public class RequestsViewModel : LayoutViewModel, IRef<YourAccountController>
     {
-       
+        public List<NotiFriendViewModel> ListRequest { get; set; }
+        public RequestsViewModel()
+        {
+            ListRequest = new List<NotiFriendViewModel>();
+        }
     }
-
-
 }

@@ -253,7 +253,9 @@
   font-weight: 700;
   display: block;
   text-align: center;
-  border-radius: 0 0 5px 5px; }
+  border-radius: 0 0 5px 5px;
+  border: 1px solid white;
+  }
   .view-all:hover {
     color: #fff; }
 
@@ -602,7 +604,9 @@
 .tab-content-responsive {
   display: none; }
   .tab-content-responsive .tab-pane {
-    background-color: #fff; }
+    background-color: #fff;
+    border-radius: 0 0 6px 6px;
+    }
   .tab-content-responsive .search-bar.w-search {
     background-color: #494c62; }
   .tab-content-responsive .mCustomScrollbar {
@@ -839,8 +843,9 @@
     width: 100%;
     left: 0;
     display: block;
-    position: absolute;
-    z-index: -1; }
+    /* position: absolute; */
+    z-index: -1;
+    }
     .tab-content-responsive .ps > .ps__scrollbar-y-rail, .tab-content-responsive .ps:hover > .ps__scrollbar-y-rail {
       display: none; }
   .view-all {

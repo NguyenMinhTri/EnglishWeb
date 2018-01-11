@@ -456,7 +456,7 @@
 
                 <div class="control-icon more has-items">
                     <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                    <div class="label-avatar bg-blue">6</div>
+                    <div class="label-avatar bg-blue notirequest" style="display:none">@ViewBag.listRequest</div>
 
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
@@ -465,7 +465,63 @@
                         </div>
 
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list friend-requests"></ul>
+                            @if (Model.ListRequest.Count > 0)
+                            {
+                                <ul class="notification-list friend-requests">
+                                    @foreach (var request in Model.ListRequest)
+                                    {
+                                        <li class="request_@request.Id" data-email="@request.Email" data-name="@request.Name">
+                                            <div class="author-thumb">
+                                                <a href="Profile?username=@request.Email&option=newsfeed" class="author-thumb @request.Degree">
+                                                    <img src="content/images/@request.Avatar" alt="author">
+                                                </a>
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="Profile?username=@request.Email&option=newsfeed" class="h6 notification-friend">@request.Name</a>
+                                                @if (request.Degree == "giaosu")
+                                                {
+                                                    <span class="chat-message-item">Giáo sư</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="chat-message-item">Tiểu học</span>
+                                                }
+                                            </div>
+
+                                            <div class="notification-icon">
+
+                                                @if (request.Flag == false)
+                                                {
+                                                    <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
+                                                        <span class="icon-add  without-text">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
+                                                        <span class=" icon-minus">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_Friend'); $('.friend-name').text('@request.Name');">
+                                                        <span class="icon-minus">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </span>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            <div style=" width: 100%; display:none " class="empty-notirequest">
+                                <div class="landing-main-content">
+                                    <h2 class="title">Chưa có lời mời mới!</h2>
+                                    <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
+                                </div>
+                            </div>
                         </div>
                         <a href="YourAccount?option=requests" class="view-all bg-blue">Xem tất cả lời mời kết bạn</a>
                     </div>
@@ -590,7 +646,7 @@
                     <a class="nav-link" data-toggle="tab" href="#request" role="tab">
                         <div class="control-icon has-items">
                             <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                            <div class="label-avatar bg-blue">6</div>
+                            <div class="label-avatar bg-blue notirequest" style="display:none"> @ViewBag.listRequest</div>
                         </div>
                     </a>
                 </li>
@@ -623,67 +679,65 @@
                         <h6 class="title">LỜI MỜI KẾT BẠN</h6>
                         <a href="YourAccount?option=updatesetting">CÀI ĐẶT</a>
                     </div>
-                    <ul class="notification-list friend-requests">
-                        <li>
-                            <div class="author-thumb sinhvien">
-                                <img src="content/images/avatar55-sm.jpg" alt="author">
-                            </div>
-                            <div class="notification-event">
-                                <a href="#" class="h6 notification-friend">Lê Văn Phú</a>
-                                <span class="chat-message-item">Bạn chung: Minh Trí</span>
-                            </div>
-                            <span class="notification-icon">
-                                <a href="#" class="accept-request">
-                                    <span class="icon-add without-text">
-                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                    </span>
-                                </a>
+                    <div class="mCustomScrollbar" data-mcs-theme="dark">
+                        @if (Model.ListRequest.Count > 0)
+                        {
+                            <ul class="notification-list friend-requests">
+                                @foreach (var request in Model.ListRequest)
+                                {
+                                    <li class="request_@request.Id" data-email="@request.Email" data-name="@request.Name">
+                                        <div class="author-thumb">
+                                            <a href="Profile?username=@request.Email&option=newsfeed" class="author-thumb @request.Degree">
+                                                <img src="content/images/@request.Avatar" alt="author">
+                                            </a>
+                                        </div>
+                                        <div class="notification-event">
+                                            <a href="Profile?username=@request.Email&option=newsfeed" class="h6 notification-friend">@request.Name</a>
+                                            @if (request.Degree == "giaosu")
+                                            {
+                                                <span class="chat-message-item">Giáo sư</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="chat-message-item">Tiểu học</span>
+                                            }
+                                        </div>
 
-                                <a href="#" class="accept-request request-del">
-                                    <span class="icon-minus">
-                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                    </span>
-                                </a>
+                                        <div class="notification-icon">
 
-                            </span>
-                        </li>
-                        <li>
-                            <div class="author-thumb sinhvien">
-                                <img src="content/images/avatar56-sm.jpg" alt="author">
+                                            @if (request.Flag == false)
+                                            {
+                                                <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
+                                                    <span class="icon-add  without-text">
+                                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                    </span>
+                                                </a>
+                                                <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
+                                                    <span class=" icon-minus">
+                                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                    </span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_Friend'); $('.friend-name').text('@request.Name');">
+                                                    <span class="icon-minus">
+                                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                    </span>
+                                                </a>
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        <div style=" width: 100%; display:none " class="empty-notirequest">
+                            <div class="landing-main-content">
+                                <h2 class="title">Chưa có lời mời mới!</h2>
+                                <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
                             </div>
-                            <div class="notification-event">
-                                <a href="#" class="h6 notification-friend">Nguyễn Thanh Thiện</a>
-                                <span class="chat-message-item">4 bạn chung</span>
-                            </div>
-                            <span class="notification-icon">
-                                <a href="#" class="accept-request">
-                                    <span class="icon-add without-text">
-                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                    </span>
-                                </a>
-
-                                <a href="#" class="accept-request request-del">
-                                    <span class="icon-minus">
-                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                    </span>
-                                </a>
-                            </span>
-                        </li>
-                        <li class="accepted">
-                            <div class="author-thumb sinhvien">
-                                <img src="content/images/avatar57-sm.jpg" alt="author">
-                            </div>
-                            <div class="notification-event">
-                                Bạn và <a href="#" class="h6 notification-friend">Lê Văn Duyệt</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href="#" class="notification-link">Lê Văn Duyệt </a>.
-                            </div>
-                            <span class="notification-icon">
-                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                            </span>
-                            <div class="more">
-                                <svg class="olymp-little-delete"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                     <a href="YourAccount?option=requests" class="view-all bg-blue">Xem tất cả lời mời kết bạn</a>
                 </div>
 
@@ -741,9 +795,9 @@
             <div class="tab-pane " id="search" role="tabpanel">
 
 
-                <form class="search-bar w-search notification-list friend-requests">
+                <form class="search-bar w-search notification-list friend-requests" action="Friend" method="get">
                     <div class="form-group with-button">
-                        <input class="form-control js-user-search" placeholder="Tìm kiếm bạn bè..." type="text">
+                        <input class="form-control" placeholder="Tìm kiếm bạn bè..." type="text" name="keyword">
                     </div>
                 </form>
 
@@ -804,6 +858,131 @@
     </div>
     <input type="hidden" id="UserId" value="@Model.User.Id" />
     <!-- ... end Window-popup Notify -->
+
+
+    <a href="#" id="confirm-delete-button" data-toggle="modal" data-target="#confirm-delete" style=" display:none"></a>
+
+    <div class="modal fade" id="confirm-delete">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Bạn có chắc chắn với sự lựa chọn</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>
+                    <b class="friend-name"></b> sẽ nhớ bạn rất nhiều đó...
+                </p>
+                <div class="modal-button">
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">Bỏ qua</a>
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center add_friend" data-id="" data-code="0" data-dismiss="modal" aria-label="Close">Chắc chắn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="delete-ok-button" data-toggle="modal" data-target="#delete-ok" style="display:none"></a>
+
+    <div class="modal fade" id="delete-ok">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Chúc mừng...</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>
+                    Bạn và <b class="friend-name"></b> không còn theo dõi nhau nữa!
+                </p>
+                <p>
+                    Tuy nhiên, hãy vẫn giữ liên lạc với nhau nhé!
+                </p>
+                <p>
+                    <b>Make Olympus great againt!</b>
+                </p>
+                <div class="modal-button">
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="confirm-accept-button" data-toggle="modal" data-target="#confirm-accept" style=" display:none"></a>
+
+    <div class="modal fade" id="confirm-accept">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Bạn có chắc chắn muốn kết bạn</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>
+                    Bạn sẽ có thể theo dõi <b class="friend-name"></b> từ Newfeed của mình!
+                </p>
+                <div class="modal-button">
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">Bỏ qua</a>
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center add_friend" data-id="" data-code="1" data-dismiss="modal" aria-label="Close">Chắc chắn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="accept-ok-button" data-toggle="modal" data-target="#accept-ok" style="display:none"></a>
+
+    <div class="modal fade" id="accept-ok">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Chúc mừng...</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>
+                    Bạn và <b class="friend-name"></b> đã trở thành bạn bè của nhau!
+                </p>
+                <p>
+                    Giờ đây, bạn có thể theo dõi của <span class="friend-name"></span> từ Newfeed của mình!
+                </p>
+                <p>
+                    Tương tác tốt nhé!!!
+                </p>
+                <p>
+                    <b>Make Olympus great againt!</b>
+                </p>
+                <div class="modal-button">
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="hidden" style="display:none"></button>
+
+    <script>
+        var num_notirequest = parseInt('@Model.ListRequest.Count');
+        if (num_notirequest != 0) {
+            $(".notirequest").text(num_notirequest);
+            $(".notirequest").css("display", "block");
+        }
+        else {
+            $(".notirequest").css("display", "none");
+            $(".empty-notirequest").css("display", "block");
+        }
+    </script>
+
     @RenderBody()
 
     @RenderSection("scripts", false);

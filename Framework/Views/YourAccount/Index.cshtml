@@ -1,4 +1,6 @@
-﻿@Html.Partial("_ProfileSettings")
+﻿<div class="waiting_loader" style="display: none"></div>
+
+@Html.Partial("_ProfileSettings")
 
 <!-- Your Account Personal Information -->
 
@@ -44,7 +46,9 @@
 
 <script>
     function getview(action) {
-        $(".waiting_loader").css("display", "block");
+        if ($(".fakeloader").css("display") == "none") {
+            $(".waiting_loader").css("display", "block");
+        }
         var url = "/YourAccount/" + action;
         var temp = "";
         $("#partial").load(url, function (response, status, xhr) {
@@ -59,6 +63,15 @@
         });
         $('#partial').hide().fadeIn(500);
         scrollto("#partial");
+        var num_notirequest = parseInt($($(".notirequest")[0]).text());
+        if (num_notirequest != 0) {
+            $(".notirequest").html(num_notirequest);
+            $(".notirequest").css("display", "block");
+        }
+        else {
+            $(".notirequest").css("display", "none");
+            $("#empty-notirequest").css("display", "block");
+        }
     }
 
     var option = getQueryVariable("option");

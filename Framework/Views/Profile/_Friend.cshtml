@@ -1,9 +1,7 @@
 ﻿@model Framework.ViewModels.FriendSectionViewModel
 
 @{
-
     Random rnd = new Random();
-    int diem = rnd.Next(100, 400);
 }
 <script>
     document.title = "Bạn bè | Olympus";
@@ -65,8 +63,15 @@
                                         </a>
                                     </div>
                                     <div class="author-content">
-                                        <a href="#" class="h5 author-name">@friend.Name</a>
-                                        <div class="country">@friend.AddressToString</div>
+                                        <a href="Profile?username=@friend.Email&option=newsfeed" class="h5 author-name">@friend.Name</a>
+                                        @if (friend.Degree == "giaosu")
+                                        {
+                                            <div class="country pro">Giáo sư</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="country">Tiểu học</div>
+                                        }
                                     </div>
                                 </div>
 
@@ -80,7 +85,7 @@
                                                 </a>
                                                 <a href="#" class="friend-count-item">
                                                     <div class="h6">
-                                                        @diem
+                                                        @rnd.Next(100, 400)
                                                     </div>
                                                     <div class="title">Điểm</div>
                                                 </a>
@@ -92,10 +97,20 @@
                                                 @friend.AboutToString
                                             </p>
 
-                                            <div class="friend-since" data-swiper-parallax="-100">
-                                                <span>Làm bạn từ:</span>
-                                                <div class="h6">@friend.UpdatedDate.ToString().Substring(0, 10)</div>
-                                            </div>
+                                            @if (friend.FriendDate != null)
+                                            {
+                                                <div class="friend-since" data-swiper-parallax="-100">
+                                                    <span>Làm bạn từ:</span>
+                                                    <div class="h6">@friend.FriendDate.ToString().Substring(0, 10)</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="friend-since" data-swiper-parallax="-100" style="visibility:hidden">
+                                                    <span>Làm bạn từ:</span>
+                                                    <div class="h6">Chưa có thông tin</div>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
 

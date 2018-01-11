@@ -64,8 +64,14 @@ namespace Framework.Controllers
                         _friendService.Delete(friend);
                         if (friend.CodeRelationshipId == 1)
                         {
-                            user1.Friend--;
-                            user2.Friend--;
+                            if (user1.Friend > 1)
+                            {
+                                user1.Friend--;
+                            }
+                            if (user2.Friend > 1)
+                            {
+                                user2.Friend--;
+                            }
                         }
                     }
                     else
@@ -91,6 +97,7 @@ namespace Framework.Controllers
                     return Json(new
                     {
                         result = "success",
+                        id = friend.Id
                     });
                 }
                 catch (Exception e)
@@ -110,16 +117,29 @@ namespace Framework.Controllers
         [HttpGet]
         public ActionResult Index(string keyword)
         {
+            bool flag = false;
             _viewModel = new FriendSectionViewModel();
             CreateLayoutView("Tìm kiếm bạn bè");
             if (keyword != null)
             {
-                List<String> listFriend = _applicationUserService.FindFriend(keyword);
-                foreach (String friend in listFriend)
+                List<String> listUser = _applicationUserService.FindFriend(keyword);
+                List<Friend> listFriend = _friendService.GetAllFriends(User.Identity.GetUserId());
+                foreach (String user in listUser)
                 {
                     FriendViewModel friendViewModel = new FriendViewModel();
-                    ApplicationUser userT = _service.GetUserById(friend);
+                    ApplicationUser userT = _service.GetUserById(user);
                     FieldHelper.CopyNotNullValue(friendViewModel, userT);
+                    if (flag == false)
+                    {
+                        foreach (Friend friend in listFriend)
+                        {
+                            if (friend.Id_Friend == user || friend.Id_User == user)
+                            {
+                                friendViewModel.FriendDate = friend.UpdatedDate;
+                            }
+                            flag = true;
+                        }
+                    }
                     FriendSectionViewModel.ListFriend.Add(friendViewModel);
                 }
             }

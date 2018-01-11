@@ -290,21 +290,6 @@ namespace Framework.ViewModels
         public String Email { get; set; }
         public String Avatar { get; set; }
         public String Degree { get; set; }
-        public String Address { get; set; }
-        public String AddressToString
-        {
-            get
-            {
-                if (Address == null)
-                {
-                    return "Chưa có thông tin";
-                }
-                else
-                {
-                    return Address;
-                }
-            }
-        }
         public String About { get; set; }
         public String AboutToString
         {
@@ -320,7 +305,7 @@ namespace Framework.ViewModels
                 }
             }
         }
-        public DateTime? UpdatedDate { set; get; }
+        public DateTime? FriendDate { set; get; }
         public int Friend { set; get; }
 
     }
@@ -340,8 +325,12 @@ namespace Framework.ViewModels
         public String Id_Friend { get; set; }
         public int CodeRelationshipId { get; set; }
         public String Name { get; set; }
+        public String Email { get; set; }
         public String Avatar { get; set; }
-        public String Career { get; set; }
+        public String Degree { get; set; }
+        public DateTime? CreatedDate { set; get; }
+        public bool Flag { set; get; }
+
     }
 
 }

@@ -12,6 +12,9 @@ namespace Framework.Service
     {
         Friend FindRelationship(string id_user, string id_friend);
         List<String> GetAllFriend(string id_user);
+        List<Friend> GetAllFriends(string id_user);
+        List<Friend> GetRelationship(string id_user);
+
     }
     class FriendService : QlService<Friend>, IClientFriendService
     {
@@ -38,6 +41,23 @@ namespace Framework.Service
             List<String> listFriend = new List<String>();
             listFriend = _friendRepository.GetMulti(x => x.Id_User == id_user && x.CodeRelationshipId == 1).Select(x=>x.Id_Friend).ToList();
             listFriend.AddRange(_friendRepository.GetMulti(x => x.Id_Friend == id_user && x.CodeRelationshipId == 1).Select(x => x.Id_User).ToList());
+            return listFriend;
+        }
+
+        public List<Friend> GetRelationship(string id_user)
+        {
+            List<Friend> listRelationship = new List<Friend>();
+            listRelationship = _friendRepository.GetMulti(x => x.Id_Friend == id_user && x.CodeRelationshipId == -1).ToList();
+            listRelationship.Add(null);
+            listRelationship.AddRange(_friendRepository.GetMulti(x => x.Id_User == id_user && x.CodeRelationshipId == -1).ToList());
+            return listRelationship;
+        }
+
+        public List<Friend> GetAllFriends(string id_user)
+        {
+            List<Friend> listFriend = new List<Friend>();
+            listFriend = _friendRepository.GetMulti(x => x.Id_User == id_user && x.CodeRelationshipId == 1).ToList();
+            listFriend.AddRange(_friendRepository.GetMulti(x => x.Id_Friend == id_user && x.CodeRelationshipId == 1).ToList());
             return listFriend;
         }
     }

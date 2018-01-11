@@ -333,3 +333,75 @@ $(".w-search").submit(function () {
         return false;
     }
 });
+
+
+$(document).on("click", ".add_friend", function () {
+    $("button#hidden").click($._data($(".search-friend a.js-sidebar-open").get(0), "events").click["0"].handler);
+    var data = {
+        Id_User: $("#UserId").val(),
+        Id_Friend: $(this).attr("data-id"),
+        CodeRelationshipId: $(this).attr("data-code")
+    }
+    $.post('/Friend/Friend_action', data).done(function (response) {
+        if (response.result == "success") {
+            var parent = $(".request_" + response.id);
+            var email = parent.attr("data-email");
+            var name = parent.attr("data-name");
+            if (data.CodeRelationshipId == 0) {
+                $("#delete-ok-button").click();
+                $(".profile-section .friend").removeClass("bg-primary").addClass("bg-blue");
+                $(".profile-section .friend.delete, .profile-section .friend.accept").css("display", "none");
+                $(".profile-section .friend.add").css("display", "inline-block");
+                $(parent).fadeOut();
+            }
+            else if (data.CodeRelationshipId == 1) {
+                $("#accept-ok-button").click();
+                $(".profile-section .friend").removeClass("bg-yellow").addClass("bg-primary");
+                $(".profile-section .friend.delete").css("display", "inline-block");
+                $(".profile-section .friend.accept").css("display", "none");
+                parent.addClass("accepted");
+                $(parent).find(".notification-event").html("<p>Bạn và <a class='h6 notification-friend'>" + name + "</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href='Profile?username=" + email + "&option=newsfeed' class='notification-link'>" + name + "</a>.</p>");
+                $(parent).find(".notification-icon").html("<svg class='olymp-happy-face-icon'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='content/icons/icons.svg#olymp-happy-face-icon'></use></svg>");
+            } else if (data.CodeRelationshipId == -1) {
+                $("#add-ok-button").click();
+                $(".profile-section .friend").removeClass("bg-blue").addClass("bg-primary");
+                $(".profile-section .friend.delete").css("display", "inline-block");
+                $(".profile-section .friend.add").css("display", "none");
+            }
+            data = {
+                Id_User: data.Id_Friend
+            }
+            $.post("/Profile/FriendSection", data).done(function (html) {
+                $("#friend-section").html(html);
+            }).fail(function (response) {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            })
+            $.post("/Layout/FriendChatSection").done(function (html) {
+                $("#friend-chat-section").html(html);
+                $(".search-friend a.js-sidebar-open").click($._data($("button#hidden").get(0), "events").click["0"].handler);
+                $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+            }).fail(function (response) {
+                $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+                $("#notify-button").click();
+            });
+            num_notirequest--;
+            if (num_notirequest != 0) {
+                $(".notirequest").text(num_notirequest);
+            }
+            else {
+                $(".notirequest").css("display", "none");
+                if ($(".header-content-wrapper .notification-list.friend-requests li.accepted").length == 0) {
+                    $(".empty-notirequest").css("display", "block");
+                }
+            }
+        }
+        else {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+        }
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+        $("#notify-button").click();
+    })
+});

@@ -2,7 +2,6 @@
 @{
 
     Random rnd = new Random();
-    int diem = rnd.Next(100, 400);
 }
 
 <div class="main-header">
@@ -77,7 +76,14 @@
                                     </div>
                                     <div class="author-content">
                                         <a href="Profile?username=@friend.Email&option=newsfeed" class="h5 author-name">@friend.Name</a>
-                                        <div class="country">@friend.AddressToString</div>
+                                        @if (friend.Degree == "giaosu")
+                                        {
+                                            <div class="country pro">Giáo sư</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="country">Tiểu học</div>
+                                        }
                                     </div>
                                 </div>
 
@@ -91,7 +97,7 @@
                                                 </a>
                                                 <a href="#" class="friend-count-item">
                                                     <div class="h6">
-                                                        @diem
+                                                        @rnd.Next(100, 400)
                                                     </div>
                                                     <div class="title">Điểm</div>
                                                 </a>
@@ -102,11 +108,11 @@
                                             <p class="friend-about" data-swiper-parallax="-500">
                                                 @friend.AboutToString
                                             </p>
-                                            @if (friend.UpdatedDate != null)
+                                            @if (friend.FriendDate != null)
                                             {
                                                 <div class="friend-since" data-swiper-parallax="-100">
                                                     <span>Làm bạn từ:</span>
-                                                    <div class="h6">@friend.UpdatedDate.ToString().Substring(0, 10)</div>
+                                                    <div class="h6">@friend.FriendDate.ToString().Substring(0, 10)</div>
                                                 </div>
                                             }
                                             else
@@ -141,7 +147,6 @@
 </div>
 
 <!-- ... end Main Content Groups -->
-
 <!-- Window-popup Report -->
 
 <div class="modal fade" id="report-profile">

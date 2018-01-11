@@ -318,12 +318,21 @@ namespace Framework.Controllers
                 username = _viewModel.User.UserName;
             }
             var user = _service.GetUserByUserName(username);
-            List<String> listFriend = _friendService.GetAllFriend(user.Id);
-            foreach (String friend in listFriend)
+            List<Friend> listFriend = _friendService.GetAllFriends(user.Id);
+            foreach (Friend friend in listFriend)
             {
                 FriendViewModel friendViewModel = new FriendViewModel();
-                ApplicationUser userT = _service.GetUserById(friend);
+                ApplicationUser userT;
+                if (friend.Id_User == user.Id)
+                {
+                    userT = _service.GetUserById(friend.Id_Friend);
+                }
+                else
+                {
+                    userT = _service.GetUserById(friend.Id_User);
+                }
                 FieldHelper.CopyNotNullValue(friendViewModel, userT);
+                friendViewModel.FriendDate = friend.UpdatedDate;
                 FriendSectionViewModel.ListFriend.Add(friendViewModel);
             }
             FriendSectionViewModel.LastName = user.LastName;

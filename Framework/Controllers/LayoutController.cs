@@ -59,6 +59,42 @@ namespace Framework.Controllers
                     FieldHelper.CopyNotNullValue(friendChatViewModel, userT);
                     _viewModel.ListFriend.Add(friendChatViewModel);
                 }
+
+                bool flag = false;
+                List<Friend> listRequest = _service.GetRelationship(User.Identity.GetUserId());
+                foreach (Friend friend in listRequest)
+                {
+                    NotiFriendViewModel notiFriendViewModel = new NotiFriendViewModel();
+                    ApplicationUser userT = new ApplicationUser();
+                    if (friend != null)
+                    {
+                        switch (flag)
+                        {
+                            case false:
+                                {
+                                    userT = _service.GetUserById(friend.Id_User);
+                                    notiFriendViewModel.Flag = false;
+                                    break;
+                                }
+                            case true:
+                                {
+                                    userT = _service.GetUserById(friend.Id_Friend);
+                                    notiFriendViewModel.Flag = true;
+                                    break;
+                                }
+                        }
+                        FieldHelper.CopyNotNullValue(notiFriendViewModel, userT);
+                        FieldHelper.CopyNotNullValue(notiFriendViewModel, friend);
+                        _viewModel.ListRequest.Add(notiFriendViewModel);
+                    }
+                    else
+                    {
+                        flag = true;
+                    }
+                }
+                _viewModel.ListRequest.OrderBy(x => x.CreatedDate);
+                ViewBag.listRequest = listRequest.Count - 1;
+
             }
         }
 

@@ -17,7 +17,10 @@ namespace Framework.ViewModels
         public LayoutViewModel()
         {
             ListFriend = new List<FriendChatViewModel>();
+            ListRequest = new List<NotiFriendViewModel>();
+
         }
+        public List<NotiFriendViewModel> ListRequest { get; set; }
     }
 
     public class FriendChatViewModel : LayoutViewModel, IRef<ProfileController>

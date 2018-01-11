@@ -9,7 +9,7 @@
         <h6 class="title">Cài đặt tài khoản</h6>
     </div>
     <div class="ui-block-content">
-        <form>
+        <form id="normal-form">
             <div class="row">
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -70,9 +70,18 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button class="btn btn-primary btn-lg full-width">Lưu thay đổi</button>
+                    <button class="btn btn-primary btn-lg full-width save-button">Lưu thay đổi</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    $.material.init();
+    $('.save-button').on("click", function (e) {
+        e.preventDefault();
+        $("#notify .ui-block-content p").html("<p> Cảm ơn bạn!</p> <p>Olympus đã ghi nhớ!</p><p> <b>Chúc bạn học tốt nhá!!!</b> </p>");
+        $("#notify-button").click();
+    });
+</script>

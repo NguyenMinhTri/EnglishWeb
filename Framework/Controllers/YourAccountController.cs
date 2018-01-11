@@ -34,12 +34,16 @@ namespace Framework.Controllers
         string pageToken = "EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp";
         string appSecret = "e4bb9e8c052fd8008d6d3b3d1ac7c9b9";
         IApplicationUserService _applicationUserService;
+        IClientFriendService _friendService;
+
         public YourAccountController(ILayoutService layoutService,
-            IApplicationUserService applicationUserService)
+            IApplicationUserService applicationUserService,
+             IClientFriendService friendService)
             : base(layoutService)
         {
             _applicationUserService = applicationUserService;
             UserManager = new UserManager<ApplicationUser>(new ApplicationUserStore(new ApplicationDbContext()));
+            _friendService = friendService;
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -72,14 +76,6 @@ namespace Framework.Controllers
             get
             {
                 return (NotificationViewModel)_viewModel;
-            }
-        }
-
-        MessengerViewModel MessengerViewModel
-        {
-            get
-            {
-                return (MessengerViewModel)_viewModel;
             }
         }
 
@@ -121,12 +117,6 @@ namespace Framework.Controllers
                             CreateLayoutView("Thông báo");
                             break;
                         }
-                    case "messenger":
-                        {
-                            _viewModel = new MessengerViewModel();
-                            CreateLayoutView("Tin nhắn");
-                            break;
-                        }
                     case "requests":
                         {
                             _viewModel = new RequestsViewModel();
@@ -147,6 +137,8 @@ namespace Framework.Controllers
                 CreateLayoutView("Cập nhật thông tin");
             }
             ViewBag.newMember = userType;
+            ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count - 1;
+
             return View(_viewModel);
         }
 
@@ -156,6 +148,8 @@ namespace Framework.Controllers
             _viewModel = new UpdateInfoViewModel();
             CreateLayoutView("Cập nhật thông tin");
             FieldHelper.CopyNotNullValue(UpdateInfoViewModel, _viewModel.User);
+            ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count - 1;
+
             return PartialView("_UpdateInfo", UpdateInfoViewModel);
         }
 
@@ -174,6 +168,8 @@ namespace Framework.Controllers
                 {
                     _applicationUserService.Save();
                     ViewBag.newMember = userType;
+                    ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count - 1;
+
                     return Json(new
                     {
                         result = "success"
@@ -202,6 +198,8 @@ namespace Framework.Controllers
         {
             _viewModel = new UpdatePasswordViewModel();
             CreateLayoutView("Quản lý tài khoản");
+            ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count - 1;
+
             return PartialView("_UpdatePassword", UpdatePasswordViewModel);
         }
 
@@ -252,6 +250,8 @@ namespace Framework.Controllers
         public ActionResult UpdateSetting()
         {
             _viewModel = new UpdateSettingViewModel();
+            ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count;
+
             return PartialView("_UpdateSetting");
         }
 
@@ -259,20 +259,51 @@ namespace Framework.Controllers
         public ActionResult Notification()
         {
             _viewModel = new NotificationViewModel();
-            return PartialView("_Notification", NotificationViewModel);
-        }
+            ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count;
 
-        [HttpGet]
-        public ActionResult Messenger()
-        {
-            _viewModel = new MessengerViewModel();
-            return PartialView("_Messenger", MessengerViewModel);
+            return PartialView("_Notification", NotificationViewModel);
         }
 
         [HttpGet]
         public ActionResult Requests()
         {
+            bool flag = false;
             _viewModel = new RequestsViewModel();
+            CreateLayoutView("Lời mời kết bạn");
+            List<Friend> listRequest = _friendService.GetRelationship(User.Identity.GetUserId());
+            foreach (Friend friend in listRequest)
+            {
+                NotiFriendViewModel notiFriendViewModel = new NotiFriendViewModel();
+                ApplicationUser userT = new ApplicationUser();
+                if (friend != null)
+                {
+                    switch (flag)
+                    {
+                        case false:
+                            {
+                                userT = _service.GetUserById(friend.Id_User);
+                                notiFriendViewModel.Flag = false;
+                                break;
+                            }
+                        case true:
+                            {
+                                userT = _service.GetUserById(friend.Id_Friend);
+                                notiFriendViewModel.Flag = true;
+                                break;
+                            }
+                    }
+                    FieldHelper.CopyNotNullValue(notiFriendViewModel, userT);
+                    FieldHelper.CopyNotNullValue(notiFriendViewModel, friend);
+                    RequestsViewModel.ListRequest.Add(notiFriendViewModel);
+                }
+                else
+                {
+                    flag = true;
+                }
+            }
+            RequestsViewModel.ListRequest.OrderBy(x => x.CreatedDate);
+            ViewBag.listRequest = listRequest.Count - 1;
+
             return PartialView("_Requests", RequestsViewModel);
         }
         [AllowAnonymous]
@@ -286,7 +317,7 @@ namespace Framework.Controllers
             }
             return null;
         }
- 
+
 
         [AllowAnonymous]
         public ActionResult ReceivePost(BotRequest data)
@@ -339,7 +370,7 @@ namespace Framework.Controllers
             //}
             //catch(Exception e)
             //{
-                
+
 
             //}
             return new HttpStatusCodeResult(HttpStatusCode.OK);
