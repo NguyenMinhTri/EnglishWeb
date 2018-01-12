@@ -14,7 +14,6 @@ namespace Framework.Model
 		public int Id { get; set; }
 		public String Id_User { get; set; }
 		public String Id_Friend { get; set; }
-		public int CodeNotificationTypeId { get; set; }
 		public int Id_Post { get; set; }
 	}
 }

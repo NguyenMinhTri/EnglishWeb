@@ -20,16 +20,20 @@ namespace Framework.Controllers
     public class FriendController : LayoutController
     {
         IClientFriendService _friendService;
+        INotificationService _notificationService;
+
         IApplicationUserService _applicationUserService;
 
         public FriendController(ILayoutService layoutService,
             IClientFriendService friendService,
-            IApplicationUserService applicationUserService
+            IApplicationUserService applicationUserService,
+            INotificationService notificationService
             )
             : base(layoutService)
         {
             _friendService = friendService;
             _applicationUserService = applicationUserService;
+            _notificationService = notificationService;
         }
 
         FriendViewModel ViewModel
@@ -80,6 +84,10 @@ namespace Framework.Controllers
                         _friendService.Update(friend);
                         user1.Friend++;
                         user2.Friend++;
+                        Notification notification = new Notification();
+                        FieldHelper.CopyNotNullValue(notification, friend);
+                        notification.Id_Post = 0;
+                        _notificationService.Add(notification);
                     }
                     _applicationUserService.Update(user1);
                     _applicationUserService.Update(user2);
@@ -94,6 +102,7 @@ namespace Framework.Controllers
                 {
                     _friendService.Save();
                     _applicationUserService.Save();
+                    _notificationService.Save();
                     return Json(new
                     {
                         result = "success",

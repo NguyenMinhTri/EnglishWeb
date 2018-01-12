@@ -55,9 +55,13 @@ namespace Framework.ViewModels
 
     }
 
-    public class NotificationViewModel : LayoutViewModel, IRef<YourAccountController>
+    public class NotifyViewModel : LayoutViewModel, IRef<YourAccountController>
     {
-
+        public List<NotificationViewModel> ListNotification { get; set; }
+        public NotifyViewModel()
+        {
+            ListNotification = new List<NotificationViewModel>();
+        }
     }
 
     public class RequestsViewModel : LayoutViewModel, IRef<YourAccountController>

@@ -112,5 +112,48 @@ namespace Framework.Controllers
             }
             return PartialView("_FriendChatSection", friendSection);
         }
+
+        [HttpPost]
+        public PartialViewResult NotiRequestSection(string username)
+        {
+            NotiRequestViewModel notiRequest = new NotiRequestViewModel();
+            if (username != null)
+            {
+                bool flag = false;
+                List<Friend> listRequest = _service.GetRelationship(_service.GetUserByUserName(username).Id);
+                foreach (Friend friend in listRequest)
+                {
+                    NotiFriendViewModel notiFriendViewModel = new NotiFriendViewModel();
+                    ApplicationUser userT = new ApplicationUser();
+                    if (friend != null)
+                    {
+                        switch (flag)
+                        {
+                            case false:
+                                {
+                                    userT = _service.GetUserById(friend.Id_User);
+                                    notiFriendViewModel.Flag = false;
+                                    break;
+                                }
+                            case true:
+                                {
+                                    userT = _service.GetUserById(friend.Id_Friend);
+                                    notiFriendViewModel.Flag = true;
+                                    break;
+                                }
+                        }
+                        FieldHelper.CopyNotNullValue(notiFriendViewModel, userT);
+                        FieldHelper.CopyNotNullValue(notiFriendViewModel, friend);
+                        notiRequest.ListRequest.Add(notiFriendViewModel);
+                    }
+                    else
+                    {
+                        flag = true;
+                    }
+                }
+                notiRequest.ListRequest.OrderBy(x => x.CreatedDate);
+            }
+            return PartialView("_NotiFriend", notiRequest);
+        }
     }
 }

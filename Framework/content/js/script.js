@@ -334,16 +334,18 @@ $(".w-search").submit(function () {
     }
 });
 
-
 $(document).on("click", ".add_friend", function () {
     $("button#hidden").click($._data($(".search-friend a.js-sidebar-open").get(0), "events").click["0"].handler);
     var data = {
         Id_User: $("#UserId").val(),
         Id_Friend: $(this).attr("data-id"),
-        CodeRelationshipId: $(this).attr("data-code")
+        CodeRelationshipId: $(this).attr("data-code"),
+        Name: $("#RequestUserName").val()
     }
     $.post('/Friend/Friend_action', data).done(function (response) {
         if (response.result == "success") {
+            dataSentNotiRequest = data;
+            $("#sentNotiRequest").click();
             var parent = $(".request_" + response.id);
             var email = parent.attr("data-email");
             var name = parent.attr("data-name");
@@ -405,3 +407,55 @@ $(document).on("click", ".add_friend", function () {
         $("#notify-button").click();
     })
 });
+
+var chat = $.connection.chatHub;
+
+// Create a function that the hub can call to broadcast messages.
+chat.client.receiveNotiRequest = function (who) {
+    data = {
+        username: who
+    }
+    $.post("/Layout/NotiRequestSection", data).done(function (html) {
+        $(".notiRequestPartial").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+    $.post("/YourAccount/NotiRequestSectionAccount", data).done(function (html) {
+        $(".addNewRequest").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+};
+
+chat.client.receiveNotiRequestReject = function (who) {
+    data = {
+        username: who
+    }
+    $.post("/Layout/NotiRequestSection", data).done(function (html) {
+        $(".notiRequestPartial").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+    $.post("/YourAccount/NotiRequestSectionAccount", data).done(function (html) {
+        $(".addNewRequest").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+    $("#reject-button").click();
+    $(".profile-section .friend").removeClass("bg-primary").addClass("bg-blue");
+    $(".profile-section .friend.delete, .profile-section .friend.accept").css("display", "none");
+    $(".profile-section .friend.add").css("display", "inline-block");
+};
+
+var dataSentNotiRequest;
+
+$.connection.hub.start().done(function () {
+    $('#sentNotiRequest').click(function () {
+        chat.server.sentNotiRequest(dataSentNotiRequest.Name, dataSentNotiRequest.CodeRelationshipId);
+    });
+});
+

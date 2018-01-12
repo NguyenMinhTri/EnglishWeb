@@ -929,7 +929,6 @@
     <Content Include="Views\YourAccount\_UpdateSetting.cshtml" />
     <Content Include="Views\YourAccount\_Notification.cshtml" />
     <Content Include="Views\YourAccount\_Requests.cshtml" />
-    <Content Include="Views\YourAccount\_Messenger.cshtml" />
     <Content Include="Views\Home\_Activities.cshtml" />
     <Content Include="Views\Home\_Notices.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
@@ -980,6 +979,7 @@
     <Content Include="Views\Profile\_FriendSection.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Layout\_FriendChatSection.cshtml" />
+    <Content Include="Views\YourAccount\_NotiFriend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

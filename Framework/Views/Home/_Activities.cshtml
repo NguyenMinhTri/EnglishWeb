@@ -73,7 +73,7 @@
 
 <script>
     var typeList = [];
-    $(document).on("click", ".notification-icon a", function () {
+    $(document).on("click", ".activity .notification-icon a", function () {
         $(this).find("svg").toggleClass( "active" );
         $(".notification-icon a .active").each(function () {
             typeList.push($(this).parent().attr("id"));

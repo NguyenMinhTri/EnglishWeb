@@ -74,10 +74,10 @@
                             {
                                 if (Model.CodeRelationshipId == 0)
                                 {
-                                    <a href="#" class="btn btn-control bg-primary friend delete" style="display: none" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                    <a href="#" class="btn btn-control bg-primary friend delete" style="display: none" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                         <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                     </a>
-                                    <a href="#" class="btn btn-control bg-blue friend add" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                    <a href="#" class="btn btn-control bg-blue friend add" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                         <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                     </a>
                                 }
@@ -85,10 +85,10 @@
                                 {
                                     if (Model.Id_User_Request == Model.User.Id)
                                     {
-                                        <a data-toggle="tooltip" data-placement="bottom" data-original-title="Xóa kết bạn" href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                        <a data-toggle="tooltip" data-placement="bottom" data-original-title="Xóa kết bạn" href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                             <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                         </a>
-                                        <a data-toggle="tooltip" data-placement="bottom" data-original-title="Kết bạn" href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                        <a data-toggle="tooltip" data-placement="bottom" data-original-title="Kết bạn" href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                             <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                         </a>
                                     }
@@ -96,26 +96,25 @@
                                     {
                                         if (Model.CodeRelationshipId == -1)
                                         {
-                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Đồng ý kết bạn" href="#" class="btn btn-control bg-yellow friend accept" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Đồng ý kết bạn" href="#" class="btn btn-control bg-yellow friend accept" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </a>
-                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Xóa kết bạn" href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Xóa kết bạn" href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </a>
-                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Kết bạn" href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Kết bạn" href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </a>
                                         }
                                         else
                                         {
-                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Xóa kết bạn" href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Xóa kết bạn" href="#" class="btn btn-control bg-primary friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </a>
-                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Kết bạn" href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');">
+                                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Kết bạn" href="#" class="btn btn-control bg-blue friend add" style="display: none" onclick="$('#confirm-add-button').click(); $('.add_friend').attr('data-id', '@Model.Id'); $('.friend-name').text('@Model.Name');$('#RequestUserName').val('@Model.Email')">
                                                 <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                                             </a>
                                         }
-
                                     }
                                 }
                             }

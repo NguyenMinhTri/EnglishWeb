@@ -1,4 +1,4 @@
-﻿@model Framework.ViewModels.NotificationViewModel
+﻿@model Framework.ViewModels.NotifyViewModel
 
 <script>
     document.title = "Thông báo | Olympus"
@@ -9,54 +9,63 @@
         <h6 class="title">Thông báo</h6>
     </div>
 
-    <ul class="notification-list">
-        <li>
-            <div class="author-thumb">
-                <img src="content/images/avatar1-sm.jpg" alt="author">
-            </div>
-            <div class="notification-event">
-                <a href="#" class="h6 notification-friend">Minh Trí</a> đã trả lời <a href="#" class="notification-link">câu hỏi</a> của bạn.
-                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 giờ trước</time></span>
-            </div>
-            <span class="notification-icon">
-                <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-            </span>
-            <div class="more">
-                <svg class="olymp-little-delete"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-            </div>
-        </li>
-
-        <li class="un-read">
-            <div class="author-thumb">
-                <img src="content/images/avatar2-sm.jpg" alt="author">
-            </div>
-            <div class="notification-event">
-                <div>Bạn và <a href="#" class="h6 notification-friend">Lê Văn Duyệt</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href="#" class="notification-link">Lê Văn Duyệt </a>.</div>
-                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 giờ trước</time></span>
-            </div>
-            <span class="notification-icon">
-                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-            </span>
-
-            <div class="more">
-                <svg class="olymp-little-delete"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-            </div>
-        </li>
-    </ul>
+    <div class="addNewNotification">
+        @if (Model.ListNotification.Count > 0)
+        {
+            <ul class="notification-list">
+                @foreach (var notification in Model.ListNotification)
+                {
+                    <li class="un-read notification_@notification.Id" data-email="@notification.Email" data-name="@notification.Name">
+                        <div class="author-thumb">
+                            <a href="Profile?username=@notification.Email&option=newsfeed" class="author-thumb @notification.Degree">
+                                <img src="content/images/@notification.Avatar" alt="author">
+                            </a>
+                        </div>
+                        <div class="notification-event">
+                            Bạn và <a class='h6 notification-friend'> @notification.Name </a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href='Profile?username=@notification.Email&option=newsfeed' class='notification-link'> @notification.Name </a>.
+                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 giờ trước</time></span>
+                        </div>
+                        <span class="notification-icon">
+                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
 </div>
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Trước</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: -10.3833px; top: -16.8333px; background-color: rgb(255, 255, 255); transform: scale(16.7857);"></div></div></a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">...</a></li>
-        <li class="page-item"><a class="page-link" href="#">12</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Sau</a>
-        </li>
-    </ul>
-</nav>
+<div style=" width: 100%; display:none " class="empty-notify">
+    <div class="landing-main-content">
+        <h2 class="title">Chưa có thông báo mới!</h2>
+        <p>Hãy kết bạn, tương tác nhiều hơn để học tập tốt hơn bạn nhé!</p>
+    </div>
+</div>
+
+<script>
+    var num_notification = parseInt('@Model.ListNotification.Count');
+    if (num_notification != 0) {
+        $(".notification").text(num_notification);
+        $(".notification, .notirequest").css("display", "table-cell");
+    }
+    else {
+        $(".notification").css("display", "none");
+        $(".empty-notify").css("display", "block");
+    }
+</script>
+
+@*<li>
+        <div class="author-thumb">
+            <img src="content/images/avatar1-sm.jpg" alt="author">
+        </div>
+        <div class="notification-event">
+            <a href="#" class="h6 notification-friend">Minh Trí</a> đã trả lời <a href="#" class="notification-link">câu hỏi</a> của bạn.
+            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 giờ trước</time></span>
+        </div>
+        <span class="notification-icon">
+            <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+        </span>
+        <div class="more">
+            <svg class="olymp-little-delete"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
+        </div>
+    </li>*@

@@ -22,15 +22,15 @@
                         <span class="chat-message-item">Tiểu học</span>
                     }
                 </div>
-
-                <div class="notification-icon">
+                <span class="notification-icon">
 
                     @if (request.Flag == false)
                     {
                         <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
-                            <span class="icon-add  without-text">
+                            <span class="icon-add">
                                 <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
                             </span>
+                            Đồng ý
                         </a>
                         <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
                             <span class=" icon-minus">
@@ -46,21 +46,8 @@
                             </span>
                         </a>
                     }
-                </div>
+                </span>
             </li>
         }
     </ul>
 }
-
-<script>
-    var num_notirequest = $($(".notiRequestPartial .friend-requests li")[0]).length;
-    if (num_notirequest != 0) {
-        $(".notirequest").text(num_notirequest);
-        $(".notirequest").css("display", "table-cell");
-        $(".empty-notirequest").css("display", "none");
-    }
-    else {
-        $(".notirequest").css("display", "none");
-        $(".empty-notirequest").css("display", "block");
-    }
-</script>

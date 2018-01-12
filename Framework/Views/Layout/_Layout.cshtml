@@ -33,6 +33,8 @@
     <link rel="stylesheet" type="text/css" href="content/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="content/css/error.css" />
     <script src="content/js/theme-plugins.js" charset="utf-8"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     <script src="content/js/script.js" charset="utf-8"></script>
 </head>
 <body>
@@ -465,57 +467,60 @@
                         </div>
 
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            @if (Model.ListRequest.Count > 0)
-                            {
-                                <ul class="notification-list friend-requests">
-                                    @foreach (var request in Model.ListRequest)
-                                    {
-                                        <li class="request_@request.Id" data-email="@request.Email" data-name="@request.Name">
-                                            <div class="author-thumb">
-                                                <a href="Profile?username=@request.Email&option=newsfeed" class="author-thumb @request.Degree">
-                                                    <img src="content/images/@request.Avatar" alt="author">
-                                                </a>
-                                            </div>
-                                            <div class="notification-event">
-                                                <a href="Profile?username=@request.Email&option=newsfeed" class="h6 notification-friend">@request.Name</a>
-                                                @if (request.Degree == "giaosu")
-                                                {
-                                                    <span class="chat-message-item">Giáo sư</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="chat-message-item">Tiểu học</span>
-                                                }
-                                            </div>
+                            <div class="notiRequestPartial">
+                                @if (Model.ListRequest.Count > 0)
+                                {
+                                    <ul class="notification-list friend-requests">
+                                        @foreach (var request in Model.ListRequest)
+                                        {
+                                            <li class="request_@request.Id" data-email="@request.Email" data-name="@request.Name">
+                                                <div class="author-thumb">
+                                                    <a href="Profile?username=@request.Email&option=newsfeed" class="author-thumb @request.Degree">
+                                                        <img src="content/images/@request.Avatar" alt="author">
+                                                    </a>
+                                                </div>
+                                                <div class="notification-event">
+                                                    <a href="Profile?username=@request.Email&option=newsfeed" class="h6 notification-friend">@request.Name</a>
+                                                    @if (request.Degree == "giaosu")
+                                                    {
+                                                        <span class="chat-message-item">Giáo sư</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="chat-message-item">Tiểu học</span>
+                                                    }
+                                                </div>
 
-                                            <div class="notification-icon">
+                                                <div class="notification-icon">
 
-                                                @if (request.Flag == false)
-                                                {
-                                                    <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
-                                                        <span class="icon-add  without-text">
-                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
-                                                        <span class=" icon-minus">
-                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                        </span>
-                                                    </a>
-                                                }
-                                                else
-                                                {
-                                                    <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_Friend'); $('.friend-name').text('@request.Name');">
-                                                        <span class="icon-minus">
-                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                        </span>
-                                                    </a>
-                                                }
-                                            </div>
-                                        </li>
-                                    }
-                                </ul>
-                            }
+                                                    @if (request.Flag == false)
+                                                    {
+                                                        <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
+                                                            <span class="icon-add  without-text">
+                                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                            </span>
+                                                        </a>
+                                                        <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
+                                                            <span class=" icon-minus">
+                                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                            </span>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_Friend'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
+                                                            <span class="icon-minus">
+                                                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                            </span>
+                                                        </a>
+                                                    }
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+
                             <div style=" width: 100%; display:none " class="empty-notirequest">
                                 <div class="landing-main-content">
                                     <h2 class="title">Chưa có lời mời mới!</h2>
@@ -680,57 +685,60 @@
                         <a href="YourAccount?option=updatesetting">CÀI ĐẶT</a>
                     </div>
                     <div class="mCustomScrollbar" data-mcs-theme="dark">
-                        @if (Model.ListRequest.Count > 0)
-                        {
-                            <ul class="notification-list friend-requests">
-                                @foreach (var request in Model.ListRequest)
-                                {
-                                    <li class="request_@request.Id" data-email="@request.Email" data-name="@request.Name">
-                                        <div class="author-thumb">
-                                            <a href="Profile?username=@request.Email&option=newsfeed" class="author-thumb @request.Degree">
-                                                <img src="content/images/@request.Avatar" alt="author">
-                                            </a>
-                                        </div>
-                                        <div class="notification-event">
-                                            <a href="Profile?username=@request.Email&option=newsfeed" class="h6 notification-friend">@request.Name</a>
-                                            @if (request.Degree == "giaosu")
-                                            {
-                                                <span class="chat-message-item">Giáo sư</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="chat-message-item">Tiểu học</span>
-                                            }
-                                        </div>
+                        <div class="notiRequestPartial">
 
-                                        <div class="notification-icon">
+                            @if (Model.ListRequest.Count > 0)
+                            {
+                                <ul class="notification-list friend-requests">
+                                    @foreach (var request in Model.ListRequest)
+                                    {
+                                        <li class="request_@request.Id" data-email="@request.Email" data-name="@request.Name">
+                                            <div class="author-thumb">
+                                                <a href="Profile?username=@request.Email&option=newsfeed" class="author-thumb @request.Degree">
+                                                    <img src="content/images/@request.Avatar" alt="author">
+                                                </a>
+                                            </div>
+                                            <div class="notification-event">
+                                                <a href="Profile?username=@request.Email&option=newsfeed" class="h6 notification-friend">@request.Name</a>
+                                                @if (request.Degree == "giaosu")
+                                                {
+                                                    <span class="chat-message-item">Giáo sư</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="chat-message-item">Tiểu học</span>
+                                                }
+                                            </div>
 
-                                            @if (request.Flag == false)
-                                            {
-                                                <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
-                                                    <span class="icon-add  without-text">
-                                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                    </span>
-                                                </a>
-                                                <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');">
-                                                    <span class=" icon-minus">
-                                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                    </span>
-                                                </a>
-                                            }
-                                            else
-                                            {
-                                                <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_Friend'); $('.friend-name').text('@request.Name');">
-                                                    <span class="icon-minus">
-                                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                                    </span>
-                                                </a>
-                                            }
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        }
+                                            <div class="notification-icon">
+
+                                                @if (request.Flag == false)
+                                                {
+                                                    <a href="#/" class="accept-request friend add" onclick="$('#confirm-accept-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
+                                                        <span class="icon-add  without-text">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_User'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
+                                                        <span class=" icon-minus">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#/" class="accept-request request-del friend delete" onclick="$('#confirm-delete-button').click(); $('.add_friend').attr('data-id', '@request.Id_Friend'); $('.friend-name').text('@request.Name');$('#RequestUserName').val('@request.Email')">
+                                                        <span class="icon-minus">
+                                                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                                                        </span>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
                         <div style=" width: 100%; display:none " class="empty-notirequest">
                             <div class="landing-main-content">
                                 <h2 class="title">Chưa có lời mời mới!</h2>
@@ -969,25 +977,45 @@
         </div>
     </div>
 
-    <button id="hidden" style="display:none"></button>
+    <a href="#" id="reject-button" data-toggle="modal" data-target="#reject" style="display:none"></a>
 
-    <script>
-        var num_notirequest = parseInt('@Model.ListRequest.Count');
-        if (num_notirequest != 0) {
-            $(".notirequest").text(num_notirequest);
-            $(".notirequest").css("display", "block");
-        }
-        else {
-            $(".notirequest").css("display", "none");
-            $(".empty-notirequest").css("display", "block");
-        }
-    </script>
+    <div class="modal fade" id="reject">
+        <div class="modal-dialog ui-block window-popup edit-widget edit-widget-twitter">
+            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                <svg class="olymp-close-icon"><use xlink:href="content/icons/icons.svg#olymp-close-icon"></use></svg>
+            </a>
+
+            <div class="ui-block-title">
+                <h6 class="title">Chia buồn cùng bạn...</h6>
+            </div>
+
+            <div class="ui-block-content">
+                <p>
+                    Có vẻ <b class="friend-name"></b> chưa muốn kết bạn ngay lúc này!
+                </p>
+                <p>
+                    Bạn có thể thử kết bạn lại vào một dịp khác nhé!
+                </p>
+                <p>
+                    <b>Make Olympus great againt!</b>
+                </p>
+                <div class="modal-button">
+                    <a href="#" class="btn btn-primary btn-lg btn-icon-center" data-dismiss="modal" aria-label="Close">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="hidden" style="display:none"></button>
+    <button id="sentNotiRequest" style="display:none"></button>
+    <input type="hidden" id="RequestUserName" />
 
     @RenderBody()
 
     @RenderSection("scripts", false);
     <script src="content/js/main.js"></script>
     <script src="content/js/run-chart.js"></script>
+
     <script>
         WebFont.load({
             google: {
@@ -1001,6 +1029,15 @@
         });
         if (getQueryVariable("userType") != false) {
             $("a[href='/']").attr('href', '/?userType=new')
+        }
+        var num_notirequest = parseInt('@Model.ListRequest.Count');
+        if (num_notirequest != 0) {
+            $(".notirequest").text(num_notirequest);
+            $(".notirequest").css("display", "table-cell");
+        }
+        else {
+            $(".notirequest").css("display", "none");
+            $(".empty-notirequest").css("display", "block");
         }
     </script>
 </body>

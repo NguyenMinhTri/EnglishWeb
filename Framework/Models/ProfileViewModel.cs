@@ -11,6 +11,7 @@ namespace Framework.ViewModels
     {
         public String Id { get; set; }
         public String Name { get; set; }
+        public String Email { get; set; }
         public String Degree { get; set; }
         public String Avatar { get; set; }
         public String LastName { get; set; }
@@ -331,6 +332,20 @@ namespace Framework.ViewModels
         public DateTime? CreatedDate { set; get; }
         public bool Flag { set; get; }
 
+    }
+
+    public class NotificationViewModel : LayoutViewModel, IRef<HomeController>
+    {
+        public int Id { get; set; }
+        public String Id_User { get; set; }
+        public String Id_Friend { get; set; }
+        public String Id_Post { get; set; }
+        public String Name { get; set; }
+        public String Email { get; set; }
+        public String Avatar { get; set; }
+        public String Degree { get; set; }
+        public DateTime? CreatedDate { set; get; }
+        public bool Flag { set; get; }
     }
 
 }
