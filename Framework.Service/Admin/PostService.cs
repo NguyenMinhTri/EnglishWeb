@@ -13,6 +13,7 @@ namespace Framework.Service.Admin
         List<Post> getPostByUserType(string id_user);
         List<Post> getPostByType(int type);
         List<Post> getPostByUser(string id_user);
+        List<Post> checkPostOnGroup();
     }
     public class PostService : QlService<Post>, IPostService
     {
@@ -53,6 +54,10 @@ namespace Framework.Service.Admin
         public List<Post> getPostByUser(string id_user)
         {
             return _postRepository.GetMulti(x => x.Id_User == id_user).OrderByDescending(x => x.DatePost).ToList();
+        }
+        public List<Post> checkPostOnGroup()
+        {
+            return _postRepository.GetMulti(x => x.Id_PostFB != null && x.Post_Status == 0).ToList() ;
         }
     }
 }

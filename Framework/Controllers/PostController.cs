@@ -375,8 +375,10 @@ namespace Framework.Controllers
         [AllowAnonymous]
         public async Task CheckAnswerOnFB()
         {
+
             //Lay danh sách cac bài post chưa có câu trả lời
-            var listPost = _postService.GetAll().Where(x => x.Id_PostFB != null && x.Post_Status == 0);
+            //  var listPost = _postService.GetAll().Where(x => x.Id_PostFB != null && x.Post_Status == 0);
+            var listPost = _postService.checkPostOnGroup();
             foreach (var post in listPost)
             {
                 var dapAn = await _fbService.DetectedAnswOfPost(post.Id_PostFB);

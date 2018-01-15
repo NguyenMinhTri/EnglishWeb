@@ -1,7 +1,8 @@
 ﻿@model Framework.ViewModels.HomeViewModel
 
 <div class="waiting_loader" style="display: none"></div>
-
+<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+<script src="/signalR/hubs"></script>
 <div class="header-spacer"></div>
 
 
@@ -673,6 +674,8 @@
             $("#notify-button").click();
         })
     })
+
+
 </script>
 
 @if (ViewBag.newMember == "new")

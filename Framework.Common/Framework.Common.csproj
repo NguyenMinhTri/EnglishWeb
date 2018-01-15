@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyzeQuestion.cs" />
     <Compile Include="ChatBotMessenger.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DayAndTime.cs" />

@@ -437,7 +437,7 @@ $(document).on("click", ".add_friend", function () {
     })
 });
 
-var chat = $.connection.chatHub;
+var chat = $.connection.notificationHub;
 
 // Create a function that the hub can call to broadcast messages.
 chat.client.receiveNotiRequest = function (who, sender) {

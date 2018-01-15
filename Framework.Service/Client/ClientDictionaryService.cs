@@ -118,7 +118,7 @@ namespace Framework.Service.Client
         public async Task<GoogleTrans> startGoogleTrans(string voca)
         {
             string result = "";
-            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&hl=en-US&dt=t&dt=bd&dj=1&source=bubble&tk=908123.908123&q="+ voca;
+            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=vi&hl=en-US&dt=t&dt=bd&dj=1&source=bubble&tk=908123.908123&q="+ voca;
             var webRequest = WebRequest.Create(url);
             using (var response = webRequest.GetResponse())
             using (var content = response.GetResponseStream())
@@ -133,8 +133,9 @@ namespace Framework.Service.Client
         //Google translator
         public async Task<GoogleTrans> startGoogleDetailTrans(string voca)
         {
+
             string result = "";
-            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&hl=vi&dt=t&dt=bd&dj=1&source=icon&tk=827698.827698&q=" + voca;
+            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=vi&hl=vi&dt=t&dt=bd&dj=1&source=icon&tk=827698.827698&q=" + voca;
             var webRequest = WebRequest.Create(url);
             using (var response = webRequest.GetResponse())
             using (var content = response.GetResponseStream())

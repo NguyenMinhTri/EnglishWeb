@@ -20,6 +20,8 @@ using Framework.Model.Google;
 using Newtonsoft.Json;
 using System.Net;
 using LiteDB;
+using Framework.SignalR;
+using System.Globalization;
 
 namespace Framework.Controllers
 {
@@ -38,6 +40,7 @@ namespace Framework.Controllers
         IDetailOurWordService _detailOutWordService;
         IDictCacheService _dictCache;
         IToiecGroupService _toiecService;
+
         public LearningController(ILayoutService layoutService,
             IClientLearningService clientLearningService,
                     IDetailOurWordService detailOutWordService,
@@ -351,7 +354,7 @@ namespace Framework.Controllers
                     {
                         QuickReplyMess replay = new QuickReplyMess();
                         replay.payload = dataTracNghiem[m_countQues].ABCD[i].Checked.ToString();
-                        replay.title = dataTracNghiem[m_countQues].ABCD[i].Contain + ".";
+                        replay.title = ToTitleCase(dataTracNghiem[m_countQues].ABCD[i].Contain);
                         messQuick.quick_replies.Add(replay);
                     }
                     jsonMessenger.message = messQuick;
@@ -530,6 +533,27 @@ namespace Framework.Controllers
                     items.Update(item);
                 }
             }
+        }
+        [AllowAnonymous]
+        public async Task remindVocaOnChrome(string email)
+        {
+            var currentUser = _service.listUserID().Where(x => x.Email == email).FirstOrDefault();
+            var listIDWord = _detailOutWordService.listIdOutWord(currentUser.Id, -1);
+            foreach(var idWord in listIDWord)
+            {
+                //Khi user offline 
+                if(NotificationHub.Users.IndexOf(email) == -1)
+                {
+                    break;
+                }
+                Task.WaitAll(Task.Delay(20000));
+                var vocaCanHoc = _dictCache.GetById(idWord);
+                NotificationHub.sendNoti(currentUser.Email, JsonConvert.SerializeObject(vocaCanHoc));
+            }
+        }
+        public string ToTitleCase(string str)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
         }
     }
 }

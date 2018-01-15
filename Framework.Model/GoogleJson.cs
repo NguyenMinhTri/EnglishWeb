@@ -43,6 +43,11 @@ namespace Framework.Model.Google
     {
         public string text { get; set; }
     }
+    public class ChromeNofiJson
+    {
+        public string urlQuestion { get; set; }
+        public string text { get; set; }
+    }
     public class ChatfuelJson
     {
         public ChatfuelJson()
@@ -50,10 +55,13 @@ namespace Framework.Model.Google
             recipient = new Recipient();
             messages = new List<MessageObject>();
             Selected = false;
+            strVietnamese = "";
         }
         public Recipient recipient { get; set; }
         public List<MessageObject> messages { get; set; }
         public bool Selected { set; get; }
+        public string strVietnamese { set; get; }
+        public string strVoca { set; get; }
     }
     public class Sentence
     {

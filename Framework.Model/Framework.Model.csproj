@@ -76,6 +76,8 @@
     <Compile Include="DictCache.cs" />
     <Compile Include="FbBotDataClasses.cs" />
     <Compile Include="GoogleJson.cs" />
+    <Compile Include="GoogleVisionJson.cs" />
+    <Compile Include="GoogleVisionReponse.cs" />
     <Compile Include="HaveSendQuestion.cs" />
     <Compile Include="ImageFB.cs" />
     <Compile Include="LearnVoca.cs" />

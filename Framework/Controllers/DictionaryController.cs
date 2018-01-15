@@ -22,6 +22,10 @@ using Microsoft.AspNet.Identity;
 using Framework.ViewData.Admin.GetData;
 using System.Net.Http;
 using System.Net;
+using Framework.SignalR;
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Framework.Controllers
 {
@@ -99,6 +103,7 @@ namespace Framework.Controllers
         [HttpPost]
         public async Task<PartialViewResult> Dictionaries(string keyword)
         {
+            bool isVN = false;
             OxfordDict dict = new OxfordDict();
             GoogleTrans googleTransJson = new GoogleTrans();
             keyword = keyword.Trim();
@@ -128,6 +133,8 @@ namespace Framework.Controllers
                     if (!downloadSucceeded)
                     {
                         googleTransJson = await _clientDictionaryService.startGoogleTrans(keyword);
+                        if (googleTransJson.src == "vi")
+                            isVN = true;
                         DictionariesViewModel.isGoogleTrans = true;
                         DictionariesViewModel.m_GoogleTrans = googleTransJson;
                     }
@@ -135,7 +142,8 @@ namespace Framework.Controllers
                     {
                         GoogleTrans detailVietnamese = new GoogleTrans();
                         detailVietnamese = await _clientDictionaryService.startGoogleDetailTrans(keyword);
-
+                        if (detailVietnamese.src == "vi")
+                            isVN = true;
                         string meanVN = detailVietnamese.dict.First().pos + ": ";
                         foreach (var item in detailVietnamese.dict.First().terms)
                         {
@@ -317,7 +325,6 @@ namespace Framework.Controllers
             return PartialView("_OldWords", OldWordsViewModel);
         }
         [AllowAnonymous]
-        [HttpPost]
         public async Task<string> callChatBot(string contain, string id, string userid)
         {
             contain = contain.ToString().ToLower().Trim();
@@ -422,7 +429,16 @@ namespace Framework.Controllers
             hello.messages.Add(messVietnamese);
             hello.messages.Add(messExplaintion);
             hello.messages.Add(sound);
+            try
+            {
+                hello.strVoca = ToTitleCase(contain);
+                ApplicationUser currentUser = _service.listUserID().Where(x => x.Id_Messenger == id).FirstOrDefault();
+                NotificationHub.sendNoti(currentUser.Email, JsonConvert.SerializeObject(hello));
+            }
+            catch
+            {
 
+            }
             return JsonConvert.SerializeObject(hello);
         }
         [AllowAnonymous]
@@ -620,9 +636,10 @@ namespace Framework.Controllers
             messPron.text = userInfo.LastName + " " + userInfo.FirstName;
             return JsonConvert.SerializeObject(messPron);
         }
-       
+        
         public async Task<string> getDictToExtension(string contain)
         {
+            bool isVN = false;
             string userid = User.Identity.GetUserId();
             contain = contain.ToString().ToLower().Trim();
             DictCache dictTemp = new DictCache() ;
@@ -673,7 +690,11 @@ namespace Framework.Controllers
                 int size = contain.Split(' ').Length;
                 if (size > 1)
                 {
+                    isSaveCached = false;
                     googleTransJson = await _clientDictionaryService.startGoogleTrans(contain);
+                    hello.strVietnamese = googleTransJson.src;
+                    if (googleTransJson.src == "vi")
+                        isVN = true;
                     messExplaintion.text = googleTransJson.sentences[0].trans;
                 }
                 else
@@ -692,7 +713,9 @@ namespace Framework.Controllers
                         messExplaintion.text = contain;
                     }
                     detailVietnamese = await _clientDictionaryService.startGoogleDetailTrans(contain);
-
+                    hello.strVietnamese = detailVietnamese.src;
+                    if (detailVietnamese.src == "vi")
+                        isVN = true;
                     try
                     {
 
@@ -735,8 +758,186 @@ namespace Framework.Controllers
             hello.messages.Add(messVietnamese);
             hello.messages.Add(messExplaintion);
             hello.messages.Add(sound);
-
+            if (isVN)
+                return null;
             return JsonConvert.SerializeObject(hello);
         }
+        [AllowAnonymous]
+        public async Task<string> googleTranslator(string contain)
+        {
+            GoogleTrans googleTransJson = new GoogleTrans();
+            googleTransJson = await _clientDictionaryService.startGoogleTrans(contain);
+            return googleTransJson.sentences[0].trans;
+        }
+        public string ToTitleCase(string str)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
+        }
+
+        [AllowAnonymous]
+        public async Task<string> searchDictViaBot(string contain, string id = "1554844547918927", string userid= null)
+        {
+            bool multiLetters = false;
+            contain = contain.ToString().ToLower().Trim();
+            //Tim trong cache nếu ko có thì request crawler
+            var dictTemp = _dictCache.findWordCache(contain);
+            //post
+            //
+            bool isSaveCached = true;
+            DictCache cacheDict = new DictCache();
+            OxfordDict dict = new OxfordDict();
+            GoogleTrans googleTransJson = new GoogleTrans();
+            GoogleTrans detailVietnamese = new GoogleTrans();
+            //Explain main of letter
+            MessJson messExplaintion = new MessJson();
+            //Pron
+            MessJson messPron = new MessJson();
+            //Vietnamese
+            MessJson messVietnamese = new MessJson();
+            //
+            ChatfuelJson hello = new ChatfuelJson();
+            AttachmentJson sound = new AttachmentJson();
+            sound.attachment.type = "audio";
+            Attachment2 attach = new Attachment2();
+            //Json is returned Customer
+            AttachmentJson soundDic = new AttachmentJson();
+            MessJson messExplaintionDict = new MessJson();
+            MessJson resultGoogle = new MessJson();
+            //
+            JsonMessengerText jsonTextMessenger = new JsonMessengerText();
+            jsonTextMessenger.recipient.id = id;
+            JsonMessengerText jsonSoundMessenger = new JsonMessengerText();
+            jsonSoundMessenger.recipient.id = id;
+            messExplaintionDict.text += contain;
+
+            Payload2 payload = new Payload2();
+            //
+            if (dictTemp != null)
+            {
+                messPron.text = dictTemp.Pron;
+                messExplaintion.text = dictTemp.MeanEn;
+                messVietnamese.text = dictTemp.MeanVi;
+                sound.attachment.payload.url = dictTemp.SoundUrl;
+                //
+                messExplaintionDict.text += "\r\n" + dictTemp.Pron;
+                messExplaintionDict.text += "\r\n" + dictTemp.MeanEn;
+                messExplaintionDict.text += "\r\n" + dictTemp.MeanVi;
+                soundDic.attachment.payload.url = dictTemp.SoundUrl;
+
+            }
+            else
+            {
+                int size = contain.Split(' ').Length;
+                if (size > 1)
+                {
+                    multiLetters = true;
+                    googleTransJson = await _clientDictionaryService.startGoogleTrans(contain);
+                    foreach(var sentence in googleTransJson.sentences)
+                    {
+                        messExplaintion.text += sentence.trans;
+                        resultGoogle.text +=  sentence.trans;
+                    }
+                    
+                   // resultGoogle.text = googleTransJson.sentences[0].trans;
+                    //messExplaintionDict.text +="\r\n" + googleTransJson.sentences[0].trans;
+                }
+                else
+                {
+
+                    try
+                    {
+                        dict = await _clientDictionaryService.startCrawlerOxford(contain);
+                        messPron.text = dict.m_Pron;
+                        messExplaintion.text = dict.m_Explanation.First().m_UseCase;
+                        //
+                        messExplaintionDict.text += "\r\n" + dict.m_Pron;
+                        messExplaintionDict.text += "\r\n" + dict.m_Explanation.First().m_UseCase;
+
+                    }
+                    catch
+                    {
+                        isSaveCached = false;
+                        messExplaintion.text = contain;
+                        messExplaintionDict.text += "\r\n" + contain;
+                    }
+                    try
+                    {
+                        detailVietnamese = await _clientDictionaryService.startGoogleDetailTrans(contain);
+                    }
+                    catch
+                    {
+                        detailVietnamese = null;
+                    }
+                    try
+                    {
+                        messVietnamese.text = detailVietnamese.dict.First().pos + ": ";
+                        foreach (var item in detailVietnamese.dict.First().terms)
+                        {
+                            messVietnamese.text += item + ", ";
+                        }
+                        messExplaintionDict.text += "\r\n" + messVietnamese.text;
+                    }
+                    catch
+                    {
+                        isSaveCached = false;
+                        messVietnamese.text = detailVietnamese.sentences.FirstOrDefault().trans;
+                        messExplaintionDict.text += "\r\n"+ detailVietnamese.sentences.FirstOrDefault().trans;
+                    }
+
+                }
+                sound.attachment.payload.url = dict.m_SoundUrl;
+                soundDic.attachment.payload.url = dict.m_SoundUrl;
+                //Add database
+                cacheDict = new DictCache();
+                cacheDict.VocaID = contain;
+                cacheDict.Pron = messPron.text;
+                cacheDict.MeanEn = messExplaintion.text;
+                cacheDict.MeanVi = messVietnamese.text;
+                cacheDict.SoundUrl = dict.m_SoundUrl;
+                _dictCache.Add(cacheDict);
+                if (isSaveCached)
+                    _dictCache.Save();
+                dictTemp = cacheDict;
+            }
+            //DetailOurWord detailWord = _detailOutWordService.findDetailOurWord(userid, dictTemp.Id);
+            //if (detailWord == null)
+            //{
+            //    hello.Selected = false;
+            //}
+            //else
+            //{
+            //    hello.Selected = true;
+            //}
+            hello.messages.Add(messPron);
+            hello.messages.Add(messVietnamese);
+            hello.messages.Add(messExplaintion);
+            hello.messages.Add(sound);
+            try
+            {
+                hello.strVoca = ToTitleCase(contain);
+                ApplicationUser currentUser = _service.listUserID().Where(x => x.Id_Messenger == id).FirstOrDefault();
+                NotificationHub.sendNoti(currentUser.Email, JsonConvert.SerializeObject(hello));
+            }
+            catch
+            {
+
+            }
+
+            if(multiLetters)
+            {
+                jsonTextMessenger.message = messExplaintionDict;
+                jsonSoundMessenger.message = resultGoogle;
+                PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+                PostRaw("", JsonConvert.SerializeObject(jsonSoundMessenger));
+                return "";
+            }
+
+            jsonTextMessenger.message = messExplaintionDict;
+            jsonSoundMessenger.message = soundDic;
+            PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
+            PostRaw("", JsonConvert.SerializeObject(jsonSoundMessenger));
+            return JsonConvert.SerializeObject(hello);
+        }
+
     }
 }

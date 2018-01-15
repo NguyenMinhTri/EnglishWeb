@@ -11,11 +11,18 @@ namespace Framework.Infrastructure
     {
         public string GetUserId(IRequest request)
         {
-            ApplicationDbContext dbContext = new ApplicationDbContext();
-            var lst = dbContext.Users.Where(x=>x.UserName == request.User.Identity.Name).ToList();
-            if(lst.Count>0)
+            try
             {
-                return lst[0].Id;
+                ApplicationDbContext dbContext = new ApplicationDbContext();
+                var lst = dbContext.Users.Where(x => x.UserName == request.User.Identity.Name).ToList();
+                if (lst.Count > 0)
+                {
+                    return lst[0].Id;
+                }
+            }
+            catch
+            {
+                return "";
             }
             return "";
         }

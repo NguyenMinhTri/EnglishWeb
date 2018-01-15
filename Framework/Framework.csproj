@@ -292,6 +292,7 @@
     <Compile Include="Schedule\PostScheduler.cs" />
     <Compile Include="Schedule\StudyDictJob.cs" />
     <Compile Include="SignalR\ChatHub.cs" />
+    <Compile Include="SignalR\ChromeNotification.cs" />
     <Compile Include="SignalR\CommentSignalHub.cs" />
     <Compile Include="SignalR\FrameworkSignalHub.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -26,9 +26,9 @@ namespace Framework.Schedule
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response2 = await client.PostAsync("http://olympusenglish.azurewebsites.net/Dictionary/notifyMessenger", null);
+                client.PostAsync("http://olympusenglish.azurewebsites.net/Dictionary/notifyMessenger", null);
                 if (JobScheduler.ToiecUpdatedTime == 0)
-                    await client.PostAsync("http://olympusenglish.azurewebsites.net/Learning/autoGeneratorToiecExam", null);
+                     client.PostAsync("http://olympusenglish.azurewebsites.net/Learning/autoGeneratorToiecExam", null);
                 //if (response2.Content != null)
                 //{
                 //    // Error Here
@@ -50,8 +50,8 @@ namespace Framework.Schedule
                 //}
                 //ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(response2.ToString());
                   
-                await client.PostAsync("http://olympusenglish.azurewebsites.net/Home/checkTimeOfPost", null);
-                await client.PostAsync("http://olympusenglish.azurewebsites.net/Post/CheckAnswerOnFB", null);
+                client.PostAsync("http://olympusenglish.azurewebsites.net/Home/checkTimeOfPost", null);
+                client.PostAsync("http://olympusenglish.azurewebsites.net/Post/CheckAnswerOnFB", null);
                 if (JobScheduler.ToiecUpdatedTime >= 15)
                 {
                     JobScheduler.ToiecUpdatedTime = 0;

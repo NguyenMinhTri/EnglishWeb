@@ -338,59 +338,36 @@ namespace Framework.Controllers
             return null;
         }
         [AllowAnonymous]
-        public ActionResult ReceivePost(BotRequest data)
+        public async Task<ActionResult> ReceivePost(BotRequest data)
         {
-            //data.entry.FirstOrDefault().messaging.FirstOrDefault().sender.id == 
+            string imageToText = "";
+            try
+            {
+                if(data.entry[0].messaging[0].message.attachments != null)
+                {
+                    imageToText = data.entry[0].messaging[0].message.attachments[0].payload.url;
+                    string textResult = await ConvertImageURLToBase64(data.entry[0].messaging[0].message.attachments[0].payload.url);
+                    var ctrlrDict = DependencyResolver.Current.GetService<DictionaryController>();
+                    ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                    await ctrlrDict.searchDictViaBot(textResult, data.entry[0].messaging[0].sender.id, "");
+                    return null;
+                }
+                if (data.entry[0].messaging[0].message.text != "" && data.entry[0].messaging[0].message.quick_reply == null)
+                {
+                    var ctrlrDict = DependencyResolver.Current.GetService<DictionaryController>();
+                    ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                    await ctrlrDict.searchDictViaBot(data.entry[0].messaging[0].message.text, data.entry[0].messaging[0].sender.id, "");
+                    return null;
+                }
+            }
+            catch
+            {
+
+            }
             var ctrlr = DependencyResolver.Current.GetService<LearningController>();
             ctrlr.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlr);
             ctrlr.ReceivePost(data);
-            //try
-            //{
-            //    Task.Factory.StartNew(() =>
-            //    {
-            //        foreach (var entry in data.entry)
-            //        {
-            //            foreach (var message in entry.messaging)
-            //            {
-            //                if (string.IsNullOrWhiteSpace(message?.message?.text))
-            //                    continue;
 
-            //                var msg = "You said: " + message.message.text;
-            //                var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
-            //                PostRaw("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp", json);
-            //            //var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://graph.facebook.com/v2.6/me/messages?access_token=EAACn86pGAioBAAJ8gqV2eRJPN5Yznq3rXG9az1IpesyWJTem3HlchCQNEfSfxQmDxMtlvBpyclx2CvLDf9Im2ZCUPVgzty3IURuxNJ2STjUZBvTVGprkNs7NjnGKLMbuu0ZAwr99cFtcSxHTSfpblqkiLYtkKbWUZBZBBMGDSGZBYcpUxxo3rp");
-            //            //httpWebRequest.ContentType = "application/json";
-            //            //httpWebRequest.Method = "POST";
-            //            //var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            //            //using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            //            //{
-            //            //    var result = streamReader.ReadToEnd();
-            //            //}
-            //        }
-            //        }
-            //    });
-            //}
-            //catch
-            //{
-
-            //}
-            //try
-            //{
-            //    if (data.entry.FirstOrDefault().messaging.FirstOrDefault().message.quick_reply.payload == "True")
-            //    {
-            //        LearningController.isContinue = 2;
-            //    }
-            //    else
-            //    {
-            //        LearningController.isContinue = 1;
-            //    }
-
-            //}
-            //catch(Exception e)
-            //{
-
-
-            //}
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
         [AllowAnonymous]
@@ -484,6 +461,51 @@ namespace Framework.Controllers
                 notify.ListNotification.OrderBy(x => x.CreatedDate);
             }
             return PartialView("_Notify", notify);
+        }
+        //Demo image to text
+        [AllowAnonymous]
+        public async Task<string> ConvertImageURLToBase64(String url)
+        {
+            byte[] data;
+            using (var webClient = new WebClient())
+                data = webClient.DownloadData(url);
+            string enc = Convert.ToBase64String(data);
+            return await UploadDocument(enc);
+        }
+        public async Task<string> UploadDocument(string base64Image)
+        {
+            string result = "";
+            try
+            {
+                List<RequestVision> listTempVision = new List<RequestVision>();
+                RequestVision req = new RequestVision();
+                req.image.content = base64Image;
+                List<Feature> listFeature = new List<Feature>();
+                Feature fea = new Feature();
+                fea.type = "DOCUMENT_TEXT_DETECTION";
+                listFeature.Add(fea);
+                req.features = listFeature;
+                listTempVision.Add(req);
+                GoogleVisionJson json = new GoogleVisionJson();
+                json.requests = listTempVision;
+                string test = JsonConvert.SerializeObject(json);
+                // ...
+                using (var handler = new HttpClientHandler() { UseDefaultCredentials = true })
+                using (var client = new HttpClient(handler))
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    // Image = 123 (or any random value) Works.
+                    var responseGoogleVision = await client.PostAsync("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBrlBUB3kMBFTB73hcIAeQmLu1xT1sLNGA", new StringContent(JsonConvert.SerializeObject(json), Encoding.UTF8, "application/json"));
+                    var responseContent = responseGoogleVision.Content.ReadAsStringAsync().Result;
+                    result = JsonConvert.DeserializeObject<GoogleVisionReponse>(responseContent).responses[0].fullTextAnnotation.text;
+
+                }
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
         }
     }
 }

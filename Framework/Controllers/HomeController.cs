@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Framework.Model.Google;
 using Newtonsoft.Json;
+using Framework.SignalR;
 
 namespace Framework.Controllers
 {
@@ -447,6 +448,10 @@ namespace Framework.Controllers
         }
         protected async System.Threading.Tasks.Task<string> sendNofityToMessenger(Post post, ApplicationUser user)
         {
+            ChromeNofiJson postJson = new ChromeNofiJson();
+            postJson.text = post.Content;
+            postJson.urlQuestion = "http://olympusenglish.azurewebsites.net/Post?id=" + post.Id;
+            NotificationHub.sendNoti(user.Email, JsonConvert.SerializeObject(postJson));
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             var paramChatfuel = "https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + user.Id_Messenger + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a294932e4b0d0e603f29776";
@@ -589,7 +594,7 @@ namespace Framework.Controllers
         [HttpPost]
         public JsonResult RegisterType(RegisterPostViewModel data)
         {
-            string userId = User.Identity.GetUserId();
+            string userId =  User.Identity.GetUserId();
             if (data.UserID == userId)
             {
                 DetailUserType type;
