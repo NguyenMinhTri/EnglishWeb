@@ -266,7 +266,6 @@ namespace Framework.Controllers
         [HttpGet]
         public ActionResult Notification()
         {
-            bool flag = false;
             _viewModel = new NotifyViewModel();
             ViewBag.listRequest = _friendService.GetRelationship(User.Identity.GetUserId()).Count;
             CreateLayoutView("Thông báo");
@@ -275,35 +274,13 @@ namespace Framework.Controllers
             {
                 NotificationViewModel notificationViewModel = new NotificationViewModel();
                 ApplicationUser userT = new ApplicationUser();
-                if (notification != null)
-                {
-                    switch (flag)
-                    {
-                        case false:
-                            {
-                                userT = _service.GetUserById(notification.Id_Friend);
-                                notificationViewModel.Flag = false;
-                                break;
-                            }
-                        case true:
-                            {
-                                userT = _service.GetUserById(notification.Id_User);
-                                notificationViewModel.Flag = true;
-                                break;
-                            }
-                    }
-                    FieldHelper.CopyNotNullValue(notificationViewModel, userT);
-                    FieldHelper.CopyNotNullValue(notificationViewModel, notification);
-                    NotifyViewModel.ListNotification.Add(notificationViewModel);
-                }
-                else
-                {
-                    flag = true;
-                }
+                userT = _service.GetUserById(notification.Id_User);
+                FieldHelper.CopyNotNullValue(notificationViewModel, userT);
+                FieldHelper.CopyNotNullValue(notificationViewModel, notification);
+                NotifyViewModel.ListNotification.Add(notificationViewModel);
             }
             NotifyViewModel.ListNotification.OrderBy(x => x.CreatedDate);
             ViewBag.listNotification = listNotification.Count - 1;
-
             return PartialView("_Notification", NotifyViewModel);
         }
 
@@ -360,8 +337,6 @@ namespace Framework.Controllers
             }
             return null;
         }
-
-
         [AllowAnonymous]
         public ActionResult ReceivePost(BotRequest data)
         {
@@ -488,6 +463,27 @@ namespace Framework.Controllers
                 notiRequest.ListRequest.OrderBy(x => x.CreatedDate);
             }
             return PartialView("_NotiFriend", notiRequest);
+        }
+
+        [HttpPost]
+        public PartialViewResult NotificationSectionAccount(string username)
+        {
+            NotifyViewModel notify = new NotifyViewModel();
+            if (username != null)
+            {
+                List<Notification> listNotification = _notificationService.getAllNotification(_service.GetUserByUserName(username).Id);
+                foreach (Notification notification in listNotification)
+                {
+                    NotificationViewModel notificationViewModel = new NotificationViewModel();
+                    ApplicationUser userT = new ApplicationUser();
+                    userT = _service.GetUserById(notification.Id_User);
+                    FieldHelper.CopyNotNullValue(notificationViewModel, userT);
+                    FieldHelper.CopyNotNullValue(notificationViewModel, notification);
+                    notify.ListNotification.Add(notificationViewModel);
+                }
+                notify.ListNotification.OrderBy(x => x.CreatedDate);
+            }
+            return PartialView("_Notify", notify);
         }
     }
 }

@@ -71,10 +71,10 @@
 </div>
 
 <script>
-    var num_notirequest = parseInt('@Model.ListRequest.Count');
     if (num_notirequest != 0) {
         $(".notirequest").text(num_notirequest);
-        $(".notification, .notirequest").css("display", "table-cell");
+        $(".notirequest").css("display", "table-cell");
+        $(".empty-notirequest").css("display", "none");
     }
     else {
         $(".notirequest").css("display", "none");

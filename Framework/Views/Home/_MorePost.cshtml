@@ -126,8 +126,10 @@
                             <div class="author-date">
                                 <a href="Profile?username=@commentParent.UserName&option=newsfeed" class="h6 post__author-name fn" href="#">@commentParent.Name</a>
                                 <div class="post__date">
-                                    <time class="published" data-time="@commentParent.DateComment">
-                                    </time>
+                                    <a href="Post?Id=@post.Id&&comment=@commentParent.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
+                                        <time class="published" data-time="@commentParent.DateComment">
+                                        </time>
+                                    </a>
                                 </div>
                             </div>
 

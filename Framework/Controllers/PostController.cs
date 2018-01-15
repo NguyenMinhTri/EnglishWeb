@@ -31,12 +31,14 @@ namespace Framework.Controllers
         ICommentService _commentOfPost;
         IToiecGroupService _fbService;
         IDetailUserTypeService _detailUserTypeService;
+        IClientNotificationService _notificationService;
         public PostController(ILayoutService layoutService,
             IPostService postService,
             IPostTypeService postTypeService,
             IPostVoteDetailService postVoteDetailService,
             ICommentService commentOfPost,
             ICommentVoteDetailService commentVoteDetailService,
+        IClientNotificationService notificationService,
             IDetailUserTypeService detailUserTypeService, IToiecGroupService fbService)
             : base(layoutService)
         {
@@ -45,7 +47,8 @@ namespace Framework.Controllers
             _postVoteDetailService = postVoteDetailService;
             _commentOfPost = commentOfPost;
             _commentVoteDetailService = commentVoteDetailService;
-            _detailUserTypeService = detailUserTypeService; 
+            _detailUserTypeService = detailUserTypeService;
+            _notificationService = notificationService;
             _fbService = fbService;
         }
 
@@ -65,7 +68,7 @@ namespace Framework.Controllers
             }
         }
 
-        public ActionResult Index(int id)
+        public ActionResult Index(int id, int? Comment)
         {
             string id_user = User.Identity.GetUserId();
             _viewModel = new PostViewModel();
@@ -76,6 +79,7 @@ namespace Framework.Controllers
             FieldHelper.CopyNotNullValue(PostViewModel, post);
             PostViewModel.TypeToString = _postTypeService.GetById(post.Id_Type).Name;
             PostVoteDetail votePost = _postVoteDetailService.getVoteByIdUser(id_user, post.Id);
+            CommentViewModel commentCorrected = null;
             if (votePost != null)
             {
                 PostViewModel.Vote = votePost.Vote;
@@ -106,14 +110,25 @@ namespace Framework.Controllers
                         commentViewModel.listChildComment.Add(commentChildViewModel);
                     }
                 }
-                if (commentViewModel.Corrected)
+                if (Comment != null && commentViewModel.Id.Equals(Comment))
                 {
                     PostViewModel.listComment.Insert(0, commentViewModel);
                 }
                 else
                 {
-                    PostViewModel.listComment.Add(commentViewModel);
+                    if (commentViewModel.Corrected)
+                    {
+                        commentCorrected = commentViewModel;
+                    }
+                    else
+                    {
+                        PostViewModel.listComment.Add(commentViewModel);
+                    }
                 }
+            }
+            if (commentCorrected != null)
+            {
+                PostViewModel.listComment.Insert(0, commentCorrected);
             }
             List<PostType> listPostType = _postTypeService.GetAll().ToList();
             List<PostTypeViewModel> listPostTypeViewModel = new List<PostTypeViewModel>();
@@ -126,6 +141,37 @@ namespace Framework.Controllers
             }
             ViewBag.ListPostType = listPostTypeViewModel;
             return View(PostViewModel);
+        }
+
+        public PartialViewResult CommentSection(int id_comment)
+        {
+            Comment comment = new Comment();
+            List<Comment> listChildComment = new List<Comment>();
+            comment = _commentOfPost.GetById(id_comment);
+            Post post = _postService.GetById(comment.Id_Post);
+            CommentViewModel commentViewModel = new CommentViewModel();
+            commentViewModel.Id_UserPost = post.Id_User;
+            ApplicationUser user = _service.GetUserById(comment.Id_User);
+            CommentVoteDetail voteComment = _commentVoteDetailService.getVoteByIdUser(User.Identity.GetUserId(), comment.Id);
+            if (voteComment != null)
+            {
+                commentViewModel.Vote = voteComment.Vote;
+            }
+            FieldHelper.CopyNotNullValue(commentViewModel, user);
+            FieldHelper.CopyNotNullValue(commentViewModel, comment);
+            listChildComment = _commentOfPost.getChildOfComment(comment.Id_Post, comment.Id);
+            if (listChildComment.Count != 0)
+            {
+                foreach (var child in listChildComment)
+                {
+                    CommentViewModel commentChildViewModel = new CommentViewModel();
+                    user = _service.GetUserById(child.Id_User);
+                    FieldHelper.CopyNotNullValue(commentChildViewModel, user);
+                    FieldHelper.CopyNotNullValue(commentChildViewModel, child);
+                    commentViewModel.listChildComment.Add(commentChildViewModel);
+                }
+            }
+            return PartialView("_Comment", commentViewModel);
         }
 
         [HttpPost]
@@ -147,6 +193,17 @@ namespace Framework.Controllers
             CommentViewModel.Id_UserPost = post.Id_User;
             if (data.Id_Comment == 0)
             {
+                if (CommentViewModel.Id_UserPost != User.Identity.GetUserId())
+                {
+                    Notification notification = new Notification();
+                    notification.Id_User = data.Id_User;
+                    notification.Id_Friend = CommentViewModel.Id_UserPost;
+                    notification.Id_Post = data.Id_Post;
+                    notification.Id_Comment = comment.Id;
+                    notification.DateComment = data.DateComment;
+                    _notificationService.Add(notification);
+                    _notificationService.Save();
+                }
                 return PartialView("_Comment", CommentViewModel);
             }
             else

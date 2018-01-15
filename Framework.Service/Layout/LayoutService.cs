@@ -19,7 +19,7 @@ namespace Framework.Service
         List<ApplicationUser> listUserID();
         List<String> GetAllFriend(string id_user);
         List<Friend> GetRelationship(string id_user);
-
+        List<Notification> getAllNotification(string id_user);
     }
     public class LayoutService : ILayoutService
     {
@@ -27,11 +27,13 @@ namespace Framework.Service
         IApplicationUserRepository _userRepository;
         IApplicationUserRoleRepository _userRoleRepository;
         IFriendRepository _friendRepository;
+        INotificationRepository _notificationRepository;
 
         public LayoutService(
             IApplicationUserRepository userRepository,
             IApplicationUserRoleRepository userRoleRepository,
             IFriendRepository friendRepository,
+             INotificationRepository notificationRepository,
             IUnitOfWork unitOfWork
 
             )
@@ -39,6 +41,7 @@ namespace Framework.Service
             _userRepository = userRepository;
             _userRoleRepository = userRoleRepository;
             _friendRepository = friendRepository;
+            _notificationRepository = notificationRepository;
             _unitOfWork = unitOfWork;
 
         }
@@ -77,6 +80,12 @@ namespace Framework.Service
             listRelationship.Add(null);
             listRelationship.AddRange(_friendRepository.GetMulti(x => x.Id_User == id_user && x.CodeRelationshipId == -1).ToList());
             return listRelationship;
+        }
+        public List<Notification> getAllNotification(string id_user)
+        {
+            List<Notification> listNotification = new List<Notification>();
+            listNotification = _notificationRepository.GetMulti(x => x.Id_Friend == id_user).ToList();
+            return listNotification;
         }
     }
 }

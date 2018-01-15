@@ -95,6 +95,19 @@ namespace Framework.Controllers
                 _viewModel.ListRequest.OrderBy(x => x.CreatedDate);
                 ViewBag.listRequest = listRequest.Count - 1;
 
+                List<Notification> listNotification = _service.getAllNotification(User.Identity.GetUserId());
+                foreach (Notification notification in listNotification)
+                {
+                    NotificationViewModel notificationViewModel = new NotificationViewModel();
+                    ApplicationUser userT = new ApplicationUser();
+                    userT = _service.GetUserById(notification.Id_User);
+                    FieldHelper.CopyNotNullValue(notificationViewModel, userT);
+                    FieldHelper.CopyNotNullValue(notificationViewModel, notification);
+                    _viewModel.ListNotification.Add(notificationViewModel);
+
+                }
+                _viewModel.ListNotification.OrderBy(x => x.CreatedDate);
+                ViewBag.listNotification = listNotification.Count - 1;
             }
         }
 
@@ -154,6 +167,27 @@ namespace Framework.Controllers
                 notiRequest.ListRequest.OrderBy(x => x.CreatedDate);
             }
             return PartialView("_NotiFriend", notiRequest);
+        }
+
+        [HttpPost]
+        public PartialViewResult NotificationSection(string username)
+        {
+            NotiViewModel noti = new NotiViewModel();
+            if (username != null)
+            {
+                List<Notification> listNotification = _service.getAllNotification(User.Identity.GetUserId());
+                foreach (Notification notification in listNotification)
+                {
+                    NotificationViewModel notificationViewModel = new NotificationViewModel();
+                    ApplicationUser userT = new ApplicationUser();
+                    userT = _service.GetUserById(notification.Id_User);
+                    FieldHelper.CopyNotNullValue(notificationViewModel, userT);
+                    FieldHelper.CopyNotNullValue(notificationViewModel, notification);
+                    noti.ListNotification.Add(notificationViewModel);
+                }
+                noti.ListNotification.OrderBy(x => x.CreatedDate);
+            }
+            return PartialView("_Noti", noti);
         }
     }
 }

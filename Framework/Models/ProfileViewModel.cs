@@ -339,13 +339,13 @@ namespace Framework.ViewModels
         public int Id { get; set; }
         public String Id_User { get; set; }
         public String Id_Friend { get; set; }
-        public String Id_Post { get; set; }
+        public int Id_Post { get; set; }
         public String Name { get; set; }
         public String Email { get; set; }
+        public int Id_Comment { get; set; }
         public String Avatar { get; set; }
         public String Degree { get; set; }
         public DateTime? CreatedDate { set; get; }
-        public bool Flag { set; get; }
+        public String DateComment { set; get; }
     }
-
 }

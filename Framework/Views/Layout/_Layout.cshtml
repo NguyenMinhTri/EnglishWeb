@@ -404,25 +404,45 @@
                         <a href="YourAccount?option=updateinfo">Cài đặt</a>
                     </div>
 
-                    <ul class="chat-users">
-                        <li class="inline-items js-chat-open">
+                    @if (Model.ListFriend.Count > 0)
+                    {
+                        <ul class="chat-users">
+                            @foreach (var friend in Model.ListFriend)
+                            {
+                                <li class="inline-items">
+                                    <div class="author-thumb @friend.Degree">
+                                        <a href="Profile?username=@friend.Email&option=newsfeed">
+                                            <img alt="author" src="content/images/@friend.Avatar" class="avatar">
+                                        </a>
+                                    </div>
 
-                            <div class="author-thumb trunghoc">
-                                <img alt="author" src="content/images/avatar67-sm.jpg" class="avatar">
-                            </div>
-
-                            <div class="author-status">
-                                <a href="#" class="h6 author-name">Minh Trí</a>
-                                <span class="status">ONLINE</span>
-                            </div>
-
-                        </li>
-                    </ul>
+                                    <div class="author-status">
+                                        <a href="Profile?username=@friend.Email&option=newsfeed" class="h6 author-name">@friend.Name</a>
+                                        @if (friend.Degree == "giaosu")
+                                        {
+                                            <span class="status">Giáo sư</span>
+                                        }
+                                        else if (friend.Degree == "tieuhoc")
+                                        {
+                                            <span class="status">Tiểu học</span>
+                                        }
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="landing-main-content" style=" padding: 0 40px; ">
+                            <h2 class="title">Bạn vẫn chưa kết bạn với ai!</h2>
+                            <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
+                        </div>
+                    }
                 </div>
 
                 <div class="search-friend inline-items">
-                    <form class="form-group">
-                        <input class="form-control" placeholder="Tìm bạn..." value="" type="text">
+                    <form class="form-group w-search-1" action="Friend" method="get">
+                        <input class="form-control" placeholder="Tìm bạn..." value="" type="text" name="keyword">
                     </form>
 
                     <a href="YourAccount?option=requests" class="settings">
@@ -521,9 +541,9 @@
                                 }
                             </div>
 
-                            <div style=" width: 100%; display:none " class="empty-notirequest">
+                            <div style="width: 80%; display: block; margin: auto;" class="empty-notirequest">
                                 <div class="landing-main-content">
-                                    <h2 class="title">Chưa có lời mời mới!</h2>
+                                    <h2 class="title">Chưa có<br /> lời mời mới!</h2>
                                     <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
                                 </div>
                             </div>
@@ -535,7 +555,7 @@
                 <div class="control-icon more has-items">
                     <svg class="olymp-thunder-icon"><use xlink:href="content/icons/icons.svg#olymp-thunder-icon"></use></svg>
 
-                    <div class="label-avatar bg-primary">8</div>
+                    <div class="label-avatar bg-primary notification" style="display:none">@ViewBag.listNotification</div>
 
                     <div class="more-dropdown more-with-triangle triangle-top-center">
                         <div class="ui-block-title ui-block-title-small">
@@ -544,41 +564,48 @@
                         </div>
 
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
-                            <ul class="notification-list">
-                                <li>
-                                    <div class="author-thumb tieuhoc">
-                                        <img src="content/images/avatar62-sm.jpg" alt="author">
-                                    </div>
-                                    <div class="notification-event">
-                                        <div><a href="#" class="h6 notification-friend">Minh Trí</a> đã trả lời <a href="#" class="notification-link">câu hỏi</a> của bạn.</div>
-                                        <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 giờ trước</time></span>
-                                    </div>
-                                    <span class="notification-icon">
-                                        <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-                                    </span>
+                            <div class="notificationPartial">
+                                @if (Model.ListNotification.Count > 0)
+                                {
+                                    <ul class="notification-list noti-requests">
+                                        @foreach (var notification in Model.ListNotification)
+                                        {
+                                            string link = "Post?Id=" + notification.Id_Post + "&&comment=" + notification.Id_Comment;
 
-                                    <div class="more">
-                                        <svg class="olymp-little-delete"><use xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-                                    </div>
-                                </li>
-
-                                <li class="un-read">
-                                    <div class="author-thumb sinhvien">
-                                        <img src="content/images/avatar63-sm.jpg" alt="author">
-                                    </div>
-                                    <div class="notification-event">
-                                        <div>Bạn và <a href="#" class="h6 notification-friend">Lê Văn Duyệt</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href="#" class="notification-link">Lê Văn Duyệt </a>.</div>
-                                        <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 giờ trước</time></span>
-                                    </div>
-                                    <span class="notification-icon">
-                                        <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                                    </span>
-
-                                    <div class="more">
-                                        <svg class="olymp-little-delete"><use xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-                                    </div>
-                                </li>
-                            </ul>
+                                            <li class="un-read notification_@notification.Id" data-email="@notification.Email" data-name="@notification.Name" data-toggle="tooltip" data-placement="top" data-original-title="Click để đánh dấu đã xem">
+                                                <div class="author-thumb">
+                                                    <a href="Profile?username=@notification.Email&option=newsfeed" class="author-thumb @notification.Degree">
+                                                        <img src="content/images/@notification.Avatar" alt="author">
+                                                    </a>
+                                                </div>
+                                                <div class="notification-event">
+                                                    @if (notification.Degree == "giaosu")
+                                                    {
+                                                        <div>Chuyên gia <a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div><a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                                                    }
+                                                    <span class="notification-date author-date">
+                                                        <time class="published entry-date updated" data-time="@notification.DateComment">
+                                                        </time>
+                                                    </span>
+                                                </div>
+                                                <span class="notification-icon">
+                                                    <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+                                                </span>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+                            <div style="width: 80%; display: block; margin: auto;" class="empty-notify">
+                                <div class="landing-main-content">
+                                    <h2 class="title">Chưa có<br /> thông báo mới!</h2>
+                                    <p>Hãy kết bạn, tương tác nhiều hơn để học tập tốt hơn bạn nhé!</p>
+                                </div>
+                            </div>
                         </div>
 
                         <a href="YourAccount?option=notification" class="view-all bg-primary">Xem tất cả thông báo</a>
@@ -660,7 +687,9 @@
                     <a class="nav-link" data-toggle="tab" href="#notification" role="tab">
                         <div class="control-icon has-items">
                             <svg class="olymp-thunder-icon"><use xlink:href="content/icons/icons.svg#olymp-thunder-icon"></use></svg>
-                            <div class="label-avatar bg-primary">8</div>
+                            <div class="label-avatar bg-primary notification" style="display:none">
+                                @ViewBag.listNotification
+                            </div>
                         </div>
                     </a>
                 </li>
@@ -739,9 +768,9 @@
                                 </ul>
                             }
                         </div>
-                        <div style=" width: 100%; display:none " class="empty-notirequest">
+                        <div style="width: 80%; display: block; margin: auto;" class="empty-notirequest">
                             <div class="landing-main-content">
-                                <h2 class="title">Chưa có lời mời mới!</h2>
+                                <h2 class="title">Chưa có<br /> lời mời mới!</h2>
                                 <p>Hãy kết bạn, tạo thêm nhiều quan hệ học tập bạn nhé!</p>
                             </div>
                         </div>
@@ -759,41 +788,48 @@
                         <a href="YourAccount?option=updatesetting">CÀI ĐẶT</a>
                     </div>
 
-                    <ul class="notification-list">
-                        <li>
-                            <div class="author-thumb">
-                                <img src="content/images/avatar62-sm.jpg" alt="author">
-                            </div>
-                            <div class="notification-event">
-                                <div><a href="#" class="h6 notification-friend">Minh Trí</a>  đã trả lời . <a href="#" class="notification-link">câu hỏi </a>  của bạn.</div>
-                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
-                            </div>
-                            <span class="notification-icon">
-                                <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-                            </span>
+                    <div class="notificationPartial">
+                        @if (Model.ListNotification.Count > 0)
+                        {
+                            <ul class="notification-list noti-requests">
+                                @foreach (var notification in Model.ListNotification)
+                                {
+                                    string link = "Post?Id=" + notification.Id_Post + "&&comment=" + notification.Id_Comment;
 
-                            <div class="more">
-                                <svg class="olymp-little-delete"><use xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-                            </div>
-                        </li>
-
-                        <li class="un-read">
-                            <div class="author-thumb">
-                                <img src="content/images/avatar63-sm.jpg" alt="author">
-                            </div>
-                            <div class="notification-event">
-                                <div>Bạn và <a href="#" class="h6 notification-friend">Lê Văn Duyệt</a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href="#" class="notification-link">Lê Văn Duyệt </a>nhá.</div>
-                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 hours ago</time></span>
-                            </div>
-                            <span class="notification-icon">
-                                <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-                            </span>
-
-                            <div class="more">
-                                <svg class="olymp-little-delete"><use xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-                            </div>
-                        </li>
-                    </ul>
+                                    <li class="un-read notification_@notification.Id" data-email="@notification.Email" data-name="@notification.Name" data-toggle="tooltip" data-placement="top" data-original-title="Click để đánh dấu đã xem">
+                                        <div class="author-thumb">
+                                            <a href="Profile?username=@notification.Email&option=newsfeed" class="author-thumb @notification.Degree">
+                                                <img src="content/images/@notification.Avatar" alt="author">
+                                            </a>
+                                        </div>
+                                        <div class="notification-event">
+                                            @if (notification.Degree == "giaosu")
+                                            {
+                                                <div>Chuyên gia <a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                                            }
+                                            else
+                                            {
+                                                <div><a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                                            }
+                                            <span class="notification-date author-date">
+                                                <time class="published entry-date updated" data-time="@notification.DateComment">
+                                                </time>
+                                            </span>
+                                        </div>
+                                        <span class="notification-icon">
+                                            <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                    <div style="width: 80%; display: block; margin: auto;" class="empty-notify">
+                        <div class="landing-main-content">
+                            <h2 class="title">Chưa có<br /> thông báo mới!</h2>
+                            <p>Hãy kết bạn, tương tác nhiều hơn để học tập tốt hơn bạn nhé!</p>
+                        </div>
+                    </div>
 
                     <a href="YourAccount?option=notification" class="view-all bg-primary">Xem tất cả thông báo</a>
                 </div>
@@ -1008,8 +1044,10 @@
 
     <button id="hidden" style="display:none"></button>
     <button id="sentNotiRequest" style="display:none"></button>
+    <button id="sentNotification" style="display:none"></button>
+    <button id="sentComment" style="display:none"></button>
     <input type="hidden" id="RequestUserName" />
-
+    
     @RenderBody()
 
     @RenderSection("scripts", false);
@@ -1031,14 +1069,7 @@
             $("a[href='/']").attr('href', '/?userType=new')
         }
         var num_notirequest = parseInt('@Model.ListRequest.Count');
-        if (num_notirequest != 0) {
-            $(".notirequest").text(num_notirequest);
-            $(".notirequest").css("display", "table-cell");
-        }
-        else {
-            $(".notirequest").css("display", "none");
-            $(".empty-notirequest").css("display", "block");
-        }
+        var num_notification = parseInt('@Model.ListNotification.Count');
     </script>
 </body>
 </html>

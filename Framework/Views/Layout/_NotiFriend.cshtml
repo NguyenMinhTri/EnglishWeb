@@ -53,14 +53,17 @@
 }
 
 <script>
-    var num_notirequest = $($(".notiRequestPartial .friend-requests li")[0]).length;
-    if (num_notirequest != 0) {
-        $(".notirequest").text(num_notirequest);
-        $(".notirequest").css("display", "table-cell");
-        $(".empty-notirequest").css("display", "none");
-    }
-    else {
-        $(".notirequest").css("display", "none");
-        $(".empty-notirequest").css("display", "block");
-    }
+    $(document).ready(function () {
+        num_notirequest = $($(".notiRequestPartial .friend-requests")[0]).find("li").length;
+        if (num_notirequest != 0) {
+            $(".notirequest").text(num_notirequest);
+            $(".notirequest").css("display", "table-cell");
+            $(".empty-notirequest").css("display", "none");
+        }
+        else {
+            $(".notirequest").css("display", "none");
+            $(".empty-notirequest").css("display", "block");
+        }
+    })
+
 </script>

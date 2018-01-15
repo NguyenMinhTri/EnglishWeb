@@ -10,9 +10,10 @@
         <div class="author-date">
             <a href="Profile?username=@Model.UserName&option=newsfeed" class="h6 post__author-name fn">@Model.Name</a>
             <div class="post__date">
-                <time class="published" data-time="@Model.DateComment">
-
-                </time>
+                <a href="Post?Id=@Model.Id_Post&&comment=@Model.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
+                    <time class="published" data-time="@Model.DateComment">
+                    </time>
+                </a>
             </div>
         </div>
         <div class="more">

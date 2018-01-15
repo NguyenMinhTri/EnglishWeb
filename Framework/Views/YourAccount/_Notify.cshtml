@@ -1,0 +1,40 @@
+﻿@model Framework.ViewModels.NotifyViewModel
+
+@if (Model.ListNotification.Count > 0)
+{
+    <ul class="notification-list noti-requests">
+        @foreach (var notification in Model.ListNotification)
+        {
+            string link = "Post?Id=" + notification.Id_Post + "&&comment=" + notification.Id_Comment;
+
+            <li class="un-read notification_@notification.Id" data-email="@notification.Email" data-name="@notification.Name" data-toggle="tooltip" data-placement="top" data-original-title="Click để đánh dấu đã xem">
+                <div class="author-thumb">
+                    <a href="Profile?username=@notification.Email&option=newsfeed" class="author-thumb @notification.Degree">
+                        <img src="content/images/@notification.Avatar" alt="author">
+                    </a>
+                </div>
+                <div class="notification-event">
+                    @if (notification.Degree == "giaosu")
+                    {
+                        <div>Chuyên gia <a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                    }
+                    else
+                    {
+                        <div><a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                    }
+                    <span class="notification-date author-date">
+                        <time class="published entry-date updated" data-time="@notification.DateComment">
+                        </time>
+                    </span>
+                </div>
+                <span class="notification-icon">
+                    <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
+                </span>
+            </li>
+        }
+    </ul>
+}
+
+<script>
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+</script>

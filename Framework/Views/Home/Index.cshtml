@@ -200,8 +200,10 @@
                                             <div class="author-date">
                                                 <a href="Profile?username=@commentParent.UserName&option=newsfeed" class="h6 post__author-name fn" href="#">@commentParent.Name</a>
                                                 <div class="post__date">
-                                                    <time class="published" data-time="@commentParent.DateComment">
-                                                    </time>
+                                                    <a href="Post?Id=@post.Id&&comment=@commentParent.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
+                                                        <time class="published" data-time="@commentParent.DateComment">
+                                                        </time>
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -475,6 +477,16 @@
                     button.removeClass("active");
                     new_comment = $(comment_section).find("li.new-comment");
                     $(comment_section).find("li.new-comment").show('slow').addClass("showed");
+                    dataSentNotification = $($(parent).parent().parent().find("a.h6.post__author-name.fn")[0]).attr("href").replace("Profile?username=", "").replace("&option=newsfeed", "");
+                    $('#sentNotification').click();
+
+                    var id = $(comment_section).find(".new-comment.parent.showed").attr("id");
+                    dataSentComment = {
+                        name: dataSentNotification,
+                        id_post: $(parent).parent().parent().attr("id"),
+                        id_comment: id.substring(id.search("-") + 1, id.length)
+                    };
+                    $('#sentComment').click();
                 }).fail(function (response) {
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();

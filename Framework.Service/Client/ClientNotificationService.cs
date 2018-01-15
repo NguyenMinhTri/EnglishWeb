@@ -26,9 +26,7 @@ namespace Framework.Service
         public List<Notification> getAllNotification(string id_user)
         {
             List<Notification> listNotification = new List<Notification>();
-            listNotification = _notificationRepository.GetMulti(x => x.Id_User == id_user).ToList();
-            listNotification.Add(null);
-            listNotification.AddRange(_notificationRepository.GetMulti(x => x.Id_Friend == id_user).ToList());
+            listNotification = _notificationRepository.GetMulti(x => x.Id_Friend == id_user).ToList();
             return listNotification;
         }
     }

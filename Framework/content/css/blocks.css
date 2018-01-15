@@ -2607,6 +2607,7 @@ fieldset[disabled] .checkbox, fieldset[disabled] .checkbox input[type=checkbox],
 
         .notification-list .selectize-dropdown-content > *.un-read, .notification-list li.un-read {
             background-color: #f7f9fc;
+            cursor:  pointer;
         }
 
             .notification-list .selectize-dropdown-content > *.un-read .notification-icon, .notification-list li.un-read .notification-icon {
@@ -9885,4 +9886,17 @@ ol.old-words li .more svg.olymp-little-delete {
 .country.pro {
     color: #fb5e3b;
     font-weight:  bold;
+}
+
+.this-comment {
+    box-shadow: 0 0 20px white;
+    display: block;
+    position: relative;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    background-color: #edf2f6;
+  }
 }

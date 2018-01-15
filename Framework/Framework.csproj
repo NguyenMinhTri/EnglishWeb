@@ -265,6 +265,7 @@
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminSubTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminToiecGroupController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
@@ -980,6 +981,8 @@
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Layout\_FriendChatSection.cshtml" />
     <Content Include="Views\YourAccount\_NotiFriend.cshtml" />
+    <Content Include="Views\Layout\_Noti.cshtml" />
+    <Content Include="Views\YourAccount\_Notify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

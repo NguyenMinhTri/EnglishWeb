@@ -307,7 +307,8 @@ namespace Framework.Controllers
             {
                 OldWordViewModelItem item = new OldWordViewModelItem();
                 var tempWord = _dictCache.GetById(idWord.Id_OurWord);
-                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.VocaID).FirstOrDefault();
+                var infoVoca = _dictCache.findWordCache(tempWord.VocaID);
+
                 item.Id = tempWord.Id;
                 item.Learned = idWord.Learned;
                 item.m_Voca = tempWord.VocaID;

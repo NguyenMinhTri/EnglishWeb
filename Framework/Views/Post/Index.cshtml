@@ -40,7 +40,7 @@
                                 Thể loại: <span>@Model.TypeToString</span>
                             </a>
                         </h6>
-                        
+
                         @if (Model.Option == 1)
                         {
                             <div class="control-block-button post-control-button">
@@ -130,8 +130,10 @@
                                     <div class="author-date">
                                         <a href="Profile?username=@commentParent.UserName&option=newsfeed" class="h6 post__author-name fn" href="#">@commentParent.Name</a>
                                         <div class="post__date">
-                                            <time class="published" data-time="@commentParent.DateComment">
-                                            </time>
+                                            <a href="Post?Id=@Model.Id&&comment=@commentParent.Id" style=" color: #9E9E9E; font-weight: 100; " target="_blank">
+                                                <time class="published" data-time="@commentParent.DateComment">
+                                                </time>
+                                            </a>
                                         </div>
                                     </div>
 
@@ -336,8 +338,32 @@
     </div>
 </div>
 
-
 <script>
+    $(document).ready(function () {
+        if (getQueryVariable("comment") != false) {
+            var comment;
+            if (getQueryVariable("Id") == false) {
+                comment = "#p" + getQueryVariable("id") + "c-" + getQueryVariable("comment");
+            }
+            else {
+                comment = "#p" + getQueryVariable("Id") + "c-" + getQueryVariable("comment");
+            }
+            scrollto(comment);
+
+            if (comment.search('false') == -1) {
+                $(comment).addClass("this-comment");
+                var this_comment = setInterval(function () {
+                    if ($(".fakeloader").css("display")=="none") {
+                        $(comment).removeClass("this-comment");
+                    }
+                    if (!$(comment).hasClass("this-comment")) {
+                        clearInterval(this_comment);
+                    }
+                }, 3000);
+            }
+        }
+    })
+    
     $(document).on("click", "#submit.options-message.active", function () {
         var parent = $(this).parent().parent().parent();
         var comment_section = parent.parent().find(".comments-list");
@@ -361,6 +387,18 @@
                     button.removeClass("active");
                     new_comment = $(comment_section).find("li.new-comment");
                     $(comment_section).find("li.new-comment").show('slow').addClass("showed");
+                    dataSentNotification = '@Model.UserName';
+                    $('#sentNotification').click();
+
+
+
+                    var id = $(comment_section).find(".new-comment.parent.showed").attr("id");
+                    dataSentComment = {
+                        name: dataSentNotification,
+                        id_post: $(parent).parent().parent().attr("id"),
+                        id_comment: id.substring(id.search("-")+1, id.length)
+                    };
+                    $('#sentComment').click();
                 }).fail(function (response) {
                     $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
                     $("#notify-button").click();

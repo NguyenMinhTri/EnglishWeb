@@ -1,4 +1,4 @@
-﻿$(window).on('load', function () {
+$(window).on('load', function () {
     $(".fakeloader").fakeLoader({
         timeToHide: 1200,
         bgColor: "#ffffff",
@@ -267,6 +267,25 @@ $(document).ready(function () {
     window.setInterval(function () {
         TimeStamp();
     }, 1000);
+    if (num_notirequest != 0) {
+        $(".notirequest").text(num_notirequest);
+        $(".notirequest").css("display", "table-cell");
+        $(".empty-notirequest").css("display", "none");
+    }
+    else {
+        $(".notirequest").css("display", "none");
+        $(".empty-notirequest").css("display", "block");
+    }
+
+    if (num_notification != 0) {
+        $(".notification").text(num_notification);
+        $(".notification").css("display", "table-cell");
+        $(".empty-notify").css("display", "none");
+    }
+    else {
+        $(".notification").css("display", "none");
+        $(".empty-notify").css("display", "block");
+    }
 });
 
 $(document).on("click", ".news-feed-form .form-group .selection .togglebutton label input[type=checkbox]", function () {
@@ -336,11 +355,19 @@ $(".w-search").submit(function () {
 
 $(document).on("click", ".add_friend", function () {
     $("button#hidden").click($._data($(".search-friend a.js-sidebar-open").get(0), "events").click["0"].handler);
+    var reject = false;
+    var user = $("#RequestUserName").val();
+    var user_ele = $($("ul.notification-list.friend-requests li[data-email='" + user + "']")[0]);
+
+    if (user_ele.find(".notification-icon .accept-request.friend").length==2) {
+        reject = true;
+    }
     var data = {
         Id_User: $("#UserId").val(),
         Id_Friend: $(this).attr("data-id"),
         CodeRelationshipId: $(this).attr("data-code"),
-        Name: $("#RequestUserName").val()
+        Name: $("#RequestUserName").val(),
+        Reject: reject
     }
     $.post('/Friend/Friend_action', data).done(function (response) {
         if (response.result == "success") {
@@ -350,7 +377,9 @@ $(document).on("click", ".add_friend", function () {
             var email = parent.attr("data-email");
             var name = parent.attr("data-name");
             if (data.CodeRelationshipId == 0) {
-                $("#delete-ok-button").click();
+                if (reject == false) {
+                    $("#delete-ok-button").click();
+                }
                 $(".profile-section .friend").removeClass("bg-primary").addClass("bg-blue");
                 $(".profile-section .friend.delete, .profile-section .friend.accept").css("display", "none");
                 $(".profile-section .friend.add").css("display", "inline-block");
@@ -411,7 +440,7 @@ $(document).on("click", ".add_friend", function () {
 var chat = $.connection.chatHub;
 
 // Create a function that the hub can call to broadcast messages.
-chat.client.receiveNotiRequest = function (who) {
+chat.client.receiveNotiRequest = function (who, sender) {
     data = {
         username: who
     }
@@ -427,9 +456,13 @@ chat.client.receiveNotiRequest = function (who) {
         $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
         $("#notify-button").click();
     });
+    if (getQueryVariable("username") == sender) {
+        $(".profile-section .friend.delete, .profile-section .friend.accept").css("display", "inline-block");
+        $(".profile-section .friend.add").css("display", "none");
+    }
 };
 
-chat.client.receiveNotiRequestReject = function (who) {
+chat.client.receiveNotiRequestReject = function (who, reject) {
     data = {
         username: who
     }
@@ -445,17 +478,91 @@ chat.client.receiveNotiRequestReject = function (who) {
         $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
         $("#notify-button").click();
     });
-    $("#reject-button").click();
+    if (reject == true) {
+        $("#reject-button").click();
+    }
     $(".profile-section .friend").removeClass("bg-primary").addClass("bg-blue");
     $(".profile-section .friend.delete, .profile-section .friend.accept").css("display", "none");
     $(".profile-section .friend.add").css("display", "inline-block");
 };
 
+chat.client.receiveNotification = function (who, sender) {
+    data = {
+        username: who
+    }
+    $.post("/Layout/NotificationSection", data).done(function (html) {
+        $(".notificationPartial").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+    $.post("/YourAccount/NotificationSectionAccount", data).done(function (html) {
+        $(".addNewNotification").html(html);
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+        $("#notify-button").click();
+    });
+};
+
+chat.client.receiveComment = function (id_post, id_comment) {
+    data = {
+        id_comment: id_comment
+    }
+    if (window.location.href.search("Post?Id") == -1 && id_post == getQueryVariable("Id")) {
+        var total_comment = $(".comments-shared span");
+        var total_text = parseInt(total_comment.text());
+        $.post("/Post/CommentSection", data).done(function (html) {
+            $(".comments-list").append(html);
+            $(".comments-list").find("li.new-comment").show('slow').addClass("showed");
+            total_text++;
+            $(total_comment).text(total_text);
+        }).fail(function (response) {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+            total_comment--;
+        })
+    }
+};
+
 var dataSentNotiRequest;
+var dataSentNotification;
+var dataSentComment;
 
 $.connection.hub.start().done(function () {
     $('#sentNotiRequest').click(function () {
-        chat.server.sentNotiRequest(dataSentNotiRequest.Name, dataSentNotiRequest.CodeRelationshipId);
+        chat.server.sentNotiRequest(dataSentNotiRequest.Name, dataSentNotiRequest.CodeRelationshipId, dataSentNotiRequest.Reject);
     });
+    $('#sentNotification').click(function () {
+        chat.server.sentNotification(dataSentNotification);
+    });
+    $('#sentComment').click(function () {
+        chat.server.sentComment(dataSentComment.name, dataSentComment.id_post, dataSentComment.id_comment)
+    });
+});
+
+$(document).on("click", ".un-read", function () {
+    var parent = $(this);
+    num_notification--;
+    if (num_notification != 0) {
+        $(".notification").text(num_notification);
+    }
+    else {
+        $(".notification").css("display", "none");
+    }
+    var data = {
+        Id: $(parent).attr("class").match(/notification_(\d+)/)[1]
+    }
+    $(".notification_" + data.Id).removeClass("un-read");
+    $.post('/Notification/Notification_action', data).done(function (response) {
+        if (response.result == "success") {
+        }
+        else {
+            $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!");
+            $("#notify-button").click();
+        }
+    }).fail(function (response) {
+        $("#notify .ui-block-content p").html("Thành thật xin lỗi. <br/>Hình như có lỗi gì đó rồi, thử lại sau nhé!!!")
+        $("#notify-button").click();
+    })
 });
 

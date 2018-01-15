@@ -9,22 +9,29 @@ namespace Framework.SignalR
 {
     public class ChatHub : Hub
     {
-        public void sentNotiRequest(string name, int code)
+        public void sentNotiRequest(string name, int code, bool reject)
         {
             if (code == -1)
             {
-                Clients.Group(name).receiveNotiRequest(name);
+                string sender = Context.User.Identity.Name;
+                Clients.Group(name).receiveNotiRequest(name, sender);
             }
             else if (code == 0)
             {
-                Clients.Group(name).receiveNotiRequestReject(name);
+                Clients.Group(name).receiveNotiRequestReject(name, reject);
             }
         }
 
-        //public void sentNotiRequest(string Id_Friend)
-        //{
-        //    Clients.Group(Id_Friend).receiveNotiRequest(Id_Friend);
-        //}
+        public void sentNotification(string name)
+        {
+            string sender = Context.User.Identity.Name;
+            Clients.Group(name).receiveNotification(name, sender);
+        }
+
+        public void sentComment(string name, int id_post, int id_comment)
+        {
+            Clients.Group(name).receiveComment(id_post, id_comment);
+        }
 
         public void LetsChat(string Cl_Name, string Cl_Message)
         {

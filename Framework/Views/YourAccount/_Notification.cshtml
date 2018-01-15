@@ -12,21 +12,32 @@
     <div class="addNewNotification">
         @if (Model.ListNotification.Count > 0)
         {
-            <ul class="notification-list">
+            <ul class="notification-list noti-requests">
                 @foreach (var notification in Model.ListNotification)
                 {
-                    <li class="un-read notification_@notification.Id" data-email="@notification.Email" data-name="@notification.Name">
+                    string link = "Post?Id=" + notification.Id_Post + "&&comment=" + notification.Id_Comment;
+                    <li class="un-read notification_@notification.Id" data-email="@notification.Email" data-name="@notification.Name" data-toggle="tooltip" data-placement="top" data-original-title="Click để đánh dấu đã xem">
                         <div class="author-thumb">
                             <a href="Profile?username=@notification.Email&option=newsfeed" class="author-thumb @notification.Degree">
                                 <img src="content/images/@notification.Avatar" alt="author">
                             </a>
                         </div>
                         <div class="notification-event">
-                            Bạn và <a class='h6 notification-friend'> @notification.Name </a> vừa trở thành bạn của nhau. Cùng xem tường nhà <a href='Profile?username=@notification.Email&option=newsfeed' class='notification-link'> @notification.Name </a>.
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 giờ trước</time></span>
+                            @if (notification.Degree == "giaosu")
+                            {
+                                <div>Chuyên gia <a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                            }
+                            else
+                            {
+                                <div><a class='h6 notification-friend'>@notification.Name</a> vừa trả lời câu hỏi của bạn. Nghía qua xem <a href='@link' class='notification-link'>tại đây</a> nhé bồ.</div>
+                            }
+                            <span class="notification-date author-date">
+                                <time class="published entry-date updated" data-time="@notification.DateComment">
+                                </time>
+                            </span>
                         </div>
                         <span class="notification-icon">
-                            <svg class="olymp-happy-face-icon"><use xlink:href="content/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+                            <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
                         </span>
                     </li>
                 }
@@ -43,29 +54,15 @@
 </div>
 
 <script>
-    var num_notification = parseInt('@Model.ListNotification.Count');
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+
     if (num_notification != 0) {
         $(".notification").text(num_notification);
-        $(".notification, .notirequest").css("display", "table-cell");
+        $(".notification").css("display", "table-cell");
+        $(".empty-notify").css("display", "none");
     }
     else {
         $(".notification").css("display", "none");
         $(".empty-notify").css("display", "block");
     }
 </script>
-
-@*<li>
-        <div class="author-thumb">
-            <img src="content/images/avatar1-sm.jpg" alt="author">
-        </div>
-        <div class="notification-event">
-            <a href="#" class="h6 notification-friend">Minh Trí</a> đã trả lời <a href="#" class="notification-link">câu hỏi</a> của bạn.
-            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 giờ trước</time></span>
-        </div>
-        <span class="notification-icon">
-            <svg class="olymp-comments-post-icon"><use xlink:href="content/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-        </span>
-        <div class="more">
-            <svg class="olymp-little-delete"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="content/icons/icons.svg#olymp-little-delete"></use></svg>
-        </div>
-    </li>*@
