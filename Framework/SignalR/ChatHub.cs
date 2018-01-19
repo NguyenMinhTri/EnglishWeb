@@ -32,10 +32,11 @@ namespace Framework.SignalR
         }
         public static List<string> Users = new List<string>();
 
-        //public void SendChatMessage(string who, string message)
-        //{
-        //    Clients.Group(Id_Friend).receiveNotiRequest(Id_Friend);
-        //}
+        public void sentFriend(string name)
+        {
+            string sender = Context.User.Identity.Name;
+            Clients.Group(name).receiveFriend(name, sender);
+        }
 
         public void sentComment(string name, int id_post, int id_comment)
         {

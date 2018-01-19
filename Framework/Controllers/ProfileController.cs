@@ -207,22 +207,27 @@ namespace Framework.Controllers
             return PartialView("_NewsFeed", NewsFeedViewModel);
         }
 
-        public PartialViewResult FriendSection(string id_user)
+        public PartialViewResult FriendSection(string username)
         {
-            List<String> listFriend = _friendService.GetAllFriend(id_user);
             FriendSectionViewModel friendSection = new FriendSectionViewModel();
 
-            foreach (String friend in listFriend)
+            if (username != null)
             {
-                FriendViewModel friendViewModel = new FriendViewModel();
-                ApplicationUser user = _service.GetUserById(friend);
-                FieldHelper.CopyNotNullValue(friendViewModel, user);
-                friendSection.ListFriend.Add(friendViewModel);
+                string id_user = _service.GetUserByUserName(username).Id;
+                List<String> listFriend = _friendService.GetAllFriend(id_user);
+
+                foreach (String friend in listFriend)
+                {
+                    FriendViewModel friendViewModel = new FriendViewModel();
+                    ApplicationUser user = _service.GetUserById(friend);
+                    FieldHelper.CopyNotNullValue(friendViewModel, user);
+                    friendSection.ListFriend.Add(friendViewModel);
+                }
+                ApplicationUser userCur = _service.GetUserById(id_user);
+                friendSection.LastName = userCur.LastName;
+                friendSection.Id = userCur.Id;
+                friendSection.Id_User = User.Identity.GetUserId();
             }
-            ApplicationUser userCur = _service.GetUserById(id_user);
-            friendSection.LastName = userCur.LastName;
-            friendSection.Id = userCur.Id;
-            friendSection.Id_User = User.Identity.GetUserId();
             return PartialView("_FriendSection", friendSection);
         }
 

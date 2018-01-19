@@ -39,14 +39,17 @@
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
     $(document).ready(function () {
         num_notification = $($(".notificationPartial .noti-requests")[0]).find("li").length;
+
         if (num_notification != 0) {
             $(".notification").text(num_notification);
             $(".notification").css("display", "table-cell");
             $(".empty-notify").css("display", "none");
+            $(".empty-notify").parent().css("max-height", "300px");
         }
         else {
             $(".notification").css("display", "none");
             $(".empty-notify").css("display", "block");
+            $(".empty-notify").parent().css("max-height", "unset");
         }
     })
 </script>

@@ -59,10 +59,12 @@
             $(".notirequest").text(num_notirequest);
             $(".notirequest").css("display", "table-cell");
             $(".empty-notirequest").css("display", "none");
+            $(".empty-notirequest").parent().css("max-height", "300px");
         }
         else {
             $(".notirequest").css("display", "none");
             $(".empty-notirequest").css("display", "block");
+            $(".empty-notirequest").parent().css("max-height", "unset");
         }
     })
 
