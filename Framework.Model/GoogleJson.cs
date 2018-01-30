@@ -43,8 +43,9 @@ namespace Framework.Model.Google
     {
         public string text { get; set; }
     }
-    public class ChromeNofiJson
+    public class ChromeNotiJson
     {
+        public string title { set; get; }
         public string urlQuestion { get; set; }
         public string text { get; set; }
     }

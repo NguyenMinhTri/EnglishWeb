@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <p>
-                            @Model.Content
+                            @Html.Raw(Model.Content.Replace("\r\n", "<br>"))
                         </p>
 
                         <h6 class="tag">

@@ -36,6 +36,7 @@ namespace Framework.Controllers
         IDetailUserTypeService _detailUserType;
         ICommentVoteDetailService _commentVoteDetailService;
         IToiecGroupService _fbService;
+        IEventService _eventService;
         public HomeController(ILayoutService layoutService,
             IClientHomeService clientHomeService,
             IPostService postService,
@@ -46,7 +47,8 @@ namespace Framework.Controllers
             IPostVoteDetailService postVoteDetailService,
             IDetailUserTypeService detailUserType,
             ICommentVoteDetailService commentVoteDetailService,
-            IToiecGroupService fbService
+            IToiecGroupService fbService,
+            IEventService eventService
             )
             : base(layoutService)
         {
@@ -60,6 +62,8 @@ namespace Framework.Controllers
             _detailUserType = detailUserType;
             _commentVoteDetailService = commentVoteDetailService;
             _fbService = fbService;
+            _eventService = eventService;
+            initChatBotMenu();
         }
 
         HomeViewModel HomeViewModel
@@ -69,7 +73,50 @@ namespace Framework.Controllers
                 return (HomeViewModel)_viewModel;
             }
         }
+        public void initChatBotMenu()
+        {
+            ChatbotMenu menu = new ChatbotMenu();
+            //
+            PersistentMenu infoMenu = new PersistentMenu();
+            //
+            infoMenu.locale = "default";
+            infoMenu.call_to_actions = new List<CallToAction>();
+            //\
+            CallToAction parentMenu3 = new CallToAction();
+            parentMenu3.title = "🔍 Đặt câu hỏi nhanh ";
+            parentMenu3.type = "nested";
+            parentMenu3.call_to_actions = new List<CallToAction2>();
+            //Child menu
+            foreach (var typeObj in _postTypeService.GetAll())
+            {
+                CallToAction2 childMenu = new CallToAction2();
+                childMenu.payload = "POST_TYPE_" + typeObj.Id;
+                childMenu.title = "🚩." + typeObj.Name;
+                childMenu.type = "postback";
+                parentMenu3.call_to_actions.Add(childMenu);
+            }
+            infoMenu.call_to_actions.Add(parentMenu3);
+            //
+            CallToAction parentMenu = new CallToAction();
+            parentMenu.title = "🎓 Xác thực token với Olympus";
+            parentMenu.type = "postback";
+            parentMenu.payload = "XACTHUC";
+            infoMenu.call_to_actions.Add(parentMenu);
+            //
+            CallToAction parentMenu2 = new CallToAction();
+            parentMenu2.title = "💡 Luyện tập";
+            parentMenu2.type = "postback";
+            parentMenu2.payload = "LUYENTAP";
+            infoMenu.call_to_actions.Add(parentMenu2);
+            //
 
+            menu.persistent_menu.Add(infoMenu);
+            ChatBotMessenger.sendRequest(JsonConvert.SerializeObject(menu, Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            }),true);
+        }
         CommentViewModel CommentViewModel
         {
             get
@@ -244,6 +291,13 @@ namespace Framework.Controllers
             FieldHelper.CopyNotNullValue(comment, data);
             _commentOfPost.Add(comment);
             _commentOfPost.Save();
+            //Determine user of post, send noti via mess bot
+            var currentPost = _postService.GetById(comment.Id_Post);
+            var userOfPost = _service.GetUserById(currentPost.Id_User);
+            var userOfComment = _service.GetUserById(comment.Id_User);
+            if(userOfComment.Id_Messenger != userOfPost.Id_Messenger)
+                ChatBotMessenger.sendTextMeg(userOfPost.Id_Messenger, "🔥 *Câu hỏi:* " + currentPost.Content + "\r\n" + "✎ *Đáp án:* " + comment.Content);
+            //
             FieldHelper.CopyNotNullValue(CommentViewModel, comment);
             if (data.Id_Comment == 0)
             {
@@ -271,41 +325,7 @@ namespace Framework.Controllers
             }
             _postService.Add(newPost);
             _postService.Save();
-            string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
-            if (data.Option != 0)
-            {
-                ApplicationUser user = getExpertUserBasedOnType(newPost).FirstOrDefault();
-                if (user != null)
-                {
-                    await sendNofityToMessenger(newPost, user);
-                    HaveSendQuestion haveSendQues = new HaveSendQuestion();
-                    haveSendQues.QuesID = newPost.Id;
-                    haveSendQues.UserID = user.Id;
-                    haveSendQues.Status = false;
-                    haveSendQues.Protected = false;
-                    _haveSendQuesService.Add(haveSendQues);
-                    _haveSendQuesService.Save();
-                }
-            }
-            else
-            {
-                //Send thong cho người dùng đăng ký loại câu hỏi đó
-
-                List<ApplicationUser> userSubQues = getNormalUserBasedOnType(newPost);
-                foreach (var itemUser in userSubQues)
-                {
-                    await sendNofityToMessenger(newPost, itemUser);
-                    HaveSendQuestion haveSendQues = new HaveSendQuestion();
-                    haveSendQues.QuesID = newPost.Id;
-                    haveSendQues.UserID = itemUser.Id;
-                    haveSendQues.Status = false;
-                    haveSendQues.Protected = false;
-                    _haveSendQuesService.Add(haveSendQues);
-                    _haveSendQuesService.Save();
-                }
-
-
-            }
+           // string url = MaHoaMD5.Encrypt(newPost.Id + "#" + newPost.UpdatedDate);
             //Send notify
             ApplicationUser userPost = _service.GetUserById(newPost.Id_User);
             FieldHelper.CopyNotNullValue(PostViewModel, userPost);
@@ -316,8 +336,35 @@ namespace Framework.Controllers
             {
                 PostViewModel.Vote = vote.Vote;
             }
-
+            //Send noti for all user register
+            var userIDList = getUserIDListBasedOnType(newPost.Id_Type);
+            foreach (var userID in userIDList)
+            {
+                var sendPostToUser = _service.GetUserById(userID);
+                if (sendPostToUser.Id_Messenger != userPost.Id_Messenger && sendPostToUser.Id_Messenger != null && _eventService.IsFreeTime(sendPostToUser.Email))
+                {
+                    //Create json send............
+                    FBPostNoti newNoti = new FBPostNoti();
+                    newNoti.recipient.id = sendPostToUser.Id_Messenger;
+                    newNoti.message.attachment.payload.text = "```\r\n" + "💬 Bạn có một câu hỏi: " + "\r\n" +'"'+ newPost.Content+'"' + "\r\n```";
+                    NotiButton button = new NotiButton();
+                    button.payload = "REPLAY_" + newPost.Id;
+                    newNoti.message.attachment.payload.buttons.Add(button);
+                    //
+                    ChatBotMessenger.sendRequest(JsonConvert.SerializeObject(newNoti));
+                }
+            }
             return PartialView("_Post", PostViewModel);
+        }
+        public List<string> getUserIDListBasedOnType(int typeQues)
+        {
+            List<string> result = new List<string>();
+            var listTemp = _detailUserTypeService.GetAll().Where(x => x.Type == typeQues);
+            foreach (var userTemp in listTemp)
+            {
+                result.Add(userTemp.UserID);
+            }
+            return result;
         }
         //Replay a question
         [HttpGet]
@@ -448,7 +495,8 @@ namespace Framework.Controllers
         }
         protected async System.Threading.Tasks.Task<string> sendNofityToMessenger(Post post, ApplicationUser user)
         {
-            ChromeNofiJson postJson = new ChromeNofiJson();
+            ChromeNotiJson postJson = new ChromeNotiJson();
+            postJson.title = "Bạn có một câu hỏi: ";
             postJson.text = post.Content;
             postJson.urlQuestion = "http://olympusenglish.azurewebsites.net/Post?id=" + post.Id;
             NotificationHub.sendNoti(user.Email, JsonConvert.SerializeObject(postJson));
@@ -778,6 +826,8 @@ namespace Framework.Controllers
             var response2 = await client.PostAsync(paramChatfuel, null);
             return "";
         }
+        //Nhac nho sau khi trac nghiem xong
+    
     }
 }
 

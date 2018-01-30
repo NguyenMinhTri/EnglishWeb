@@ -119,6 +119,7 @@
     <Compile Include="Admin\DetailOurWordService.cs" />
     <Compile Include="Admin\DetailUserTypeService.cs" />
     <Compile Include="Admin\DictCacheService.cs" />
+    <Compile Include="Admin\EventService.cs" />
     <Compile Include="Admin\FacebookService.cs" />
     <Compile Include="Admin\FriendService.cs" />
     <Compile Include="Admin\HaveSendQuestionService.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Admin\RoutingService.cs" />
     <Compile Include="Admin\SubTypeService.cs" />
     <Compile Include="Admin\ToiecGroupService.cs" />
+    <Compile Include="Admin\VocaScheduleService.cs" />
     <Compile Include="Client\BingSpellCheckService.cs" />
     <Compile Include="Client\ClientNotificationService.cs" />
     <Compile Include="Client\ClientLearningService.cs" />

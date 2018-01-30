@@ -14,9 +14,9 @@ using System.Web;
 
 namespace Framework.Schedule
 {
-    public class StudyDictJob :IJob
+    public class StudyDictJob : IJob
     {
-        
+
         public async void Execute(IJobExecutionContext context)
         {
             try
@@ -28,7 +28,7 @@ namespace Framework.Schedule
 
                 client.PostAsync("http://olympusenglish.azurewebsites.net/Dictionary/notifyMessenger", null);
                 if (JobScheduler.ToiecUpdatedTime == 0)
-                     client.PostAsync("http://olympusenglish.azurewebsites.net/Learning/autoGeneratorToiecExam", null);
+                    client.PostAsync("http://olympusenglish.azurewebsites.net/Learning/autoGeneratorToiecExam", null);
                 //if (response2.Content != null)
                 //{
                 //    // Error Here
@@ -49,7 +49,8 @@ namespace Framework.Schedule
                 //    }
                 //}
                 //ListUserNofity listNofity = JsonConvert.DeserializeObject<ListUserNofity>(response2.ToString());
-                  
+                //
+                client.PostAsync("http://olympusenglish.azurewebsites.net/Dictionary/remindVoca", null);
                 client.PostAsync("http://olympusenglish.azurewebsites.net/Home/checkTimeOfPost", null);
                 client.PostAsync("http://olympusenglish.azurewebsites.net/Post/CheckAnswerOnFB", null);
                 if (JobScheduler.ToiecUpdatedTime >= 15)

@@ -556,24 +556,21 @@ namespace Framework.Controllers
         #endregion
         // GET: /Account/Register
         [AllowAnonymous]
-        public string registerChatBot(string idUser, string idmessenger)
+        public void registerChatBot(string idUser, string idmessenger)
         {
-            ChatfuelJson result = new ChatfuelJson();
-            MessJson messPron = new MessJson();
             
             var user = _applicationUserService.GetUserById(idUser);
             if(user == null)
             {
-                messPron.text = "ID không tồn tại vui lòng kiểm tra lại";
-                result.messages.Add(messPron);
-                return JsonConvert.SerializeObject(result);
+
+                ChatBotMessenger.sendTextMeg(idmessenger, "ID không tồn tại vui lòng kiểm tra lại");
+                return ;
             }
             user.Id_Messenger = idmessenger;
             _applicationUserService.Update(user);
             _applicationUserService.Save();
-            messPron.text = "Bạn đã liên kết với Messenger thành công";
-            result.messages.Add(messPron);
-            return JsonConvert.SerializeObject(result);
+            ChatBotMessenger.sendTextMeg(idmessenger, "Chúc mừng bạn đã liên kết thành công");
+            return;
         }
     }
 }

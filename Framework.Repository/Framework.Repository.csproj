@@ -69,6 +69,7 @@
     <Compile Include="RepositorySpace\DetailOurWordRepository.cs" />
     <Compile Include="RepositorySpace\DetailUserTypeRepository.cs" />
     <Compile Include="RepositorySpace\DictCacheRepository.cs" />
+    <Compile Include="RepositorySpace\EventRepository.cs" />
     <Compile Include="RepositorySpace\FriendRepository.cs" />
     <Compile Include="RepositorySpace\HaveSendQuestionRepository.cs" />
     <Compile Include="RepositorySpace\LearnVocaRepository.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="RepositorySpace\RoutingRepository.cs" />
     <Compile Include="RepositorySpace\SubTypeRepository.cs" />
     <Compile Include="RepositorySpace\ToiecGroupRepository.cs" />
+    <Compile Include="RepositorySpace\VocaScheduleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

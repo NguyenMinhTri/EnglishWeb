@@ -18,6 +18,8 @@ using Microsoft.AspNet.Identity;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Framework.Model.Google;
+using Framework.SignalR;
+using Newtonsoft.Json;
 
 namespace Framework.Controllers
 {
@@ -32,6 +34,7 @@ namespace Framework.Controllers
         IToiecGroupService _fbService;
         IDetailUserTypeService _detailUserTypeService;
         IClientNotificationService _notificationService;
+        IEventService _eventService;
         public PostController(ILayoutService layoutService,
             IPostService postService,
             IPostTypeService postTypeService,
@@ -39,7 +42,9 @@ namespace Framework.Controllers
             ICommentService commentOfPost,
             ICommentVoteDetailService commentVoteDetailService,
         IClientNotificationService notificationService,
-            IDetailUserTypeService detailUserTypeService, IToiecGroupService fbService)
+            IDetailUserTypeService detailUserTypeService,
+            IToiecGroupService fbService,
+            IEventService eventService)
             : base(layoutService)
         {
             _postService = postService;
@@ -50,6 +55,7 @@ namespace Framework.Controllers
             _detailUserTypeService = detailUserTypeService;
             _notificationService = notificationService;
             _fbService = fbService;
+            _eventService = eventService;
         }
 
         PostViewModel PostViewModel
@@ -175,12 +181,14 @@ namespace Framework.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Comment(CommentViewModel data)
+        public async Task<PartialViewResult> Comment(CommentViewModel data, bool IsFromBot = false)
         {
             _viewModel = new CommentViewModel();
             Comment comment = new Comment();
             FieldHelper.CopyNotNullValue(comment, data);
             comment.Corrected = false;
+          //  comment.CreatedBy = 
+            comment.DateComment = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds.ToString();
             _commentOfPost.Add(comment);
             _commentOfPost.Save();
             Post post = _postService.GetById(comment.Id_Post);
@@ -201,8 +209,23 @@ namespace Framework.Controllers
                     notification.Id_Post = data.Id_Post;
                     notification.Id_Comment = comment.Id;
                     notification.DateComment = data.DateComment;
+                    var userOfPost = _service.GetUserById(post.Id_User);
+                    //Send noti to chrome
+                    //
                     _notificationService.Add(notification);
                     _notificationService.Save();
+                    //Send noti via chatbot
+                    ChatBotMessenger.sendTextMeg(userOfPost.Id_Messenger, "🔥 *Câu hỏi:* " + post.Content + "\r\n" + "✎ *Đáp án:* " + comment.Content);
+                    //Send noti for chrome
+                    ChromeNotiJson postJson = new ChromeNotiJson();
+                    postJson.title = "Bạn có câu trả lời: ";
+                    postJson.text = post.Content + "<br/>" + comment.Content;
+                    postJson.urlQuestion = "http://olympusenglish.azurewebsites.net/Post?id=" + post.Id;
+                    if(IsFromBot)
+                    {
+                        ChromeNotification.sendNoti(userOfPost.Email, post.Id, comment.Id);
+                    }
+                    await NotificationHub.sendNoti(userOfPost.Email, JsonConvert.SerializeObject(postJson));
                 }
                 return PartialView("_Comment", CommentViewModel);
             }
@@ -389,14 +412,28 @@ namespace Framework.Controllers
                     comment.Corrected = false;
                     comment.Content = dapAn;
                     //Admin
-                    comment.Id_User = "eddf2dd7-5cfd-4828-904d-ed686780327a";
+                    comment.Id_User = post.Id_User;
                     comment.Id_Post = post.Id;
                     comment.DateComment = DateTime.Now.Ticks.ToString();
                     _commentOfPost.Add(comment);
                     _commentOfPost.Save();
                     _postService.Update(post);
                     _postService.Save();
-                    await notifyForUserAboutQues(post.Id);
+
+                    //Send noti via chatbot
+                    var userOfPost = _service.GetUserById(post.Id_User);
+                 //   var userOfCmt = _service.GetUserById(comment.Id_User);
+                    ChatBotMessenger.sendTextMeg(userOfPost.Id_Messenger, "🔥 *Câu hỏi:* " + post.Content + "\r\n" + "✎ *Đáp án:* " + comment.Content);
+                    //Send noti for chrome
+                    ChromeNotiJson postJson = new ChromeNotiJson();
+                    postJson.title = "Bạn có câu trả lời: ";
+                    postJson.text = post.Content + "<br/>" + comment.Content;
+                    postJson.urlQuestion = "http://olympusenglish.azurewebsites.net/Post?id=" + post.Id;
+                    //if (IsFromBot)
+                    {
+                        ChromeNotification.sendNoti(userOfPost.Email, post.Id, comment.Id);
+                    }
+                    await NotificationHub.sendNoti(userOfPost.Email, JsonConvert.SerializeObject(postJson));
                 }
             }
         }
@@ -415,5 +452,65 @@ namespace Framework.Controllers
             var response2 = await client.PostAsync(paramChatfuel, null);
             return "";
         }
+        [AllowAnonymous]
+        public async Task<string> createNewPostViaFB(string messID, string containQues, int typeQues)
+        {
+            //Determine user
+            var userMakeQues = _service.listUserID().Where(x => x.Id_Messenger == messID).ToList();
+            if (userMakeQues.Count != 0)
+            {
+                Post newPost = new Model.Post();
+                newPost.Content = containQues;
+                newPost.DatePost = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds.ToString();
+                newPost.Id_User = userMakeQues.FirstOrDefault().Id;
+                newPost.Id_Type = typeQues; // TOIEC
+                //Post to fb group
+                if (newPost.Id_Type == 8)
+                {
+                    try
+                    {
+                        //post to fb toiec
+                        var IdPost = await _fbService.PostingToGroupFB(newPost.Content);
+                        newPost.Id_PostFB = IdPost.id;
+                    }
+                    catch(Exception e)
+                    {
+
+                    }
+                }
+                _postService.Add(newPost);
+                _postService.Save();
+                //Send noti for all user register
+                var userIDList = getUserIDListBasedOnType(typeQues);
+                foreach (var userID in userIDList)
+                {
+                    var sendToUser = _service.GetUserById(userID);
+                    if (sendToUser.Id_Messenger != messID && sendToUser.Id_Messenger != null && _eventService.IsFreeTime(sendToUser.Email))
+                    {
+                        //Create json send............
+                        FBPostNoti newNoti = new FBPostNoti();
+                        newNoti.recipient.id = sendToUser.Id_Messenger;
+                        newNoti.message.attachment.payload.text = "```\r\n" + "💬 Bạn có một câu hỏi: " + "\r\n" + '"' + newPost.Content + '"' + "\r\n```";
+                        NotiButton button = new NotiButton();
+                        button.payload = "REPLAY_" + newPost.Id;
+                        newNoti.message.attachment.payload.buttons.Add(button);
+                        //
+                        ChatBotMessenger.sendRequest(JsonConvert.SerializeObject(newNoti));
+                    }
+                }
+            }
+            return "";
+        }
+
+        public List<string> getUserIDListBasedOnType(int typeQues)
+        {
+            List<string> result = new List<string>();
+            var listTemp = _detailUserTypeService.GetAll().Where(x => x.Type == typeQues);
+            foreach(var userTemp in listTemp)
+            {
+                result.Add(userTemp.UserID);
+            }
+            return result; 
+        } 
     }
 }

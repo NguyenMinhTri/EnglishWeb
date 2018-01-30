@@ -69,12 +69,15 @@
     <Compile Include="BingSpellCheckResponse.cs" />
     <Compile Include="BingSpellCheckSuggestion.cs" />
     <Compile Include="BotModel.cs" />
+    <Compile Include="ChatbotMenu.cs" />
     <Compile Include="CommentFB.cs" />
     <Compile Include="CommentVoteDetail.cs" />
     <Compile Include="DetailOurWord.cs" />
     <Compile Include="DetailUserType.cs" />
     <Compile Include="DictCache.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="FbBotDataClasses.cs" />
+    <Compile Include="FBPostNoti.cs" />
     <Compile Include="GoogleJson.cs" />
     <Compile Include="GoogleVisionJson.cs" />
     <Compile Include="GoogleVisionReponse.cs" />
@@ -82,6 +85,7 @@
     <Compile Include="ImageFB.cs" />
     <Compile Include="LearnVoca.cs" />
     <Compile Include="ListPostToiecFB.cs" />
+    <Compile Include="MessButton.cs" />
     <Compile Include="MessengerBot.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Dictionary.cs" />
@@ -107,6 +111,7 @@
     <Compile Include="TableJoin\DoctorWithName.cs" />
     <Compile Include="ToiecGroup.cs" />
     <Compile Include="TracNghiem.cs" />
+    <Compile Include="VocaSchedule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

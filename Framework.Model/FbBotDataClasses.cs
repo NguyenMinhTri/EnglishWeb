@@ -32,6 +32,7 @@ namespace Framework.Model
     public class BotPostback
     {
         public string payload { get; set; }
+        public string title { set; get; }
     }
 
 
@@ -48,6 +49,7 @@ namespace Framework.Model
         public List<MessageAttachment> attachments { get; set; }
         public long seq { get; set; }
         public string text { get; set; }
+        public string metadata { set; get; }
         public QuickReply quick_reply { get; set; }
     }
 

@@ -20,6 +20,7 @@ namespace Framework.Service
         List<String> GetAllFriend(string id_user);
         List<Friend> GetRelationship(string id_user);
         List<Notification> getAllNotification(string id_user);
+        ApplicationUser GetUserByMessID(string idmess);
     }
     public class LayoutService : ILayoutService
     {
@@ -86,6 +87,10 @@ namespace Framework.Service
             List<Notification> listNotification = new List<Notification>();
             listNotification = _notificationRepository.GetMulti(x => x.Id_Friend == id_user).ToList();
             return listNotification;
+        }
+        public ApplicationUser GetUserByMessID(string idmess)
+        {
+           return _userRepository.GetSingleByCondition(x => x.Id_Messenger == idmess);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Framework.Service.Admin
     public interface IDictCacheService : IQlService<DictCache>
     {
         DictCache findWordCache(string word);
+        List<DictCache> get4Words();
     }
     public class DictCacheService : QlService<DictCache>, IDictCacheService
     {
@@ -29,6 +30,10 @@ namespace Framework.Service.Admin
                 return dictCache;
             }
             return null;
+        }
+        public List<DictCache> get4Words()
+        {
+            return _dictCacheRepository.Entity.OrderBy(x => Guid.NewGuid()).Take(10).ToList();
         }
     }
 }

@@ -36,16 +36,19 @@ namespace Framework.Controllers
         IClientDictionaryService _clientDictionaryService;
         IDetailOurWordService _detailOutWordService;
         IDictCacheService _dictCache;
+        IEventService _eventService;
         public DictionaryController(ILayoutService layoutService,
             IClientDictionaryService clientDictionaryService,
             IDetailOurWordService detailOutWordService,
-            IDictCacheService dictCache
+            IDictCacheService dictCache,
+             IEventService eventService
             )
             : base(layoutService)
         {
             _clientDictionaryService = clientDictionaryService;
             _detailOutWordService = detailOutWordService;
             _dictCache = dictCache;
+            _eventService = eventService;
         }
 
 
@@ -220,7 +223,7 @@ namespace Framework.Controllers
                 detailWord.Schedule = DateTime.Now.AddDays(-1);
                 _detailOutWordService.Add(detailWord);
                 _detailOutWordService.Save();
-                await notifyMessenger();
+                await notifyMessenger(true);
                 return Json(new
                 {
                     result = "True"
@@ -443,7 +446,7 @@ namespace Framework.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public async Task<string> notifyMessenger()
+        public async Task<string> notifyMessenger(bool isInSaved = false)
         {
             //  var listUser = _detailOutWordService.
             ListUserNofity listUserNotify = new ListUserNofity();
@@ -452,21 +455,23 @@ namespace Framework.Controllers
 
             foreach (var userDetail in listUser)
             {
-                RemindUser reminderUser = new RemindUser();
-                reminderUser.IdMess = userDetail.Id_Messenger;
-                listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, DateTime.Now.Hour);
-                //Update thoi gian 
-                //
-                try
+                //Kiem tra xem thoi gian co trung voi thoi gian bieu hay khong
+                if (_eventService.IsFreeTime(userDetail.Email) || isInSaved)
                 {
-                    if (listIDWord != null || listIDWord.Count != 0)
+                    listIDWord = _detailOutWordService.listIdOutWord(userDetail.Id, 0);
+                    //Update thoi gian 
+                    //
+                    try
                     {
-                        await sendNotificationEnlishVoca(listIDWord, userDetail.Id_Messenger);
+                        if (listIDWord != null || listIDWord.Count != 0)
+                        {
+                            await sendNotificationEnlishVoca(listIDWord, userDetail.Id_Messenger);
+                        }
                     }
-                }
-                catch (Exception e)
-                {
+                    catch (Exception e)
+                    {
 
+                    }
                 }
             }
 
@@ -491,7 +496,7 @@ namespace Framework.Controllers
             TracNghiem cauTracNghiem = new TracNghiem();
             var vocaCanHoc = _dictCache.GetById(idWord);
             Random rnd = new Random();
-            var listDict = _dictCache.GetAll();
+            var listDict = _dictCache.get4Words();
             int pos = rnd.Next(0, listDict.Count);
             var ramdomPo = randomPosition();
             cauTracNghiem.Question = vocaCanHoc.MeanEn;
@@ -578,7 +583,7 @@ namespace Framework.Controllers
 
                 AttachmentJson sound = new AttachmentJson();
                 var tempWord = _dictCache.GetById(idWord);
-                var infoVoca = _dictCache.GetAll().Where(x => x.VocaID == tempWord.VocaID).FirstOrDefault();
+                var infoVoca = _dictCache.findWordCache(tempWord.VocaID);
                 messExplaintion.text = infoVoca.VocaID;
                 messExplaintion.text += "\r\n" + infoVoca.Pron;
                 messExplaintion.text += "\r\n" + infoVoca.MeanEn;
@@ -594,10 +599,24 @@ namespace Framework.Controllers
                 PostRaw("", JsonConvert.SerializeObject(jsonSoundMessenger));
 
             }
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             if (isCheck)
-                await client.PostAsync("https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + messID + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a3fc60de4b037186c58ec99", null);
+            {
+                FBPostNoti newNoti = new FBPostNoti();
+                newNoti.recipient.id = messID;
+                newNoti.message.attachment.payload.text = "Luyện tập nào !";
+                NotiButton button = new NotiButton();
+                button.title = "Start";
+                button.payload = "LUYENTAP";
+                newNoti.message.attachment.payload.buttons.Add(button);
+
+                PostRaw("", JsonConvert.SerializeObject(newNoti));
+            }
+
+            //HttpClient client = new HttpClient();
+
+            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            //if (isCheck)
+            //    await client.PostAsync("https://api.chatfuel.com/bots/59a43f64e4b03a25b73c0ebd/users/" + messID + "/" + "send?chatfuel_token=vnbqX6cpvXUXFcOKr5RHJ7psSpHDRzO1hXBY8dkvn50ZkZyWML3YdtoCnKH7FSjC&chatfuel_block_id=5a3fc60de4b037186c58ec99", null);
             return "";
         }
         //Post method
@@ -631,10 +650,17 @@ namespace Framework.Controllers
         }
         public string verifyToken()
         {
-            MessJson messPron = new MessJson();
-            var userInfo = _service.GetUserById(User.Identity.GetUserId());
-            messPron.text = userInfo.LastName + " " + userInfo.FirstName;
-            return JsonConvert.SerializeObject(messPron);
+            try
+            {
+                MessJson messPron = new MessJson();
+                var userInfo = _service.GetUserById(User.Identity.GetUserId());
+                messPron.text = userInfo.LastName + " " + userInfo.FirstName;
+                return JsonConvert.SerializeObject(messPron);
+            }
+            catch
+            {
+                return "";
+            }
         }
         
         public async Task<string> getDictToExtension(string contain)
@@ -808,7 +834,7 @@ namespace Framework.Controllers
             jsonTextMessenger.recipient.id = id;
             JsonMessengerText jsonSoundMessenger = new JsonMessengerText();
             jsonSoundMessenger.recipient.id = id;
-            messExplaintionDict.text += contain;
+            messExplaintionDict.text += "*"+ToTitleCase(contain)+"*";
 
             Payload2 payload = new Payload2();
             //
@@ -937,6 +963,35 @@ namespace Framework.Controllers
             PostRaw("", JsonConvert.SerializeObject(jsonTextMessenger));
             PostRaw("", JsonConvert.SerializeObject(jsonSoundMessenger));
             return JsonConvert.SerializeObject(hello);
+        }
+        //Nhac nho sau khi trac nghiem xong
+        [AllowAnonymous]
+        public async Task<string> remindVoca()
+        {
+            List<ApplicationUser> listUser = _service.listUserID();
+            List<int> listIDWord = new List<int>();
+
+            foreach (var userDetail in listUser)
+            {
+                if (_eventService.IsFreeTime(userDetail.Email))
+                {
+                    listIDWord = _detailOutWordService.remindVoca(userDetail.Id);
+                    //Update thoi gian 
+                    //
+                    try
+                    {
+                        if (listIDWord != null || listIDWord.Count != 0)
+                        {
+                            await sendNotificationEnlishVoca(listIDWord, userDetail.Id_Messenger);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
+            }
+            return "";
         }
 
     }

@@ -18,6 +18,7 @@ namespace Framework.Model
             Question = "";
             UrlImage = "";
         }
+        public int IdWord { set; get;}
         public string Question { set; get; }
         public string UrlImage { set; get; }
         public DapAn [] ABCD { set; get; }

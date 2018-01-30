@@ -181,8 +181,9 @@ namespace Framework.Controllers
         {
             TracNghiem cauTracNghiem = new TracNghiem();
             var vocaCanHoc = _dictCache.GetById(idWord);
+            cauTracNghiem.IdWord = idWord;
             Random rnd = new Random();
-            var listDict = _dictCache.GetAll();
+            var listDict = _dictCache.get4Words();
             int pos = rnd.Next(0, listDict.Count);
             var ramdomPo = randomPosition();
             cauTracNghiem.Question = vocaCanHoc.MeanEn;
@@ -375,6 +376,8 @@ namespace Framework.Controllers
                         //Dap an sai
                         if (isContinue == 1)
                         {
+                            _detailOutWordService.SetNextTime(dataTracNghiem[m_countQues].IdWord, 15,5);
+                           
                             //m_countQues++;
                             numberFalse++;
                             // isContinue = 0;
@@ -555,5 +558,16 @@ namespace Framework.Controllers
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
         }
+        [AllowAnonymous]
+        public string resetTimeLearning()
+        {
+            var ListUser = _service.listUserID();
+            foreach(var userID in ListUser)
+            {
+                _detailOutWordService.resetLearningTime(userID.Id);
+            }
+            return "";
+        }
+
     }
 }

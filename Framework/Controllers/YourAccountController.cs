@@ -25,9 +25,25 @@ using System.Security.Cryptography;
 using Newtonsoft.Json;
 using System.Net;
 using Framework.Model.Bot;
+using LiteDB;
 
 namespace Framework.Controllers
 {
+    public class ItemMessenger
+    {
+        public ItemMessenger()
+        {
+            IsFile = false;
+            IsPayload = false;
+        }
+        public int Id { get; set; }
+        public string Id_Messenger { get; set; }
+        public int Status { get; set; }
+        public string Previous_Msg { set; get; }
+        public string PayLoad { set; get; }
+        public bool IsFile { set; get; }
+        public bool IsPayload { set; get; }
+    }
 
     public class YourAccountController : LayoutController
     {
@@ -340,11 +356,122 @@ namespace Framework.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ReceivePost(BotRequest data)
         {
+            try
+            {
+                //If fast replay
+                if (data.entry[0].messaging[0].message.quick_reply != null)
+                {
+                    var ctrlr = DependencyResolver.Current.GetService<LearningController>();
+                    ctrlr.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlr);
+                    ctrlr.ReceivePost(data);
+                    //Update again
+                    ItemMessenger previousMess = new ItemMessenger();
+                    previousMess.Id_Messenger = data.entry[0].messaging[0].sender.id;
+                    UpdatePreviousMsg(previousMess);
+                    return null;
+                }
+            }
+            catch
+            {
+
+            }
+            //
+            ItemMessenger previousMsg = getPreviousMsg(data.entry[0].messaging[0].sender.id);
+            if(previousMsg!=null)
+            {
+                //Tn trước đó có chứa payload => đang trời cho 1 câu hỏi gì đó
+                if (previousMsg.IsPayload == true)
+                {
+                    //Menu payload xac thuc
+                    if (previousMsg.PayLoad == "XACTHUC")
+                    {
+                        var ctrlrDict = DependencyResolver.Current.GetService<AccountController>();
+                        ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                        ctrlrDict.registerChatBot(data.entry[0].messaging[0].message.text, data.entry[0].messaging[0].sender.id);
+
+                    }
+                    else if (previousMsg.PayLoad == "LUYENTAP")
+                    {
+
+                    }
+                    else if (previousMsg.PayLoad.IndexOf(@"POST_TYPE_") != -1)
+                    {
+                        var postType = int.Parse(previousMsg.PayLoad.Substring(10));
+                        ChatBotMessenger.sendTextMeg(data.entry[0].messaging[0].sender.id, "🎉 Câu hỏi bạn đã được gửi đi 🎉 ");
+                        var ctrlrDict = DependencyResolver.Current.GetService<PostController>();
+                        ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                        await ctrlrDict.createNewPostViaFB(data.entry[0].messaging[0].sender.id, data.entry[0].messaging[0].message.text, postType);
+                    }
+                    else if (previousMsg.PayLoad.IndexOf(@"REPLAY_") != -1)
+                    {
+                        ChatBotMessenger.sendTextMeg(data.entry[0].messaging[0].sender.id, "🎉 Thank you 🎉 ");
+                        //
+                        var postID = int.Parse(previousMsg.PayLoad.Substring(7));
+                        //
+                        ApplicationUser currentUser = _service.GetUserByMessID(data.entry[0].messaging[0].sender.id);
+                        //
+                        CommentViewModel dataCmt = new CommentViewModel();
+                        dataCmt.Id_User = currentUser.Id;
+                        dataCmt.Id_Comment = 0;
+                        dataCmt.Id_Post = postID;
+                        dataCmt.Name = data.entry[0].messaging[0].message.text;
+                        dataCmt.Content = data.entry[0].messaging[0].message.text;
+                        var ctrlrDict = DependencyResolver.Current.GetService<PostController>();
+                        ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                        ctrlrDict.Comment(dataCmt,true);
+                    }
+                    //Update again
+                    ItemMessenger previousMess = new ItemMessenger();
+                    previousMess.Id_Messenger = data.entry[0].messaging[0].sender.id;
+                    UpdatePreviousMsg(previousMess);
+                    return null;
+                }
+            }
             string imageToText = "";
             try
             {
-                if(data.entry[0].messaging[0].message.attachments != null)
+                if(data.entry[0].messaging[0].postback != null && data.entry[0].messaging[0].message == null)
                 {
+                    ItemMessenger previousMess = new ItemMessenger();
+                    previousMess.PayLoad = data.entry[0].messaging[0].postback.payload;
+                    previousMess.Id_Messenger = data.entry[0].messaging[0].sender.id;
+                    previousMess.Previous_Msg = data.entry[0].messaging[0].postback.title;
+                    previousMess.Status = 1;
+                    previousMess.IsPayload = true;
+                    UpdatePreviousMsg(previousMess);
+                    //xac thu token
+                    if (data.entry[0].messaging[0].postback.payload.ToString() == "XACTHUC")
+                    {
+                        ChatBotMessenger.sendTextMeg(data.entry[0].messaging[0].sender.id, "🔑 Vui lòng nhập mã token sau tin nhắn này 🔑");
+                        //var ctrlrDict = DependencyResolver.Current.GetService<AccountController>();
+                        //ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                       // await ctrlrDict.registerChatBot(data.entry[0].messaging[0].message.text, data.entry[0].messaging[0].sender.id, "");
+                    }
+                    else if (data.entry[0].messaging[0].postback.payload.ToString() == "LUYENTAP")
+                    {
+                        var ctrlrDict = DependencyResolver.Current.GetService<LearningController>();
+                        ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
+                        await ctrlrDict.multiplechoiceOnline(data.entry[0].messaging[0].sender.id);
+                    }
+                    else if (data.entry[0].messaging[0].postback.payload.ToString().IndexOf(@"POST_TYPE_") != -1)
+                    {
+                        ChatBotMessenger.sendTextMeg(data.entry[0].messaging[0].sender.id, "❓ Mời bạn nhập câu hỏi ❓");
+                    }
+                    else if (data.entry[0].messaging[0].postback.payload.ToString().IndexOf(@"REPLAY_") != -1)
+                    {
+                        ChatBotMessenger.sendTextMeg(data.entry[0].messaging[0].sender.id, "✍️ Mời bạn nhập câu trả lời ✍️");
+                    }
+
+                    return null;
+                }
+
+                //Tra tu dien
+                if(data.entry[0].messaging[0].message.attachments != null &&  data.entry[0].messaging[0].postback == null)
+                {
+                    ItemMessenger previousMess = new ItemMessenger();
+                    previousMess.Id_Messenger = data.entry[0].messaging[0].sender.id;
+                    UpdatePreviousMsg(previousMess);
+                    //
                     imageToText = data.entry[0].messaging[0].message.attachments[0].payload.url;
                     string textResult = await ConvertImageURLToBase64(data.entry[0].messaging[0].message.attachments[0].payload.url);
                     var ctrlrDict = DependencyResolver.Current.GetService<DictionaryController>();
@@ -352,8 +479,12 @@ namespace Framework.Controllers
                     await ctrlrDict.searchDictViaBot(textResult, data.entry[0].messaging[0].sender.id, "");
                     return null;
                 }
-                if (data.entry[0].messaging[0].message.text != "" && data.entry[0].messaging[0].message.quick_reply == null)
+                if (data.entry[0].messaging[0].message.text != "" && data.entry[0].messaging[0].message.quick_reply == null && data.entry[0].messaging[0].postback == null)
                 {
+                    ItemMessenger previousMess = new ItemMessenger();
+                    previousMess.Id_Messenger = data.entry[0].messaging[0].sender.id;
+                    UpdatePreviousMsg(previousMess);
+                    //
                     var ctrlrDict = DependencyResolver.Current.GetService<DictionaryController>();
                     ctrlrDict.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlrDict);
                     await ctrlrDict.searchDictViaBot(data.entry[0].messaging[0].message.text, data.entry[0].messaging[0].sender.id, "");
@@ -364,9 +495,6 @@ namespace Framework.Controllers
             {
 
             }
-            var ctrlr = DependencyResolver.Current.GetService<LearningController>();
-            ctrlr.ControllerContext = new ControllerContext(this.Request.RequestContext, ctrlr);
-            ctrlr.ReceivePost(data);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
@@ -505,6 +633,39 @@ namespace Framework.Controllers
             catch
             {
                 return result;
+            }
+        }
+        public void UpdatePreviousMsg(ItemMessenger inputItem)
+        {
+            using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+            {
+                var items = db.GetCollection<ItemMessenger>("ItemMessengers");
+                var item = items.FindOne(i => i.Id_Messenger == inputItem.Id_Messenger);
+                //Create new item
+                if (item == null)
+                {
+
+                    items.Insert(inputItem);
+                }
+                else
+                {
+                    item.Id_Messenger = inputItem.Id_Messenger;
+                    item.IsFile = inputItem.IsFile;
+                    item.IsPayload = inputItem.IsPayload;
+                    item.PayLoad = inputItem.PayLoad;
+                    item.Previous_Msg = inputItem.Previous_Msg;
+                    item.Status = inputItem.Status;
+                    items.Update(item);
+                }
+            }
+        }
+        public ItemMessenger getPreviousMsg(string IdMess)
+        {
+            using (var db = new LiteDatabase(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/OneData.db")))
+            {
+                // Get a collection (or create, if not exits)
+                var col = db.GetCollection<ItemMessenger>("ItemMessengers");
+                return col.FindOne(x => x.Id_Messenger == IdMess);
             }
         }
     }

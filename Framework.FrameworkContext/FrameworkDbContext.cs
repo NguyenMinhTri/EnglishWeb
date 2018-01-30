@@ -36,6 +36,8 @@ namespace Framework.FrameworkContext
         public DbSet<SubType> SubTypes { set; get; }
         public DbSet<LearnVoca> LearnVocas { set; get; }
         public DbSet<ToiecGroup> ToiecGroups { set; get; }
+        public DbSet<Event> Events { set; get; }
+        public DbSet<VocaSchedule> VocaSchedules { set; get; }
         #endregion
         public static FrameworkDbContext Create()
         {
@@ -134,8 +136,14 @@ namespace Framework.FrameworkContext
                 .Insert(u => u.HasName("InsertToiecGroup", "dbo"))
                 .Update(u => u.HasName("UpdateToiecGroup", "dbo"))
                 .Delete(u => u.HasName("DeleteToiecGroup", "dbo")));
+            builder.Entity<Event>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertEvent", "dbo"))
+                .Update(u => u.HasName("UpdateEvent", "dbo"))
+                .Delete(u => u.HasName("DeleteEvent", "dbo")));
+            builder.Entity<VocaSchedule>().MapToStoredProcedures(s => s.Insert(u => u.HasName("InsertVocaSchedule", "dbo"))
+                .Update(u => u.HasName("UpdateVocaSchedule", "dbo"))
+                .Delete(u => u.HasName("DeleteVocaSchedule", "dbo")));
         }
-        //st3. -- END
+        //st3. -- ENDf
 
 
     }

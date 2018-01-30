@@ -63,6 +63,9 @@
       <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DayPilot.Web.Mvc">
+      <HintPath>..\..\GraduationThesis\Git example\TutorialMvc5LiteCalendar.VS2013.20150609\TutorialMvc5LiteCalendar\Lib\DayPilot.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -255,6 +258,7 @@
     <Compile Include="Controllers\Admin\AdminDetailOurWordController.cs" />
     <Compile Include="Controllers\Admin\AdminDetailUserTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminDictCacheController.cs" />
+    <Compile Include="Controllers\Admin\AdminEventController.cs" />
     <Compile Include="Controllers\Admin\AdminFriendController.cs" />
     <Compile Include="Controllers\Admin\AdminHaveSendQuestionController.cs" />
     <Compile Include="Controllers\Admin\AdminLearnVocaController.cs" />
@@ -265,6 +269,7 @@
     <Compile Include="Controllers\Admin\AdminPostVoteDetailController.cs" />
     <Compile Include="Controllers\Admin\AdminSubTypeController.cs" />
     <Compile Include="Controllers\Admin\AdminToiecGroupController.cs" />
+    <Compile Include="Controllers\Admin\AdminVocaScheduleController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
@@ -274,6 +279,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\WebhookController.cs" />
     <Compile Include="Controllers\YourAccountController.cs" />
     <Compile Include="Controllers\EntertainmentController.cs" />
     <Compile Include="Infrastructure\CustomUserIdProvider.cs" />
@@ -291,10 +297,8 @@
     <Compile Include="Schedule\JobScheduler.cs" />
     <Compile Include="Schedule\PostScheduler.cs" />
     <Compile Include="Schedule\StudyDictJob.cs" />
-    <Compile Include="SignalR\ChatHub.cs" />
+    <Compile Include="SignalR\NotificationHub.cs" />
     <Compile Include="SignalR\ChromeNotification.cs" />
-    <Compile Include="SignalR\CommentSignalHub.cs" />
-    <Compile Include="SignalR\FrameworkSignalHub.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Global.asax.cs">
@@ -866,6 +870,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\DayPilot\daypilot-all.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
@@ -984,6 +989,8 @@
     <Content Include="Views\YourAccount\_NotiFriend.cshtml" />
     <Content Include="Views\Layout\_Noti.cshtml" />
     <Content Include="Views\YourAccount\_Notify.cshtml" />
+    <Content Include="Views\AdminEvent\Index.cshtml" />
+    <Content Include="Views\AdminVocaSchedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -1025,6 +1032,9 @@
       <Project>{ad5bbaba-c1d2-4ede-9dc6-e17aaeaadfe9}</Project>
       <Name>Framework.ViewData</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
