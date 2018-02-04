@@ -446,6 +446,7 @@ namespace Framework.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
+        [HttpGet]
         public async Task<string> notifyMessenger(bool isInSaved = false)
         {
             //  var listUser = _detailOutWordService.
